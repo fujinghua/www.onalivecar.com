@@ -5,15 +5,15 @@ return [
     // 当前SESSION登录默认标识
     'unique'                       => 'identity',
     // Identity 位置
-    'default_model'            => '\app\manage\model\Identity',
+    'default_model'            => '\app\back\model\Identity',
     // 登录路由
-    'loginUrl'                        => 'manage/login/login',
+    'loginUrl'                        => 'back/login/login',
     // 退出路由
-    'logoutUrl'                       => 'manage/login/logout',
+    'logoutUrl'                       => 'back/login/logout',
     // 注册路由
-    'registerUrl'                     => 'manage/login/register',
+    'registerUrl'                     => 'back/login/register',
     // 注册路由
-    'resetUrl'                        => 'manage/login/reset',
+    'resetUrl'                        => 'back/login/reset',
     // 当前用户对象SESSION　key
     '_user'                           => '__IDENTITY__',
     // 当前用户 自动登录 SESSION　key

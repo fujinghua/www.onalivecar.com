@@ -3,8 +3,6 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\common\model\Model;
-
 
 /**
  * 后台默认控制器

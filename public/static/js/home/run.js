@@ -1111,7 +1111,7 @@ Run.fileUpload2 = function (e, c, f) {
     }
     var a = {
         title: b,
-        frameSrcUrl: (top._siteDomain ? top._siteDomain : "") + "/manage/fileUploadV2.php?settings=" + Helper.encodeUrl($.toJSON(d)) + "&ram=" + Math.random() + "&crossiframe=" + Helper.encodeUrl(d.crossiframe),
+        frameSrcUrl: (top._siteDomain ? top._siteDomain : "") + "/back/fileUploadV2.php?settings=" + Helper.encodeUrl($.toJSON(d)) + "&ram=" + Math.random() + "&crossiframe=" + Helper.encodeUrl(d.crossiframe),
         width: 950,
         height: 690,
         saveBeforePopup: false,

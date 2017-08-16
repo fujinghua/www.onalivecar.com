@@ -2,7 +2,7 @@
 
 namespace app\common\components;
 
-use app\manage\model\Menu;
+use app\back\model\Menu;
 use app\common\components\Configs;
 
 /**

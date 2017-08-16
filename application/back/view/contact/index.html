@@ -53,9 +53,9 @@
 
                 <button class="layui-btn" lay-submit="">查询</button>
 
-                <label class="layui-btn" onclick="Site.showUrl('求购转接','/manage/contact/services.html?iframe=true','50%','62.8%','2',true,true,'LAY_LABEL_CONTACT_TRANSFER',[0.628, '#4d4d4d'],true)">求购转接</label>
+                <label class="layui-btn" onclick="Site.showUrl('求购转接','/back/contact/services.html?iframe=true','50%','62.8%','2',true,true,'LAY_LABEL_CONTACT_TRANSFER',[0.628, '#4d4d4d'],true)">求购转接</label>
 
-                <label class="layui-btn" onclick="Site.showUrl('求购分配','/manage/contact/assign.html?iframe=true','80%','92%','2',true,true,'LAY_LABEL_CONTACT_ASSIGN',[0.628, '#4d4d4d'],true)">求购分配</label>
+                <label class="layui-btn" onclick="Site.showUrl('求购分配','/back/contact/assign.html?iframe=true','80%','92%','2',true,true,'LAY_LABEL_CONTACT_ASSIGN',[0.628, '#4d4d4d'],true)">求购分配</label>
 
             </div>
         </form>
@@ -138,8 +138,8 @@
 
 <script>
     var url = {
-        updateUrl:"{:url('/manage/contact/update')}",
-        deleteUrl:"{:url('/manage/contact/delete')}",
+        updateUrl:"{:url('/back/contact/update')}",
+        deleteUrl:"{:url('/back/contact/delete')}",
     };
     $(function() {
         //分页

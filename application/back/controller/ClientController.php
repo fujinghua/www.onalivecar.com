@@ -3,13 +3,13 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\manage\model\City;
-use app\manage\model\Client;
-use app\manage\model\BackUser;
+use app\back\model\City;
+use app\back\model\Client;
+use app\back\model\BackUser;
 
-use app\manage\model\ClientServer;
-use app\manage\model\Deal;
-use app\manage\model\Walk;
+use app\back\model\ClientServer;
+use app\back\model\Deal;
+use app\back\model\Walk;
 
 class ClientController extends BackController
 {
@@ -93,7 +93,7 @@ class ClientController extends BackController
         $where = ['t.is_delete'=>'1'];
         $each = 12;
         /**
-         * @var $model \app\manage\model\Client
+         * @var $model \app\back\model\Client
          */
         $model = Client::load();
         $request = $this->getRequest();

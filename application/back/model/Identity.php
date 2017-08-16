@@ -58,7 +58,7 @@ class Identity extends BackUser
     protected $table = '{{%back_user}}';
 
     //登录请求路由
-    public $loginUrl = 'manage/login/login';
+    public $loginUrl = 'back/login/login';
 
     //所有账号类型
     private static $departmentList = ['0'=>'全部','1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];

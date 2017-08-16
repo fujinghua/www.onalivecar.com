@@ -3,10 +3,10 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\manage\model\BackUser;
-use app\manage\model\Client;
-use app\manage\model\Contact;
-use app\manage\model\Service;
+use app\back\model\BackUser;
+use app\back\model\Client;
+use app\back\model\Contact;
+use app\back\model\Service;
 
 class ContactController extends BackController
 {

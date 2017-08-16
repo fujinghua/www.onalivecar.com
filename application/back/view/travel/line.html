@@ -93,7 +93,7 @@
 
         $.ajax({
             type : "post",
-            url : '/manage/travel/line?id='+id+'&time='+ time,
+            url : '/back/travel/line?id='+id+'&time='+ time,
             dataType : 'json',
             beforeSend:function () {
             },
@@ -145,7 +145,7 @@
             var htmlDiv = "<div id='car"+id+"'>信息加载中...</div>";
             $.ajax({
                 type : "post",
-                url : '/manage/travel/line?id='+id,
+                url : '/back/travel/line?id='+id,
                 dataType : 'json',
                 beforeSend:function () {
                     openInfo(htmlDiv,e,id);

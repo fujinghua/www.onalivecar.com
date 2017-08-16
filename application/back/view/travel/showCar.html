@@ -91,7 +91,7 @@
                 var htmlDiv = "<div id='car"+obj.carId+"'>信息加载中...</div>";
                 $.ajax({
                     type : "post",
-                    url : '/manage/travel/carInfo?driverId='+obj.userId+'&time='+ new Date().getTime(),
+                    url : '/back/travel/carInfo?driverId='+obj.userId+'&time='+ new Date().getTime(),
                     dataType : 'json',
                     beforeSend:function () {
                         openInfo(htmlDiv,e,obj.carId);
@@ -139,7 +139,7 @@
     function refreshCarLocal(){
         $.ajax({
             type : "post",
-            url : '/manage/travel/carLocal?time='+ new Date().getTime(),
+            url : '/back/travel/carLocal?time='+ new Date().getTime(),
             dataType : 'json',
             success : function(data) {
                 if (data.code == '1'){

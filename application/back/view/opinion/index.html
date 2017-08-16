@@ -42,7 +42,7 @@
 
                 <button class="layui-btn" lay-submit="">查询</button>
 
-                <label class="layui-btn" onclick="Site.showUrl('添加一个标签','/manage/config/create.html?iframe=true','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'])"><i class="layui-icon">&#xe608;</i>添加</label>
+                <label class="layui-btn" onclick="Site.showUrl('添加一个标签','/back/config/create.html?iframe=true','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'])"><i class="layui-icon">&#xe608;</i>添加</label>
             </div>
         </form>
     </div>
@@ -76,7 +76,7 @@
         </td>
         <td style="width: 150px;text-align: center;" class="action">
             <a href="javascript:void(0);">
-                <button onclick="Site.showUrl('编辑标签','/manage/config/update.html?iframe=true&id={$model.id}','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'])" class="layui-btn layui-btn-small">
+                <button onclick="Site.showUrl('编辑标签','/back/config/update.html?iframe=true&id={$model.id}','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'])" class="layui-btn layui-btn-small">
                     <i class="fa fa-pencil"></i>
                     编辑
                 </button>
@@ -96,7 +96,7 @@
     function deleteUser(id) {
         $.ajax({
             type : "post",
-            url : '/manage/config/delete?id='+ id,
+            url : '/back/config/delete?id='+ id,
             dataType : 'json',
             beforeSend : function() {
                 Site.loading();

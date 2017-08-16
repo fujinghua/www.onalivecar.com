@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\manage\model\Slider;
+use app\back\model\Slider;
 
 class SliderController extends BackController
 {

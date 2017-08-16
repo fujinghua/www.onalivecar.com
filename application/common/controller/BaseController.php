@@ -66,7 +66,7 @@ class BaseController extends Controller
     }
 
     /**
-     * 执行此方法时，需要确定模块。默认\app\manage\model\Identity::isGuest 验证
+     * 执行此方法时，需要确定模块。默认\app\back\model\Identity::isGuest 验证
      */
     protected function isUser()
     {

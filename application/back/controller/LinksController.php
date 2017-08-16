@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\manage\model\OnLinks;
+use app\back\model\OnLinks;
 
 class LinksController extends BackController
 {

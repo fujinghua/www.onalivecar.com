@@ -26,7 +26,7 @@
 <fieldset class="layui-elem-field">
     <legend style="margin: 0px auto !important;">当前出车 {$out} 批次   行驶车辆有 {$driver} 俩   待出车车辆 {$wait} 辆</legend>
     <div class="layui-field-box">
-        <form class="layui-form layui-form-pane" action="{url('manage/travel/list')}"  style="display:flex;">
+        <form class="layui-form layui-form-pane" action="{url('back/travel/list')}"  style="display:flex;">
             <div class="layui-form-item"  style="margin:auto;width: 800px;min-height: 50px;">
 
                 <label class="layui-form-label">办事处</label>
@@ -56,7 +56,7 @@
 
 <fieldset class="layui-elem-field">
     <legend style="margin: 0px auto !important;">
-        <label class="layui-btn" onclick="Site.showUrl('','/manage/travel/showCar.html','72%','88%','2',true,true,'LAY_TRAVEL_FALL')" lay-submit="">弹出显示</label>
+        <label class="layui-btn" onclick="Site.showUrl('','/back/travel/showCar.html','72%','88%','2',true,true,'LAY_TRAVEL_FALL')" lay-submit="">弹出显示</label>
     </legend>
     <div class="layui-field-box" style="height: 400px;">
         <div id="map">
@@ -93,10 +93,10 @@
         <td style="width: 100px;">{$model.getDriver.status}</td>
         <td style="width: 100px;">{$model.driver_time}</td>
         <td style="width: 100px;" class="distance">{$model.driver_mileage}</td>
-        <td style="width: 100px;"><?php echo \app\manage\model\TakeCarOrder::getOrderByCarId($model['car_id']); ?></td>
-        <td style="width: 100px;"><?php echo \app\manage\model\TakeCarOrder::getNearby($model['getCar']['lat'],$model['getCar']['lng']); ?></td>
+        <td style="width: 100px;"><?php echo \app\back\model\TakeCarOrder::getOrderByCarId($model['car_id']); ?></td>
+        <td style="width: 100px;"><?php echo \app\back\model\TakeCarOrder::getNearby($model['getCar']['lat'],$model['getCar']['lng']); ?></td>
         <td style="width: 150px;text-align: center;" class="action">
-            <a href="javascript:void(0);"><button onclick="Site.showUrl('查看实时位置','/manage/travel/liveAddress.html?id={$model.car_id}','72%','88%','2',true,true,'LAY_TRAVEL_{$model.id}')" class="layui-btn layui-btn-small"><i class="fa fa-search"></i>查看实时位置</button></a>
+            <a href="javascript:void(0);"><button onclick="Site.showUrl('查看实时位置','/back/travel/liveAddress.html?id={$model.car_id}','72%','88%','2',true,true,'LAY_TRAVEL_{$model.id}')" class="layui-btn layui-btn-small"><i class="fa fa-search"></i>查看实时位置</button></a>
         </td>
     </tr>
     {/volist}
@@ -183,7 +183,7 @@
                 var htmlDiv = "<div id='car"+obj.carId+"'>信息加载中...</div>";
                 $.ajax({
                     type : "post",
-                    url : '/manage/travel/carInfo?driverId='+obj.userId+'&time='+ new Date().getTime(),
+                    url : '/back/travel/carInfo?driverId='+obj.userId+'&time='+ new Date().getTime(),
                     dataType : 'json',
                     beforeSend:function () {
                         openInfo(htmlDiv,e,obj.carId);
@@ -231,7 +231,7 @@
     function refreshCarLocal(){
         $.ajax({
             type : "post",
-            url : '/manage/travel/carLocal?time='+ new Date().getTime(),
+            url : '/back/travel/carLocal?time='+ new Date().getTime(),
             dataType : 'json',
             success : function(data) {
                 if (data.code == '1'){

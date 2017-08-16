@@ -358,7 +358,7 @@
     });
 
     Site.search({
-        url: '/manage/ajax/getHost',
+        url: '/back/ajax/getHost',
         targetClass: '[lay-filter="keyword"]',      // 输入框目标元素
         parentClass: '.layui-input-block',          // 父级类
         hiddenClass: '[lay-filter="key"]',          // 隐藏域input
@@ -368,7 +368,7 @@
     var indexUrl = Site.uploader({
         elem:'#house_url_file',
         targetElem:'#url',
-        url: '/manage/ajax/uploader?file=file',
+        url: '/back/ajax/uploader?file=file',
         title:'上传房源封面',
         isAjax:true,
         success: function (res, input) {
@@ -380,7 +380,7 @@
     var indexDetail = Site.uploader({
         elem:'#house_detail_file',
         targetElem:'#detail',
-        url: '/manage/ajax/uploader?file=file',
+        url: '/back/ajax/uploader?file=file',
         title:'上传房源图片',
         isAjax:true,
         isMulti:true,

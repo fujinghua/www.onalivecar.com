@@ -6,7 +6,7 @@ use \think\Config;
 use think\Exception;
 use \think\Request;
 use \think\Log;
-use app\manage\model\Identity;
+use app\back\model\Identity;
 use app\common\components\rbac\AuthManager;
 
 class AccessControl
@@ -35,7 +35,7 @@ class AccessControl
 
 
     /**
-     * @var \app\manage\model\Identity
+     * @var \app\back\model\Identity
      */
     private $_user;
 
@@ -48,7 +48,7 @@ class AccessControl
      * @var array List of action that not need to check access.
      */
     public $allowActions = [
-        '/home/*',
+        '/back/*',
     ];
 
     /**
@@ -64,7 +64,7 @@ class AccessControl
 
     /**
      * Get user
-     * @return \app\manage\model\Identity
+     * @return \app\back\model\Identity
      */
     public function getUser($userid = 0)
     {

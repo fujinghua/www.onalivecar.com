@@ -22,7 +22,7 @@ return [
     'username'        => 'atalivecar',
     // 密码
 //    'password'        => 'root',
-    'password'        => 'atalivecar',
+    'password'        => '@atalivecar',
     // 端口
     'hostport'        => '3306',
     // 连接dsn

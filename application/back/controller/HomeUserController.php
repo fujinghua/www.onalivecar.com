@@ -15,8 +15,8 @@ namespace app\back\controller;
 
 use app\common\controller\BackController;
 use app\common\model\Model;
-use app\manage\model\HomeUser;
-use app\manage\model\HomeUserLog;
+use app\back\model\HomeUser;
+use app\back\model\HomeUserLog;
 
 /**
  * 用户控制器
@@ -36,7 +36,7 @@ class HomeUserController extends BackController
         $where = ['home_user_id'=>$id];
         $each = 12;
         /**
-         * @var $model \app\manage\model\Client
+         * @var $model \app\back\model\Client
          */
         $model = HomeUserLog::load();
         $request = $this->getRequest();
@@ -87,7 +87,7 @@ class HomeUserController extends BackController
         $where = ['is_delete'=>'1'];
         $each = 12;
         /**
-         * @var $model \app\manage\model\Client
+         * @var $model \app\back\model\Client
          */
         $model = HomeUser::load();
         $request = $this->getRequest();

@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\manage\model\Ban;
+use app\back\model\Ban;
 
 class MenuController extends BackController
 {

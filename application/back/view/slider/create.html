@@ -145,7 +145,7 @@
     });
 
     Site.search({
-        url: '/manage/ajax/getBackUser',
+        url: '/back/ajax/getBackUser',
         targetClass: '[lay-filter="username"]',          // 输入框目标元素
         parentClass: '.layui-input-inline',          // 父级类
         hiddenClass: '[name="back_user_id"]',          // 隐藏域input
@@ -155,7 +155,7 @@
     var indexLogo = Site.uploader({
         elem:'#url_file',
         targetElem:'#url',
-        url: '/manage/ajax/uploader?file=file',
+        url: '/back/ajax/uploader?file=file',
         title:'上传广告图',
         isAjax:true,
         success: function (res, input) {

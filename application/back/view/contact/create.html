@@ -231,7 +231,7 @@
     });
 
     Site.search({
-        url: '/manage/ajax/getClient',
+        url: '/back/ajax/getClient',
         targetClass: '[lay-filter="client_search"]',          // 输入框目标元素
         parentClass: '.layui-input-inline',          // 父级类
         hiddenClass: '[name="client_id"]',          // 隐藏域input
@@ -239,7 +239,7 @@
     });
 
     Site.search({
-        url: '/manage/ajax/getClient',
+        url: '/back/ajax/getClient',
         targetClass: '[lay-filter="sellerId_search"]',          // 输入框目标元素
         parentClass: '.layui-input-inline',          // 父级类
         hiddenClass: '[name="sellerId"]',          // 隐藏域input
@@ -249,7 +249,7 @@
     var indexUrl = Site.uploader({
         elem: '#url_file',
         targetElem: '#url',
-        url: '/manage/ajax/uploader?file=file',
+        url: '/back/ajax/uploader?file=file',
         title: '成交单',
         isAjax: true,
         success: function (res, input) {

@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\manage\model\Type;
+use app\back\model\Type;
 
 class TypeController extends BackController
 {

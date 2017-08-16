@@ -478,7 +478,7 @@
     var indexLogo = Site.uploader({
         elem:'#BuildingLogo_file',
         targetElem:'#url',
-        url: '/manage/ajax/uploader?file=file',
+        url: '/back/ajax/uploader?file=file',
         title:'上传楼盘封面',
         isAjax:true,
         success: function (res, input) {
@@ -490,7 +490,7 @@
     var indexUrl = Site.uploader({
         elem:'#BuildingDetail_file',
         targetElem:'#detail',
-        url: '/manage/ajax/uploader?file=file',
+        url: '/back/ajax/uploader?file=file',
         title:'上传楼盘图片',
         isAjax:true,
         isMulti:true,

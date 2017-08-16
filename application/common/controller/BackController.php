@@ -33,18 +33,16 @@ class BackController extends BaseController
         $currentUrl = $this->getCurrentUrl();
 
         //模板转换
-        if ('manage/index/index' === strtolower($currentUrl)){
-            $this->view->engine->layout('common@layouts/manage-index');
-        }else{
-            $this->view->engine->layout('common@layouts/manage-main');
+        if ('back/index/index' === strtolower($currentUrl)){
+            $this->view->engine->layout('common@layouts/back-index');
         }
 
         //兼容iframe
         $url = $this->getUrl();
         // 权限检测，首页不需要权限
         if (!$this->accessCheck()) {
-            if(!('manage/index/index' === strtolower($currentUrl) || $url === '/manage')){
-                $this->error('拒绝访问', url('home/Index/index'),[],'1');
+            if(!('back/index/index' === strtolower($currentUrl) || $url === '/back')){
+                $this->error('拒绝访问', url('back/Index/index'),[],'1');
             }
         }
     }

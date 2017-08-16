@@ -6,12 +6,12 @@ return [
     'default_role'                   => ['0','1'],
     // 默认权限(开放权限)
     'default_action'                 => [
-        '/home/*',
-        '/manage/*',
-        '/manage/auth/*',
-        '/manage/index/*',
-        '/manage/login/*',
-        '/manage/ajax/*',
-        '/manage/city/*',
+        '/back/*',
+        '/back/*',
+        '/back/auth/*',
+        '/back/index/*',
+        '/back/login/*',
+        '/back/ajax/*',
+        '/back/city/*',
     ],
 ];

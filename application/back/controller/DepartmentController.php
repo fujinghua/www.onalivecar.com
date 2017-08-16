@@ -4,7 +4,7 @@ namespace app\back\controller;
 
 use app\common\components\rbac\DbManager;
 use app\common\controller\BackController;
-use app\manage\model\Department;
+use app\back\model\Department;
 
 class DepartmentController extends BackController
 {

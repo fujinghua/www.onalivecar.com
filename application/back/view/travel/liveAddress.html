@@ -73,7 +73,7 @@
             var htmlDiv = "<div id='car"+id+"'>信息加载中...</div>";
             $.ajax({
                 type : "post",
-                url : '/manage/travel/carInfo?driverId='+id+'&time='+ new Date().getTime(),
+                url : '/back/travel/carInfo?driverId='+id+'&time='+ new Date().getTime(),
                 dataType : 'json',
                 beforeSend:function () {
                     openInfo(htmlDiv,e,id);

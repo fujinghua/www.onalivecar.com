@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\manage\model\Opinion;
+use app\back\model\Opinion;
 
 class OpinionController extends BackController
 {

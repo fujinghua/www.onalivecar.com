@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\manage\model\Config;
+use app\back\model\Config;
 
 class ConfigController extends BackController
 {
@@ -16,7 +16,7 @@ class ConfigController extends BackController
         $where = ['is_delete'=>'1'];
         $each = 12;
         /**
-         * @var $model \app\manage\model\Config
+         * @var $model \app\back\model\Config
          */
         $model = Config::load();
         $request = $this->getRequest();

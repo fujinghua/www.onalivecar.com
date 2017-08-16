@@ -3,11 +3,11 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\manage\model\BuildingBase;
-use app\manage\model\City;
-use app\manage\model\BuildingDetail;
-use app\manage\model\BuildingContent;
-use app\manage\model\Images;
+use app\back\model\BuildingBase;
+use app\back\model\City;
+use app\back\model\BuildingDetail;
+use app\back\model\BuildingContent;
+use app\back\model\Images;
 
 class BuildController extends BackController
 {
@@ -21,7 +21,7 @@ class BuildController extends BackController
         $where = ['t.is_delete'=>'1'];
         $each = 12;
         /**
-         * @var $model \app\manage\model\BuildingBase
+         * @var $model \app\back\model\BuildingBase
          */
         $model = BuildingBase::load();
         $request = $this->getRequest();

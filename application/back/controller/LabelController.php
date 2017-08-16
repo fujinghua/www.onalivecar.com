@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\manage\model\Label;
+use app\back\model\Label;
 
 class LabelController extends BackController
 {

@@ -97,7 +97,7 @@ layui.config({
         isError: true, //如请求json出错，是否提示
         errorElem: '#user-profile .navbar-error', //出错提示展示容器
         // citeType: 2,
-        url: '/manage/index/nav'
+        url: '/back/index/nav'
     });
 
     // 左侧菜单导航-->tab

@@ -16,7 +16,7 @@
         <legend style="text-align: center;">{$meta_title}</legend>
     </fieldset>
     {/if}
-    <form class="layui-form forms" id="defaultForm" action="{:url('manage/auth/update')}?id={$model->name}" method="post" style="padding: 15px 0">
+    <form class="layui-form forms" id="defaultForm" action="{:url('back/auth/update')}?id={$model->name}" method="post" style="padding: 15px 0">
 
         {:token()}
 

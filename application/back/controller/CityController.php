@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\manage\model\City;
+use app\back\model\City;
 use think\Request;
 
 class CityController extends BackController
@@ -18,7 +18,7 @@ class CityController extends BackController
         $where = ['is_delete'=>'1'];
         $each = 12;
         /**
-         * @var $model \app\manage\model\Client
+         * @var $model \app\back\model\Client
          */
         $model = City::load();
         $request = $this->getRequest();

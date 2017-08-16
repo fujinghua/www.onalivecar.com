@@ -2355,7 +2355,7 @@ Site.uploader = function (options) {
     uploaderIndex++;
     options = $.extend({
         elem: '.layui-upload-file',
-        url: '/manage/ajax/uploader',
+        url: '/back/ajax/uploader',
         isAjax: true,
         before: null,  // 上传成功后的回调函数,参数 input 表单
         success: null, // 上传成功后的回调函数,参数res代表后天返回的数据，input是文件input 表单

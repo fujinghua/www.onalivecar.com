@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\manage\model\Upload;
+use app\back\model\Upload;
 
 class UploadController extends BackController
 {

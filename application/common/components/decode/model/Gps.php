@@ -107,7 +107,7 @@ class Gps extends Model {
             }
             $ret['create_time'] = date('Y-m-d H:i:s');
 
-            $end = \app\manage\model\Gps::get()->where('SIM',$ret['SIM'])->order('update_time','DESC')->limit(1)->select();
+            $end = \app\back\model\Gps::get()->where('SIM',$ret['SIM'])->order('update_time','DESC')->limit(1)->select();
             foreach($end as $key=>$value){
                 $update_time = $value->getData('update_time');
                 if ($update_time >= $ret['update_time']){

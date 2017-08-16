@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\manage\model\Hot;
+use app\back\model\Hot;
 
 class HotController extends BackController
 {
