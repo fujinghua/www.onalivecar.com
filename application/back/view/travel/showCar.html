@@ -1,0 +1,255 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>全车展示</title>
+    <script src="http://api.map.baidu.com/api?v=2.0&amp;ak=9cEbbHVL2zSkxfYBnF7WEFaA" type="text/javascript"></script>
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="_LAYUI_/layui.js"></script>
+</head>
+<body>
+
+<div id="map" style="width:100%;min-height: 600px;">
+</div>
+
+<script>
+    layui.use(['jquery','layer'], function() {});
+</script>
+
+<script type="text/javascript">
+    var _width = document.documentElement.clientWidth;//获取页面可见宽度
+    var _height = top.document.documentElement.clientHeight ?top.document.documentElement.clientHeight :document.documentElement.clientHeight;//获取页面可见高
+    var MapId = 'map';
+    var thisMap = $('#'+MapId);
+    var dataProvider;
+    $(window).resize(function () {
+        thisMap.css('min-height',_height-30);
+        init();
+    });
+    $(window).load(function () {
+        thisMap.css('min-height',_height-15);
+        init();
+    });
+
+    // 百度地图API功能
+    var map,
+        geoc,
+        opts = {
+        width : 250,     // 信息窗口宽度
+        height: 150,     // 信息窗口高度
+        title : "" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        message:""
+    },
+        flag = true,
+        EARTH_RADIUS = 6378137.0,    //单位M
+        PI = Math.PI,
+        intervalIndex;
+
+    function init() {
+        map = new BMap.Map(MapId);    // 创建Map实例
+        map.centerAndZoom("海南", 10);// 初始化地图,设置中心点坐标和地图级别
+        map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+        geoc = new BMap.Geocoder();
+
+        if (intervalIndex){
+            clearInterval(intervalIndex);
+        }
+        refreshCarLocal();
+        intervalIndex = setInterval(refreshCarLocal, 10000);
+        $("tbody#tbody tr").each(function (index,value){
+            var tr = $(value);
+            var lat = tr.find(".address a").attr("lat");
+            var lng = tr.find(".address a").attr("lng");
+            var startLat = tr.find(".address a").attr("startLat");
+            var startLng = tr.find(".address a").attr("startLng");
+            var pp = new BMap.Point(lng,lat);
+            geoc.getLocation(pp, function(rs){
+                tr.find(".address").append(rs.address);
+            });
+            if(startLat!=null&&startLat!=''&&startLng!=null&&startLng!=''){
+                var distance = getFlatternDistance(lat,lng,startLat,startLng);
+                console.info(distance);
+                tr.find(".distance").append((distance/1000).toFixed(2));
+            }
+        });
+    }
+
+    function addClickHandler(obj,marker){
+        marker.addEventListener("click",function(e){
+            if(obj.userId==undefined){
+                var content= "出车人："+(obj.userId==undefined?"无":obj.userName)+"<br>"+
+                    "车牌号："+obj.numberPlate+"<br>"+
+                    "目的地：无"+"<br>"+
+                    "预看楼盘：无"+"<br>"+
+                    "车辆位置：<div id='carLocal"+obj.carId+"'>加载中...</div>"+"<br>"+
+                    "GPS更新时间："+obj.latlngUpdateTime+"<br>"+
+                    "状态：未派车";
+                openInfo(content,e,obj.carId)
+            }else{
+                var htmlDiv = "<div id='car"+obj.carId+"'>信息加载中...</div>";
+                $.ajax({
+                    type : "post",
+                    url : '/manage/travel/carInfo?driverId='+obj.userId+'&time='+ new Date().getTime(),
+                    dataType : 'json',
+                    beforeSend:function () {
+                        openInfo(htmlDiv,e,obj.carId);
+                    },
+                    success : function(data) {
+                        if (data.code == '1'){
+                            var tData = data.result;
+                            var loupan = "无";
+                            var mudi = "无";
+                            if(tData.length!=0){
+                                mudi = tData[0].endAddress;
+                                loupan = tData[0].building_name==undefined ? "无":tData[0].building_name;
+                            }
+                            var content= "出车人："+(obj.userId==undefined?"无":obj.userName)+"<br>"+
+                                "车牌号："+obj.numberPlate+"<br>"+
+                                "目的地："+(obj.status=="come"?mudi:"回公司")+"<br>"+
+//                                "预看楼盘："+(obj.status=="come"?loupan:"无")+"<br>"+
+                                "预看楼盘："+loupan+"<br>"+
+                                "车辆位置：<div id='carLocal"+obj.carId+"'>加载中...</div>"+"<br>"+
+                                "GPS更新时间："+obj.latlngUpdateTime+"<br>"+
+                                "状态："+(obj.status=="come"?"去程":"返程");
+                            htmlDiv = "<div id='car"+obj.carId+"'>"+content+"</div>";
+                            openInfo(htmlDiv,e,obj.carId);
+                        }
+                    },
+                    error:function (data) {
+//                        console.log(data);
+                    }
+                })
+            }
+        });
+    }
+
+    function openInfo(content,e,carId){
+        var p = e.target;
+        var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+        var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+        geoc.getLocation(point, function(rs){
+            var addComp = rs.addressComponents;
+            $("#carLocal"+carId).html(addComp.city  + addComp.district  + addComp.street  + addComp.streetNumber);
+        });
+    }
+
+    function refreshCarLocal(){
+        $.ajax({
+            type : "post",
+            url : '/manage/travel/carLocal?time='+ new Date().getTime(),
+            dataType : 'json',
+            success : function(data) {
+                if (data.code == '1'){
+                    map.clearOverlays();
+                    var carData = data.result;
+                    for(var i =0;i<carData.length;i++){
+//                        if (carData[i].lng.indexOf("E") != -1 || carData[i].lat.indexOf("E") != -1){
+//                            continue;
+//                        }
+                        var pt = new BMap.Point(carData[i].lng, carData[i].lat);
+                        if(flag){
+                            map.centerAndZoom("海南", 10);
+                            flag = false;
+                        }
+                        var status = carData[i].statusZH, icon = '';
+                        if(status == '未派车'){
+                            icon = new BMap.Icon("/static/images/car5.png", new BMap.Size(100,50));//
+                        }else if(status=='抢单中'){
+                            icon = new BMap.Icon("/static/images/car.png", new BMap.Size(100,50));//红色
+                        }else if(status=='未签到'){
+                            //已经排车但是未签到
+                            icon = new BMap.Icon("/static/images/car4.png", new BMap.Size(100,50));//蓝色
+                        }else if(status=='行驶中'){
+                            //行驶中
+                            icon = new BMap.Icon("/static/images/car3.png", new BMap.Size(100,50));//绿色
+                        }else if(status=='等待抢单'){
+                            //等待抢单
+                            icon = new BMap.Icon("/static/images/car6.png", new BMap.Size(100,50));//黑色
+                        }
+                        var thisMarker = getCarIcon(carData[i].lng, carData[i].lat,icon);  // 创建标注
+                        map.addOverlay(thisMarker);              // 将标注添加到地图中
+                        addClickHandler(carData[i],thisMarker);
+                    }
+                }
+            },
+            error : function(data) {
+            }
+        });
+    }
+
+    /**
+     * @description 获取marker车图标
+     */
+    function getCarIcon(lng,lat,icon) {
+        lng = lng || 110;
+        lat = lat || 20.125;
+        icon = icon || new BMap.Icon("/static/images/car.png", new BMap.Size(100,50));
+        return new BMap.Marker(new BMap.Point(lng,lat), {
+            icon: icon
+        });
+    }
+
+    /**
+     * @description approx distance between two points on earth ellipsoid
+     * @param {Object} lat1
+     * @param {Object} lng1
+     * @param {Object} lat2
+     * @param {Object} lng2
+     */
+    function getFlatternDistance(lat1,lng1,lat2,lng2){
+        lat1=parseFloat(lat1);
+        lng1=parseFloat(lng1);
+        lat2=parseFloat(lat2);
+        lng2=parseFloat(lng2);
+        var f = getRad((lat1 + lat2)/2);
+        var g = getRad((lat1 - lat2)/2);
+        var l = getRad((lng1 - lng2)/2);
+        var sg = Math.sin(g);
+        var sl = Math.sin(l);
+        var sf = Math.sin(f);
+        var s,c,w,r,d,h1,h2;
+        var a = EARTH_RADIUS;
+        var fl = 1/298.257;
+        sg = sg*sg;
+        sl = sl*sl;
+        sf = sf*sf;
+        s = sg*(1-sl) + (1-sf)*sl;
+        c = (1-sg)*(1-sl) + sf*sl;
+        w = Math.atan(Math.sqrt(s/c));
+        r = Math.sqrt(s*c)/w;
+        d = 2*w*a;
+        h1 = (3*r -1)/2/c;
+        h2 = (3*r +1)/2/s;
+        return d*(1 + fl*(h1*sf*(1-sg) - h2*(1-sf)*sg));
+    }
+
+    function getRad(d){
+        return d*PI/180.0;
+    }
+
+    /**
+     * caculate the great circle distance
+     * @param {Object} lat1
+     * @param {Object} lng1
+     * @param {Object} lat2
+     * @param {Object} lng2
+     */
+
+    function getGreatCircleDistance(lat1,lng1,lat2,lng2){
+        var radLat1 = getRad(lat1);
+        var radLat2 = getRad(lat2);
+        var a = radLat1 - radLat2;
+        var b = getRad(lng1) - getRad(lng2);
+        var s = 2*Math.asin(Math.sqrt(Math.pow(Math.sin(a/2),2) + Math.cos(radLat1)*Math.cos(radLat2)*Math.pow(Math.sin(b/2),2)));
+        s = s*EARTH_RADIUS;
+        s = Math.round(s*10000)/10000.0;
+        return s;
+    }
+
+</script>
+
+</body>
+</html>

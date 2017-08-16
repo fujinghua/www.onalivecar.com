@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+    <style>
+        .container{
+            padding: 5px;
+        }
+        .container .layui-form-checkbox{
+            display: inline-block;
+            margin: 5px 10px;
+            width: 460px !important;
+        }
+        .container .layui-form-checkbox span{
+            width: 408px !important;
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+
+<body style="max-width: 1200px;min-height: 650px;margin: auto;">
+
+<section>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend style="text-align: center;">
+            ( <span class="name">{$model.getBackUser.username}</span> ) - 分配权限
+        </legend>
+    </fieldset>
+    <form class="layui-form assign-form" style="position: relative;">
+        <div style="height: 38px;margin: 15px 0;">
+            <div style="position:absolute;left:0;width: 520px;height: 450px;margin-right: 32px;">
+                <input type="text" name="left" placeholder="搜索未分配" class="layui-input">
+            </div>
+            <div style="position:absolute;width: 92px;left: 50%;margin-left: -50px;"><label class="layui-btn" style="width: 100px;" lay-filter="create">添加权限</label></div>
+            <div style="position:absolute;right:0;width: 520px;height: 450px;text-align:right;">
+                <input type="text" name="right" placeholder="搜索已分配" class="layui-input">
+            </div>
+        </div>
+
+        <div class="container container-left checkbox-left" style="position:absolute;left:0;width: 510px;height: 450px;border: 1px solid #E2E2E2;overflow-y: auto;">
+            {volist name="unAssign" id="item"}
+            <div class="item">
+                <input type="checkbox" value="{$item.name}" title="{$item.name}" class="layui-input" lay-group="left" />
+            </div>
+            {/volist}
+        </div>
+        <div class="container container-right checkbox-left" style="position:absolute;right:0;width: 510px;height: 450px;border: 1px solid #E2E2E2;overflow-y: auto;">
+            {volist name="hasAssign" id="item"}
+            <div class="item">
+                <input type="checkbox" value="{$item.name}" title="{$item.name}" class="layui-input" lay-group="right" />
+            </div>
+            {/volist}
+        </div>
+        <div style="position:absolute;width: 100px;left: 50%;margin-left: -50px;top: 150px;">
+            <label class="layui-btn" lay-filter="add">分配<i class="layui-icon">&#xe602;</i><i class="layui-icon">&#xe602;</i></label>
+        </div>
+        <div style="position:absolute;width: 100px;left: 50%;margin-left: -50px;top: 350px;">
+            <label class="layui-btn" lay-filter="remove"><i class="layui-icon">&#xe603;</i><i class="layui-icon">&#xe603;</i>移除</label>
+        </div>
+    </form>
+</section>
+
+<script>
+
+    var win = window;
+    var url = {
+        addChildUrl:"{:url('/manage/ban/addChild')}",
+        removeUrl:"{:url('/manage/ban/removeChild')}",
+    };
+    layui.use(['form','layer'], function () {
+        var form = layui.form();
+        var layer = top.layui.layer ? top.layui.layer : layui.layer;
+        var name = $('.name').html();
+        url.addChildUrl += '?id='+name;
+        url.removeUrl += '?id='+name;
+
+        $(document).on('keyup','input[name="left"]',function () {
+            var value = $(this).val();
+            $('.container-left').find('.item input').each(function () {
+                var that = $(this);
+                if (that.val().toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) === -1){
+                    that.closest('.item').hasClass('layui-hide') || that.closest('.item').addClass('layui-hide');
+                }else{
+                    !that.closest('.item').hasClass('layui-hide') || that.closest('.item').removeClass('layui-hide');
+                }
+            });
+            if (value == ''){
+                $('.container-left').find('.item').removeClass('layui-hide');
+            }
+        });
+
+        $(document).on('keyup','input[name="right"]',function () {
+            var value = $(this).val();
+            $('.container-right').find('.item input').each(function () {
+                var that = $(this);
+                if (that.val().toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) === -1){
+                    that.closest('.item').hasClass('layui-hide') || that.closest('.item').addClass('layui-hide');
+                }else{
+                    !that.closest('.item').hasClass('layui-hide') || that.closest('.item').removeClass('layui-hide');
+                }
+            });
+            if (value == ''){
+                $('.container-right').find('.item').removeClass('layui-hide');
+            }
+        });
+
+        $(document).on('click','[lay-filter="add"]',function () {
+            var add = Back.getSelectCheckboxValues('[lay-group="left"]');
+            var unAssign = Back.getSelectCheckboxValues('[lay-group="left"]',false);
+            var hasAssign = Back.getSelectCheckboxValues('[lay-group="right"]','all');
+            var data = add.concat(hasAssign);
+            var count = $('.container-right').find('.item').length;
+            if(count != data.length){
+                Site.ajax({
+                    url:url.addChildUrl,
+                    data:{name:add},
+                    success:function (result) {
+                        if (result.status == '1'){
+                            left(unAssign);
+                            right(data);
+                            form.render('checkbox');
+                            $('input[name="left"]').trigger('keyup');
+                            $('input[name="right"]').trigger('keyup');
+                        }
+                        if (result.info != undefined){
+                            Site.msg(result.info);
+                        }
+                    }
+                });
+            }
+        });
+
+        $(document).on('click','[lay-filter="remove"]',function () {
+            var remove = Back.getSelectCheckboxValues('[lay-group="right"]');
+            var hasAssign = Back.getSelectCheckboxValues('[lay-group="right"]',false);
+            var unAssign = Back.getSelectCheckboxValues('[lay-group="left"]','all');
+            var data = remove.concat(unAssign);
+            var count = $('.container-left').find('.item').length;
+            if(count != data.length){
+                Site.ajax({
+                    url:url.removeUrl,
+                    data:{name:remove},
+                    success:function (result) {
+                        if (result.status == '1'){
+                            left(data);
+                            right(hasAssign);
+                            form.render('checkbox');
+                            $('input[name="left"]').trigger('keyup');
+                            $('input[name="right"]').trigger('keyup');
+                        }
+                    },
+                });
+            }
+        });
+
+        function left(data) {
+            $('.container-left').html(getHtml(data,'left'));
+        }
+
+        function right(data) {
+            $('.container-right').html(getHtml(data,'right'));
+        }
+
+        function getHtml(data,group) {
+            var html = '';
+            for (var i in data){
+                html += '<div class="item">' +
+                    '<input type="checkbox" value="'+data[i]+'" title="'+data[i]+'" class="layui-input" lay-group="'+group+'" />' +
+                    '</div>';
+            }
+            return html;
+        }
+    });
+
+    $(function () {
+
+        //添加
+        Back.create('create',{
+            content:url.createUrl,
+            area:['800px','650px'],
+            shade:0.01,
+            end:function () {
+                win.location.reload();
+            }
+        });
+
+    });
+
+</script>
+
+</body>
+
+</html>

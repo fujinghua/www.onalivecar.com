@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>表格</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+</head>
+<body>
+
+<form class="layui-form layui-form-pane" action="/manage/table/table.html">
+    <div class="layui-form-item">
+
+        <label class="layui-form-label">车辆名称:</label>
+        <div class="layui-input-inline">
+            <input type="text" value="" name="numberPlate" placeholder="车辆名称" class="layui-input">
+        </div>
+
+        <label class="layui-form-label">置业顾问:</label>
+        <div class="layui-input-inline">
+            <input type="text" value="" name="managerName" placeholder="置业顾问" class="layui-input">
+        </div>
+
+        <label class="layui-form-label">司机</label>
+        <div class="layui-input-inline">
+            <select name="driverId">
+                <option value="">请选择司机</option>
+                <option value="1144">司机一</option>
+                <option value="1145">司机二</option>
+                <option value="1146">司机三</option>
+            </select>
+        </div>
+
+        <label class="layui-form-label">部门</label>
+        <div class="layui-input-inline">
+            <select name="department.id">
+                <option value="">请选择部门</option>
+                <option value="1">分销置业部一</option>
+                <option value="2">分销置业部二</option>
+                <option value="3">分销置业部三</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="layui-form-item">
+
+        <label class="layui-form-label">状态</label>
+        <div class="layui-input-inline">
+            <select name="orderStatus">
+                <option value="">请选择状态</option>
+                <option value="waitOrder">抢单中</option>
+                <option value="ordered">成功匹配</option>
+                <option value="drivering">订单进行中</option>
+                <option value="over">订单完成</option>
+                <option value="cancel">行程取消</option>
+            </select>
+        </div>
+
+        <label class="layui-form-label">出车类型</label>
+        <div class="layui-input-inline">
+            <select name="orderType">
+                <option value="">请选择类型</option>
+                <option value="come">去程</option>
+                <option value="back">返程</option>
+            </select>
+        </div>
+
+        <label class="layui-form-label">开始日期:</label>
+        <div class="layui-input-inline">
+            <input name="create_time_start" value="" class="layui-input" placeholder="开始日期" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm'})">
+        </div>
+
+        <label class="layui-form-label">结束日期:</label>
+        <div class="layui-input-inline">
+            <input name="create_time_end" value="" class="layui-input" placeholder="结束日期" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm'})">
+        </div>
+
+        <button class="layui-btn" lay-submit="">查询</button>
+
+    </div>
+</form>
+
+<table class="layui-table" lay-even="" lay-skin="row">
+    <thead>
+    <tr>
+        <th>订单编号</th>
+        <th>类型</th>
+        <th>部门办事处/置业顾问</th>
+        <th>预看楼盘</th>
+        <th>人数</th>
+        <th>路程距离</th>
+        <th>订单日期</th>
+        <th>状态</th>
+        <th>是否还车</th>
+        <th style="width:50px; text-align: center">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-key="1">
+        <td style="width: 100px;">
+            20170419242
+        </td>
+        <td style="width: 100px;">
+            去程
+        </td>
+        <td style="width: 100px;">
+            <div>部:三亚置业2组</div>
+            <div>人:詹积龙</div>
+        </td>
+        <td style="width: 100px;">
+            中铁城·悠岚湖
+        </td>
+        <td style="width: 100px;">
+            0
+        </td>
+        <td style="width: 100px;">
+            暂无
+        </td>
+        <td style="width: 100px;">
+            2017年04月19日  12:35
+        </td>
+        <td style="width: 100px;">
+            成功匹配
+        </td>
+        <td style="width: 100px;">
+            去程
+        </td>
+        <td style="width: 150px;text-align: center;">
+            <a href="javascript:void(0);"><button onclick="Site.showUrl('查看实时记录','detail?id=158325')" class="layui-btn layui-btn-mini"><i class="fa fa-eyes"></i>查看实时记录</button></a>
+        </td>
+    </tr>
+    <tr data-key="2">
+        <td style="width: 100px;">
+            20170419242
+        </td>
+        <td style="width: 100px;">
+            去程
+        </td>
+        <td style="width: 100px;">
+            <div>部:三亚置业2组</div>
+            <div>人:詹积龙</div>
+        </td>
+        <td style="width: 100px;">
+            中铁城·悠岚湖
+        </td>
+        <td style="width: 100px;">
+            0
+        </td>
+        <td style="width: 100px;">
+            暂无
+        </td>
+        <td style="width: 100px;">
+            2017年04月19日  12:35
+        </td>
+        <td style="width: 100px;">
+            成功匹配
+        </td>
+        <td style="width: 100px;">
+            去程
+        </td>
+        <td style="width: 150px;text-align: center;">
+            <a href="javascript:void(0);"><button onclick="Site.showUrl('查看实时记录','detail?id=158325')" class="layui-btn layui-btn-mini"><i class="fa fa-eyes"></i>查看实时记录</button></a>
+        </td>
+    </tr>
+    <tr data-key="3">
+        <td style="width: 100px;">
+            20170419242
+        </td>
+        <td style="width: 100px;">
+            去程
+        </td>
+        <td style="width: 100px;">
+            <div>部:三亚置业2组</div>
+            <div>人:詹积龙</div>
+        </td>
+        <td style="width: 100px;">
+            中铁城·悠岚湖
+        </td>
+        <td style="width: 100px;">
+            0
+        </td>
+        <td style="width: 100px;">
+            暂无
+        </td>
+        <td style="width: 100px;">
+            2017年04月19日  12:35
+        </td>
+        <td style="width: 100px;">
+            成功匹配
+        </td>
+        <td style="width: 100px;">
+            去程
+        </td>
+        <td style="width: 150px;text-align: center;">
+            <a href="javascript:void(0);"><button onclick="Site.showUrl('查看实时记录','detail?id=158325')" class="layui-btn layui-btn-mini"><i class="fa fa-eyes"></i>查看实时记录</button></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- 分页容器 -->
+<div id="paging_0124" style="text-align:right;" data-pages="<?php echo isset($count)?$count:0; ?>"></div>
+<!--  全局 -->
+<script type="text/javascript" src="__JS__/site.js"></script>
+
+<script>
+    layui.use([ 'laydate', 'form'], function() {});
+</script>
+<script>
+    $(function() {
+        layui.use(['laypage', 'layer'], function(){
+            var laypage = layui.laypage,
+                element = 'paging_0124',
+                currPage = Site.getUrlParam('pageNumber'),
+                count = $('#'+element).attr('data-pages');
+            currPage = currPage > 1 ? currPage : 1;
+            count = count ? count : 0;
+            laypage({
+                curr:currPage,
+                cont: element,
+                pages: count,
+                skip: true,
+                jump: function(obj,first){
+                    if(obj.curr != currPage) {
+                        var url = location.href;
+                        if(url.indexOf("?") == -1) {
+                            location.href = url+"?pageNumber="+obj.curr;
+                        }else {
+                            var page = Site.getUrlParam('pageNumber');
+                            if(page) {
+                                location.href = url.replace("pageNumber="+page,"pageNumber="+obj.curr);
+                            }
+                            else {
+                                location.href = url.replace("?","?pageNumber="+obj.curr+"&");
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+</body></html>

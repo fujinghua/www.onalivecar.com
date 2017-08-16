@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>jQuery页面加载等待效果 - 源码之家</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/demo.css">
+<link rel="stylesheet" href="css/fakeloader.css">
+</head>
+<body>
+<!-- 代码 开始 -->
+        <div class="fakeloader"></div>
+
+        <section id="section-navigation">
+
+            <div class="container text-center">
+                <button class="btn-default btn-white btn-active demo1">效果1</button>
+                <button class="btn-default btn-white demo2">效果2</button>
+                <button class="btn-default btn-white demo3">效果3</button>
+                <button class="btn-default btn-white demo4">效果4</button>
+                <button class="btn-default btn-white demo5">效果5</button>
+                <button class="btn-default btn-white demo6">效果6</button>
+                <button class="btn-default btn-white demo7">效果7</button>
+                <button class="btn-default btn-white demo8">自定义图片</button>
+            </div>
+        </section>
+        
+        <script src="js/jquery.min.js"></script>
+        <script src="js/fakeloader.min.js"></script>
+        <script>
+            var _spinner1 = {
+                timeToHide:1200,
+                bgColor:"#2ecc71",
+                spinner:"spinner1"
+            },_spinner2 = {
+                timeToHide:1200,
+                bgColor:"#1abc9c",
+                spinner:"spinner2"
+            },_spinner3 = {
+                timeToHide:1200,
+                bgColor:"#3498db",
+                spinner:"spinner3"
+            },_spinner4 = {
+                timeToHide:1200,
+                bgColor:"#34495e",
+                spinner:"spinner4"
+            },_spinner5 = {
+                timeToHide:1200,
+                bgColor:"#e67e22",
+                spinner:"spinner5"
+            },_spinner6 = {
+                timeToHide:1200,
+                bgColor:"#e74c3c",
+                spinner:"spinner6"
+            },_spinner7 = {
+                timeToHide:1200,
+                bgColor:"#9b59b6",
+                spinner:"spinner7"
+            },_spinner8 = {
+                timeToHide:1200,
+                bgColor:"#fff",
+                imagePath:"images/google.png"
+            };
+
+            function init() {
+                $(".fakeloader").remove();
+                var _div = document.createElement('div');
+                _div.className = 'fakeloader';
+                $('body').append(_div);
+            }
+            $(document).ready(function(){
+                $(".fakeloader").fakeLoader(_spinner2);
+            });
+            $(document).on('click','.demo2',function(){
+                init();
+                $(".fakeloader").fakeLoader(_spinner1);
+            });
+            $(document).on('click','.demo3',function(){
+                init();
+                $(".fakeloader").fakeLoader(_spinner3);
+            });
+            $(document).on('click','.demo4',function(){
+                init();
+                $(".fakeloader").fakeLoader(_spinner4);
+            });
+            $(document).on('click','.demo5',function(){
+                init();
+                $(".fakeloader").fakeLoader(_spinner5);
+            });
+            $(document).on('click','.demo6',function(){
+                init();
+                $(".fakeloader").fakeLoader(_spinner6);
+            });
+            $(document).on('click','.demo7',function(){
+                init();
+                $(".fakeloader").fakeLoader(_spinner7);
+            });
+            $(document).on('click','.demo8',function(){
+                init();
+                $(".fakeloader").fakeLoader(_spinner8);
+            });
+        </script>
+<!-- 代码 结束 -->
+ <div style="text-align:center;">
+</div>
+</body>
+</html>

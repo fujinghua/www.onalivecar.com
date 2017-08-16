@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+</head>
+
+<body style="max-width: 800px;max-height: 600px;margin: auto;">
+
+<section style="margin: 20px;">
+    {if condition="isset($meta_title)"}
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend style="text-align: center;">{$meta_title}</legend>
+    </fieldset>
+    {/if}
+    <form class="layui-form forms" id="defaultForm" action="/manage/auth/create" method="post" style="padding: 15px 0">
+
+        {:token()}
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">权限类型:</label>
+            <div class="layui-input-block" style="padding-right: 120px;">
+                <select name="type" lay-verify="require" lay-search>
+                    <option value="">选择类型</option>
+                    {volist name="model->typeList" id="item"}
+                    <option value="{$key}" {if condition="$key eq '2'"}selected{/if}>{$item}</option>
+                    {/volist}
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">权限名称:</label>
+            <div class="layui-input-block" style="padding-right: 120px;">
+                <input type="text" name="name" value="" lay-verify="require" placeholder="权限名称" maxlength="64" class="layui-input"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">权限描述:</label>
+            <div class="layui-input-block" style="padding-right: 120px;">
+                <textarea type="text" value="" name="phone" lay-height="auto" placeholder="权限描述" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">补充说明:</label>
+            <div class="layui-input-block" style="padding-right: 120px;">
+                <textarea type="text" value="" name="phone" lay-height="auto" placeholder="补充说明" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">填写说明:</label>
+            <div class="layui-input-block" style="padding-right: 120px;">
+                <label class="layui-label layui-text-danger">
+                    默认是路由类型。如是路由类型，会自动根据填写的路由加上'/'前缀
+                </label>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="padding-right: 120px;">
+                <button class="layui-btn" lay-submit="" lay-filter="submit">添加</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+<script>
+
+    layui.use(['form'], function () {
+        var form = layui.form();
+    });
+
+    $(function () {
+        var options = {
+            form: '#defaultForm',
+            success: console.log
+        };
+        Back.submit(options);
+    })
+
+</script>
+
+</body>
+
+</html>

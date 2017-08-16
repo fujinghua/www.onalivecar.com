@@ -1,0 +1,213 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>实时</title>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=9cEbbHVL2zSkxfYBnF7WEFaA"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/LuShu/1.2/src/LuShu_min.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="_LAYUI_/layui.js"></script>
+</head>
+<body>
+
+<div id="liveMap" data-start-lng="{$startLng}" data-start-lat="{$startLat}" data-end-lng="{$endLng}" data-end-lat="{$endLat}" data-id="{$id}" style="width:100%;min-height: 600px;">
+</div>
+
+<script>
+    layui.use(['jquery','layer'], function() {});
+</script>
+
+<script type="text/javascript">
+
+    var _width = document.documentElement.clientWidth;//获取页面可见宽度
+    var _height = top.document.documentElement.clientHeight ?top.document.documentElement.clientHeight :document.documentElement.clientHeight;//获取页面可见高
+    var MapId = 'liveMap';
+    var thisMap = $('#'+MapId);
+    $(window).resize(function () {
+        thisMap.css('min-height',_height-30);
+        run();
+    });
+    $(window).load(function () {
+        thisMap.css('min-height',_height-15);
+        run();
+    });
+
+    var startLng = thisMap.attr('data-start-lng') || 110;
+    var startLat = thisMap.attr('data-start-lat') || 20.125;
+    var endLng = thisMap.attr('data-end-lng') || 110;
+    var endLat = thisMap.attr('data-end-lat') || 20.125;
+    var id = thisMap.attr('data-id');
+    var time = 0;
+
+    var map;    // 创建Map实例
+    var geoc;
+    var opts = {
+        width : 250,     // 信息窗口宽度
+        height: 150,     // 信息窗口高度
+        title : "" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        message:""
+    };
+    var interval;
+    var driving;
+    var carPoints = [];
+
+    var run = function (){
+        // 百度地图API功能
+        map = new BMap.Map(MapId);    // 创建Map实例
+//        map.centerAndZoom('海南', 11);  // 初始化地图,设置中心点坐标和地图级别
+        map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+        geoc = new BMap.Geocoder();
+
+        driving = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+
+        if (interval){
+            clearInterval(interval);
+        }
+        getPassed();
+//        interval = setInterval(getPassed,10000);
+
+    };
+
+//    map.addOverlay(new BMap.Polyline(arrPois, {strokeColor: '#111'}));
+//    lushu = new BMapLib.LuShu(map, arrPois, {
+//        autoView : true,
+//        enableRotation : true,
+//        autoView:true,//是否开启自动视野调整，如果开启那么路书在运动过程中会根据视野自动调整
+//        icon  : new BMap.Icon('http://developer.baidu.com/map/jsdemo/img/car.png', new BMap.Size(52,26),{anchor : new BMap.Size(27, 13)}),
+//        speed : 500,
+//        landmarkPois:[]
+//    });
+//    lushu.start();
+
+
+
+    var getPassed = function (){
+
+        map.clearOverlays();                        //清除地图上所有的覆盖物
+        var startPoint,endPoint,passPoint;
+        startPoint = new BMap.Point(startLng,startLat);
+        endPoint = new BMap.Point(endLng,endLat);
+        passPoint = startPoint;
+
+        $.ajax({
+            type : "post",
+            url : '/manage/travel/line?id='+id+'&time='+ time,
+            dataType : 'json',
+            beforeSend:function () {
+            },
+            success : function(data) {
+                console.log(data);
+                if (data.code == '1'){
+                    var tData = data.result;
+                    if(tData.length!=0){
+                       for (var i =0; i<tData.length ; i++){
+                           var item = tData[i];
+                           var newPoint = new BMap.Point(item.lng,item.lat);
+                           endPoint = newPoint;
+                           driving.search(passPoint, endPoint);  //初始驾车搜索
+                           passPoint = newPoint;
+                       }
+                        time = data.time || new Date().getTime();
+                    }
+                    driving.setSearchCompleteCallback(function(){
+                        var pts = driving.getResults().getPlan(0).getRoute(0).getPath();    //通过驾车实例，获得一系列点的数组
+                        var polyline = new BMap.Polyline(pts);
+                        map.addOverlay(polyline);
+                    });
+                }
+            },
+            error:function (data) {
+//                    console.log(data);
+            }
+        });
+
+        var marker = getCarIcon(endLng, endLat);  // 创建标注
+        map.addOverlay(marker);              // 将标注添加到地图中
+        addClickHandler(marker);
+        var startMarker = new BMap.Marker(startPoint); //创建起点marker
+        var endMarker = new BMap.Marker(endPoint);  //创建终点marker
+        map.addOverlay(startMarker);
+        map.addOverlay(endMarker);
+        var startLabel = new BMap.Label("起点",{position:startPoint});        //创建3个label
+        var endLabel = new BMap.Label("终点",{position:endPoint});
+        map.addOverlay(startLabel);
+        map.addOverlay(endLabel);
+        setTimeout(function(){
+            map.setViewport([startPoint,endPoint]);          //调整到最佳视野
+        },1000);
+
+    };
+
+    function addClickHandler(marker){
+        marker.addEventListener("click",function(e){
+            var htmlDiv = "<div id='car"+id+"'>信息加载中...</div>";
+            $.ajax({
+                type : "post",
+                url : '/manage/travel/line?id='+id,
+                dataType : 'json',
+                beforeSend:function () {
+                    openInfo(htmlDiv,e,id);
+                },
+                success : function(data) {
+//                    console.log(data);
+                    if (data.code == '1'){
+                        var tData = data.result;
+                        var loupan = "无";
+                        var mudi = "无";
+                        var content = '加载失败';
+                        if(tData.length!=0){
+                            mudi = tData[0].endAddress;
+                            loupan = tData[0].building_name==undefined ? "无":tData[0].building_name;
+                            content= "出车人："+(id==undefined || tData[0].userName == undefined ?"无":tData[0].userName)+"<br>"+
+                                "车牌号："+tData[0].numberPlate+"<br>"+
+                                "目的地："+(tData[0].status=="come"?mudi:"回公司")+"<br>"+
+//                                "预看楼盘："+(tData[0].status=="come"?loupan:"无")+"<br>"+
+                                "预看楼盘："+loupan+"<br>"+
+                                "车辆位置：<div id='carLocal"+id+"'>加载中...</div>"+"<br>"+
+                                "GPS更新时间："+tData[0].latlngUpdateTime+"<br>"+
+                                "状态："+(tData[0].status=="come"?"去程":"返程");
+                        }
+                        htmlDiv = "<div id='car"+id+"'>"+content+"</div>";
+                        openInfo(htmlDiv,e,id);
+                    }
+                },
+                error:function (data) {
+//                    console.log(data);
+                }
+            });
+        });
+    }
+
+    function openInfo(content,e,carId,point){
+        if (!point){
+            var p = e.target;
+            point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+        }
+        var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+        geoc.getLocation(point, function(rs){
+            var addComp = rs.addressComponents;
+            $("#carLocal"+carId).html(addComp.city  + addComp.district  + addComp.street  + addComp.streetNumber);
+        });
+    }
+
+
+    /**
+     * @description 获取marker车图标
+     */
+    function getCarIcon(lng,lat,icon) {
+        lng = lng || 110;
+        lat = lat || 20.125;
+        icon = icon || new BMap.Icon("/static/images/car.png", new BMap.Size(100,50));
+        return new BMap.Marker(new BMap.Point(lng,lat), {
+            icon: icon
+        });
+    }
+
+
+</script>
+
+</body>
+</html>

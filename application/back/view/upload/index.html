@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+    <style>
+        table td.action{
+            padding: 6px 10px;
+        }
+        table td.action a button i{
+            padding-right: 4px;
+        }
+        table td.readed label.had-readed,table td.action a button.had-readed{
+            background-color: #d4d4d4 !important;
+            color: #333333 !important;
+        }
+    </style>
+
+</head>
+<body>
+
+
+<section>
+    <fieldset class="layui-elem-field">
+        {if condition="isset($meta_title)"}
+        <legend>{$meta_title}</legend>
+        {/if}
+        <div class="layui-field-box">
+            <form class="layui-form layui-form-pane" action="">
+                <div class="layui-form-item">
+
+                    <label class="layui-form-label">关键词:</label>
+                    <div class="layui-input-inline">
+                        <input type="text" value="{$param.key}" name="key" placeholder="关键词" class="layui-input">
+                    </div>
+
+                    <label class="layui-form-label">状态:</label>
+                    <div class="layui-input-inline">
+                        <select name="type" lay-search >
+                            <option value="0">全部</option>
+                            {volist name="lists" id="item"}
+                            <option value="{$key}" {if condition="$key eq $param.type"}selected{/if}>{$item}</option>
+                            {/volist}
+                        </select>
+                    </div>
+
+                    <button class="layui-btn" lay-submit="">查询</button>
+
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</section>
+
+<table class="layui-table" lay-even="" lay-skin="row">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>置业顾问</th>
+        <th>文件名</th>
+        <th>文件大小</th>
+        <th>下载次数</th>
+        <th>文件类型</th>
+        <th>创建时间</th>
+        <th style="width:50px; text-align: center">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="dataProvider" id="model" key="key" empty="<tr class='empty'><td colspan='8' style='text-align: center;'> 没有数据 </td> </tr>"}
+    <tr data-key="{$model.id}">
+        <td style="width: 45px;text-align: center;">
+            {$key+($indexOffset)}
+        </td>
+        <td style="width: 100px;">{$model.getBackUser.username}</td>
+        <td>{$model.name}</td>
+        <td>{$model.size}</td>
+        <td>{$model.download}</td>
+        <td>{$model.ext}</td>
+        <td>{$model.created_at}</td>
+        <td style="width: 200px;text-align: center;" class="action">
+            <a href="javascript:void(0);">
+                <button onclick="Site.showUrl('下载痕迹','/manage/download/view.html?id={$model.id}','62.8%','82%','2',true,true,'LAY_TRAVEL_{$model.id}',['0.372','#000'])" class="layui-btn layui-btn-small" >
+                <i class="fa fa-eye"></i>
+                    下载痕迹
+                </button>
+            </a>
+            <a href="javascript:void(0);"><button onclick="Site.showDialog('信息确认','你确定删除此项数据吗?',function(){deleteModel({$model.id});},true)" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
+        </td>
+    </tr>
+    {/volist}
+    </tbody>
+</table>
+
+<!-- 分页容器 -->
+<div id="paging_0124" style="text-align:right;" data-count="{$count}" data-pages="{$pages}" data-page=""></div>
+
+<script>
+    layui.use([ 'layer','laydate', 'form'], function() {});
+    function updateModel(id) {
+        $.ajax({
+            type : "post",
+            url : '/manage/download/read?id='+ id,
+            dataType : 'json',
+            beforeSend : function() {
+                Site.loading();
+            },
+            success : function(data) {
+                setTimeout(Site.hide(),500);
+                if (data.code == '1'){
+                    if (data.readed !== undefined){
+                        var content = '已读',
+                            action = '设置未读';
+                        if (data.readed != '1'){
+                            content = '未读';
+                            action = '设置已读';
+                            $('[data-key="'+id+'"] .readed label').removeClass('had-readed');
+                            $('[data-key="'+id+'"] .read-status').removeClass('had-readed');
+                        }else{
+                            $('[data-key="'+id+'"] .readed label').removeClass('had-readed').addClass('had-readed');
+                            $('[data-key="'+id+'"] .read-status').removeClass('had-readed').addClass('had-readed');
+                        }
+                        $('[data-key="'+id+'"] .readed label span').html(content);
+                        $('[data-key="'+id+'"] .read-status span').html(action);
+                    }
+                    success('更新成功',true);
+                }else {
+                    Site.hide();
+                    error('更新失败',true);
+                }
+            },
+            error : function(data) {
+                Site.hide();
+                error('更新失败',true);
+            }
+        });
+    }
+    function deleteModel(id) {
+        $.ajax({
+            type : "post",
+            url : '/manage/download/delete?id='+ id,
+            dataType : 'json',
+            beforeSend : function() {
+                Site.loading();
+            },
+            success : function(data) {
+                setTimeout(Site.hide(),500);
+                if (data.code == '1'){
+                    $('[data-key="'+id+'"]').remove();
+                    success('删除成功',true);
+                }else {
+                    Site.hide();
+                    error('删除失败',true);
+                }
+            },
+            error : function(data) {
+                Site.hide();
+                error('删除失败',true);
+            }
+        });
+    }
+
+    $('.building-list .pic-num a:last-of-type').addClass('lasta');
+</script>
+<script>
+    $(function() {
+        layui.use(['laypage', 'layer'], function(){
+            var laypage = layui.laypage,
+                element = 'paging_0124',
+                _page = $('#'+element),
+                currPage = Site.getUrlParam('pageNumber'),
+                count = _page.attr('data-count'),
+                pages = _page.attr('data-pages');
+            currPage = currPage > 1 ? currPage : 1;
+            count = count ? count : 0;
+            _page.attr('data-page',currPage);
+            laypage({
+                curr:currPage,
+                cont: element,
+                pages: pages,
+                skip: true,
+                jump: function(obj,first){
+                    if(obj.curr != currPage) {
+                        var url = location.href;
+                        if(url.indexOf("?") == -1) {
+                            location.href = url+"?pageNumber="+obj.curr;
+                        }else {
+                            var page = Site.getUrlParam('pageNumber');
+                            if(page) {
+                                location.href = url.replace("pageNumber="+page,"pageNumber="+obj.curr);
+                            }else {
+                                location.href = url.replace("?","?pageNumber="+obj.curr+"&");
+                            }
+                        }
+                    }
+                    _page.prepend('<span style="display: inline-block;text-align:center;padding: 0 20px;color: #333;font-size: 14px;"> 数量: '+(count)+' </span>');
+                }
+            });
+        });
+    });
+</script>
+
+</body></html>

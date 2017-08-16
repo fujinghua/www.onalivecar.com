@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>表格</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+    <style>
+        table td.action{
+            padding: 6px 10px;
+        }
+        table td.action a button i{
+            padding-right: 4px;
+        }
+        table .user-head{
+            display: inline-block;
+            position: relative;
+        }
+        table .username{
+            display: inline-block;
+            padding-left: 42px;
+        }
+        table .user-img{
+            display: inline-block;
+            position: absolute;
+            top: -26px;
+            padding: 5px;
+            width: 32px;
+            height: 32px;
+        }
+        table .user-img img{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border: 1px solid #d4d4d4;
+        }
+    </style>
+
+</head>
+<body>
+
+<section>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>足迹</legend>
+    </fieldset>
+    <div class="layui-field-box">
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item">
+
+                <div class="layui-input-inline">
+                    <input type="text" value="{$Think.get.keyword}" name="keyword" placeholder="请输入关键词" class="layui-input">
+                </div>
+
+                <label class="layui-form-label">客户端类型</label>
+                <div class="layui-input-inline">
+                    <select name="type" lay-search >
+                        <option value="">客户端类型</option>
+                        <option value="">全部</option>
+                        {volist name="lang['user_agent_type']" id="item"}
+                        <option value="{$key}" {if condition="$key eq $Think.get.type"}selected{/if}>{$item}</option>
+                        {/volist}
+                    </select>
+                </div>
+
+                <button class="layui-btn" lay-submit="">查询</button>
+
+            </div>
+        </form>
+    </div>
+</section>
+
+<section class="layui-table-action">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <div class="layui-inline">
+                <!--<label class="layui-btn layui-btn-danger" lay-filter="delete">删除</label>-->
+            </div>
+            <div class="layui-inline">
+                <label class="layui-text layui-label"> (共 <em class="layui-color-danger">{$list->total()}</em> 条足迹)</label>
+            </div>
+        </div>
+        <div class="layui-inline" style="margin-right: 15px;">
+            <div class="layui-inline">
+                <!--<label class="layui-btn" lay-filter="create">添加</label>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<table class="layui-table" lay-even="" lay-skin="row">
+    <thead>
+    <tr>
+    <tr>
+        <th>序号</th>
+        <th>路由</th>
+        <th>地址</th>
+        <th>客户端</th>
+        <th>客户类型</th>
+        <th>IP地址</th>
+        <th>访问时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="list" id="model" key="key" empty="<tr class='empty'><td colspan='16' style='text-align: center;'> 没有数据 </td> </tr>"}
+    <tr data-key="{$model.id}">
+        <td style="width: 45px;text-align: center;">
+            {$key+(($list->currentPage()-1) * ($list->listRows()))}
+        </td>
+        <td>{$model.route}</td>
+        <td>{$model.url}</td>
+        <td>{$model.user_agent}</td>
+        <td>
+            {if condition="isset($lists[$model.user_agent_type])"}
+            {$lists[$model.user_agent_type]}
+            {else} 无效
+            {/if}
+        </td>
+        <td>{$model.ip}</td>
+        <td>{$model.created_at}</td>
+    </tr>
+    {/volist}
+    </tbody>
+</table>
+
+<!-- 分页容器 -->
+<div id="paging" class="paging" data-total="{$list->total()}" data-rows="{$list->listRows()}" data-currentPage="{$list->currentPage()}"></div>
+
+<script>
+    $(function() {
+        //分页
+        Site.loadPage();
+    });
+</script>
+
+</body></html>

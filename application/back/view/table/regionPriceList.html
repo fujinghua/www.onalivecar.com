@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>表格</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style>
+        #regionPrice input{
+            border: 0px;
+        }
+        #regionPrice input:focus{
+            border: 1px solid #1fb5ac;
+        }
+    </style>
+
+</head>
+<body>
+
+<section id="content-container" style="display:flex;">
+    <div id="content-body" style="margin:auto;width: 800px;height: 600px;">
+        <table class="layui-table" lay-even="" lay-skin="row" id="regionPrice">
+            <thead>
+            <tr>
+                <th>城市</th>
+                <th colspan="2">小时费用(元/小时)</th>
+                <th colspan="2">接单费用(元/次)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>成都:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="1">
+                    <input type="text" name="timePrice" value="100.00" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="1.00" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>上海:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="2">
+                    <input type="text" name="timePrice" value="200.00" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="2.00" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>海口:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="3">
+                    <input type="text" name="timePrice" value="12.00" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="5.00" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>三亚:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="4">
+                    <input type="text" name="timePrice" value="15.00" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="5.00" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>文昌:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="5">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>琼海:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="6">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>万宁:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="7">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>五指山:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="8">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>东方:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="9">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>儋州:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="10">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>临高:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="11">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>澄迈:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="12">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>定安:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="13">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>屯昌:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="14">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>昌江:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="15">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>白沙:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="16">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>琼中:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="17">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>陵水:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="18">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>保亭:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="19">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>乐东:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="20">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr>
+                <td>博鳌:</td>
+                <td colspan="2">
+                    <input type="hidden" name="id" value="21">
+                    <input type="text" name="timePrice" value="" validate="number" class="" style="display: inline!important;" placeholder="" aria-describedby="basic-addon1">
+                </td>
+                <td>
+                    <input type="text" name="numPrice" value="" validate="number" class="" placeholder="" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+
+            <tr class="noBorder" style="padding-top: 10px;">
+                <td class="noBorder"></td>
+                <td width="100" class="noBorder">
+                    <button class="layui-btn" lay-submit="">更新</button>
+                </td>
+                <td class="noBorder">
+                    <button class="layui-btn" lay-submit="">取消</button>
+                </td>
+                <td class="noBorder"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script>
+    layui.use(['form'], function() {});
+</script>
+
+</body></html>

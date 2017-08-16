@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+    <style>
+        .layui-form-item {
+            margin-bottom: 30px;
+        }
+        .layui-form-item .layui-inline:nth-child(2) .layui-form-label{
+            width: 185px !important;
+        }
+
+        .layui-form-item .layui-input-block.right-width {
+            padding-right: 120px;
+        }
+        .layui-input-inline{
+            margin-bottom: 5px;
+        }
+        .layui-text{
+            position: absolute;
+            padding-left: 0;
+        }
+    </style>
+
+</head>
+<body>
+
+<section style="max-width:1200px;margin: 0 auto 30px;position: relative;">
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend style="text-align: center;">添加客服</legend>
+    </fieldset>
+
+    <form class="layui-form forms" id="defaultForm" action="" method="post" style="padding: 15px 0">
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"><span class="layui-color-danger">*</span>客服名称:</label>
+                <div class="layui-input-inline">
+                    <input type="hidden" value="{$model.back_user_id}" data-value="{$model.back_user_id}" name="back_user_id" lay-verify="require" placeholder="客服名称" class="layui-input" lay-search="refresh" lay-filter="key">
+                    <input type="text" value="{$model.username}" data-value="{$model.username}" lay-verify="require" placeholder="客服名称" class="layui-input" lay-filter="username">
+
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label"><span class="layui-color-danger">*</span>客服等级:</label>
+                <div class="layui-input-inline">
+                    <select name="level" lay-verify="require" lay-search>
+                        <option value="">选择等级</option>
+                        {volist name="model->getLists('level')" id="item" }
+                        <option value="{$key}" {if condition="$key eq $model.level"}selected{/if}>{$item}</option>
+                        {/volist}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"><span class="layui-color-danger">*</span>客服时效:</label>
+                <div class="layui-input-inline">
+                    <input type="radio" value="0" name="hasLimit" title="无限" lay-verify="checked" lay-group="hasLimit" class="layui-input" checked>
+                    <input type="radio" value="1" name="hasLimit" title="限时" lay-verify="checked" lay-group="hasLimit" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"><span class="layui-color-danger"></span>有效时长:</label>
+                <div class="layui-input-inline">
+                    <input type="text" value="{$model.duration}" name="duration" lay-verify="" placeholder="有效时长" maxlength="11" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-text"><span class="layui-color-danger"></span>始末时间:</label>
+                <div class="layui-input-inline" style="margin-left:65px;width: 165px;">
+                    <input type="text" value="{$model.start_at}" name="start_at" lay-verify="" placeholder="开始时间" lay-filter="date" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-text" style="margin-left: -10px;"><span class="layui-color-danger"></span>--</label>
+                <div class="layui-input-inline" style="margin-left:10px;width: 165px;">
+                    <input type="text" value="{$model.end_at}" name="end_at" lay-verify="" placeholder="结束时间" lay-filter="date" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"></label>
+                <button class="layui-btn" lay-submit="" lay-filter="submit">添加</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </form>
+
+</section>
+
+<script src="__JS__/site.js"></script>
+<script src="__JS__/back.js"></script>
+<script>
+
+    layui.use(['form'], function () {
+        var form = layui.form();
+
+    });
+
+    $(function () {
+        var options = {
+            form: '#defaultForm',
+            success: console.log
+        };
+        Back.submit(options);
+    });
+
+    Site.search({
+        url: '/manage/ajax/getBackUser',
+        targetClass: '[lay-filter="username"]',          // 输入框目标元素
+        parentClass: '.layui-input-inline',          // 父级类
+        hiddenClass: '[name="back_user_id"]',          // 隐藏域input
+        key:'name'
+    });
+
+</script>
+
+</body>
+
+</html>

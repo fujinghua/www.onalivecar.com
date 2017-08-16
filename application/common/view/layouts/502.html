@@ -1,0 +1,98 @@
+{__NOLAYOUT__}
+<?php
+if (isset($e)) {
+    if ($e instanceof \think\exception\HttpException) {
+        $exception = $e;
+    }
+}
+if (isset($exception)) {
+    /**
+     * @var $exception \think\exception\HttpException
+     */
+    $code = '502';
+    $message = isset($message) ? $message : '拒绝访问';
+    $headers = ['code' => $code, 'msg' => $message];
+    $statusCode = $code;
+    try {
+        $newCode = $exception->getCode();
+        $newMessage = $exception->getMessage();
+        $newHeaders = $exception->getHeaders();
+        $newStatusCode = $exception->getStatusCode();
+    } catch (Exception $ex) {
+        $newCode = '502';
+        $newMessage = '拒绝访问';
+        $newHeaders = ['code' => $newCode, 'msg' => $newMessage];
+        $newStatusCode = $newCode;
+    }
+    if (!empty($newCode)) {
+        $code = $newCode;
+    }
+    if (!empty($newMessage)) {
+        $message = $newMessage;
+    }
+    if (!empty($headers)) {
+        $headers = $newHeaders;
+    }
+    if (!empty($newStatusCode)) {
+        $statusCode = $newStatusCode;
+    }
+    $html = <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$message</title>
+    <style>
+        .container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            text-align: center;
+            color: #FF5722;
+            opacity: 0.628;
+        }
+
+        .container .body {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -400px;
+            margin-left: -187.5px;
+            width: 375px;
+            height: 400px;
+            vertical-align: middle;
+        }
+
+        .container .code {
+            font-size: 80px;
+            line-height: 80px;
+        }
+
+        .container .message {
+            font-size: 20px;
+            line-height: 24px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="body">
+        <h1 class="code">502</h1>
+        <h2 class="message">$message</h2>
+    </div>
+</div>
+</div>
+</body>
+</html>
+HTML;
+    if (defined('IS_AJAX')) {
+        if (IS_AJAX) {
+            echo json_encode($headers);
+        } else {
+            echo $html;
+        }
+    } else {
+        echo $html;
+    }
+}
+?>

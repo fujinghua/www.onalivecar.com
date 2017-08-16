@@ -1,0 +1,3720 @@
+{
+  "China": [
+    {
+      "name": "台湾",
+      "mapName": "台湾"
+    },
+    {
+      "name": "河北",
+      "mapName": "河北"
+    },
+    {
+      "name": "山西",
+      "mapName": "山西"
+    },
+    {
+      "name": "内蒙古",
+      "mapName": "内蒙古"
+    },
+    {
+      "name": "辽宁",
+      "mapName": "辽宁"
+    },
+    {
+      "name": "吉林",
+      "mapName": "吉林"
+    },
+    {
+      "name": "黑龙江",
+      "mapName": "黑龙江"
+    },
+    {
+      "name": "江苏",
+      "mapName": "江苏"
+    },
+    {
+      "name": "浙江",
+      "mapName": "浙江"
+    },
+    {
+      "name": "安徽",
+      "mapName": "安徽"
+    },
+    {
+      "name": "福建",
+      "mapName": "福建"
+    },
+    {
+      "name": "江西",
+      "mapName": "江西"
+    },
+    {
+      "name": "山东",
+      "mapName": "山东"
+    },
+    {
+      "name": "河南",
+      "mapName": "河南"
+    },
+    {
+      "name": "湖北",
+      "mapName": "湖北"
+    },
+    {
+      "name": "湖南",
+      "mapName": "湖南"
+    },
+    {
+      "name": "广东",
+      "mapName": "广东"
+    },
+    {
+      "name": "广西",
+      "mapName": "广西"
+    },
+    {
+      "name": "海南",
+      "mapName": "海南"
+    },
+    {
+      "name": "四川",
+      "mapName": "四川"
+    },
+    {
+      "name": "贵州",
+      "mapName": "贵州"
+    },
+    {
+      "name": "云南",
+      "mapName": "云南"
+    },
+    {
+      "name": "西藏",
+      "mapName": "西藏"
+    },
+    {
+      "name": "陕西",
+      "mapName": "陕西"
+    },
+    {
+      "name": "甘肃",
+      "mapName": "甘肃"
+    },
+    {
+      "name": "青海",
+      "mapName": "青海"
+    },
+    {
+      "name": "宁夏",
+      "mapName": "宁夏"
+    },
+    {
+      "name": "新疆",
+      "mapName": "新疆"
+    },
+    {
+      "name": "北京",
+      "mapName": "北京"
+    },
+    {
+      "name": "天津",
+      "mapName": "天津"
+    },
+    {
+      "name": "上海",
+      "mapName": "上海"
+    },
+    {
+      "name": "重庆",
+      "mapName": "重庆"
+    },
+    {
+      "name": "香港",
+      "mapName": "香港"
+    },
+    {
+      "name": "澳门",
+      "mapName": "澳门"
+    }
+  ],
+  "Anhui": [
+    {
+      "name": "淮南市",
+      "mapName": "淮南市",
+      "value": "178"
+    },
+    {
+      "name": "淮北市",
+      "mapName": "淮北市",
+      "value": "38"
+    },
+    {
+      "name": "合肥市",
+      "mapName": "合肥市",
+      "value": "240"
+    },
+    {
+      "name": "蚌埠市",
+      "mapName": "蚌埠市",
+      "value": "159"
+    },
+    {
+      "name": "芜湖市",
+      "mapName": "芜湖市",
+      "value": "222"
+    },
+    {
+      "name": "马鞍山市",
+      "mapName": "马鞍山市",
+      "value": "30"
+    },
+    {
+      "name": "铜陵市",
+      "mapName": "铜陵市",
+      "value": "100"
+    },
+    {
+      "name": "安庆市",
+      "mapName": "安庆市",
+      "value": "270"
+    },
+    {
+      "name": "黄山市",
+      "mapName": "黄山市",
+      "value": "235"
+    },
+    {
+      "name": "阜阳市",
+      "mapName": "阜阳市",
+      "value": "169"
+    },
+    {
+      "name": "宿州市",
+      "mapName": "宿州市",
+      "value": "231"
+    },
+    {
+      "name": "六安市",
+      "mapName": "六安市",
+      "value": "62"
+    },
+    {
+      "name": "滁州市",
+      "mapName": "滁州市",
+      "value": "250"
+    },
+    {
+      "name": "池州市",
+      "mapName": "池州市",
+      "value": "182"
+    },
+    {
+      "name": "亳州市",
+      "mapName": "亳州市",
+      "value": "227"
+    },
+    {
+      "name": "宣城市",
+      "mapName": "宣城市",
+      "value": "227"
+    }
+  ],
+  "Beijing": [
+    {
+      "name": "东城区",
+      "mapName": "东城区",
+      "value": "125"
+    },
+    {
+      "name": "西城区",
+      "mapName": "西城区",
+      "value": "320"
+    },
+    {
+      "name": "石景山区",
+      "mapName": "石景山区",
+      "value": "208"
+    },
+    {
+      "name": "丰台区",
+      "mapName": "丰台区",
+      "value": "226"
+    },
+    {
+      "name": "海淀区",
+      "mapName": "海淀区",
+      "value": "243"
+    },
+    {
+      "name": "朝阳区",
+      "mapName": "朝阳区",
+      "value": "309"
+    },
+    {
+      "name": "门头沟区",
+      "mapName": "门头沟区",
+      "value": "120"
+    },
+    {
+      "name": "通州区",
+      "mapName": "通州区",
+      "value": "49"
+    },
+    {
+      "name": "昌平区",
+      "mapName": "昌平区",
+      "value": "111"
+    },
+    {
+      "name": "大兴区",
+      "mapName": "大兴区",
+      "value": "51"
+    },
+    {
+      "name": "怀柔区",
+      "mapName": "怀柔区",
+      "value": "83"
+    },
+    {
+      "name": "房山区",
+      "mapName": "房山区",
+      "value": "211"
+    },
+    {
+      "name": "顺义区",
+      "mapName": "顺义区",
+      "value": "112"
+    },
+    {
+      "name": "延庆区",
+      "mapName": "延庆区",
+      "value": "324"
+    },
+    {
+      "name": "密云区",
+      "mapName": "密云区",
+      "value": "43"
+    },
+    {
+      "name": "平谷区",
+      "mapName": "平谷区",
+      "value": "0"
+    }
+  ],
+  "Chongqing": [
+    {
+      "name": "渝中区",
+      "mapName": "渝中区",
+      "value": "133"
+    },
+    {
+      "name": "大渡口区",
+      "mapName": "大渡口区",
+      "value": "10"
+    },
+    {
+      "name": "江北区",
+      "mapName": "江北区",
+      "value": "153"
+    },
+    {
+      "name": "沙坪坝区",
+      "mapName": "沙坪坝区",
+      "value": "205"
+    },
+    {
+      "name": "涪陵区",
+      "mapName": "涪陵区",
+      "value": "201"
+    },
+    {
+      "name": "万州区",
+      "mapName": "万州区",
+      "value": "22"
+    },
+    {
+      "name": "九龙坡区",
+      "mapName": "九龙坡区",
+      "value": "287"
+    },
+    {
+      "name": "南岸区",
+      "mapName": "南岸区",
+      "value": "158"
+    },
+    {
+      "name": "北碚区",
+      "mapName": "北碚区",
+      "value": "14"
+    },
+    {
+      "name": "綦江区",
+      "mapName": "綦江区",
+      "value": "242"
+    },
+    {
+      "name": "大足区",
+      "mapName": "大足区",
+      "value": "247"
+    },
+    {
+      "name": "渝北区",
+      "mapName": "渝北区",
+      "value": "159"
+    },
+    {
+      "name": "黔江区",
+      "mapName": "黔江区",
+      "value": "218"
+    },
+    {
+      "name": "巴南区",
+      "mapName": "巴南区",
+      "value": "308"
+    },
+    {
+      "name": "长寿区",
+      "mapName": "长寿区",
+      "value": "242"
+    },
+    {
+      "name": "永川区",
+      "mapName": "永川区",
+      "value": "111"
+    },
+    {
+      "name": "璧山区",
+      "mapName": "璧山区",
+      "value": "232"
+    },
+    {
+      "name": "合川区",
+      "mapName": "合川区",
+      "value": "33"
+    },
+    {
+      "name": "江津区",
+      "mapName": "江津区",
+      "value": "306"
+    },
+    {
+      "name": "南川区",
+      "mapName": "南川区",
+      "value": "89"
+    },
+    {
+      "name": "荣昌区",
+      "mapName": "荣昌区",
+      "value": "1"
+    },
+    {
+      "name": "梁平县",
+      "mapName": "梁平县",
+      "value": "109"
+    },
+    {
+      "name": "城口县",
+      "mapName": "城口县",
+      "value": "294"
+    },
+    {
+      "name": "垫江县",
+      "mapName": "垫江县",
+      "value": "347"
+    },
+    {
+      "name": "丰都县",
+      "mapName": "丰都县",
+      "value": "349"
+    },
+    {
+      "name": "铜梁区",
+      "mapName": "铜梁区",
+      "value": "348"
+    },
+    {
+      "name": "潼南区",
+      "mapName": "潼南区",
+      "value": "241"
+    },
+    {
+      "name": "武隆县",
+      "mapName": "武隆县",
+      "value": "258"
+    },
+    {
+      "name": "忠县",
+      "mapName": "忠县",
+      "value": "166"
+    },
+    {
+      "name": "奉节县",
+      "mapName": "奉节县",
+      "value": "38"
+    },
+    {
+      "name": "开州区",
+      "mapName": "开州区",
+      "value": "3"
+    },
+    {
+      "name": "巫山县",
+      "mapName": "巫山县",
+      "value": "75"
+    },
+    {
+      "name": "云阳县",
+      "mapName": "云阳县",
+      "value": "276"
+    },
+    {
+      "name": "巫溪县",
+      "mapName": "巫溪县",
+      "value": "45"
+    },
+    {
+      "name": "石柱土家族自治县",
+      "mapName": "石柱土家族自治县",
+      "value": "316"
+    },
+    {
+      "name": "秀山土家族苗族自治县",
+      "mapName": "秀山土家族苗族自治县",
+      "value": "226"
+    },
+    {
+      "name": "酉阳土家族苗族自治县",
+      "mapName": "酉阳土家族苗族自治县",
+      "value": "273"
+    },
+    {
+      "name": "彭水苗族土家族自治县",
+      "mapName": "彭水苗族土家族自治县",
+      "value": "8"
+    }
+  ],
+  "Fujian": [
+    {
+      "name": "淮南市",
+      "mapName": "淮南市",
+      "value": "334"
+    },
+    {
+      "name": "淮北市",
+      "mapName": "淮北市",
+      "value": "262"
+    },
+    {
+      "name": "蚌埠市",
+      "mapName": "蚌埠市",
+      "value": "278"
+    },
+    {
+      "name": "合肥市",
+      "mapName": "合肥市",
+      "value": "91"
+    },
+    {
+      "name": "芜湖市",
+      "mapName": "芜湖市",
+      "value": "92"
+    },
+    {
+      "name": "铜陵市",
+      "mapName": "铜陵市",
+      "value": "258"
+    },
+    {
+      "name": "马鞍山市",
+      "mapName": "马鞍山市",
+      "value": "235"
+    },
+    {
+      "name": "安庆市",
+      "mapName": "安庆市",
+      "value": "283"
+    },
+    {
+      "name": "黄山市",
+      "mapName": "黄山市",
+      "value": "147"
+    },
+    {
+      "name": "阜阳市",
+      "mapName": "阜阳市",
+      "value": "116"
+    },
+    {
+      "name": "宿州市",
+      "mapName": "宿州市",
+      "value": "266"
+    },
+    {
+      "name": "六安市",
+      "mapName": "六安市",
+      "value": "47"
+    },
+    {
+      "name": "滁州市",
+      "mapName": "滁州市",
+      "value": "183"
+    },
+    {
+      "name": "宣城市",
+      "mapName": "宣城市",
+      "value": "265"
+    },
+    {
+      "name": "亳州市",
+      "mapName": "亳州市",
+      "value": "315"
+    },
+    {
+      "name": "池州市",
+      "mapName": "池州市",
+      "value": "73"
+    }
+  ],
+  "Gansu": [
+    {
+      "name": "嘉峪关市",
+      "mapName": "嘉峪关市",
+      "value": "56"
+    },
+    {
+      "name": "金昌市",
+      "mapName": "金昌市",
+      "value": "253"
+    },
+    {
+      "name": "天水市",
+      "mapName": "天水市",
+      "value": "152"
+    },
+    {
+      "name": "武威市",
+      "mapName": "武威市",
+      "value": "175"
+    },
+    {
+      "name": "兰州市",
+      "mapName": "兰州市",
+      "value": "151"
+    },
+    {
+      "name": "白银市",
+      "mapName": "白银市",
+      "value": "159"
+    },
+    {
+      "name": "张掖市",
+      "mapName": "张掖市",
+      "value": "74"
+    },
+    {
+      "name": "平凉市",
+      "mapName": "平凉市",
+      "value": "342"
+    },
+    {
+      "name": "酒泉市",
+      "mapName": "酒泉市",
+      "value": "325"
+    },
+    {
+      "name": "定西市",
+      "mapName": "定西市",
+      "value": "234"
+    },
+    {
+      "name": "庆阳市",
+      "mapName": "庆阳市",
+      "value": "200"
+    },
+    {
+      "name": "临夏回族自治州",
+      "mapName": "临夏回族自治州",
+      "value": "37"
+    },
+    {
+      "name": "陇南市",
+      "mapName": "陇南市",
+      "value": "259"
+    },
+    {
+      "name": "甘南藏族自治州",
+      "mapName": "甘南藏族自治州",
+      "value": "204"
+    }
+  ],
+  "Guangdong": [
+    {
+      "name": "广州市",
+      "mapName": "广州市",
+      "value": "126"
+    },
+    {
+      "name": "汕头市",
+      "mapName": "汕头市",
+      "value": "301"
+    },
+    {
+      "name": "珠海市",
+      "mapName": "珠海市",
+      "value": "163"
+    },
+    {
+      "name": "深圳市",
+      "mapName": "深圳市",
+      "value": "322"
+    },
+    {
+      "name": "韶关市",
+      "mapName": "韶关市",
+      "value": "323"
+    },
+    {
+      "name": "佛山市",
+      "mapName": "佛山市",
+      "value": "247"
+    },
+    {
+      "name": "江门市",
+      "mapName": "江门市",
+      "value": "68"
+    },
+    {
+      "name": "惠州市",
+      "mapName": "惠州市",
+      "value": "312"
+    },
+    {
+      "name": "茂名市",
+      "mapName": "茂名市",
+      "value": "33"
+    },
+    {
+      "name": "梅州市",
+      "mapName": "梅州市",
+      "value": "214"
+    },
+    {
+      "name": "湛江市",
+      "mapName": "湛江市",
+      "value": "184"
+    },
+    {
+      "name": "肇庆市",
+      "mapName": "肇庆市",
+      "value": "77"
+    },
+    {
+      "name": "河源市",
+      "mapName": "河源市",
+      "value": "80"
+    },
+    {
+      "name": "中山市",
+      "mapName": "中山市",
+      "value": "16"
+    },
+    {
+      "name": "阳江市",
+      "mapName": "阳江市",
+      "value": "192"
+    },
+    {
+      "name": "东莞市",
+      "mapName": "东莞市",
+      "value": "45"
+    },
+    {
+      "name": "清远市",
+      "mapName": "清远市",
+      "value": "58"
+    },
+    {
+      "name": "潮州市",
+      "mapName": "潮州市",
+      "value": "344"
+    },
+    {
+      "name": "揭阳市",
+      "mapName": "揭阳市",
+      "value": "302"
+    },
+    {
+      "name": "云浮市",
+      "mapName": "云浮市",
+      "value": "116"
+    },
+    {
+      "name": "汕尾市",
+      "mapName": "汕尾市",
+      "value": "87"
+    }
+  ],
+  "Guangxi": [
+    {
+      "name": "防城港市",
+      "mapName": "防城港市",
+      "value": "309"
+    },
+    {
+      "name": "北海市",
+      "mapName": "北海市",
+      "value": "193"
+    },
+    {
+      "name": "桂林市",
+      "mapName": "桂林市",
+      "value": "16"
+    },
+    {
+      "name": "梧州市",
+      "mapName": "梧州市",
+      "value": "113"
+    },
+    {
+      "name": "南宁市",
+      "mapName": "南宁市",
+      "value": "251"
+    },
+    {
+      "name": "钦州市",
+      "mapName": "钦州市",
+      "value": "76"
+    },
+    {
+      "name": "贵港市",
+      "mapName": "贵港市",
+      "value": "349"
+    },
+    {
+      "name": "百色市",
+      "mapName": "百色市",
+      "value": "256"
+    },
+    {
+      "name": "玉林市",
+      "mapName": "玉林市",
+      "value": "335"
+    },
+    {
+      "name": "河池市",
+      "mapName": "河池市",
+      "value": "334"
+    },
+    {
+      "name": "来宾市",
+      "mapName": "来宾市",
+      "value": "138"
+    },
+    {
+      "name": "柳州市",
+      "mapName": "柳州市",
+      "value": "111"
+    },
+    {
+      "name": "贺州市",
+      "mapName": "贺州市",
+      "value": "200"
+    },
+    {
+      "name": "崇左市",
+      "mapName": "崇左市",
+      "value": "122"
+    }
+  ],
+  "Guizhou": [
+    {
+      "name": "贵阳市",
+      "mapName": "贵阳市",
+      "value": "338"
+    },
+    {
+      "name": "六盘水市",
+      "mapName": "六盘水市",
+      "value": "148"
+    },
+    {
+      "name": "安顺市",
+      "mapName": "安顺市",
+      "value": "8"
+    },
+    {
+      "name": "遵义市",
+      "mapName": "遵义市",
+      "value": "176"
+    },
+    {
+      "name": "毕节市",
+      "mapName": "毕节市",
+      "value": "323"
+    },
+    {
+      "name": "铜仁市",
+      "mapName": "铜仁市",
+      "value": "314"
+    },
+    {
+      "name": "黔西南布依族苗族自治州",
+      "mapName": "黔西南布依族苗族自治州",
+      "value": "101"
+    },
+    {
+      "name": "黔东南苗族侗族自治州",
+      "mapName": "黔东南苗族侗族自治州",
+      "value": "1"
+    },
+    {
+      "name": "黔南布依族苗族自治州",
+      "mapName": "黔南布依族苗族自治州",
+      "value": "346"
+    }
+  ],
+  "Hainan": [
+    {
+      "name": "海口市",
+      "mapName": "海口市",
+      "value": "27"
+    },
+    {
+      "name": "儋州市",
+      "mapName": "儋州市",
+      "value": "293"
+    },
+    {
+      "name": "琼海市",
+      "mapName": "琼海市",
+      "value": "333"
+    },
+    {
+      "name": "五指山市",
+      "mapName": "五指山市",
+      "value": "132"
+    },
+    {
+      "name": "三亚市",
+      "mapName": "三亚市",
+      "value": "284"
+    },
+    {
+      "name": "文昌市",
+      "mapName": "文昌市",
+      "value": "220"
+    },
+    {
+      "name": "东方市",
+      "mapName": "东方市",
+      "value": "327"
+    },
+    {
+      "name": "定安县",
+      "mapName": "定安县",
+      "value": "285"
+    },
+    {
+      "name": "万宁市",
+      "mapName": "万宁市",
+      "value": "154"
+    },
+    {
+      "name": "屯昌县",
+      "mapName": "屯昌县",
+      "value": "48"
+    },
+    {
+      "name": "澄迈县",
+      "mapName": "澄迈县",
+      "value": "16"
+    },
+    {
+      "name": "临高县",
+      "mapName": "临高县",
+      "value": "180"
+    },
+    {
+      "name": "白沙黎族自治县",
+      "mapName": "白沙黎族自治县",
+      "value": "284"
+    },
+    {
+      "name": "昌江黎族自治县",
+      "mapName": "昌江黎族自治县",
+      "value": "116"
+    },
+    {
+      "name": "乐东黎族自治县",
+      "mapName": "乐东黎族自治县",
+      "value": "310"
+    },
+    {
+      "name": "陵水黎族自治县",
+      "mapName": "陵水黎族自治县",
+      "value": "69"
+    },
+    {
+      "name": "保亭黎族苗族自治县",
+      "mapName": "保亭黎族苗族自治县",
+      "value": "93"
+    },
+    {
+      "name": "琼中黎族苗族自治县",
+      "mapName": "琼中黎族苗族自治县",
+      "value": "239"
+    }
+  ],
+  "Hebei": [
+    {
+      "name": "石家庄市",
+      "mapName": "石家庄市",
+      "value": "190"
+    },
+    {
+      "name": "邢台市",
+      "mapName": "邢台市",
+      "value": "28"
+    },
+    {
+      "name": "秦皇岛市",
+      "mapName": "秦皇岛市",
+      "value": "227"
+    },
+    {
+      "name": "邯郸市",
+      "mapName": "邯郸市",
+      "value": "54"
+    },
+    {
+      "name": "保定市",
+      "mapName": "保定市",
+      "value": "214"
+    },
+    {
+      "name": "唐山市",
+      "mapName": "唐山市",
+      "value": "310"
+    },
+    {
+      "name": "沧州市",
+      "mapName": "沧州市",
+      "value": "105"
+    },
+    {
+      "name": "衡水市",
+      "mapName": "衡水市",
+      "value": "76"
+    },
+    {
+      "name": "张家口市",
+      "mapName": "张家口市",
+      "value": "65"
+    },
+    {
+      "name": "廊坊市",
+      "mapName": "廊坊市",
+      "value": "290"
+    },
+    {
+      "name": "承德市",
+      "mapName": "承德市",
+      "value": "24"
+    }
+  ],
+  "Heilongjiang": [
+    {
+      "name": "齐齐哈尔市",
+      "mapName": "齐齐哈尔市",
+      "value": "296"
+    },
+    {
+      "name": "鸡西市",
+      "mapName": "鸡西市",
+      "value": "301"
+    },
+    {
+      "name": "大庆市",
+      "mapName": "大庆市",
+      "value": "219"
+    },
+    {
+      "name": "双鸭山市",
+      "mapName": "双鸭山市",
+      "value": "104"
+    },
+    {
+      "name": "佳木斯市",
+      "mapName": "佳木斯市",
+      "value": "174"
+    },
+    {
+      "name": "伊春市",
+      "mapName": "伊春市",
+      "value": "255"
+    },
+    {
+      "name": "哈尔滨市",
+      "mapName": "哈尔滨市",
+      "value": "176"
+    },
+    {
+      "name": "鹤岗市",
+      "mapName": "鹤岗市",
+      "value": "291"
+    },
+    {
+      "name": "七台河市",
+      "mapName": "七台河市",
+      "value": "52"
+    },
+    {
+      "name": "大兴安岭地区",
+      "mapName": "大兴安岭地区",
+      "value": "134"
+    },
+    {
+      "name": "黑河市",
+      "mapName": "黑河市",
+      "value": "60"
+    },
+    {
+      "name": "绥化市",
+      "mapName": "绥化市",
+      "value": "2"
+    },
+    {
+      "name": "牡丹江市",
+      "mapName": "牡丹江市",
+      "value": "94"
+    }
+  ],
+  "Henan": [
+    {
+      "name": "平顶山市",
+      "mapName": "平顶山市",
+      "value": "322"
+    },
+    {
+      "name": "鹤壁市",
+      "mapName": "鹤壁市",
+      "value": "300"
+    },
+    {
+      "name": "开封市",
+      "mapName": "开封市",
+      "value": "236"
+    },
+    {
+      "name": "洛阳市",
+      "mapName": "洛阳市",
+      "value": "289"
+    },
+    {
+      "name": "安阳市",
+      "mapName": "安阳市",
+      "value": "325"
+    },
+    {
+      "name": "焦作市",
+      "mapName": "焦作市",
+      "value": "96"
+    },
+    {
+      "name": "濮阳市",
+      "mapName": "濮阳市",
+      "value": "61"
+    },
+    {
+      "name": "许昌市",
+      "mapName": "许昌市",
+      "value": "99"
+    },
+    {
+      "name": "漯河市",
+      "mapName": "漯河市",
+      "value": "177"
+    },
+    {
+      "name": "新乡市",
+      "mapName": "新乡市",
+      "value": "225"
+    },
+    {
+      "name": "三门峡市",
+      "mapName": "三门峡市",
+      "value": "124"
+    },
+    {
+      "name": "南阳市",
+      "mapName": "南阳市",
+      "value": "215"
+    },
+    {
+      "name": "商丘市",
+      "mapName": "商丘市",
+      "value": "86"
+    },
+    {
+      "name": "驻马店市",
+      "mapName": "驻马店市",
+      "value": "238"
+    },
+    {
+      "name": "济源市",
+      "mapName": "济源市",
+      "value": "194"
+    },
+    {
+      "name": "郑州市",
+      "mapName": "郑州市",
+      "value": "101"
+    },
+    {
+      "name": "周口市",
+      "mapName": "周口市",
+      "value": "85"
+    },
+    {
+      "name": "信阳市",
+      "mapName": "信阳市",
+      "value": "213"
+    }
+  ],
+  "HongKong": [
+    {
+      "name": "中西区",
+      "mapName": "中西区",
+      "value": "217"
+    },
+    {
+      "name": "东区",
+      "mapName": "东区",
+      "value": "95"
+    },
+    {
+      "name": "湾仔区",
+      "mapName": "湾仔区",
+      "value": "31"
+    },
+    {
+      "name": "南区",
+      "mapName": "南区",
+      "value": "49"
+    },
+    {
+      "name": "油尖旺区",
+      "mapName": "油尖旺区",
+      "value": "314"
+    },
+    {
+      "name": "深水埗区",
+      "mapName": "深水埗区",
+      "value": "12"
+    },
+    {
+      "name": "九龙城区",
+      "mapName": "九龙城区",
+      "value": "308"
+    },
+    {
+      "name": "观塘区",
+      "mapName": "观塘区",
+      "value": "175"
+    },
+    {
+      "name": "黄大仙区",
+      "mapName": "黄大仙区",
+      "value": "78"
+    },
+    {
+      "name": "荃湾区",
+      "mapName": "荃湾区",
+      "value": "192"
+    },
+    {
+      "name": "元朗区",
+      "mapName": "元朗区",
+      "value": "72"
+    },
+    {
+      "name": "屯门区",
+      "mapName": "屯门区",
+      "value": "142"
+    },
+    {
+      "name": "北区",
+      "mapName": "北区",
+      "value": "332"
+    },
+    {
+      "name": "大埔区",
+      "mapName": "大埔区",
+      "value": "96"
+    },
+    {
+      "name": "沙田区",
+      "mapName": "沙田区",
+      "value": "57"
+    },
+    {
+      "name": "葵青区",
+      "mapName": "葵青区",
+      "value": "26"
+    },
+    {
+      "name": "离岛区",
+      "mapName": "离岛区",
+      "value": "319"
+    },
+    {
+      "name": "西贡区",
+      "mapName": "西贡区",
+      "value": "66"
+    }
+  ],
+  "Hubei": [
+    {
+      "name": "黄石市",
+      "mapName": "黄石市",
+      "value": "120"
+    },
+    {
+      "name": "鄂州市",
+      "mapName": "鄂州市",
+      "value": "79"
+    },
+    {
+      "name": "宜昌市",
+      "mapName": "宜昌市",
+      "value": "161"
+    },
+    {
+      "name": "十堰市",
+      "mapName": "十堰市",
+      "value": "266"
+    },
+    {
+      "name": "襄阳市",
+      "mapName": "襄阳市",
+      "value": "296"
+    },
+    {
+      "name": "武汉市",
+      "mapName": "武汉市",
+      "value": "27"
+    },
+    {
+      "name": "荆门市",
+      "mapName": "荆门市",
+      "value": "152"
+    },
+    {
+      "name": "孝感市",
+      "mapName": "孝感市",
+      "value": "333"
+    },
+    {
+      "name": "黄冈市",
+      "mapName": "黄冈市",
+      "value": "90"
+    },
+    {
+      "name": "咸宁市",
+      "mapName": "咸宁市",
+      "value": "123"
+    },
+    {
+      "name": "随州市",
+      "mapName": "随州市",
+      "value": "64"
+    },
+    {
+      "name": "荆州市",
+      "mapName": "荆州市",
+      "value": "81"
+    },
+    {
+      "name": "仙桃市",
+      "mapName": "仙桃市",
+      "value": "237"
+    },
+    {
+      "name": "潜江市",
+      "mapName": "潜江市",
+      "value": "92"
+    },
+    {
+      "name": "天门市",
+      "mapName": "天门市",
+      "value": "191"
+    },
+    {
+      "name": "神农架林区",
+      "mapName": "神农架林区",
+      "value": "202"
+    },
+    {
+      "name": "恩施土家族苗族自治州",
+      "mapName": "恩施土家族苗族自治州",
+      "value": "243"
+    }
+  ],
+  "Hunan": [
+    {
+      "name": "株洲市",
+      "mapName": "株洲市",
+      "value": "186"
+    },
+    {
+      "name": "湘潭市",
+      "mapName": "湘潭市",
+      "value": "304"
+    },
+    {
+      "name": "邵阳市",
+      "mapName": "邵阳市",
+      "value": "157"
+    },
+    {
+      "name": "长沙市",
+      "mapName": "长沙市",
+      "value": "142"
+    },
+    {
+      "name": "衡阳市",
+      "mapName": "衡阳市",
+      "value": "131"
+    },
+    {
+      "name": "岳阳市",
+      "mapName": "岳阳市",
+      "value": "348"
+    },
+    {
+      "name": "张家界市",
+      "mapName": "张家界市",
+      "value": "287"
+    },
+    {
+      "name": "常德市",
+      "mapName": "常德市",
+      "value": "141"
+    },
+    {
+      "name": "永州市",
+      "mapName": "永州市",
+      "value": "180"
+    },
+    {
+      "name": "益阳市",
+      "mapName": "益阳市",
+      "value": "92"
+    },
+    {
+      "name": "郴州市",
+      "mapName": "郴州市",
+      "value": "55"
+    },
+    {
+      "name": "怀化市",
+      "mapName": "怀化市",
+      "value": "274"
+    },
+    {
+      "name": "湘西土家族苗族自治州",
+      "mapName": "湘西土家族苗族自治州",
+      "value": "58"
+    },
+    {
+      "name": "娄底市",
+      "mapName": "娄底市",
+      "value": "183"
+    }
+  ],
+  "Jiangsu": [
+    {
+      "name": "无锡市",
+      "mapName": "无锡市",
+      "value": "151"
+    },
+    {
+      "name": "苏州市",
+      "mapName": "苏州市",
+      "value": "47"
+    },
+    {
+      "name": "徐州市",
+      "mapName": "徐州市",
+      "value": "18"
+    },
+    {
+      "name": "南京市",
+      "mapName": "南京市",
+      "value": "41"
+    },
+    {
+      "name": "南通市",
+      "mapName": "南通市",
+      "value": "38"
+    },
+    {
+      "name": "常州市",
+      "mapName": "常州市",
+      "value": "196"
+    },
+    {
+      "name": "镇江市",
+      "mapName": "镇江市",
+      "value": "137"
+    },
+    {
+      "name": "扬州市",
+      "mapName": "扬州市",
+      "value": "312"
+    },
+    {
+      "name": "泰州市",
+      "mapName": "泰州市",
+      "value": "56"
+    },
+    {
+      "name": "盐城市",
+      "mapName": "盐城市",
+      "value": "225"
+    },
+    {
+      "name": "淮安市",
+      "mapName": "淮安市",
+      "value": "314"
+    },
+    {
+      "name": "连云港市",
+      "mapName": "连云港市",
+      "value": "65"
+    },
+    {
+      "name": "宿迁市",
+      "mapName": "宿迁市",
+      "value": "18"
+    }
+  ],
+  "Jiangxi": [
+    {
+      "name": "厦门市",
+      "mapName": "厦门市",
+      "value": "169"
+    },
+    {
+      "name": "漳州市",
+      "mapName": "漳州市",
+      "value": "278"
+    },
+    {
+      "name": "泉州市",
+      "mapName": "泉州市",
+      "value": "296"
+    },
+    {
+      "name": "福州市",
+      "mapName": "福州市",
+      "value": "265"
+    },
+    {
+      "name": "龙岩市",
+      "mapName": "龙岩市",
+      "value": "236"
+    },
+    {
+      "name": "南平市",
+      "mapName": "南平市",
+      "value": "279"
+    },
+    {
+      "name": "宁德市",
+      "mapName": "宁德市",
+      "value": "75"
+    },
+    {
+      "name": "莆田市",
+      "mapName": "莆田市",
+      "value": "258"
+    },
+    {
+      "name": "三明市",
+      "mapName": "三明市",
+      "value": "107"
+    }
+  ],
+  "Jilin": [
+    {
+      "name": "鞍山市",
+      "mapName": "鞍山市",
+      "value": "43"
+    },
+    {
+      "name": "丹东市",
+      "mapName": "丹东市",
+      "value": "47"
+    },
+    {
+      "name": "本溪市",
+      "mapName": "本溪市",
+      "value": "339"
+    },
+    {
+      "name": "抚顺市",
+      "mapName": "抚顺市",
+      "value": "342"
+    },
+    {
+      "name": "沈阳市",
+      "mapName": "沈阳市",
+      "value": "174"
+    },
+    {
+      "name": "大连市",
+      "mapName": "大连市",
+      "value": "334"
+    },
+    {
+      "name": "营口市",
+      "mapName": "营口市",
+      "value": "321"
+    },
+    {
+      "name": "盘锦市",
+      "mapName": "盘锦市",
+      "value": "273"
+    },
+    {
+      "name": "锦州市",
+      "mapName": "锦州市",
+      "value": "47"
+    },
+    {
+      "name": "阜新市",
+      "mapName": "阜新市",
+      "value": "179"
+    },
+    {
+      "name": "铁岭市",
+      "mapName": "铁岭市",
+      "value": "192"
+    },
+    {
+      "name": "朝阳市",
+      "mapName": "朝阳市",
+      "value": "106"
+    },
+    {
+      "name": "辽阳市",
+      "mapName": "辽阳市",
+      "value": "265"
+    },
+    {
+      "name": "葫芦岛市",
+      "mapName": "葫芦岛市",
+      "value": "53"
+    }
+  ],
+  "Liaoning": [
+    {
+      "name": "鞍山市",
+      "mapName": "鞍山市",
+      "value": "117"
+    },
+    {
+      "name": "丹东市",
+      "mapName": "丹东市",
+      "value": "227"
+    },
+    {
+      "name": "本溪市",
+      "mapName": "本溪市",
+      "value": "202"
+    },
+    {
+      "name": "抚顺市",
+      "mapName": "抚顺市",
+      "value": "253"
+    },
+    {
+      "name": "大连市",
+      "mapName": "大连市",
+      "value": "85"
+    },
+    {
+      "name": "营口市",
+      "mapName": "营口市",
+      "value": "141"
+    },
+    {
+      "name": "锦州市",
+      "mapName": "锦州市",
+      "value": "111"
+    },
+    {
+      "name": "沈阳市",
+      "mapName": "沈阳市",
+      "value": "197"
+    },
+    {
+      "name": "阜新市",
+      "mapName": "阜新市",
+      "value": "262"
+    },
+    {
+      "name": "盘锦市",
+      "mapName": "盘锦市",
+      "value": "233"
+    },
+    {
+      "name": "铁岭市",
+      "mapName": "铁岭市",
+      "value": "69"
+    },
+    {
+      "name": "朝阳市",
+      "mapName": "朝阳市",
+      "value": "182"
+    },
+    {
+      "name": "辽阳市",
+      "mapName": "辽阳市",
+      "value": "283"
+    },
+    {
+      "name": "葫芦岛市",
+      "mapName": "葫芦岛市",
+      "value": "9"
+    }
+  ],
+  "Macao": [
+    {
+      "name": "花地玛堂区",
+      "mapName": "花地玛堂区",
+      "value": "328"
+    },
+    {
+      "name": "花王堂区",
+      "mapName": "花王堂区",
+      "value": "328"
+    },
+    {
+      "name": "望德堂区",
+      "mapName": "望德堂区",
+      "value": "316"
+    },
+    {
+      "name": "大堂区",
+      "mapName": "大堂区",
+      "value": "204"
+    },
+    {
+      "name": "风顺堂区",
+      "mapName": "风顺堂区",
+      "value": "262"
+    },
+    {
+      "name": "嘉模堂区",
+      "mapName": "嘉模堂区",
+      "value": "229"
+    },
+    {
+      "name": "圣方济各堂区",
+      "mapName": "圣方济各堂区",
+      "value": "347"
+    },
+    {
+      "name": "路凼填海区",
+      "mapName": "路凼填海区",
+      "value": "324"
+    }
+  ],
+  "NeiMongol": [
+    {
+      "name": "乌海市",
+      "mapName": "乌海市",
+      "value": "125"
+    },
+    {
+      "name": "呼和浩特市",
+      "mapName": "呼和浩特市",
+      "value": "6"
+    },
+    {
+      "name": "鄂尔多斯市",
+      "mapName": "鄂尔多斯市",
+      "value": "191"
+    },
+    {
+      "name": "赤峰市",
+      "mapName": "赤峰市",
+      "value": "51"
+    },
+    {
+      "name": "通辽市",
+      "mapName": "通辽市",
+      "value": "343"
+    },
+    {
+      "name": "包头市",
+      "mapName": "包头市",
+      "value": "306"
+    },
+    {
+      "name": "巴彦淖尔市",
+      "mapName": "巴彦淖尔市",
+      "value": "189"
+    },
+    {
+      "name": "乌兰察布市",
+      "mapName": "乌兰察布市",
+      "value": "296"
+    },
+    {
+      "name": "阿拉善盟",
+      "mapName": "阿拉善盟",
+      "value": "116"
+    },
+    {
+      "name": "兴安盟",
+      "mapName": "兴安盟",
+      "value": "197"
+    },
+    {
+      "name": "呼伦贝尔市",
+      "mapName": "呼伦贝尔市",
+      "value": "152"
+    },
+    {
+      "name": "锡林郭勒盟",
+      "mapName": "锡林郭勒盟",
+      "value": "39"
+    }
+  ],
+  "Ningxia": [
+    {
+      "name": "石嘴山市",
+      "mapName": "石嘴山市",
+      "value": "224"
+    },
+    {
+      "name": "中卫市",
+      "mapName": "中卫市",
+      "value": "325"
+    },
+    {
+      "name": "银川市",
+      "mapName": "银川市",
+      "value": "71"
+    },
+    {
+      "name": "吴忠市",
+      "mapName": "吴忠市",
+      "value": "189"
+    },
+    {
+      "name": "固原市",
+      "mapName": "固原市",
+      "value": "215"
+    }
+  ],
+  "Qinghai": [
+    {
+      "name": "西宁市",
+      "mapName": "西宁市",
+      "value": "111"
+    },
+    {
+      "name": "海东市",
+      "mapName": "海东市",
+      "value": "110"
+    },
+    {
+      "name": "黄南藏族自治州",
+      "mapName": "黄南藏族自治州",
+      "value": "78"
+    },
+    {
+      "name": "海北藏族自治州",
+      "mapName": "海北藏族自治州",
+      "value": "167"
+    },
+    {
+      "name": "海南藏族自治州",
+      "mapName": "海南藏族自治州",
+      "value": "200"
+    },
+    {
+      "name": "果洛藏族自治州",
+      "mapName": "果洛藏族自治州",
+      "value": "258"
+    },
+    {
+      "name": "玉树藏族自治州",
+      "mapName": "玉树藏族自治州",
+      "value": "265"
+    },
+    {
+      "name": "海西蒙古族藏族自治州",
+      "mapName": "海西蒙古族藏族自治州",
+      "value": "333"
+    }
+  ],
+  "Shandong": [
+    {
+      "name": "济南市",
+      "mapName": "济南市",
+      "value": "11"
+    },
+    {
+      "name": "枣庄市",
+      "mapName": "枣庄市",
+      "value": "329"
+    },
+    {
+      "name": "东营市",
+      "mapName": "东营市",
+      "value": "82"
+    },
+    {
+      "name": "淄博市",
+      "mapName": "淄博市",
+      "value": "86"
+    },
+    {
+      "name": "烟台市",
+      "mapName": "烟台市",
+      "value": "192"
+    },
+    {
+      "name": "青岛市",
+      "mapName": "青岛市",
+      "value": "311"
+    },
+    {
+      "name": "济宁市",
+      "mapName": "济宁市",
+      "value": "87"
+    },
+    {
+      "name": "泰安市",
+      "mapName": "泰安市",
+      "value": "31"
+    },
+    {
+      "name": "日照市",
+      "mapName": "日照市",
+      "value": "160"
+    },
+    {
+      "name": "莱芜市",
+      "mapName": "莱芜市",
+      "value": "18"
+    },
+    {
+      "name": "聊城市",
+      "mapName": "聊城市",
+      "value": "313"
+    },
+    {
+      "name": "德州市",
+      "mapName": "德州市",
+      "value": "244"
+    },
+    {
+      "name": "滨州市",
+      "mapName": "滨州市",
+      "value": "214"
+    },
+    {
+      "name": "潍坊市",
+      "mapName": "潍坊市",
+      "value": "142"
+    },
+    {
+      "name": "威海市",
+      "mapName": "威海市",
+      "value": "267"
+    },
+    {
+      "name": "临沂市",
+      "mapName": "临沂市",
+      "value": "275"
+    },
+    {
+      "name": "菏泽市",
+      "mapName": "菏泽市",
+      "value": "121"
+    }
+  ],
+  "Shanghai": [
+    {
+      "name": "黄浦区",
+      "mapName": "黄浦区",
+      "value": "144"
+    },
+    {
+      "name": "徐汇区",
+      "mapName": "徐汇区",
+      "value": "333"
+    },
+    {
+      "name": "静安区",
+      "mapName": "静安区",
+      "value": "201"
+    },
+    {
+      "name": "长宁区",
+      "mapName": "长宁区",
+      "value": "178"
+    },
+    {
+      "name": "虹口区",
+      "mapName": "虹口区",
+      "value": "13"
+    },
+    {
+      "name": "杨浦区",
+      "mapName": "杨浦区",
+      "value": "17"
+    },
+    {
+      "name": "普陀区",
+      "mapName": "普陀区",
+      "value": "275"
+    },
+    {
+      "name": "浦东新区",
+      "mapName": "浦东新区",
+      "value": "156"
+    },
+    {
+      "name": "嘉定区",
+      "mapName": "嘉定区",
+      "value": "266"
+    },
+    {
+      "name": "闵行区",
+      "mapName": "闵行区",
+      "value": "54"
+    },
+    {
+      "name": "金山区",
+      "mapName": "金山区",
+      "value": "222"
+    },
+    {
+      "name": "松江区",
+      "mapName": "松江区",
+      "value": "349"
+    },
+    {
+      "name": "青浦区",
+      "mapName": "青浦区",
+      "value": "189"
+    },
+    {
+      "name": "宝山区",
+      "mapName": "宝山区",
+      "value": "302"
+    },
+    {
+      "name": "奉贤区",
+      "mapName": "奉贤区",
+      "value": "294"
+    },
+    {
+      "name": "崇明县",
+      "mapName": "崇明县",
+      "value": "176"
+    }
+  ],
+  "ShanxiSN": [
+    {
+      "name": "铜川市",
+      "mapName": "铜川市",
+      "value": "298"
+    },
+    {
+      "name": "渭南市",
+      "mapName": "渭南市",
+      "value": "91"
+    },
+    {
+      "name": "宝鸡市",
+      "mapName": "宝鸡市",
+      "value": "218"
+    },
+    {
+      "name": "咸阳市",
+      "mapName": "咸阳市",
+      "value": "286"
+    },
+    {
+      "name": "延安市",
+      "mapName": "延安市",
+      "value": "231"
+    },
+    {
+      "name": "汉中市",
+      "mapName": "汉中市",
+      "value": "332"
+    },
+    {
+      "name": "安康市",
+      "mapName": "安康市",
+      "value": "245"
+    },
+    {
+      "name": "榆林市",
+      "mapName": "榆林市",
+      "value": "96"
+    },
+    {
+      "name": "西安市",
+      "mapName": "西安市",
+      "value": "152"
+    },
+    {
+      "name": "商洛市",
+      "mapName": "商洛市",
+      "value": "4"
+    }
+  ],
+  "ShanxiSX": [
+    {
+      "name": "阳泉市",
+      "mapName": "阳泉市",
+      "value": "101"
+    },
+    {
+      "name": "长治市",
+      "mapName": "长治市",
+      "value": "253"
+    },
+    {
+      "name": "太原市",
+      "mapName": "太原市",
+      "value": "51"
+    },
+    {
+      "name": "晋城市",
+      "mapName": "晋城市",
+      "value": "19"
+    },
+    {
+      "name": "朔州市",
+      "mapName": "朔州市",
+      "value": "39"
+    },
+    {
+      "name": "大同市",
+      "mapName": "大同市",
+      "value": "177"
+    },
+    {
+      "name": "运城市",
+      "mapName": "运城市",
+      "value": "91"
+    },
+    {
+      "name": "晋中市",
+      "mapName": "晋中市",
+      "value": "57"
+    },
+    {
+      "name": "忻州市",
+      "mapName": "忻州市",
+      "value": "135"
+    },
+    {
+      "name": "吕梁市",
+      "mapName": "吕梁市",
+      "value": "163"
+    },
+    {
+      "name": "临汾市",
+      "mapName": "临汾市",
+      "value": "263"
+    }
+  ],
+  "Sichuan": [
+    {
+      "name": "攀枝花市",
+      "mapName": "攀枝花市",
+      "value": "328"
+    },
+    {
+      "name": "成都市",
+      "mapName": "成都市",
+      "value": "291"
+    },
+    {
+      "name": "德阳市",
+      "mapName": "德阳市",
+      "value": "332"
+    },
+    {
+      "name": "泸州市",
+      "mapName": "泸州市",
+      "value": "27"
+    },
+    {
+      "name": "自贡市",
+      "mapName": "自贡市",
+      "value": "162"
+    },
+    {
+      "name": "绵阳市",
+      "mapName": "绵阳市",
+      "value": "232"
+    },
+    {
+      "name": "乐山市",
+      "mapName": "乐山市",
+      "value": "278"
+    },
+    {
+      "name": "遂宁市",
+      "mapName": "遂宁市",
+      "value": "77"
+    },
+    {
+      "name": "眉山市",
+      "mapName": "眉山市",
+      "value": "119"
+    },
+    {
+      "name": "内江市",
+      "mapName": "内江市",
+      "value": "211"
+    },
+    {
+      "name": "南充市",
+      "mapName": "南充市",
+      "value": "123"
+    },
+    {
+      "name": "广元市",
+      "mapName": "广元市",
+      "value": "224"
+    },
+    {
+      "name": "雅安市",
+      "mapName": "雅安市",
+      "value": "232"
+    },
+    {
+      "name": "巴中市",
+      "mapName": "巴中市",
+      "value": "305"
+    },
+    {
+      "name": "广安市",
+      "mapName": "广安市",
+      "value": "161"
+    },
+    {
+      "name": "资阳市",
+      "mapName": "资阳市",
+      "value": "107"
+    },
+    {
+      "name": "达州市",
+      "mapName": "达州市",
+      "value": "6"
+    },
+    {
+      "name": "宜宾市",
+      "mapName": "宜宾市",
+      "value": "63"
+    },
+    {
+      "name": "凉山彝族自治州",
+      "mapName": "凉山彝族自治州",
+      "value": "163"
+    },
+    {
+      "name": "阿坝藏族羌族自治州",
+      "mapName": "阿坝藏族羌族自治州",
+      "value": "242"
+    },
+    {
+      "name": "甘孜藏族自治州",
+      "mapName": "甘孜藏族自治州",
+      "value": "178"
+    }
+  ],
+  "Taiwan": [
+    {
+      "name": "台湾省",
+      "mapName": "台湾省",
+      "value": "265"
+    }
+  ],
+  "Tianjin": [
+    {
+      "name": "和平区",
+      "mapName": "和平区",
+      "value": "73"
+    },
+    {
+      "name": "河西区",
+      "mapName": "河西区",
+      "value": "267"
+    },
+    {
+      "name": "南开区",
+      "mapName": "南开区",
+      "value": "253"
+    },
+    {
+      "name": "河东区",
+      "mapName": "河东区",
+      "value": "110"
+    },
+    {
+      "name": "红桥区",
+      "mapName": "红桥区",
+      "value": "13"
+    },
+    {
+      "name": "河北区",
+      "mapName": "河北区",
+      "value": "346"
+    },
+    {
+      "name": "西青区",
+      "mapName": "西青区",
+      "value": "264"
+    },
+    {
+      "name": "东丽区",
+      "mapName": "东丽区",
+      "value": "25"
+    },
+    {
+      "name": "津南区",
+      "mapName": "津南区",
+      "value": "279"
+    },
+    {
+      "name": "北辰区",
+      "mapName": "北辰区",
+      "value": "117"
+    },
+    {
+      "name": "武清区",
+      "mapName": "武清区",
+      "value": "69"
+    },
+    {
+      "name": "宁河区",
+      "mapName": "宁河区",
+      "value": "263"
+    },
+    {
+      "name": "滨海新区",
+      "mapName": "滨海新区",
+      "value": "289"
+    },
+    {
+      "name": "静海区",
+      "mapName": "静海区",
+      "value": "96"
+    },
+    {
+      "name": "宝坻区",
+      "mapName": "宝坻区",
+      "value": "51"
+    },
+    {
+      "name": "蓟县",
+      "mapName": "蓟县",
+      "value": "199"
+    }
+  ],
+  "world": [
+    {
+      "name": "Afghanistan",
+      "mapName": "Afghanistan",
+      "value": "340"
+    },
+    {
+      "name": "Angola",
+      "mapName": "Angola",
+      "value": "271"
+    },
+    {
+      "name": "Albania",
+      "mapName": "Albania",
+      "value": "68"
+    },
+    {
+      "name": "Finland",
+      "mapName": "Finland",
+      "value": "85"
+    },
+    {
+      "name": "Andorra",
+      "mapName": "Andorra",
+      "value": "200"
+    },
+    {
+      "name": "United Arab Emirates",
+      "mapName": "United Arab Emirates",
+      "value": "106"
+    },
+    {
+      "name": "Argentina",
+      "mapName": "Argentina",
+      "value": "153"
+    },
+    {
+      "name": "Armenia",
+      "mapName": "Armenia",
+      "value": "349"
+    },
+    {
+      "name": "United States of America",
+      "mapName": "United States of America",
+      "value": "167"
+    },
+    {
+      "name": "France",
+      "mapName": "France",
+      "value": "291"
+    },
+    {
+      "name": "Antigua and Barbuda",
+      "mapName": "Antigua and Barbuda",
+      "value": "164"
+    },
+    {
+      "name": "Australia",
+      "mapName": "Australia",
+      "value": "189"
+    },
+    {
+      "name": "Austria",
+      "mapName": "Austria",
+      "value": "10"
+    },
+    {
+      "name": "Azerbaijan",
+      "mapName": "Azerbaijan",
+      "value": "289"
+    },
+    {
+      "name": "Burundi",
+      "mapName": "Burundi",
+      "value": "132"
+    },
+    {
+      "name": "Belgium",
+      "mapName": "Belgium",
+      "value": "34"
+    },
+    {
+      "name": "Benin",
+      "mapName": "Benin",
+      "value": "25"
+    },
+    {
+      "name": "Burkina Faso",
+      "mapName": "Burkina Faso",
+      "value": "89"
+    },
+    {
+      "name": "Bangladesh",
+      "mapName": "Bangladesh",
+      "value": "268"
+    },
+    {
+      "name": "Bulgaria",
+      "mapName": "Bulgaria",
+      "value": "137"
+    },
+    {
+      "name": "Bahrain",
+      "mapName": "Bahrain",
+      "value": "332"
+    },
+    {
+      "name": "The Bahamas",
+      "mapName": "The Bahamas",
+      "value": "206"
+    },
+    {
+      "name": "Bosnia and Herzegovina",
+      "mapName": "Bosnia and Herzegovina",
+      "value": "251"
+    },
+    {
+      "name": "Belarus",
+      "mapName": "Belarus",
+      "value": "222"
+    },
+    {
+      "name": "Belize",
+      "mapName": "Belize",
+      "value": "176"
+    },
+    {
+      "name": "United Kingdom",
+      "mapName": "United Kingdom",
+      "value": "278"
+    },
+    {
+      "name": "Bolivia",
+      "mapName": "Bolivia",
+      "value": "292"
+    },
+    {
+      "name": "Brazil",
+      "mapName": "Brazil",
+      "value": "192"
+    },
+    {
+      "name": "Barbados",
+      "mapName": "Barbados",
+      "value": "27"
+    },
+    {
+      "name": "Brunei",
+      "mapName": "Brunei",
+      "value": "120"
+    },
+    {
+      "name": "Bhutan",
+      "mapName": "Bhutan",
+      "value": "71"
+    },
+    {
+      "name": "Botswana",
+      "mapName": "Botswana",
+      "value": "122"
+    },
+    {
+      "name": "Central African Republic",
+      "mapName": "Central African Republic",
+      "value": "182"
+    },
+    {
+      "name": "Canada",
+      "mapName": "Canada",
+      "value": "71"
+    },
+    {
+      "name": "Switzerland",
+      "mapName": "Switzerland",
+      "value": "149"
+    },
+    {
+      "name": "Chile",
+      "mapName": "Chile",
+      "value": "266"
+    },
+    {
+      "name": "China",
+      "mapName": "China",
+      "value": "59"
+    },
+    {
+      "name": "Ivory Coast",
+      "mapName": "Ivory Coast",
+      "value": "295"
+    },
+    {
+      "name": "Cameroon",
+      "mapName": "Cameroon",
+      "value": "206"
+    },
+    {
+      "name": "Democratic Republic of the Congo",
+      "mapName": "Democratic Republic of the Congo",
+      "value": "348"
+    },
+    {
+      "name": "Republic of the Congo",
+      "mapName": "Republic of the Congo",
+      "value": "305"
+    },
+    {
+      "name": "Colombia",
+      "mapName": "Colombia",
+      "value": "79"
+    },
+    {
+      "name": "Comoros",
+      "mapName": "Comoros",
+      "value": "102"
+    },
+    {
+      "name": "Cape Verde",
+      "mapName": "Cape Verde",
+      "value": "271"
+    },
+    {
+      "name": "Costa Rica",
+      "mapName": "Costa Rica",
+      "value": "340"
+    },
+    {
+      "name": "Cuba",
+      "mapName": "Cuba",
+      "value": "291"
+    },
+    {
+      "name": "Netherlands",
+      "mapName": "Netherlands",
+      "value": "218"
+    },
+    {
+      "name": "United Kingdom",
+      "mapName": "United Kingdom",
+      "value": "111"
+    },
+    {
+      "name": "Northern Cyprus",
+      "mapName": "Northern Cyprus",
+      "value": "108"
+    },
+    {
+      "name": "Cyprus",
+      "mapName": "Cyprus",
+      "value": "217"
+    },
+    {
+      "name": "Czech Republic",
+      "mapName": "Czech Republic",
+      "value": "63"
+    },
+    {
+      "name": "Germany",
+      "mapName": "Germany",
+      "value": "120"
+    },
+    {
+      "name": "Djibouti",
+      "mapName": "Djibouti",
+      "value": "81"
+    },
+    {
+      "name": "Dominica",
+      "mapName": "Dominica",
+      "value": "22"
+    },
+    {
+      "name": "Denmark",
+      "mapName": "Denmark",
+      "value": "19"
+    },
+    {
+      "name": "Dominican Republic",
+      "mapName": "Dominican Republic",
+      "value": "24"
+    },
+    {
+      "name": "Algeria",
+      "mapName": "Algeria",
+      "value": "204"
+    },
+    {
+      "name": "Ecuador",
+      "mapName": "Ecuador",
+      "value": "45"
+    },
+    {
+      "name": "Egypt",
+      "mapName": "Egypt",
+      "value": "296"
+    },
+    {
+      "name": "Eritrea",
+      "mapName": "Eritrea",
+      "value": "76"
+    },
+    {
+      "name": "Spain",
+      "mapName": "Spain",
+      "value": "247"
+    },
+    {
+      "name": "Estonia",
+      "mapName": "Estonia",
+      "value": "100"
+    },
+    {
+      "name": "Ethiopia",
+      "mapName": "Ethiopia",
+      "value": "223"
+    },
+    {
+      "name": "Finland",
+      "mapName": "Finland",
+      "value": "1"
+    },
+    {
+      "name": "Fiji",
+      "mapName": "Fiji",
+      "value": "155"
+    },
+    {
+      "name": "United Kingdom",
+      "mapName": "United Kingdom",
+      "value": "177"
+    },
+    {
+      "name": "France",
+      "mapName": "France",
+      "value": "10"
+    },
+    {
+      "name": "Denmark",
+      "mapName": "Denmark",
+      "value": "51"
+    },
+    {
+      "name": "Federated States of Micronesia",
+      "mapName": "Federated States of Micronesia",
+      "value": "49"
+    },
+    {
+      "name": "Gabon",
+      "mapName": "Gabon",
+      "value": "89"
+    },
+    {
+      "name": "United Kingdom",
+      "mapName": "United Kingdom",
+      "value": "40"
+    },
+    {
+      "name": "Georgia",
+      "mapName": "Georgia",
+      "value": "304"
+    },
+    {
+      "name": "Ghana",
+      "mapName": "Ghana",
+      "value": "224"
+    },
+    {
+      "name": "Guinea",
+      "mapName": "Guinea",
+      "value": "175"
+    },
+    {
+      "name": "Gambia",
+      "mapName": "Gambia",
+      "value": "171"
+    },
+    {
+      "name": "Guinea Bissau",
+      "mapName": "Guinea Bissau",
+      "value": "309"
+    },
+    {
+      "name": "Equatorial Guinea",
+      "mapName": "Equatorial Guinea",
+      "value": "100"
+    },
+    {
+      "name": "Greece",
+      "mapName": "Greece",
+      "value": "250"
+    },
+    {
+      "name": "Grenada",
+      "mapName": "Grenada",
+      "value": "85"
+    },
+    {
+      "name": "Denmark",
+      "mapName": "Denmark",
+      "value": "143"
+    },
+    {
+      "name": "Guatemala",
+      "mapName": "Guatemala",
+      "value": "323"
+    },
+    {
+      "name": "United States of America",
+      "mapName": "United States of America",
+      "value": "302"
+    },
+    {
+      "name": "Guyana",
+      "mapName": "Guyana",
+      "value": "341"
+    },
+    {
+      "name": "China",
+      "mapName": "China",
+      "value": "59"
+    },
+    {
+      "name": "Australia",
+      "mapName": "Australia",
+      "value": "313"
+    },
+    {
+      "name": "Honduras",
+      "mapName": "Honduras",
+      "value": "145"
+    },
+    {
+      "name": "Croatia",
+      "mapName": "Croatia",
+      "value": "270"
+    },
+    {
+      "name": "Haiti",
+      "mapName": "Haiti",
+      "value": "134"
+    },
+    {
+      "name": "Hungary",
+      "mapName": "Hungary",
+      "value": "13"
+    },
+    {
+      "name": "Indonesia",
+      "mapName": "Indonesia",
+      "value": "119"
+    },
+    {
+      "name": "United Kingdom",
+      "mapName": "United Kingdom",
+      "value": "80"
+    },
+    {
+      "name": "India",
+      "mapName": "India",
+      "value": "268"
+    },
+    {
+      "name": "United Kingdom",
+      "mapName": "United Kingdom",
+      "value": "248"
+    },
+    {
+      "name": "Ireland",
+      "mapName": "Ireland",
+      "value": "37"
+    },
+    {
+      "name": "Iran",
+      "mapName": "Iran",
+      "value": "155"
+    },
+    {
+      "name": "Iraq",
+      "mapName": "Iraq",
+      "value": "187"
+    },
+    {
+      "name": "Iceland",
+      "mapName": "Iceland",
+      "value": "261"
+    },
+    {
+      "name": "Israel",
+      "mapName": "Israel",
+      "value": "240"
+    },
+    {
+      "name": "Italy",
+      "mapName": "Italy",
+      "value": "3"
+    },
+    {
+      "name": "Jamaica",
+      "mapName": "Jamaica",
+      "value": "144"
+    },
+    {
+      "name": "United Kingdom",
+      "mapName": "United Kingdom",
+      "value": "171"
+    },
+    {
+      "name": "Jordan",
+      "mapName": "Jordan",
+      "value": "190"
+    },
+    {
+      "name": "Japan",
+      "mapName": "Japan",
+      "value": "6"
+    },
+    {
+      "name": "Kashmir",
+      "mapName": "Kashmir",
+      "value": "216"
+    },
+    {
+      "name": "Kazakhstan",
+      "mapName": "Kazakhstan",
+      "value": "274"
+    },
+    {
+      "name": "Kenya",
+      "mapName": "Kenya",
+      "value": "227"
+    },
+    {
+      "name": "Kyrgyzstan",
+      "mapName": "Kyrgyzstan",
+      "value": "22"
+    },
+    {
+      "name": "Cambodia",
+      "mapName": "Cambodia",
+      "value": "303"
+    },
+    {
+      "name": "Kiribati",
+      "mapName": "Kiribati",
+      "value": "342"
+    },
+    {
+      "name": "South Korea",
+      "mapName": "South Korea",
+      "value": "164"
+    },
+    {
+      "name": "Kosovo",
+      "mapName": "Kosovo",
+      "value": "83"
+    },
+    {
+      "name": "Kuwait",
+      "mapName": "Kuwait",
+      "value": "132"
+    },
+    {
+      "name": "Laos",
+      "mapName": "Laos",
+      "value": "319"
+    },
+    {
+      "name": "Lebanon",
+      "mapName": "Lebanon",
+      "value": "343"
+    },
+    {
+      "name": "Liberia",
+      "mapName": "Liberia",
+      "value": "48"
+    },
+    {
+      "name": "Libya",
+      "mapName": "Libya",
+      "value": "306"
+    },
+    {
+      "name": "Saint Lucia",
+      "mapName": "Saint Lucia",
+      "value": "325"
+    },
+    {
+      "name": "Sri Lanka",
+      "mapName": "Sri Lanka",
+      "value": "224"
+    },
+    {
+      "name": "Lesotho",
+      "mapName": "Lesotho",
+      "value": "301"
+    },
+    {
+      "name": "Lithuania",
+      "mapName": "Lithuania",
+      "value": "199"
+    },
+    {
+      "name": "Luxembourg",
+      "mapName": "Luxembourg",
+      "value": "305"
+    },
+    {
+      "name": "Latvia",
+      "mapName": "Latvia",
+      "value": "148"
+    },
+    {
+      "name": "Morocco",
+      "mapName": "Morocco",
+      "value": "347"
+    },
+    {
+      "name": "Moldova",
+      "mapName": "Moldova",
+      "value": "65"
+    },
+    {
+      "name": "Madagascar",
+      "mapName": "Madagascar",
+      "value": "30"
+    },
+    {
+      "name": "Mexico",
+      "mapName": "Mexico",
+      "value": "281"
+    },
+    {
+      "name": "Macedonia",
+      "mapName": "Macedonia",
+      "value": "220"
+    },
+    {
+      "name": "Mali",
+      "mapName": "Mali",
+      "value": "329"
+    },
+    {
+      "name": "Malta",
+      "mapName": "Malta",
+      "value": "146"
+    },
+    {
+      "name": "Myanmar",
+      "mapName": "Myanmar",
+      "value": "259"
+    },
+    {
+      "name": "Montenegro",
+      "mapName": "Montenegro",
+      "value": "127"
+    },
+    {
+      "name": "Mongolia",
+      "mapName": "Mongolia",
+      "value": "193"
+    },
+    {
+      "name": "United States of America",
+      "mapName": "United States of America",
+      "value": "73"
+    },
+    {
+      "name": "Mozambique",
+      "mapName": "Mozambique",
+      "value": "247"
+    },
+    {
+      "name": "Mauritania",
+      "mapName": "Mauritania",
+      "value": "103"
+    },
+    {
+      "name": "United Kingdom",
+      "mapName": "United Kingdom",
+      "value": "84"
+    },
+    {
+      "name": "Mauritius",
+      "mapName": "Mauritius",
+      "value": "106"
+    },
+    {
+      "name": "Malawi",
+      "mapName": "Malawi",
+      "value": "235"
+    },
+    {
+      "name": "Malaysia",
+      "mapName": "Malaysia",
+      "value": "3"
+    },
+    {
+      "name": "Namibia",
+      "mapName": "Namibia",
+      "value": "254"
+    },
+    {
+      "name": "France",
+      "mapName": "France",
+      "value": "14"
+    },
+    {
+      "name": "Niger",
+      "mapName": "Niger",
+      "value": "35"
+    },
+    {
+      "name": "Nigeria",
+      "mapName": "Nigeria",
+      "value": "213"
+    },
+    {
+      "name": "Nicaragua",
+      "mapName": "Nicaragua",
+      "value": "77"
+    },
+    {
+      "name": "New Zealand",
+      "mapName": "New Zealand",
+      "value": "95"
+    },
+    {
+      "name": "Netherlands",
+      "mapName": "Netherlands",
+      "value": "339"
+    },
+    {
+      "name": "Norway",
+      "mapName": "Norway",
+      "value": "239"
+    },
+    {
+      "name": "Nepal",
+      "mapName": "Nepal",
+      "value": "158"
+    },
+    {
+      "name": "New Zealand",
+      "mapName": "New Zealand",
+      "value": "117"
+    },
+    {
+      "name": "Oman",
+      "mapName": "Oman",
+      "value": "259"
+    },
+    {
+      "name": "Pakistan",
+      "mapName": "Pakistan",
+      "value": "113"
+    },
+    {
+      "name": "Panama",
+      "mapName": "Panama",
+      "value": "221"
+    },
+    {
+      "name": "Peru",
+      "mapName": "Peru",
+      "value": "26"
+    },
+    {
+      "name": "Philippines",
+      "mapName": "Philippines",
+      "value": "134"
+    },
+    {
+      "name": "Palau",
+      "mapName": "Palau",
+      "value": "44"
+    },
+    {
+      "name": "Papua New Guinea",
+      "mapName": "Papua New Guinea",
+      "value": "168"
+    },
+    {
+      "name": "Poland",
+      "mapName": "Poland",
+      "value": "294"
+    },
+    {
+      "name": "United States of America",
+      "mapName": "United States of America",
+      "value": "130"
+    },
+    {
+      "name": "North Korea",
+      "mapName": "North Korea",
+      "value": "64"
+    },
+    {
+      "name": "Portugal",
+      "mapName": "Portugal",
+      "value": "77"
+    },
+    {
+      "name": "Paraguay",
+      "mapName": "Paraguay",
+      "value": "164"
+    },
+    {
+      "name": "Israel",
+      "mapName": "Israel",
+      "value": "234"
+    },
+    {
+      "name": "France",
+      "mapName": "France",
+      "value": "32"
+    },
+    {
+      "name": "Qatar",
+      "mapName": "Qatar",
+      "value": "198"
+    },
+    {
+      "name": "Romania",
+      "mapName": "Romania",
+      "value": "107"
+    },
+    {
+      "name": "Russia",
+      "mapName": "Russia",
+      "value": "260"
+    },
+    {
+      "name": "Rwanda",
+      "mapName": "Rwanda",
+      "value": "331"
+    },
+    {
+      "name": "Western Sahara",
+      "mapName": "Western Sahara",
+      "value": "259"
+    },
+    {
+      "name": "Saudi Arabia",
+      "mapName": "Saudi Arabia",
+      "value": "68"
+    },
+    {
+      "name": "Sudan",
+      "mapName": "Sudan",
+      "value": "199"
+    },
+    {
+      "name": "South Sudan",
+      "mapName": "South Sudan",
+      "value": "117"
+    },
+    {
+      "name": "Senegal",
+      "mapName": "Senegal",
+      "value": "160"
+    },
+    {
+      "name": "Singapore",
+      "mapName": "Singapore",
+      "value": "169"
+    },
+    {
+      "name": "United Kingdom",
+      "mapName": "United Kingdom",
+      "value": "213"
+    },
+    {
+      "name": "United Kingdom",
+      "mapName": "United Kingdom",
+      "value": "124"
+    },
+    {
+      "name": "Solomon Islands",
+      "mapName": "Solomon Islands",
+      "value": "329"
+    },
+    {
+      "name": "Sierra Leone",
+      "mapName": "Sierra Leone",
+      "value": "3"
+    },
+    {
+      "name": "El Salvador",
+      "mapName": "El Salvador",
+      "value": "292"
+    },
+    {
+      "name": "Somaliland",
+      "mapName": "Somaliland",
+      "value": "210"
+    },
+    {
+      "name": "Somalia",
+      "mapName": "Somalia",
+      "value": "316"
+    },
+    {
+      "name": "France",
+      "mapName": "France",
+      "value": "41"
+    },
+    {
+      "name": "Republic of Serbia",
+      "mapName": "Republic of Serbia",
+      "value": "251"
+    },
+    {
+      "name": "Sao Tome and Principe",
+      "mapName": "Sao Tome and Principe",
+      "value": "56"
+    },
+    {
+      "name": "Suriname",
+      "mapName": "Suriname",
+      "value": "199"
+    },
+    {
+      "name": "Slovakia",
+      "mapName": "Slovakia",
+      "value": "230"
+    },
+    {
+      "name": "Slovenia",
+      "mapName": "Slovenia",
+      "value": "76"
+    },
+    {
+      "name": "Sweden",
+      "mapName": "Sweden",
+      "value": "223"
+    },
+    {
+      "name": "Swaziland",
+      "mapName": "Swaziland",
+      "value": "228"
+    },
+    {
+      "name": "Seychelles",
+      "mapName": "Seychelles",
+      "value": "339"
+    },
+    {
+      "name": "Syria",
+      "mapName": "Syria",
+      "value": "286"
+    },
+    {
+      "name": "United Kingdom",
+      "mapName": "United Kingdom",
+      "value": "41"
+    },
+    {
+      "name": "Chad",
+      "mapName": "Chad",
+      "value": "131"
+    },
+    {
+      "name": "Togo",
+      "mapName": "Togo",
+      "value": "313"
+    },
+    {
+      "name": "Thailand",
+      "mapName": "Thailand",
+      "value": "165"
+    },
+    {
+      "name": "Tajikistan",
+      "mapName": "Tajikistan",
+      "value": "69"
+    },
+    {
+      "name": "Turkmenistan",
+      "mapName": "Turkmenistan",
+      "value": "160"
+    },
+    {
+      "name": "East Timor",
+      "mapName": "East Timor",
+      "value": "272"
+    },
+    {
+      "name": "Tonga",
+      "mapName": "Tonga",
+      "value": "230"
+    },
+    {
+      "name": "Trinidad and Tobago",
+      "mapName": "Trinidad and Tobago",
+      "value": "340"
+    },
+    {
+      "name": "Tunisia",
+      "mapName": "Tunisia",
+      "value": "39"
+    },
+    {
+      "name": "Turkey",
+      "mapName": "Turkey",
+      "value": "162"
+    },
+    {
+      "name": "United Republic of Tanzania",
+      "mapName": "United Republic of Tanzania",
+      "value": "119"
+    },
+    {
+      "name": "Uganda",
+      "mapName": "Uganda",
+      "value": "11"
+    },
+    {
+      "name": "Ukraine",
+      "mapName": "Ukraine",
+      "value": "23"
+    },
+    {
+      "name": "Uruguay",
+      "mapName": "Uruguay",
+      "value": "104"
+    },
+    {
+      "name": "United States of America",
+      "mapName": "United States of America",
+      "value": "347"
+    },
+    {
+      "name": "Uzbekistan",
+      "mapName": "Uzbekistan",
+      "value": "166"
+    },
+    {
+      "name": "Saint Vincent and the Grenadines",
+      "mapName": "Saint Vincent and the Grenadines",
+      "value": "186"
+    },
+    {
+      "name": "Venezuela",
+      "mapName": "Venezuela",
+      "value": "42"
+    },
+    {
+      "name": "United States of America",
+      "mapName": "United States of America",
+      "value": "202"
+    },
+    {
+      "name": "Vietnam",
+      "mapName": "Vietnam",
+      "value": "312"
+    },
+    {
+      "name": "Vanuatu",
+      "mapName": "Vanuatu",
+      "value": "80"
+    },
+    {
+      "name": "Samoa",
+      "mapName": "Samoa",
+      "value": "97"
+    },
+    {
+      "name": "Yemen",
+      "mapName": "Yemen",
+      "value": "198"
+    },
+    {
+      "name": "South Africa",
+      "mapName": "South Africa",
+      "value": "131"
+    },
+    {
+      "name": "Zambia",
+      "mapName": "Zambia",
+      "value": "132"
+    },
+    {
+      "name": "Zimbabwe",
+      "mapName": "Zimbabwe",
+      "value": "215"
+    }
+  ],
+  "Xinjiang": [
+    {
+      "name": "克拉玛依市",
+      "mapName": "克拉玛依市",
+      "value": "326"
+    },
+    {
+      "name": "哈密市",
+      "mapName": "哈密市",
+      "value": "183"
+    },
+    {
+      "name": "乌鲁木齐市",
+      "mapName": "乌鲁木齐市",
+      "value": "244"
+    },
+    {
+      "name": "吐鲁番市",
+      "mapName": "吐鲁番市",
+      "value": "165"
+    },
+    {
+      "name": "博尔塔拉蒙古自治州",
+      "mapName": "博尔塔拉蒙古自治州",
+      "value": "47"
+    },
+    {
+      "name": "昌吉回族自治州",
+      "mapName": "昌吉回族自治州",
+      "value": "149"
+    },
+    {
+      "name": "克孜勒苏柯尔克孜自治州",
+      "mapName": "克孜勒苏柯尔克孜自治州",
+      "value": "142"
+    },
+    {
+      "name": "和田地区",
+      "mapName": "和田地区",
+      "value": "243"
+    },
+    {
+      "name": "阿克苏地区",
+      "mapName": "阿克苏地区",
+      "value": "52"
+    },
+    {
+      "name": "喀什地区",
+      "mapName": "喀什地区",
+      "value": "237"
+    },
+    {
+      "name": "石河子市",
+      "mapName": "石河子市",
+      "value": "77"
+    },
+    {
+      "name": "巴音郭楞蒙古自治州",
+      "mapName": "巴音郭楞蒙古自治州",
+      "value": "218"
+    },
+    {
+      "name": "伊犁哈萨克自治州",
+      "mapName": "伊犁哈萨克自治州",
+      "value": "156"
+    },
+    {
+      "name": "阿拉尔市",
+      "mapName": "阿拉尔市",
+      "value": "130"
+    },
+    {
+      "name": "图木舒克市",
+      "mapName": "图木舒克市",
+      "value": "127"
+    },
+    {
+      "name": "五家渠市",
+      "mapName": "五家渠市",
+      "value": "37"
+    },
+    {
+      "name": "塔城地区",
+      "mapName": "塔城地区",
+      "value": "346"
+    },
+    {
+      "name": "铁门关市",
+      "mapName": "铁门关市",
+      "value": "37"
+    },
+    {
+      "name": "北屯市",
+      "mapName": "北屯市",
+      "value": "192"
+    },
+    {
+      "name": "双河市",
+      "mapName": "双河市",
+      "value": "171"
+    },
+    {
+      "name": "昆玉市",
+      "mapName": "昆玉市",
+      "value": "86"
+    },
+    {
+      "name": "阿勒泰地区",
+      "mapName": "阿勒泰地区",
+      "value": "340"
+    },
+    {
+      "name": "可克达拉市",
+      "mapName": "可克达拉市",
+      "value": "350"
+    }
+  ],
+  "Xizang": [
+    {
+      "name": "拉萨市",
+      "mapName": "拉萨市",
+      "value": "213"
+    },
+    {
+      "name": "山南市",
+      "mapName": "山南市",
+      "value": "67"
+    },
+    {
+      "name": "日喀则市",
+      "mapName": "日喀则市",
+      "value": "195"
+    },
+    {
+      "name": "昌都市",
+      "mapName": "昌都市",
+      "value": "151"
+    },
+    {
+      "name": "阿里地区",
+      "mapName": "阿里地区",
+      "value": "285"
+    },
+    {
+      "name": "林芝市",
+      "mapName": "林芝市",
+      "value": "102"
+    },
+    {
+      "name": "那曲地区",
+      "mapName": "那曲地区",
+      "value": "338"
+    }
+  ],
+  "Yunnan": [
+    {
+      "name": "保山市",
+      "mapName": "保山市",
+      "value": "22"
+    },
+    {
+      "name": "昆明市",
+      "mapName": "昆明市",
+      "value": "331"
+    },
+    {
+      "name": "曲靖市",
+      "mapName": "曲靖市",
+      "value": "180"
+    },
+    {
+      "name": "丽江市",
+      "mapName": "丽江市",
+      "value": "274"
+    },
+    {
+      "name": "昭通市",
+      "mapName": "昭通市",
+      "value": "217"
+    },
+    {
+      "name": "玉溪市",
+      "mapName": "玉溪市",
+      "value": "122"
+    },
+    {
+      "name": "临沧市",
+      "mapName": "临沧市",
+      "value": "115"
+    },
+    {
+      "name": "楚雄彝族自治州",
+      "mapName": "楚雄彝族自治州",
+      "value": "37"
+    },
+    {
+      "name": "文山壮族苗族自治州",
+      "mapName": "文山壮族苗族自治州",
+      "value": "109"
+    },
+    {
+      "name": "西双版纳傣族自治州",
+      "mapName": "西双版纳傣族自治州",
+      "value": "304"
+    },
+    {
+      "name": "红河哈尼族彝族自治州",
+      "mapName": "红河哈尼族彝族自治州",
+      "value": "246"
+    },
+    {
+      "name": "普洱市",
+      "mapName": "普洱市",
+      "value": "186"
+    },
+    {
+      "name": "大理白族自治州",
+      "mapName": "大理白族自治州",
+      "value": "302"
+    },
+    {
+      "name": "德宏傣族景颇族自治州",
+      "mapName": "德宏傣族景颇族自治州",
+      "value": "296"
+    },
+    {
+      "name": "怒江傈僳族自治州",
+      "mapName": "怒江傈僳族自治州",
+      "value": "37"
+    },
+    {
+      "name": "迪庆藏族自治州",
+      "mapName": "迪庆藏族自治州",
+      "value": "52"
+    }
+  ],
+  "Zhejiang": [
+    {
+      "name": "杭州市",
+      "mapName": "杭州市",
+      "value": "170"
+    },
+    {
+      "name": "嘉兴市",
+      "mapName": "嘉兴市",
+      "value": "44"
+    },
+    {
+      "name": "绍兴市",
+      "mapName": "绍兴市",
+      "value": "178"
+    },
+    {
+      "name": "温州市",
+      "mapName": "温州市",
+      "value": "194"
+    },
+    {
+      "name": "宁波市",
+      "mapName": "宁波市",
+      "value": "318"
+    },
+    {
+      "name": "湖州市",
+      "mapName": "湖州市",
+      "value": "18"
+    },
+    {
+      "name": "衢州市",
+      "mapName": "衢州市",
+      "value": "132"
+    },
+    {
+      "name": "丽水市",
+      "mapName": "丽水市",
+      "value": "294"
+    },
+    {
+      "name": "台州市",
+      "mapName": "台州市",
+      "value": "120"
+    },
+    {
+      "name": "金华市",
+      "mapName": "金华市",
+      "value": "165"
+    },
+    {
+      "name": "舟山市",
+      "mapName": "舟山市",
+      "value": "239"
+    }
+  ]
+}

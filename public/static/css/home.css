@@ -1,0 +1,1266 @@
+@charset "utf-8";
+
+/*==========================================
+ home
+ ===========================================*/
+
+/** 初始化 **/
+
+/** 滚动条 **/
+
+/** 图标字体 **/
+
+/** 初始化全局标签 **/
+
+/** 基础通用 **/
+
+/* 消除第三方ui可能造成的冲突 */
+
+/* 三角形 */
+
+/* 单行溢出省略 */
+
+/* 屏蔽选中 */
+
+/* 纯圆角 */
+
+/* 布局 */
+
+/* 后台布局风格 */
+
+/** 页面元素 **/
+
+/* 引用 */
+
+/* 字段集合 */
+
+/* 进度条 */
+
+/* 折叠面板 */
+
+/* 背景颜色 */
+
+/* 文字 */
+
+/*========================*/
+/** 按钮 **/
+
+/* 圆角 */
+
+/* 原始 */
+
+/* 边框 */
+
+/* 百搭 */
+
+/* 暖色 */
+
+/* 警告 */
+
+/* 禁用 */
+
+/* 大型 */
+
+/* 小型 */
+
+/* 迷你 */
+
+/* 按钮组 */
+
+/* 自定义 新按钮 */
+
+/*=====================
+前端开始
+*=======================/
+
+/* =========================
+ 主页 页面
+===========================*/
+
+/*  主页 服务导览 小节 */
+
+#homeService {
+
+}
+
+#homeService .item + .item {
+    position: relative;
+}
+
+#homeService .item + .item:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 0;
+    border-left: 2px dashed #d4d4d4;
+}
+
+#homeService .service-title a {
+    font-size: 28px;
+    color: #ff6633;
+}
+
+#homeService .service-title a:hover {
+    opacity: 0.628;
+}
+
+#homeService .service-extra a {
+    font-family: 微软雅黑;
+    font-size: 16px;
+    color: #646464;
+}
+
+/*  主页 二手好房 小节 */
+
+#homeSecondHandHouse {
+
+}
+
+#homeSecondHandHouse .item {
+    padding: 0 5px;
+}
+
+#homeSecondHandHouse .item .itemIcon {
+    width: 100%;
+    overflow: hidden;
+}
+
+#homeSecondHandHouse .item .itemTitle {
+    width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+#homeSecondHandHouse .item .itemTitle .itemDesc {
+    margin-top: 0.4rem;
+}
+
+#homeSecondHandHouse .item .itemTitle p {
+    padding-left: 10px;
+    line-height: 1.8em;
+    height: 3.6em;
+    font-size: 16px;
+    color: #333333;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+#homeSecondHandHouse .item .itemTitle .house-price {
+    padding-left: 10px;
+    line-height: 1.8em;
+    font-size: 14px;
+    color: #ff6633;
+}
+
+#homeSecondHandHouse .item .itemTitle .house-date a{
+    margin-right: 10px;
+    padding: 0 10px;
+    border: 1px solid #ff6633;
+    line-height: 1.8em;
+    font-size: 14px;
+    color: #ff6633;
+}
+
+/* 主页  热门 二手好房 小节  */
+
+#homeSecondHandHouseHot {
+
+}
+
+#homeSecondHandHouseHot .item {
+    width: 396px;
+    height: 100%;
+}
+
+#homeSecondHandHouseHot .item .itemIcon {
+    position: relative;
+    padding: 8px;
+    background-color: #FFFFFF;
+    width: 370px;
+    height: 280px;
+    overflow: hidden;
+}
+
+#homeSecondHandHouseHot .item .itemIcon .bottom-desc {
+    position: absolute;
+    bottom: 8px;
+    padding: 0 15px;
+    background:rgba(0,0,0,0.5);
+    width: 340px;
+    height: 30px;
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 28px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#homeSecondHandHouseHot .item .itemIcon img{
+    width: 100%;
+    height: 100%;
+}
+
+#homeSecondHandHouseHot .item .itemTitle {
+    width: 360px;
+    padding: 0 18px;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+#homeSecondHandHouseHot .item .itemTitle span{
+    margin-right: 10px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+#homeSecondHandHouseHot .item .itemTitle span{
+    margin-right: 10px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+/* =========================
+ 新房 页面
+===========================*/
+
+/* 热门楼盘 */
+#newHouseBuild {
+
+}
+
+#newHouseBuild .item{
+
+}
+
+#newHouseBuild .item + .item{
+    margin-left: 10px;
+}
+
+#newHouseBuild .item p a{
+    font-family: 微软雅黑;
+    font-size: 15px;
+    line-height: 28px;
+}
+
+#newHouseBuild .item p{
+    font-size: 15px;
+    line-height: 28px;
+    text-align: center;
+}
+
+
+/* =========================
+ 二手房 页面
+===========================*/
+
+/* =========================
+ 家装 页面
+===========================*/
+
+/* 家装推荐 */
+#betterHot{
+
+}
+
+#betterHot .item {
+    width: 350px;
+    height: 100%;
+}
+
+#betterHot .item .itemIcon {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 350px;
+    height: 211px;
+    overflow: hidden;
+}
+
+#betterHot .item .itemIcon img{
+    width: 100%;
+    height: 100%;
+}
+
+#betterHot .item .itemTitle{
+    margin-top: 4px;
+    height: 166px;
+}
+
+#betterHot .item .itemTitle .key  p{
+    padding: 0 15px;
+    line-height: 36px;
+    font-size: 18px;
+    height: 36px;
+    color: #333;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+#betterHot .item .itemTitle .key  a{
+    color: #333;
+    cursor: pointer;
+}
+
+#betterHot .item .itemTitle .key  a:hover{
+    color: #f63;
+}
+
+#betterHot .item .itemTitle .detail  p{
+    padding: 0 15px;
+    line-height: 1.6em;
+    max-height: 90px;
+    font-size: 14px;
+    color: #888;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    text-align: justify;
+}
+
+
+/* =========================
+ 楼盘 页面
+===========================*/
+
+/* 楼盘 热门楼盘 列表 */
+
+#buildHot{
+
+}
+
+#buildHot .item {
+    width: 350px;
+    height: 100%;
+}
+
+#buildHot .item .itemIcon {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 350px;
+    height: 211px;
+    overflow: hidden;
+}
+
+#buildHot .item .itemIcon img{
+    width: 100%;
+    height: 100%;
+}
+
+#buildHot .item .itemTitle{
+    margin-top: 4px;
+    height: 166px;
+}
+
+#buildHot .item .itemTitle .key  p{
+    padding: 0 15px;
+    line-height: 36px;
+    font-size: 18px;
+    height: 36px;
+    color: #333;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+#buildHot .item .itemTitle .key  a{
+    color: #333;
+    cursor: pointer;
+}
+
+#buildHot .item .itemTitle .key  a:hover{
+    color: #f63;
+}
+
+#buildHot .item .itemTitle .detail  p{
+    padding: 0 15px;
+    line-height: 1.6em;
+    max-height: 90px;
+    font-size: 14px;
+    color: #888;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    text-align: justify;
+}
+
+
+/* 楼盘 时光线 */
+
+#buildTimeLine{
+
+}
+
+#buildTimeLine .itemTitle a{
+    color: #333;
+}
+
+#buildTimeLine .itemTitle a:hover{
+    color: #f63;
+}
+
+#buildTimeLine .itemDetail p{
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    text-align: justify;
+}
+
+
+/* =========================
+ 联系我们 页面
+===========================*/
+
+
+/* =======================================
+	 element
+================================== */
+.layui-form-select dl dd.layui-this {
+    background-color: #0DBD9F;
+    color: #fff;
+}
+.layui-form-select dl dd:hover {
+    background-color: #f2f2f2;
+}
+
+/* =======================================
+	 文本
+================================== */
+.layui-label{
+    vertical-align: middle;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    color: #555;
+    white-space: nowrap;
+    text-align: left;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.layui-text{
+    vertical-align: middle;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    color: #555;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.layui-text.layui-title{
+    height: 16px;
+    line-height: 16px;
+    padding: 0 6px;
+    color: #555;
+    border-radius: 1px;
+}
+
+.layui-text.layui-label{
+    height: 38px;
+    line-height: 38px;
+    padding: 0 5px;
+    color: #555;
+}
+
+.layui-text.layui-primary{
+    background-color: #009688;
+    color: #fff;
+}
+
+.layui-text.layui-danger{
+    background-color: #FF5722;
+    color: #fff;
+}
+.layui-text-danger{
+    background-color: #fff;
+    color: #FF5722;
+}
+
+/*
+颜色
+*/
+
+.layui-color-default {
+    color: #555;
+}
+
+.layui-color-primary {
+    color: #009688;
+}
+
+.layui-color-danger{
+    color: #FF5722;
+}
+
+/* =======================================
+	 标签	label
+================================== */
+
+
+/* =======================================
+	 徽章	badge
+================================== */
+
+/* =======================================
+	 警告框 提示框 hover tip
+================================== */
+.layui-tooltip-container{
+    position: fixed;
+    width: 100%;
+    top:0;
+    left: 0;
+}
+.layui-tooltip-container .tooltip-body{
+    position: relative;
+    width: 100%;
+}
+
+.tooltip {
+    width: auto;
+    height: auto;
+    position: absolute;
+    z-index: 9999;
+    display: block;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.8;
+    text-align: left;
+    text-align: start;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-break: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    white-space: normal;
+    filter: alpha(opacity=0);
+    opacity: 0.7;
+    line-break: auto;
+}
+
+[lay-filter="tooltip"]{
+    cursor: pointer;
+}
+
+[lay-filter="tooltip"]:hover{
+    opacity: 0.9;
+    color: #00a0e9;
+}
+
+.tooltip[lay-arrow="in"] {
+    filter: alpha(opacity=90);
+    opacity: .9;
+}
+
+.tooltip[lay-arrow="top"] {
+    padding: 5px 0;
+    margin-top: -3px;
+}
+
+.tooltip[lay-arrow="right"] {
+    padding: 0 5px;
+    margin-left: 3px;
+}
+
+.tooltip[lay-arrow="bottom"] {
+    padding: 5px 0;
+    margin-top: 3px;
+}
+
+.tooltip[lay-arrow="left"] {
+    padding: 0 5px;
+    margin-left: -3px;
+}
+
+.tooltip-inner {
+    max-width: 300px;
+    padding: 10px 15px;
+    color: #fff;
+    text-align: center;
+    background-color: #000;
+    border-radius: 2px;
+}
+
+.tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.tooltip[lay-arrow="top"] .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -8px;
+    border-width: 8px 8px 0;
+    border-top-color: #000;
+}
+
+.tooltip[lay-arrow="top-left"] .tooltip-arrow {
+    right: 0;
+    bottom: 0;
+    margin-bottom: -9px;
+    border-width: 10px 0 0 8px;
+    border-top-color: #000;
+}
+
+.tooltip[lay-arrow="top-right"] .tooltip-arrow {
+    bottom: 0;
+    left: 0;
+    margin-bottom: -9px;
+    border-width: 10px 8px 0 0;
+    border-top-color: #000;
+}
+
+.tooltip[lay-arrow="right"] .tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -8px;
+    border-width: 8px 8px 8px 0;
+    border-right-color: #000;
+}
+
+.tooltip[lay-arrow="left"] .tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+    border-width: 8px 0 8px 8px;
+    border-left-color: #000;
+}
+
+.tooltip[lay-arrow="bottom"] .tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -8px;
+    border-width: 0 8px 8px;
+    border-bottom-color: #000;
+}
+
+.tooltip[lay-arrow="bottom-left"] .tooltip-arrow {
+    top: 0;
+    right: 0;
+    margin-top: -9px;
+    border-width: 0 0 10px 8px;
+    border-bottom-color: #000;
+}
+
+.tooltip[lay-arrow="bottom-right"] .tooltip-arrow {
+    top: 0;
+    left: 0;
+    margin-top: -9px;
+    border-width: 0 8px 10px 0;
+    border-bottom-color: #000;
+}
+
+/* =======================================
+		collapse
+================================== */
+
+/* =======================================
+		form 或  forms	组件
+================================== */
+/* 复选框 */
+
+.checkbox-mini .layui-form-checkbox {
+    height: 22px;
+    line-height: 20px;
+    padding-right: 20px;
+}
+
+.checkbox-mini .layui-form-checkbox span {
+    height: 20px;
+    line-height: 20px;
+    padding: 0 5px;
+    font-size: 12px;
+}
+
+.checkbox-mini .layui-form-checkbox i {
+    width: 22px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 18px;
+}
+
+.checkbox-small .layui-form-checkbox {
+    height: 26px;
+    line-height: 24px;
+    padding-right: 24px;
+}
+
+.checkbox-small .layui-form-checkbox span {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 5px;
+    font-size: 13px;
+
+}
+
+.checkbox-small .layui-form-checkbox i {
+    width: 26px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 20px;
+}
+
+.checkbox-left .layui-form-checkbox {
+    padding-left: 30px !important;
+    padding-right: 0 !important;
+}
+
+.checkbox-left .layui-form-checkbox i {
+    left: 0 !important;
+}
+
+.checkbox-left.checkbox-small .layui-form-checkbox {
+    padding-left: 26px !important;
+    padding-right: 0 !important;
+}
+
+.checkbox-left.checkbox-small .layui-form-checkbox i {
+    left: 0 !important;
+}
+
+.checkbox-left.checkbox-mini .layui-form-checkbox {
+    padding-left: 22px !important;
+    padding-right: 0 !important;
+}
+
+.checkbox-left.checkbox-mini .layui-form-checkbox i {
+    left: 0 !important;
+}
+
+.layui-form-checkbox:not([lay-skin="primary"]):hover{
+    border: 1px solid #a3a3a3;
+}
+
+.layui-form-checkbox:not([lay-skin="primary"]):hover span {
+    background-color: #a3a3a3;
+}
+
+.layui-form-checkbox:hover i {
+    color: #0DBD9F;
+}
+
+.layui-form-checked:not([lay-skin="primary"]), .layui-form-checked:not([lay-skin="primary"]):hover {
+    border-color: #0DBD9F;
+}
+
+.layui-form-checked:not([lay-skin="primary"]) span, .layui-form-checked:not([lay-skin="primary"]):hover span {
+    background-color: #0DBD9F;
+}
+
+.layui-form-checkbox[lay-skin="primary"]:hover i{
+    color: #0DBD9F;
+    background-color: #FFF;
+    border-color: #0DBD9F;
+}
+
+.layui-form-checked[lay-skin="primary"] i, .layui-form-checked[lay-skin="primary"]:hover i {
+    color: #fff;
+    background-color: #0DBD9F;
+    border-color: #0DBD9F;
+}
+
+.layui-form-checked i, .layui-form-checked:hover i {
+    color: #0DBD9F;
+}
+
+.layui-form-checkbox[lay-skin="default"]:hover i {
+    border-color: #0DBD9F;
+    color: #0DBD9F;
+}
+
+.layui-form-checked[lay-skin="default"] span, .layui-form-checked[lay-skin="default"]:hover span {
+    background-color: #0DBD9F;
+    color: #fff;
+}
+
+.layui-form-checked[lay-skin="default"] i, .layui-form-checked[lay-skin="default"]:hover i {
+    border-color: #0DBD9F;
+    background-color: #FFF;
+    color: #0DBD9F;
+}
+
+.layui-form-onswitch {
+    border-color: #0DBD9F;
+    background-color: #0DBD9F;
+}
+
+.layui-form-checked[lay-skin="hot"], .layui-form-checked[lay-skin="hot"]:hover {
+    border-color: #f44336;
+}
+
+.layui-form-checkbox[lay-skin="hot"]:hover i {
+    border-color: #f44336;
+    color: #f44336;
+}
+
+.layui-form-checked[lay-skin="hot"] span, .layui-form-checked[lay-skin="hot"]:hover span {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.layui-form-checked[lay-skin="hot"] i, .layui-form-checked[lay-skin="hot"]:hover i {
+    border-color: #f44336;
+    background-color: #FFF;
+    color: #f44336;
+}
+
+/* 单选框 */
+.layui-form-radioed i, .layui-form-radio i:hover {
+    color: #0DBD9F;
+}
+
+
+/* 下拉 */
+.layui-form-select dl {
+    padding: 0 !important;
+    min-height: 36px !important;
+}
+
+.layui-form-select p.layui-select-none {
+    line-height: 26px;
+}
+
+.layui-form-label.middle{
+    width: 110px;
+}
+
+.layui-form-label.long{
+    width: 140px;
+}
+
+.layui-forms .layui-form-item{
+    font-size: 14px;
+}
+.layui-forms .layui-form-item .layui-form-label{
+    width: 130px;
+}
+.layui-forms .layui-form-item .layui-input-block{
+    margin-left: 160px;
+    padding-right: 130px;
+}
+.layui-forms .layui-form-item .layui-input-inline{
+    width: 220px;
+}
+.layui-forms .layui-form-item .layui-input-inline .layui-input{
+    font-size: 14px;
+}
+
+.layui-forms .layui-forms-button{
+    position: relative;
+    visibility: visible;
+}
+
+.layui-forms .layui-forms-button .layui-input-inline{
+    position: absolute;
+    left: 50%;
+    margin-left: -110px;
+}
+
+.layui-forms .layui-forms-button .layui-input-inline{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.layui-forms .layui-inline.extra .layui-input,.layui-forms .layui-inline.extra-primary .layui-input{
+    height: 30px;
+    line-height: 30px;
+}
+
+.layui-forms .layui-inline.extra{
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.layui-forms .layui-inline.extra-primary{
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.layui-forms .layui-inline.layui-width{
+    width: 175px;
+}
+
+.layui-forms .layui-form-item .layui-input,.layui-forms .layui-form-item .layui-textarea,.layui-forms .layui-form-text{
+    font-size: 14px;
+}
+
+/*
+多选框
+*/
+.layui-form-selected dl{
+    min-height:50px;
+}
+
+/* =======================================
+	 search 列表搜索 表单
+================================== */
+
+.layui-form-search > .layui-form-item{
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.layui-form-search > .layui-form-item .search{
+    width: 400px;
+}
+
+/* 适配多设备 */
+@media screen and (max-width: 1200px) {
+    .layui-form-search > .layui-form-item .search{
+        width: 270px;
+    }
+
+}
+
+/* 适配多设备 */
+@media screen and (max-width: 1300px) {
+    .layui-form-search > .layui-form-item .search{
+        width: 370px;
+    }
+}
+
+/* 适配多设备 */
+@media screen and (max-width: 1400px) {
+    .layui-form-search > .layui-form-item .search{
+        width: 400px;
+    }
+}
+
+
+.layui-form-search > .layui-form-item > *{
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.layui-elem-field .layui-form-search > .layui-form-item{
+    margin-bottom: 15px !important;
+}
+
+.layui-form-search .layui-collapse{
+    border:none;
+}
+
+.layui-form-search .layui-collapse .layui-colla-content{
+    border:none;
+    padding: 0;
+}
+
+
+/* =======================================
+		分页
+================================== */
+
+/*
+layui 的分页样式
+ */
+.paging{
+    text-align: center;
+}
+.paging .page-total{
+    display: inline-block;
+    text-align: center;
+    padding: 0 15px;
+    margin-right: 15px;
+    color: #555;
+    font-size: 14px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 2px 0 0 2px;
+    border: 1px solid #C9C9C9;
+}
+
+
+.page {
+    text-align: center;
+}
+
+/*
+tp 的简单分页样式
+ */
+
+.pager {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px 0;
+    font-size: 0;
+    box-sizing: content-box!important;
+}
+.pager > li{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 15px;
+    border: 1px solid #e2e2e2;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 0 5px 0;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+}
+
+.pager li span{
+    vertical-align: middle;
+    text-align: center;
+}
+
+.pager li a{
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.pager .disabled {
+    cursor: not-allowed;
+}
+
+.pager .active {
+    background-color: #009688;
+    color: #fff;
+    font-weight: 400;
+    font-style: normal;
+    border-radius: 2px;
+    padding: 1px 15px;
+}
+
+/*
+tp 的全部分页样式
+ */
+
+.pagination {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px 0;
+    font-size: 0;
+    box-sizing: content-box!important;
+}
+.pagination > li{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 15px;
+    border: 1px solid #e2e2e2;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 0 5px 0;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+}
+
+.pagination li a{
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.pagination .disabled {
+    cursor: not-allowed;
+}
+
+.pagination .active {
+    background-color: #009688;
+    color: #fff;
+    font-weight: 400;
+    font-style: normal;
+    border-radius: 2px;
+    padding: 1px 15px;
+}
+
+/* =======================================
+		layer
+================================== */
+
+.layui-layer-dialog[type="dialog"] {
+
+}
+
+.layui-layer-dialog[type="dialog"] .layui-layer-title {
+    padding: 0 80px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.layui-layer-dialog[type="dialog"] .layui-layer-content {
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.layui-layer-dialog[type="dialog"] .layui-layer-btn {
+    text-align: center;
+    font-size: 16px;
+}
+
+.layui-layer-dialog[type="dialog"] .layui-layer-btn .layui-layer-btn0 {
+    border-color: #1fb5ac;
+    background-color: #1fb5ac;
+    color: #fff;
+    font-size: 16px;
+}
+
+a.layui-layer-refrash {
+    background-image: url("/static/images/refresh.png");
+    background-size: 100%;
+    opacity: 0.75;
+}
+
+a.layui-layer-refrash:hover {
+    opacity: 1;
+}
+
+/* =======================================
+	 按钮
+================================== */
+
+.layui-btn.btn-more {
+    color: #191b2e;
+    background-color: rgb(222, 222, 222);
+    cursor: pointer;
+    padding: 0px 15px 0px 35px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(226, 226, 226);
+    border-image: initial;
+}
+
+.layui-btn.btn-more:hover{
+    color: #191b2e;
+}
+
+/* =======================================
+	 内联
+================================== */
+
+.layui-table-cell{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.layui-text-align-center{
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* =======================================
+	 居中
+================================== */
+
+.layui-table-cell{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* =======================================
+	 uploader	组件
+================================== */
+
+.layui-box.layui-upload-button.layui-upload-container{
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.layui-box.layui-upload-container .layui-upload-show-item{
+    position:relative;
+    display:inline-block;
+}
+
+.layui-box.layui-upload-container .layui-uploader-show-item .layui-uploader-show-item-icon{
+    position:absolute;
+}
+
+/* =======================================
+		独立组件
+================================== */
+.alone {
+    width: 730px;
+    margin: 200px auto;
+}
+
+.alone ul {
+    margin-left: 1px;
+    font-size: 0;
+}
+
+.alone li {
+    display: inline-block;
+    width: 181px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 80px;
+    margin: 0 1px 1px 0;
+    /*background-color: #393D49;*/
+    background-color: #191b2e;
+    color: #fff;
+}
+
+.alone li:hover {
+    opacity: 0.8;
+}
+
+.alone li a {
+    display: block;
+    color: #fff;
+}
+
+/** fixbar **/
+.layui-fixbar {
+    position: fixed;
+    right: 15px;
+    bottom: 50px;
+    z-index: 9999;
+}
+
+.layui-fixbar li {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 1px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 30px;
+    background-color: #9F9F9F;
+    color: #fff;
+    border-radius: 2px;
+    opacity: 0.95;
+}
+
+.layui-fixbar li:hover {
+    opacity: 0.85;
+}
+
+.layui-fixbar li:active {
+    opacity: 1;
+}
+
+.layui-fixbar .layui-fixbar-top {
+    display: none;
+    font-size: 40px;
+}

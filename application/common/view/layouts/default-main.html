@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit">
+    <meta name="mobile-agent" content="format=html5;url=http://m.alivehouse.com/">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="_csrf_param" content="{$_csrf_param ? $_csrf_param : ''}">
+    <meta name="_csrf_token" content="{$_csrf_token ? $_csrf_token : ''}">
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
+    <link rel="canonical" href="/home/index/index.html">
+
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="_LAYUI_/layui.js"></script>
+
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/home.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
+
+
+    <!-- Define base CSS -->
+    <style id="stylemodule"></style>
+    <style id="styleWebSite" type="text/css">
+        #memberBar{width:1200px;}
+        #webTop{width:1200px;}
+        #absTopForms{width:1200px;}
+        .webNavDefault{width:1200px;}
+        #webHeader{width:1200px;}
+        #absForms{width:1200px;}
+        div#webContainer{width:1200px;}
+        #absBottomForms{width:1200px;}
+        #webFooter{width:1200px;}
+        div.webNav .navMainContent{width:1200px;}
+        div.nav .navMainContent{width:1200px;}
+        .fullmeasureContent{width:1200px;}
+        #fk-webHeaderZone {width:1200px;margin-left:-600.0px;}
+        #fk-webFooterZone {width:1200px;margin-left:-600.0px;}
+        #fk-webBannerZone {width:1200px;margin-left:-600.0px;}
+        #webBanner{width:100%;}
+    </style>
+    <style id="styleTitle" type="text/css"></style>
+
+</head>
+<body class="g_body g_locale2052 g_cusSiteWidth">
+
+
+<div id="g_main" class="g_main g_col2 " style="width: 1903px;">
+
+    <div id="web" class="g_web ">
+
+        <!-- 顶部区域开启 -->
+        <section id="web-header-container" class="web-header-container">
+            {include file="common@layouts/default-header" /}
+        </section>
+        <!-- 顶级区域结束 -->
+
+        <div class="clearfloat"></div>
+
+        <!-- 中部部区域开启 -->
+        <section id="web-main-container" class="web-main-container" style="min-height: 600px;background-color: rgba(0,0,0,0);">
+
+            <!-- 右侧主体内容开启 -->
+            {__CONTENT__}
+            <!-- 右侧主体内容结束 -->
+
+        </section>
+        <!-- 中部区域结束 -->
+
+        <div class="clearfloat"></div>
+
+        <!-- 底部区域开启 -->
+        <section id="web-footer-container" class="web-footer-container">
+            {include file="common@layouts/default-footer" /}
+        </section>
+        <!-- 底部区域结束 -->
+
+        <div class="clearfloat"></div>
+
+        <!-- 其他区域开启 -->
+        <section id="web-extra-container" class="web-extra-container">
+        </section>
+        <!-- 其他区域结束 -->
+
+        <div class="clearfloat"></div>
+
+    </div>
+
+</div>
+
+<!-- fakeLoader start -->
+<div class="fakeloader"></div>
+<!-- fakeLoader end -->
+
+
+<!-- fixed Left-Top -->
+<div class="floatLeftTop" style="top: 0px;">
+    <div id="floatLeftTopForms" class="forms sideForms floatForms">
+
+    </div>
+</div>
+
+<!-- fixed Right-Top -->
+<div class="floatRightTop" style="top: 0px;">
+    <div id="floatRightTopForms" class="forms sideForms floatForms">
+
+    </div>
+</div>
+
+<!-- fixed Left-Bottom -->
+<div class="floatLeftBottom">
+    <div id="floatLeftBottomForms" class="forms sideForms floatForms">
+
+    </div>
+</div>
+
+<!-- fixed Right-Bottom -->
+<div class="floatRightBottom">
+    <div id="floatRightBottomForms" class="forms sideForms floatForms">
+
+    </div>
+</div>
+
+<!-- background music -->
+<div id="bgMusic" class="bgMusic"></div>
+
+</body>
+</html>

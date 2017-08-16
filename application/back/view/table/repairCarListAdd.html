@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>表格</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+</head>
+<body>
+
+<section id="content-container" style="display:flex; position:fixed;top: 0px;left: 0px;right: 0px;bottom: 0px;">
+    <div id="content-body" style="margin:auto;width: 800px;height: 600px;">
+
+        <form class="layui-form layui-form-pane" action="/manage/table/table.html">
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">维护车辆:</label>
+                <div class="layui-input-inline">
+                    <select name="cityId">
+                        <option value="">请选择城市</option>
+                        <option value="南海">南海</option>
+                        <option value="海口">海口</option>
+                        <option value="三亚">三亚</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <select name="carId">
+                        <option value="">车辆</option>
+                        <option value="124">车辆</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">维护类型</label>
+                <div class="layui-input-inline">
+                    <select name="repairType">
+                        <option value="regular">定期维护</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">维护费用</label>
+                <div class="layui-input-inline">
+                    <input type="text" value="" name="fee" placeholder="维护费用" class="layui-input">
+                </div>
+
+            </div>
+
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">维护店名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" value="" name="shopName" placeholder="维护店名称" class="layui-input">
+                </div>
+
+            </div>
+
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">维护项目</label>
+                <div class="layui-input-inline">
+                    <input type="text" value="" name="project" placeholder="维护项目" class="layui-input">
+                </div>
+
+            </div>
+
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">经办人</label>
+                <div class="layui-input-inline">
+                    <select name="manager.id">
+                        <option value="3">苗彦朋</option>
+                        <option value="3">苗彦朋</option>
+                        <option value="3">苗彦朋</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">维护原因</label>
+                <div class="layui-input-inline">
+                    <input type="text" value="" name="reason" placeholder="维护原因" class="layui-input">
+                </div>
+
+            </div>
+
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">维护时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" value="" name="startTime" placeholder="开始时间" class="layui-input"  onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+                </div>
+                <div class="layui-input-inline">
+                    <input type="text" value="" name="endTime" placeholder="结束时间" class="layui-input"  onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+                </div>
+
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="submit">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</section>
+
+<script>
+    layui.use([ 'laydate', 'form'], function() {});
+</script>
+
+</body></html>

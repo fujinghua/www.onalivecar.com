@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>表格</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+</head>
+<body>
+
+<form class="layui-form layui-form-pane" action="/manage/table/table.html">
+    <div class="layui-form-item">
+
+        <label class="layui-form-label">车牌号:</label>
+        <div class="layui-input-inline">
+            <input type="text" value="" name="numberPlate" placeholder="车牌号" class="layui-input">
+        </div>
+
+        <label class="layui-form-label">置业顾问:</label>
+        <div class="layui-input-inline">
+            <input type="text" value="" name="managerName" placeholder="置业顾问" class="layui-input">
+        </div>
+
+        <label class="layui-form-label">城市</label>
+        <div class="layui-input-inline">
+            <select name="quiz1">
+                <option value="">请选择城市</option>
+                <option value="南海">南海</option>
+                <option value="海口">海口</option>
+                <option value="三亚">三亚</option>
+            </select>
+        </div>
+
+        <label class="layui-form-label">司机</label>
+        <div class="layui-input-inline">
+            <select name="quiz2">
+                <option value="">请选择司机</option>
+                <option value="1144">司机一</option>
+                <option value="1145">司机二</option>
+                <option value="1146">司机三</option>
+            </select>
+        </div>
+
+        <label class="layui-form-label">状态</label>
+        <div class="layui-input-inline">
+            <select name="quiz3">
+                <option value="">请选择状态</option>
+                <option value="">选择状态</option>
+                <option value="0">未匹配</option>
+                <option value="1">成功匹配</option>
+            </select>
+        </div>
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">开始日期:</label>
+           <div class="layui-input-inline">
+               <input name="create_time_start" value="" class="layui-input" placeholder="开始日期" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+           </div>
+
+           <label class="layui-form-label">结束日期:</label>
+           <div class="layui-input-inline">
+               <input name="create_time_end" value="" class="layui-input" placeholder="结束日期" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+           </div>
+
+           <button class="layui-btn" lay-submit="">查询</button>
+       </div>
+
+    </div>
+</form>
+
+<table class="layui-table" lay-even="" lay-skin="row">
+    <thead>
+    <tr>
+        <th>车牌号/司机</th>
+        <th>部门办事处/置业顾问</th>
+        <th>排车状态</th>
+        <th>出发地/接客点/用途</th>
+        <th>出车收车时间</th>
+        <th>公里数</th>
+        <th>人数</th>
+        <th>油费</th>
+        <th>司机签到</th>
+        <th>预看楼盘</th>
+        <th style="width:50px; text-align: center">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-key="1">
+        <td style="width: 100px;">
+            <div>车:琼A5B383</div>
+            <div>司:何宇</div>
+        </td>
+        <td style="width: 100px;">
+            <div>部:海口联动北3组</div>
+            <div>人:王邦卜</div>
+        </td>
+        <td style="width: 100px;">
+            订单完成
+        </td>
+        <td style="width: 100px;">
+            <div>出发地:海口联动北3组</div>
+            <div>接客地:美仑佳园</div>
+            <div>用途:</div>
+        </td>
+        <td style="width: 150px;">
+            <div>出:2018/12/03 13:30</div>
+            <div>收:2016/12/19 15:32</div>
+        </td>
+        <td style="width: 100px;">
+            <div>出:</div>
+            <div>收:0.0</div>
+            <div>公里:0.0</div>
+        </td>
+        <td style="width: 100px;">
+            3
+        </td>
+        <td style="width: 100px;">
+            0
+        </td>
+        <td style="width: 100px;">
+
+        </td>
+        <td style="width: 100px;">
+            美仑佳园
+        </td>
+        <td style="width: 150px;text-align: center;">
+            <a href="javascript:void(0);"><button onclick="Site.showUrl('详情','detail?id=158325')" class="layui-btn layui-btn-mini"><i class="fa fa-search"></i>详情</button></a>
+            <a href="javascript:void(0);"><button onclick="Site.showUrl('附近车辆','detail?id=158325')" class="layui-btn layui-btn-mini"><i class="fa fa-search"></i>附近车辆</button></a>
+        </td>
+    </tr>
+    <tr data-key="2">
+        <td style="width: 100px;">
+            <div>车:琼A5B383</div>
+            <div>司:何宇</div>
+        </td>
+        <td style="width: 100px;">
+            <div>部:海口联动北3组</div>
+            <div>人:王邦卜</div>
+        </td>
+        <td style="width: 100px;">
+            订单完成
+        </td>
+        <td style="width: 100px;">
+            <div>出发地:海口联动北3组</div>
+            <div>接客地:美仑佳园</div>
+            <div>用途:</div>
+        </td>
+        <td style="width: 150px;">
+            <div>出:2018/12/03 13:30</div>
+            <div>收:2016/12/19 15:32</div>
+        </td>
+        <td style="width: 100px;">
+            <div>出:</div>
+            <div>收:0.0</div>
+            <div>公里:0.0</div>
+        </td>
+        <td style="width: 100px;">
+            3
+        </td>
+        <td style="width: 100px;">
+            0
+        </td>
+        <td style="width: 100px;">
+
+        </td>
+        <td style="width: 100px;">
+            美仑佳园
+        </td>
+        <td style="width: 150px;text-align: center;">
+            <a href="javascript:void(0);"><button onclick="Site.showUrl('安排看房','detail?id=158325')" class="layui-btn layui-btn-mini"><i class="fa fa-search"></i>安排看房</button></a>
+        </td>
+    </tr>
+    <tr data-key="3">
+        <td style="width: 100px;">
+            <div>车:琼A5B383</div>
+            <div>司:何宇</div>
+        </td>
+        <td style="width: 100px;">
+            <div>部:海口联动北3组</div>
+            <div>人:王邦卜</div>
+        </td>
+        <td style="width: 100px;">
+            订单完成
+        </td>
+        <td style="width: 100px;">
+            <div>出发地:海口联动北3组</div>
+            <div>接客地:美仑佳园</div>
+            <div>用途:</div>
+        </td>
+        <td style="width: 150px;">
+            <div>出:2018/12/03 13:30</div>
+            <div>收:2016/12/19 15:32</div>
+        </td>
+        <td style="width: 100px;">
+            <div>出:</div>
+            <div>收:0.0</div>
+            <div>公里:0.0</div>
+        </td>
+        <td style="width: 100px;">
+            3
+        </td>
+        <td style="width: 100px;">
+            0
+        </td>
+        <td style="width: 100px;">
+
+        </td>
+        <td style="width: 100px;">
+            美仑佳园
+        </td>
+        <td style="width: 150px;text-align: center;">
+            <a href="javascript:void(0);"><button onclick="Site.showUrl('编辑','detail?id=158325')" class="layui-btn layui-btn-mini"><i class="fa fa-search"></i>编辑</button></a>
+            <a href="javascript:void(0);"><button onclick="Site.showUrl('删除','detail?id=158325')" class="layui-btn layui-btn-mini"><i class="fa fa-search"></i>删除</button></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- 分页容器 -->
+<div id="paging_0124" style="text-align:right;" data-pages="<?php echo isset($count)?$count:0; ?>"></div>
+<!--  全局 -->
+<script type="text/javascript" src="__JS__/site.js"></script>
+
+<script>
+    layui.use([ 'laydate', 'form'], function() {});
+</script>
+<script>
+    $(function() {
+        layui.use(['laypage', 'layer'], function(){
+            var laypage = layui.laypage,
+                element = 'paging_0124',
+                currPage = Site.getUrlParam('pageNumber'),
+                count = $('#'+element).attr('data-pages');
+            currPage = currPage > 1 ? currPage : 1;
+            count = count ? count : 0;
+            laypage({
+                curr:currPage,
+                cont: element,
+                pages: count,
+                skip: true,
+                jump: function(obj,first){
+                    if(obj.curr != currPage) {
+                        var url = location.href;
+                        if(url.indexOf("?") == -1) {
+                            location.href = url+"?pageNumber="+obj.curr;
+                        }else {
+                            var page = Site.getUrlParam('pageNumber');
+                            if(page) {
+                                location.href = url.replace("pageNumber="+page,"pageNumber="+obj.curr);
+                            }
+                            else {
+                                location.href = url.replace("?","?pageNumber="+obj.curr+"&");
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+</body></html>

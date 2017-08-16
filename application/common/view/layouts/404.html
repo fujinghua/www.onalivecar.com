@@ -1,0 +1,66 @@
+{__NOLAYOUT__}
+<?php
+$code = '404';
+$message = '网页不存在';
+$headers = ['code' => $code, 'msg' => $message];
+$statusCode = $code;
+$html = <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$message</title>
+    <style>
+        .container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            text-align: center;
+            color: #FF5722;
+            opacity: 0.628;
+        }
+
+        .container .body {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -400px;
+            margin-left: -187.5px;
+            width: 375px;
+            height: 400px;
+            vertical-align: middle;
+        }
+
+        .container .code {
+            font-size: 80px;
+            line-height: 80px;
+        }
+
+        .container .message {
+            font-size: 20px;
+            line-height: 24px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="body">
+        <h1 class="code">404</h1>
+        <h2 class="message">[ 网页已不存在 ]</h2>
+    </div>
+</div>
+</div>
+</body>
+</html>
+HTML;
+if (defined('IS_AJAX')) {
+    if (IS_AJAX) {
+        $headers['msg'] = '请求地址无效';
+        echo json_encode($headers);
+    } else {
+        echo $html;
+    }
+} else {
+    echo $html;
+}
+?>

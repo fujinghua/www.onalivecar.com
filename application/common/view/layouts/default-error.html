@@ -1,0 +1,62 @@
+<style type="text/css">
+    #content-container{
+        background: #f4f4f4;
+    }
+    #content-body{
+        background: #55d0d0;
+    }
+    *{margin:0;padding:0;}
+    li{list-style:none outside none;}
+    #content-body .box{
+        width:800px;
+        margin:0 auto 20px;
+        padding: 10px;
+        height:500px;
+    }
+    #content-body dl{
+        width:36px;
+        height:36px;
+        background: #d4d4d4;
+        border: 1px solid #4d4d4d;
+        border-radius: 50%;
+    }
+    #content-body  dl > .item{
+        width:34px;
+        padding: 2px;
+        height:34px;
+        color: #000;
+        font-size: 30px;
+        line-height: 30px;
+    }
+</style>
+<div class="content-home">
+
+    <section id="content-container" style="overflow: hidden;">
+        <div id="content-body" style="margin:auto;width: 800px;min-height: 600px;">
+
+            <!--login box begin-->
+            <div class="login-title">
+                <h2 style="text-align:center; color: #000; margin-bottom: 0;padding-top: 15px;"> <?php echo $meta_title; ?></h2>
+            </div>
+
+            <div class="box">
+                <?php $max=rand(5,20);for($i=0;$i<$max;$i++){ $length = 1; $item = '<dl><span class="item">'. \app\common\components\Helper::getZhCode($length) .'</span></dl>'; echo $item;} ?>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+{load href="_PLUGINS_/drag/js/drag.js" /}
+<script>
+    $(function(){
+        $('#content-body  dl').each(function(){
+            $(this).dragging({
+                move : 'both',
+                randomPosition : true
+            });
+        });
+    });
+</script>
+

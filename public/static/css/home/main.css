@@ -1,0 +1,2135 @@
+@charset "utf-8";
+
+/*==========================================
+ change  layui.css
+ ===========================================*/
+
+/** 初始化 **/
+
+/** 滚动条 **/
+
+/** 图标字体 **/
+
+/** 初始化全局标签 **/
+
+/** 基础通用 **/
+
+/* 消除第三方ui可能造成的冲突 */
+
+/* 三角形 */
+
+/* 单行溢出省略 */
+
+/* 屏蔽选中 */
+
+/* 纯圆角 */
+
+/* 布局 */
+
+/* 后台布局风格 */
+
+/** 页面元素 **/
+
+/* 引用 */
+
+/* 字段集合 */
+
+/* 进度条 */
+
+/* 折叠面板 */
+
+/* 背景颜色 */
+
+/* 文字 */
+
+/*========================*/
+/** 按钮 **/
+
+/* 圆角 */
+
+/* 原始 */
+
+/* 边框 */
+
+/* 百搭 */
+
+/* 暖色 */
+
+/* 警告 */
+
+/* 禁用 */
+
+/* 大型 */
+
+/* 小型 */
+
+/* 迷你 */
+
+/* 按钮组 */
+
+/* 自定义 新按钮 */
+
+.btn {
+    border-radius: 0px;
+    -o-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border: 0px;
+    font-family: Oswald, Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    text-shadow: none;
+}
+
+.btn:hover {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    color: #fff;
+}
+
+.btn:active {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.btn + .btn {
+    margin-left: 10px;
+}
+
+.btn.btn-round {
+    border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+
+.btn.btn-corner {
+    border-radius: 8px;
+    -o-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+}
+
+.btn.btn-border {
+    border: 2px solid #C9C9C9;
+    color: #555;
+    background: transparent;
+}
+
+.btn.btn-border.btn-success {
+    border: 2px solid rgba(102, 189, 120, 1.0);
+    color: rgba(102, 189, 120, 1.0);
+    background: transparent;
+}
+
+.btn.btn-border.btn-warning {
+    border: 2px solid #FDB45C;
+    color: #FDB45C;
+    background: transparent;
+}
+
+.btn.btn-border.btn-danger {
+    border: 2px solid rgba(240, 80, 80, 1.0);
+    color: rgba(240, 80, 80, 1.0);
+    background: transparent;
+}
+
+.btn.btn-border.btn-info {
+    border: 2px solid #359fb7;
+    color: #359fb7;
+    background: transparent;
+}
+
+.btn.btn-border.btn-orange {
+    border: 2px solid rgba(250, 133, 100, 1.0);
+    color: rgba(250, 133, 100, 1.0);
+    background: transparent;
+}
+
+.btn.btn-border.btn-purple {
+    border: 2px solid rgba(153, 114, 181, 1.0);
+    color: rgba(153, 114, 181, 1.0);
+    background: transparent;
+}
+
+.btn.btn-border.btn-primary {
+    border: 2px solid rgba(31, 181, 172, 1.0);
+    color: rgba(31, 181, 172, 1.0);
+    background: transparent;
+}
+
+.btn.btn-border.btn-secondary {
+    border: 2px solid rgba(169, 169, 169, 1.0);
+    color: rgba(169, 169, 169, 1.0);
+    background: transparent;
+}
+
+.btn.btn-border, .btn.btn-border.btn-default {
+    border: 2px solid #eaeaea;
+    color: #333333;
+    background: transparent;
+}
+
+.btn.btn-border.btn-link {
+    border: 2px solid transparent;
+    color: #337ab7;
+    background: transparent;
+}
+
+/*colors*/
+
+.btn.btn-success {
+    background: rgba(102, 189, 120, 1.0);
+    color: #ffffff;
+}
+
+.btn.btn-warning {
+    background: #FDB45C;
+    color: #ffffff;
+}
+
+.btn.btn-danger {
+    background: rgba(240, 80, 80, 1.0);
+    color: #ffffff;
+}
+
+.btn.btn-info {
+    background: rgba(35, 183, 229, 1.0);
+    color: #ffffff;
+}
+
+.btn.btn-orange {
+    background: rgba(250, 133, 100, 1.0);
+    color: #ffffff;
+}
+
+.btn.btn-purple {
+    background: rgba(153, 114, 181, 1.0);
+    color: #ffffff;
+}
+
+.btn.btn-primary {
+    background: rgba(31, 181, 172, 1.0);
+    color: #ffffff;
+}
+
+.btn.btn-secondary {
+    background: rgba(169, 169, 169, 1.0);
+    color: #ffffff;
+}
+
+.btn, .btn.btn-default {
+    background: #f4f4f4;
+    color: #333333;
+}
+
+.btn, .btn.btn-gray {
+    background: #ffffff;
+    color: #023180;
+}
+
+.btn.btn-link {
+    background: transparent;
+    color: #337ab7;
+}
+
+/*size*/
+
+.btn {
+    padding: 7px 18px;
+}
+
+.btn.btn-lg, .btn-lg, .btn-group-lg > .btn {
+    padding: 10px 21px;
+}
+
+.btn.btn-sm, .btn-sm, .btn-group-sm > .btn {
+    padding: 5px 13px;
+}
+
+.btn.btn-xs, .btn-xs, .btn-group-xs > .btn {
+    padding: 2px 8px;
+}
+
+.btn.btn-block, .btn-block, .btn-group-block > .btn {
+    padding: 11px 23px;
+    font-size: 19px;
+    line-height: 25px;
+}
+
+/*hover state*/
+/*.btn:hover, .btn:active, .btn:focus{color:#ffffff;}*/
+
+.btn:hover, .btn:active, .btn:focus, .btn-default:hover, .btn-default:active, .btn-default:focus {
+    color: #333333;
+    background: #e5e5e5;
+}
+
+.btn.btn-link:hover, .btn.btn-link:focus {
+    color: rgba(1, 131, 122, 1.0);
+    background: transparent;
+}
+
+.btn-success:hover, .btn-success:active, .btn-success:focus {
+    background: rgba(72, 159, 90, 1.0);
+    color: #ffffff;
+}
+
+.btn-warning:hover, .btn-warning:active, .btn-warning:focus {
+    background: #e9a048;
+    color: #ffffff;
+}
+
+.btn-danger:hover, .btn-danger:active, .btn-danger:focus {
+    background: rgba(210, 50, 50, 1.0);
+    color: #ffffff;
+}
+
+.btn-info:hover, .btn-info:active, .btn-info:focus {
+    background: rgba(5, 153, 199, 1.0);
+    color: #ffffff;
+}
+
+.btn-info:hover, .btn-info:active, .btn-info:focus {
+    background: #0081c5;;
+    color: #ffffff;
+}
+
+.btn-orange:hover, .btn-orange:active, .btn-orange:focus {
+    background: rgba(215, 113, 80, 1.0);
+    color: #ffffff;
+}
+
+.btn-purple:hover, .btn-purple:active, .btn-purple:focus {
+    background: rgba(123, 74, 141, 1.0);
+    color: #ffffff;
+}
+
+.btn-primary.active, .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+    background: rgba(1, 151, 142, 1.0);
+    color: #ffffff;
+}
+
+.btn-secondary:hover, .btn-secondary:active, .btn-secondary:focus {
+    background: rgba(139, 139, 139, 1.0);
+    color: #ffffff;
+}
+
+.btn-default.active, .btn-default:hover, .btn-default:active, .btn-default:focus {
+    background: #d5d5d5;
+    color: #333333;
+}
+
+.btn-default:active, .btn-primary:active, .btn-success:active, .btn-info:active, .btn-warning:active, .btn-danger:active, .btn-default.active, .btn-primary.active, .btn-success.active, .btn-info.active, .btn-warning.active, .btn-danger.active {
+    box-shadow: none;
+    -o-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.btn-primary:disabled, .btn-primary[disabled] {
+    background: rgba(0, 131, 122, 1.0);
+    color: #ffffff;
+}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    text-shadow: none;
+}
+
+.btn-colors .btn {
+    width: 80px;
+    margin: 0 15px 15px 0;
+}
+
+.btn-iconic .btn, .btn-social .btn {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px 10px 0px;
+}
+
+/*=======================*/
+/** 表单 **/
+
+/* 分割块 */
+
+/* 警告域 */
+
+/* 下拉选择 */
+
+/* 复选框 */
+
+/* 复选框-原始风格 */
+
+/* 复选框-开关风格 */
+
+/* 单选框 */
+
+/* 表单方框风格 */
+
+/** 富文本编辑器 **/
+
+/*======================*/
+/** 表格修饰 **/
+
+/** 文件上传 **/
+
+/** 流加载 **/
+
+/** 分页 **/
+
+/** 代码修饰器 **/
+
+/** 树组件 **/
+
+/** 导航菜单 **/
+
+/* 垂直导航菜单 */
+
+/* 侧边 */
+
+/** 面包屑 **/
+
+/** Tab选项卡 **/
+
+/* Tab关闭 */
+
+/* Tab简洁风格 */
+
+/* Tab卡片风格 *
+
+ */
+/** fixbar **/
+
+/** 表情面板 **/
+
+/** 动画 **/
+
+/** 响应式（前期不作为重心） **/
+
+/*========== layui.css end ===========*/
+
+/*----------------------------------------
+  General Layout Style
+------------------------------------------*/
+
+html {
+    font-size: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+
+* html {
+    padding: 0px
+}
+
+/* iframe */
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, select, p, blockquote, th, td, span, a {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #FFFFFF;
+    /*color: #000000;*/
+    color: #3e4849;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif, "微软雅黑", "Microsoft YaHei", "Microsoft YaHei UI", "Segoe UI", Arial, Verdana, Sans-Serif, sans-serif;
+    font-size: 12px;
+}
+
+em {
+    font-style: normal
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+    display: block;
+}
+
+audio, canvas, video {
+    display: inline-block;
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+[hidden] {
+    display: none;
+}
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+a {
+    text-decoration: none;
+    color: #333333;
+    font-family: "Microsoft YaHei";
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+del, ins {
+    text-decoration: none;
+}
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+address, button, caption, cite, code, dfn, em, input, optgroup, option, select, strong, textarea, th, var {
+    font: inherit;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+}
+
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+input, select {
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+
+caption, th {
+    text-align: left;
+}
+
+a:active {
+    outline: none;
+}
+
+a, a:hover, a:focus {
+    text-decoration: none;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+}
+
+/* color #FF5722 */
+::selection {
+    background: #1fb5ac;
+    color: #fff;
+    padding: 2px;
+}
+
+::-moz-selection {
+    background: #1fb5ac;
+    color: #fff;
+    padding: 2px;
+}
+
+h1, h2, h3, h4, h5, h6, a, p, span {
+    font-family: "微软雅黑", "Microsoft YaHei", "Microsoft YaHei UI", "Hiragino Sans GB W3", "Segoe UI", Arial, Verdana, Sans-Serif, sans-serif;
+}
+
+/* 清除浮动样式 */
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/*---------------------------------
+    Typography
+-----------------------------------*/
+
+h1, h2, h3, h4, h5, h6 {
+    /*  font-family: Oswald, Helvetica, Arial, sans-serif;*/
+    margin: 10px 0;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    color: #505458;
+}
+
+input[readonly="readonly"] {
+    cursor: not-allowed;
+}
+
+.light {
+    font-weight: 100;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.semi-bold {
+    font-weight: 400;
+}
+
+blockquote, .blockquote-reverse, blockquote.pull-right {
+    font-size: 16px;
+    border-color: rgba(31, 181, 172, 1);
+}
+
+blockquote.pull-right {
+    width: 100%;
+}
+
+blockquote.purple {
+    border-color: rgba(153, 114, 181, 1.0);
+}
+
+blockquote.orange {
+    border-color: rgba(250, 133, 100, 1.0);
+}
+
+blockquote.background {
+    background: #f5f5f5;
+}
+
+.well {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    background: #f5f5f5;
+    border-color: #eaeaea;
+}
+
+.well.primary, .well.primary * {
+    background-color: rgba(31, 181, 172, 1);
+    color: #ffffff;
+    border-color: rgba(31, 181, 172, 1);
+}
+
+.well.transparent {
+    background-color: transparent;
+}
+
+a {
+    text-decoration: none;
+    color: #555555;
+    outline: none;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #595959;
+    text-decoration: none;
+}
+
+a:focus {
+    color: rgba(31, 181, 172, 1);
+    text-decoration: none;
+}
+
+.text-dark {
+    color: #333333;
+}
+
+.text-muted {
+    color: #999999;
+}
+
+.text-primary {
+    color: rgba(31, 181, 172, 1);
+}
+
+.text-info {
+    color: rgba(35, 183, 229, 1.0);
+}
+
+.text-warning {
+    color: #FDB45C;
+}
+
+.text-danger {
+    color: rgba(240, 80, 80, 1.0);
+}
+
+.text-success {
+    color: rgba(102, 189, 120, 1.0);
+}
+
+.text-purple {
+    color: rgba(153, 114, 181, 1.0);
+}
+
+.text-orange {
+    color: rgba(250, 133, 100, 1.0);
+}
+
+.text-light {
+    color: #f5f5f5;
+}
+
+.bg-muted {
+    background: #eaeaea;
+    padding: 3px 8px;
+}
+
+.bg-primary {
+    background: rgba(31, 181, 172, 1);
+    padding: 3px 8px;
+    color: #ffffff;
+}
+
+.bg-info {
+    background: rgba(35, 183, 229, 1.0);
+    padding: 3px 8px;
+    color: #ffffff;
+}
+
+.bg-warning {
+    background: #FDB45C;
+    padding: 3px 8px;
+    color: #ffffff;
+}
+
+.bg-danger {
+    background: rgba(240, 80, 80, 1.0);
+    padding: 3px 8px;
+    color: #ffffff;
+}
+
+.bg-success {
+    background: rgba(102, 189, 120, 1.0);
+    padding: 3px 8px;
+    color: #ffffff;
+}
+
+.bg-purple {
+    background: rgba(153, 114, 181, 1.0);
+    padding: 3px 8px;
+    color: #ffffff;
+}
+
+.bg-orange {
+    background: rgba(250, 133, 100, 1.0);
+    padding: 3px 8px;
+    color: #ffffff;
+}
+
+.bg-secondary {
+    background: rgba(169, 169, 169, 1.0);
+    padding: 3px 8px;
+    color: #555555;
+}
+
+.bg-white {
+    background: #ffffff;
+    padding: 3px 8px;
+    color: #777777;
+}
+
+.none, .hidden {
+    display: none;
+}
+
+/*========================
+
+ 布局
+
+  =======================*/
+.none, .hidden {
+    display: none !important;
+}
+
+#alive-site-body {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#alive-site-body .flex > * {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#alive-site-main, #alive-site-web {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+    min-width: 1200px;
+    overflow-x: hidden;
+}
+
+#web-header-container {
+    order: 1;
+    height: 120px;
+}
+
+#web-header-container #header-content-container {
+    margin: auto;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+    min-width: 1200px;
+}
+
+#web-main-container {
+    order: 2;
+    align-self: auto;
+    min-height: 600px;
+}
+
+#web-main-container #main-content-container {
+    margin: auto;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    min-height: 600px;
+    min-width: 1200px;
+}
+
+#web-footer-container {
+    order: 3;
+    height: 300px;
+    background: #333333 url('/static/images/footer/webFooterTable.jpg') no-repeat center;
+}
+
+#web-footer-container #footer-content-container {
+    margin: auto;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+    min-width: 1200px;
+}
+
+#web-extra-container {
+    order: 4;
+}
+
+#web-extra-container #extra-content-container {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+    min-width: 1200px;
+}
+
+#flexLeftTop {
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+#flexRightTop {
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+#flexLeftBottom {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+#flexRightBottom {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+
+/* 头部 */
+
+#header-content-container #header-full-container {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#header-content-container .header-body {
+    position: relative;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+    width: 100%;
+}
+
+#header-content-container .header-body #headerAbsTable {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#header-content-container .header-body #headerAbsTable #headerAbs {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+#header-content-container .header-body #headerTopTable {
+    order: 1;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+#header-content-container .header-body #headerMiddleTable {
+    order: 2;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    height: 45px;
+    width: 100%;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+#header-content-container .header-body #headerBottomTable {
+    order: 3;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+#headerMiddleTable #headerLeft {
+    order: 1;
+    height: 100%;
+    width: 200px;
+}
+
+#headerMiddleTable #headerCenter {
+    order: 2;
+    height: 100%;
+    width: 0;
+}
+
+#headerMiddleTable #headerRight {
+    order: 3;
+    height: 100%;
+    width: 750px;
+}
+
+/* 头部 logo*/
+#headerMiddleTable #headerLeft #corpTitle {
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+    font-size: 32px;
+    white-space: nowrap;
+}
+
+#headerMiddleTable #headerLeft #corpTitle span {
+    font-weight: bold;
+}
+
+#headerMiddleTable #headerLeft #corpTitle span:first-child {
+    color: rgba(255, 101, 55, 1)
+}
+
+#headerMiddleTable #headerLeft #corpTitle span:last-child {
+    color: rgba(204, 204, 204, 1);
+}
+
+/* 头部 中部 */
+
+/* 头部 右部 */
+#headerMiddleTable #headerRight #headerNav {
+    width: 100%;
+    height: 40px;
+    padding-right: 15px;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+#headerNav .item {
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    margin-right: 5px;
+    min-width: 100px;
+    height: 40px;
+    background: none;
+    cursor: pointer;
+    border-spacing: 0;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#headerNav .item a {
+    padding: 5px;
+    outline: none;
+    text-decoration: none;
+    text-shadow: none;
+    color: #333333;
+    font-family: 微软雅黑;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    word-break: keep-all;
+    white-space: nowrap;
+    width: auto;
+    min-width: 60px;
+    max-width: none;
+}
+
+#headerNav .item.itemSelected, #headerNav .item:hover {
+    background-color: #ff6633;
+}
+
+#headerNav .item.itemSelected a, #headerNav .item:hover a {
+    color: #F4F4F4;
+}
+
+/* 底部 */
+
+#footer-content-container #footer-full-container {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#footer-content-container .footer-body {
+    position: relative;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+    width: 100%;
+}
+
+#footer-content-container .footer-body #footerAbsTable {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#footer-content-container .footer-body #footerAbsTable #footerAbs {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+#footer-content-container .footer-body #footerTopTable {
+    order: 1;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+#footerTopTable .leftTable {
+    order: 1;
+    height: 100%;
+    width: 0;
+}
+
+#footerTopTable .centerTable {
+    order: 2;
+    height: 100%;
+    width: 100%;
+}
+
+#footerTopTable .rightTable {
+    order: 3;
+    height: 100%;
+    width: 0;
+}
+
+#footer-content-container .footer-body #footerMiddleTable {
+    order: 2;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    height: 200px;
+    width: 100%;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+#footerMiddleTable .centerTable {
+    order: 2;
+    height: 100%;
+    width: 100%;
+}
+
+#footerMiddleTable .rightTable {
+    order: 3;
+    height: 100%;
+    width: 0;
+}
+
+#footerBottomTable .leftTable {
+    order: 1;
+    height: 100%;
+    width: 0;
+}
+
+#footer-content-container .footer-body #footerBottomTable {
+    order: 3;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    height: 100px;
+    width: 100%;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+#footerMiddleTable .leftTable {
+    order: 1;
+    height: 100%;
+    width: 0;
+}
+
+#footerBottomTable .centerTable {
+    order: 2;
+    height: 100%;
+    width: 100%;
+}
+
+#footerBottomTable .rightTable {
+    order: 3;
+    height: 100%;
+    width: 0;
+}
+
+/* 底部 中区  */
+#footerMiddle {
+    width: 100%;
+    height: 200px;
+    padding: 0 15px;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+#footerMiddle .item {
+    width: 136px;
+    height: 200px;
+    cursor: pointer;
+    border-spacing: 0;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+#footerMiddle .item a.item-two {
+    display: block;
+    padding: 5px;
+    outline: none;
+    text-decoration: none;
+    text-shadow: none;
+    color: #FFFFFF;
+    font-family: 微软雅黑;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: center;
+    word-break: keep-all;
+    white-space: nowrap;
+    width: auto;
+    min-width: 60px;
+    max-width: none;
+}
+
+#footerMiddle .item a.item-two:hover {
+    opacity: 0.8;
+}
+
+#footerMiddle .item .item-two .float_in_img {
+    width: 126px;
+    height: 126px;
+}
+
+/* 底部 南区 */
+#footerContent {
+    width: 100%;
+    height: 100px;
+    padding: 0 15px;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: stretch;
+    font-weight: normal;
+    font-size: 14px;
+    color: #999999;
+    overflow: hidden;
+}
+
+#footerContent .item {
+    width: auto;
+    height: 25px;
+    color: #999999;
+    border-spacing: 0;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#footerContent .item a {
+    color: #999999;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+}
+
+#footerContent .item a:hover {
+    color: #FFFFFF;
+    opacity: 0.9;
+}
+
+/* 其他 */
+
+/* 主体 */
+
+#main-content-container #webContainerTop {
+    margin: auto;
+    order: 1;
+    height: 0;
+    width: 100%;
+}
+
+#main-content-container #webContainerMiddle {
+    margin: auto;
+    order: 2;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    min-height: 600px;
+    height: auto;
+    min-width: 1200px;
+}
+
+#main-content-container #webContainerBottom {
+    margin: auto;
+    order: 3;
+    height: 0;
+    width: 100%;
+}
+
+/* 主体 中区 */
+#webContainerMiddle {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    height: auto;
+}
+
+/* 主体 中区 轮播 */
+#webContainerMiddle #webBannerTable {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    height: auto;
+}
+
+/* 主体 中区 轮播 背景 */
+#webContainerMiddle #webBannerTable #bannerAbsTable {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+/* 主体 中区 轮播区  */
+#webBanner {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    max-height: 100%;
+    height: auto;
+    z-index: 3;
+    overflow: hidden;
+    position: relative;
+}
+
+#webBanner .bannerBody {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+#webBanner .switchBtn {
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -35px;
+    width: 71px;
+    height: 71px;
+    font-family: 'Verdana';
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    z-index: 5;
+}
+
+#webBanner .switchBtn {
+    box-shadow: inset 0 0 20px 5px #F4F4F4;
+    opacity: 0.628;
+}
+
+#webBanner .switchBtn:hover {
+    opacity: 1;
+}
+
+#webBanner .bannerPrev {
+    left: 20px;
+    background: url(/static/images/site/left.png) no-repeat rgba(0, 0, 0, 0.1);
+    margin-left: 1%;
+    background: url(/static/images/site/left.gif) no-repeat \9;
+    background-color: #727272 \9;
+}
+
+#webBanner .bannerNext {
+    right: 20px;
+    background: url(/static/images/site/right.png) no-repeat rgba(0, 0, 0, 0.1);
+    margin-right: 1%;
+    background: url(/static/images/site/right.gif) no-repeat \9;
+    background-color: #727272 \9;
+}
+
+#webBanner .bannerBottom {
+    position: absolute;
+    bottom: 0;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    height: 40px;
+}
+
+#banner-body .bannerBottom span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    padding: 5px;
+    margin: 0 5px;
+    color: #1fb5ac;
+    font-size: 12px;
+    text-align: center;
+    line-height: 12px;
+    border-radius: 50%;
+    background-color: #F4F4F4;
+    cursor: pointer;
+    z-index: 5;
+    opacity: 0.628;
+}
+
+#banner-body .bannerBottom span:hover, #banner-body .bannerBottom .active {
+    color: #FFFFFF;
+    background-color: #727272;
+    opacity: 1;
+}
+
+#banner-body .bannerBody .item {
+    position: absolute;
+    overflow: hidden;
+}
+
+#banner-body .bannerBody .item img {
+    width: 100%;
+    height: auto;
+}
+
+#banner-body .bannerBody .item p.desc {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+}
+
+#banner-body .bannerBody .item h3 {
+    position: absolute;
+    margin: 0;
+    bottom: 0;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    height: 0;
+}
+
+#banner-body .bannerBody .item h3 a {
+    position: relative;
+    opacity: 0.9;
+    color: #000000;
+    font-weight: 400;
+}
+
+#banner-body .bannerBody .item h3 a:hover {
+    opacity: 1;
+}
+
+#banner-body .bannerBody .item h3 a span {
+    display: inline-block;
+    position: absolute;
+    bottom: 50px;
+    left: -150px;
+    width: 300px;
+    text-align: center;
+    color: #000000;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 400;
+}
+
+/**
+alive-icon   用于图标
+alive-box   用于排除一些UI框架（如Bootstrap）强制将全部元素设为box-sizing: border-box所引发的尺寸偏差
+alive-clear   用于消除浮动（一般不怎么常用，因为alive几乎没用到浮动）
+alive-inline   用于将标签设为内联块状元素
+alive-elip    用于单行文本溢出省略
+alive-unselect   用于屏蔽选中
+alive-disabled    用于设置元素不可点击状态
+alive-circle    用于设置元素为圆形
+alive-show   用于显示块状元素
+alive-hide   用于隐藏元素
+ 
+alive-main    用于设置一个宽度为 1140px的水平居中块
+ 
+alive-bg-red   用于设置元素赤色背景
+alive-bg-orange   用于设置元素橙色背景
+alive-bg-green   用于设置元素墨绿色背景（主色调）
+alive-bg-cyan   用于设置元素青色背景
+alive-bg-blue   用于设置元素蓝色背景
+alive-bg-black   用于设置元素经典黑色背景
+alive-bg-gray    用于设置元素经典灰色背景
+ */
+
+.alive {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.alive-layout {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.alive-flex {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+
+.alive-layout .alive-header, .alive-layout .alive-body, .alive-layout .alive-footer {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    height: auto;
+}
+
+.alive-layout .alive-header {
+    order: 1;
+    width: auto;
+}
+
+.alive-layout .alive-header.empty, .alive-layout .alive-footer.empty {
+    display: none;
+}
+
+.alive-layout .alive-body {
+    order: 2;
+    width: 100%;
+}
+
+.alive-layout .alive-footer {
+    order: 3;
+    width: 100%;
+}
+
+.alive-justStart {
+    justify-content: flex-start;
+}
+
+.alive-justEnd {
+    justify-content: flex-end;
+}
+
+.alive-justCenter {
+    justify-content: center;
+}
+
+.alive-justBetween {
+    justify-content: space-between;
+}
+
+.alive-justAround {
+    justify-content: space-around;
+}
+
+.alive-itemStart {
+    align-items: flex-start;
+}
+
+.alive-itemEnd {
+    align-items: flex-end;
+}
+
+.alive-itemCenter {
+    align-items: center;
+}
+
+.alive-itemLine {
+    align-items: baseline;
+}
+
+.alive-itemStretch {
+    align-items: stretch;
+}
+
+.alive-center {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    justify-content: center;
+    align-items: center;
+}
+
+.alive-outer {
+    margin: 20px;
+}
+
+.alive-outer.outer-min {
+    margin: 15px;
+}
+
+.alive-layout .alive-item-outer {
+    margin: 0 20px 30px;
+}
+
+.alive-layout .alive-item-outer.outer-min {
+    margin: 0 15px 20px;
+}
+
+.row {
+    flex-basis: 100%;
+}
+
+/* ==================
+    网格布局
+==================== */
+
+/*
+基本网格布局
+ */
+.alive-table {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.alive-row {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row wrap;
+    align-content: flex-start;
+}
+
+.alive-row .row-item {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box; /* Firefox */
+    -webkit-box-sizing: border-box; /* Safari */
+    flex: 0 0 25%;
+}
+
+.alive-table .alive-cell {
+    flex: 1;
+}
+
+/*
+百分比布局
+ */
+.alive-table .alive-cell.col-full {
+    flex: 0 0 100%;
+}
+
+.alive-table .alive-cell.col-2 {
+    flex: 0 0 50%;
+}
+
+.alive-table .alive-cell.col-3 {
+    flex: 0 0 33.3333%;
+}
+
+.alive-table .alive-cell.col-4 {
+    flex: 0 0 25%;
+}
+
+/*
+输入框的布局
+ */
+
+.alive-flex {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.alive-flex .alive-input {
+    flex: 1;
+}
+
+/*
+悬挂式布局
+ */
+
+.alive-media {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    align-items: flex-start;
+}
+
+.alive-media .media-title {
+    margin: 1em;
+}
+
+.alive-media .media-body {
+    flex: 1;
+}
+
+/*
+固定的底栏
+ */
+
+.alive-fixed {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.alive-fixed .fixed-body {
+    flex: 1;
+}
+
+/*
+流式布局
+ */
+
+.alive-parent {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row wrap;
+    align-content: flex-start;
+}
+
+.alive-parent .alive-child {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box; /* Firefox */
+    -webkit-box-sizing: border-box; /* Safari */
+    flex: 0 0 25%;
+}
+
+/*
+上下分布
+ */
+.alive-upLevel {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column nowrap;
+    align-content: space-between;
+    align-items: stretch;
+    height: 100%;
+}
+
+.alive-upLevel.half > *:nth-child(1) {
+    flex: 1;
+}
+
+.alive-upLevel.half > *:nth-child(2) {
+    flex: 1;
+}
+
+.alive-upLevel.half > *:nth-child(2) + * {
+    display: none;
+}
+
+.alive-upLevel .upLevel-top:empty {
+    display: none;
+}
+
+.alive-upLevel .upLevel-down {
+    flex: 1;
+}
+
+.alive-upLevel .upLevel-item {
+    width: 100%;
+}
+
+/*
+左右分布
+ */
+.alive-level {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    align-content: space-between;
+    align-items: stretch;
+    width: 100%;
+}
+
+.alive-level.half > *:nth-child(1) {
+    flex: 1;
+}
+
+.alive-level.half > *:nth-child(2) {
+    flex: 1;
+}
+
+.alive-level.half > *:nth-child(2) + * {
+    display: none;
+}
+
+.alive-level .level-left:empty {
+    display: none;
+}
+
+.alive-level .level-right {
+    flex: 1;
+}
+
+.alive-level .level-item {
+    height: 100%;
+}
+
+/*
+横线
+ */
+
+hr {
+    height: 1px;
+    margin: 10px 0;
+    border: 0;
+    background-color: #e2e2e2;
+    clear: both;
+    width: 100%;
+}
+
+hr.hideLine {
+    visibility: hidden;
+}
+
+hr.line {
+    clear: both;
+    height: 1px;
+    line-height: 1px;
+    margin: 0;
+    font-size: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-top: 0;
+    border-left: none;
+    border-right: 0;
+}
+
+hr.line.dashed {
+    border-style: dashed;
+}
+
+/*
+竖线
+ */
+hr.upLine {
+    width: 1px;
+    height: 0;
+    position: absolute;
+    background: #dadada;
+    top: 0;
+    left: 0;
+}
+
+hr.line.dashed, hr.upLine.dashed {
+    border-style: dashed;
+}
+
+.alive-active, .downLine {
+    position: relative;
+}
+
+/*
+  底部 活线条 与 死线条
+*/
+.alive-active:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #ff6358;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    top: 1.372em;
+}
+
+.alive-active:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+/*
+  底部 死线条
+*/
+.downLine:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #ff6358;
+    visibility: visible;
+    top: 1.372em;
+}
+
+.downLine:hover:before {
+    opacity: 0.9;
+}
+
+/**
+时间线
+ */
+.alive-line {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+}
+
+.alive-line .line-title {
+    min-height: 23px;
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+    cursor: pointer;
+    text-align: right;
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+    line-height: 28px;
+}
+
+.alive-line .line-content {
+    text-align: justify;
+    height: auto;
+    padding-left: 0;
+    white-space: nowrap;
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+}
+
+.alive-line .line-content .content-title {
+    vertical-align: middle;
+    min-height: 23px;
+    line-height: 23px;
+    cursor: pointer;
+}
+
+.alive-line .line-content .content-title a {
+    width: 100%;
+    vertical-align: bottom;
+    display: inline-block;
+    text-decoration: none;
+    height: 23px;
+    line-height: 23px;
+    outline: 0;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+.alive-line .line-content .content-body .summary {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #808080;
+    margin-bottom: 6px;
+    padding: 4px 0 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.circleOuter {
+    position: relative;
+    display: inline-block;
+    margin: 5px 15px 0;
+    width: 18px;
+    height: 18px;
+    background: #f4f4f4;
+    border-radius: 50%;
+    vertical-align: top;
+    z-index: 1;
+}
+
+.circle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #bababa;
+    border-radius: 50%;
+    left: 3px;
+    top: 3px;
+    z-index: 2;
+}

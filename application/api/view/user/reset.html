@@ -1,0 +1,95 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
+
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
+
+    <!-- For site js -->
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/bootstrap.js"></script>
+    <script type="text/javascript" src="_LAYUI_/layui.js"></script>
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+</head>
+
+<body style="max-width: 800px;max-height: 600px;margin: auto;">
+
+<section style="margin: 20px;">
+    {if condition="isset($meta_title)"}
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend style="text-align: center;">{$meta_title}</legend>
+    </fieldset>
+    {/if}
+    <form class="layui-form forms" id="defaultForm" action="/manage/login/reset?id={$model.id}" method="post" style="padding: 15px 0">
+
+        {:token()}
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">账号名称:</label>
+            <div class="layui-input-block">
+                <input type="text" value="{$model.username}" name="username" lay-verify="require" placeholder="会员名称" class="layui-input" readonly style="border: none;">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">登录密码:</label>
+            <div class="layui-input-block">
+                <input type="password" value="" name="newPassword" lay-verify="require" placeholder="登录密码" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入密码:</label>
+            <div class="layui-input-block">
+                <input type="password" value="" name="password" lay-verify="require" placeholder="输入密码" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认密码:</label>
+            <div class="layui-input-block">
+                <input type="password" value="" name="rePassword" lay-verify="require|compare" lay-compare="password" lay-error="两次密码不一致" placeholder="确认密码" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <label class="layui-btn" lay-submit="" lay-filter="submit">确定</label>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+<script type="text/javascript" src="__JS__/site.js"></script>
+<script type="text/javascript" src="__JS__/back.js"></script>
+<script>
+
+    layui.use(['form'],function () {
+        var form = layui.form();
+    });
+
+    $(function () {
+        var options = {
+            form:'#defaultForm',
+            success:console.log
+        };
+        Back.submit(options);
+
+    });
+
+</script>
+
+</body>
+
+</html>

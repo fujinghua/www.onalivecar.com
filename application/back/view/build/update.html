@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
+
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/back.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
+
+    <!-- For site js -->
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="_LAYUI_/layui.js"></script>
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+    <style>
+        #defaultForm .layui-tab-card{
+            border:none;
+            box-shadow: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<section style="max-width:1200px;margin: 0 auto 30px;position: relative;">
+    <form class="layui-form forms" id="defaultForm" action="" method="post">
+
+        <div class="layui-tab layui-tab-card" style="margin-top: 0;">
+            <ul class="layui-tab-title" style="position: fixed; z-index: 10;width: 100%;text-align: center;">
+                <li class="layui-this">基本信息</li>
+                <li>楼盘介绍</li>
+                <li>销售信息</li>
+                <li>建筑参数</li>
+                <li>其他信息</li>
+            </ul>
+            <div class="layui-tab-content" style="width: 900px;margin: 0 auto;padding-top: 54px;padding-bottom: 20px;">
+                <!--基本信息-->
+                <div class="layui-tab-item layui-show">
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘名称：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="title" lay-verify="require" placeholder="请输入楼盘名称" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">楼盘拼音：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="titlePinyin" placeholder="请输入楼盘拼音" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><span class="layui-color-danger">*</span>所属区域：</label>
+                            <div class="layui-input-inline">
+                                <select name="city_id" lay-verify="require" lay-search >
+                                    <option value="">选择城市</option>
+                                    {volist name="cityLists" id="item"}
+                                    <option value="{$key}">{$item}</option>
+                                    {/volist}
+                                </select>
+                            </div>
+                            <div class="layui-input-inline">
+                                <select name="county_id" lay-search="" id="county" >
+                                    <option value="">选择区/县</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘地址：</label>
+                        <div class="layui-input-block" style="padding-right: 120px;">
+                            <input type="text" value="" name="address" lay-verify="require" placeholder="请输入楼盘地址" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘Logo：</label>
+                        <div class="layui-input-block" style="padding-right: 120px;">
+                            <input type="file" id="BuildingLogo_file" name="file" placeholder="楼盘Logo" class="layui-upload-file">
+                            <input type="hidden" value="" name="logo" id="logo" lay-verify="require" lay-error="楼盘LOGO不能为空" placeholder="楼盘Logo" class="layui-input">
+                            <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘广告语：</label>
+                        <div class="layui-input-block" style="padding-right: 120px;">
+                            <textarea  name="adTitle" placeholder="请输入楼盘广告语" lay-verify="require" class="layui-textarea" lay-height="auto"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘类型：</label>
+                            <div class="layui-input-block checkbox-left checkbox-primary" style="padding-right: 120px;" lay-error="请至少选择一个楼盘类型">
+                                {volist name="model->getLists('type')" id="item" }
+                                <input type="checkbox" name="type[]" value="{$key}" title="{$item}" lay-verify="checked" lay-group="type" />
+                                {/volist}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘特色：</label>
+                        <div class="layui-input-block checkbox-left checkbox-primary" lay-error="请至少选择一个楼盘特色" style="padding-right: 120px;" >
+                            {volist name="model->getLists('feature')" id="item" }
+                            <input type="checkbox" name="feature[]" value="{$key}" title="{$item}" lay-verify="checked" lay-group="feature" />
+                            {/volist}
+                            <div class="layui-inline extra layui-width">
+                                <input type="text" name="featureExtra[]" lay-verify="checked" lay-group="feature" placeholder="其他楼盘特色" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span class="layui-color-danger">*</span>装修情况：</label>
+                        <div class="layui-input-block checkbox-left checkbox-primary" lay-error="请至少选择一个装修情况" style="padding-right: 120px;">
+                            {volist name="model->getLists('decoration')" id="item" }
+                            <input type="checkbox" name="decoration[]" value="{$key}" title="{$item}" lay-verify="checked" lay-group="decoration" />
+                            {/volist}
+                            <div class="layui-inline extra layui-width">
+                                <input type="text" name="decorationExtra[]" lay-verify="checked" lay-group="decoration" placeholder="其他装修情况" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span class="layui-color-danger">*</span>建筑形式：</label>
+                        <div class="layui-input-block checkbox-left checkbox-primary" style="padding-right: 120px;">
+                            {volist name="model->getLists('buildingType')" id="item" }
+                            <input type="checkbox" name="buildingType[]" value="{$key}" title="{$item}" lay-verify="checked" lay-group="buildingType" />
+                            {/volist}
+                            <div class="layui-inline extra layui-width">
+                                <input type="text" name="buildingTypeExtra[]" lay-verify="checked" lay-group="buildingType" placeholder="其他建筑形式" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">推荐理由：</label>
+                        <div class="layui-input-block" style="padding-right: 120px;">
+                            <textarea placeholder="请输入推荐理由" name="reason" class="layui-textarea" lay-height="auto"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><span class="layui-color-danger">*</span>总栋数：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="buildingNum" lay-verify="require" placeholder="总栋数" class="layui-input">
+                            </div>
+                            <label class="layui-text layui-label">栋</label>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><span class="layui-color-danger">*</span>总套数：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="houseNum" lay-verify="require" placeholder="总套数" class="layui-input">
+                            </div>
+                            <label class="layui-text layui-label">套</label>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">停车位：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="parkingNum" placeholder="停车位" class="layui-input">
+                            </div>
+                            <label class="layui-text layui-label">个</label>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><span class="layui-color-danger">*</span>开盘日期：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="started_at" lay-verify="require" lay-filter="date" lay-format="YYYY-MM-DD hh:00:00" placeholder="开盘日期" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">入住日期：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="joined_at" lay-filter="date" placeholder="入住日期" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">权重设置：</label>
+                        <div class="layui-input-block checkbox-left checkbox-primary" style="padding-right: 120px;">
+                            {volist name="model->getLists('weight')" id="item" }
+                            <input type="checkbox" name="weight[]" value="{$key}" title="{$item}" />
+                            {/volist}
+                        </div>
+                    </div>
+                </div>
+                <!--楼盘介绍-->
+                <div class="layui-tab-item">
+                    <div class="layui-form-item" style="padding-top: 54px;">
+                        <div class="layui-input-block" style="padding-right: 120px;">
+                            <textarea type="text" rows="15" name="content" placeholder="楼盘介绍" class="layui-textarea" lay-height="auto"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block" style="padding-right: 120px;">
+                            <input type="file" id="BuildingDetail_file" name="file[]" placeholder="上传楼盘图片" multiple class="layui-upload-file">
+                            <input type="hidden" value="" name="url" id="url" placeholder="楼盘Logo" class="layui-input">
+                            <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--销售信息-->
+                <div class="layui-tab-item">
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span class="layui-color-danger">*</span>销售状态：</label>
+                        <div class="layui-input-block checkbox-primary" style="padding-right: 120px;" lay-error="请选择销售状态">
+                            {volist name="model->getLists('saleStatus')" id="item" }
+                            <input type="radio" name="saleStatus[]" value="{$key}" title="{$item}" lay-verify="checked" lay-group="saleStatus" />
+                            {/volist}
+                        </div>
+                    </div>
+
+                    <div lay-error="均价、起价、最高价至少需要填写一项">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">楼盘起价：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" value="" name="priceMin" lay-verify="exist" lay-group="price" placeholder="楼盘起价" class="layui-input">
+                                </div>
+                                <label class="layui-text layui-label">元/㎡</label>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">楼盘最高价：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" value="" name="priceMax" lay-verify="exist" lay-group="price" placeholder="楼盘最高价" class="layui-input">
+                                </div>
+                                <label class="layui-text layui-label">元/㎡</label>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">楼盘均价：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" value="" name="priceAvg" lay-verify="exist" lay-group="price" placeholder="楼盘均价" class="layui-input">
+                                </div>
+                                <label class="layui-text layui-label">元/㎡</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">单套总价：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="priceSum" placeholder="单套总价" class="layui-input">
+                            </div>
+                            <label class="layui-text layui-label">元/㎡</label>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">总价范围：</label>
+                        <div class="layui-input-block checkbox-primary" style="padding-right: 120px;">
+                            {volist name="model->getLists('priceSumType')" id="item" }
+                            <input type="checkbox" name="priceSumType[]" value="{$key}" title="{$item}" lay-skin="primary" />
+                            {/volist}
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">现房期房：</label>
+                        <div class="layui-input-block checkbox-primary" style="padding-right: 120px;">
+                            {volist name="model->getLists('status')" id="item" }
+                            <input type="radio" name="status[]" value="{$key}" title="{$item}" />
+                            {/volist}
+                        </div>
+                    </div>
+
+                </div>
+                <!--建筑参数-->
+                <div class="layui-tab-item">
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">占地面积：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="buildingArea" placeholder="请填写占地面积" class="layui-input">
+                            </div>
+                            <label class="layui-text layui-label">平方米</label>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">建筑面积：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="houseArea" placeholder="请填建筑面积" class="layui-input">
+                            </div>
+                            <label class="layui-text layui-label">平方米</label>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">单套最大面积：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="areaMax" placeholder="单套最大面积" class="layui-input">
+                            </div>
+                            <label class="layui-text layui-label">平方米</label>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">单套最小面积：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="areaMin" placeholder="单套最小面积" class="layui-input">
+                            </div>
+                            <label class="layui-text layui-label">平方米</label>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">容积率：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="FAR" placeholder="容积率" class="layui-input">
+                            </div>
+                            <label class="layui-text layui-label">%</label>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">绿化率：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="poolRate" placeholder="绿化率" class="layui-input">
+                            </div>
+                            <label class="layui-text layui-label">%</label>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">承建商：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="builders" placeholder="承建商" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">结构：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="structure" placeholder="结构" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">外墙：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="wall" placeholder="外墙" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--其他信息-->
+                <div class="layui-tab-item">
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><span class="layui-color-danger">*</span>售楼处电话：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="saleTel" lay-verify="require" placeholder="请填写售楼处电话" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span class="layui-color-danger">*</span>售楼处地址：</label>
+                        <div class="layui-input-block" style="padding-right: 120px;">
+                            <input type="text" value="" name="saleAddress" lay-verify="require" placeholder="售楼处地址" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">开发商：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="developer" placeholder="请填写开发商" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">投资商：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="investor" placeholder="投资商" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">现场接待人：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="contacter" placeholder="现场接待人" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">接待人电话：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="contacterTel" placeholder="现场接待人电话" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">物业公司：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="propertyName" placeholder="物业公司" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">物业费：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" name="propertyFee" placeholder="物业费" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item" style="width: 900px;margin: 0 auto;">
+                <div class="layui-inline">
+                    <label class="layui-form-label"></label>
+                    <button class="layui-btn" lay-submit="" lay-filter="submit">添加</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</section>
+
+<script src="__JS__/site.js"></script>
+<script src="__JS__/back.js"></script>
+<script>
+
+    layui.use(['form'],function () {
+        var form = layui.form();
+
+    });
+
+    $(function () {
+        var options = {
+            form:'#defaultForm',
+            success:console.log
+        };
+        Back.submit(options);
+    });
+
+    var indexLogo = Site.uploader({
+        elem:'#BuildingLogo_file',
+        targetElem:'#logo',
+        url: '/manage/ajax/uploader?file=file',
+        title:'上传楼盘封面',
+        isAjax:true,
+        data:[[{
+            icon: "/static/uploads/tmp/0/fd732e58f03429dd16ed44048965fbfb_icon.jpg",
+            name: "fd732e58f03429dd16ed44048965fbfb.jpg",
+            size: 392071,
+            src: "/static/uploads/tmp/0/fd732e58f03429dd16ed44048965fbfb.jpg",
+            tmp_name: "01.jpg",
+            type: ".jpg"
+        }]],
+        success: function (res, input) {
+            console.log(res);
+            console.log($('#logo').val());
+        }
+    });
+
+    var indexUrl = Site.uploader({
+        elem:'#BuildingDetail_file',
+        targetElem:'#url',
+        url: '/manage/ajax/uploader?file=file',
+        title:'上传楼盘图片',
+        isAjax:true,
+        isMulti:true,
+        success: function (res, input) {
+            console.log(res);
+            console.log($('#logo').val());
+        }
+    });
+
+</script>
+
+</body>
+
+</html>

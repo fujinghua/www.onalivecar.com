@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="url" content="">
+    <meta name="_csrf_param" content="{$_csrf_param ? $_csrf_param : ''}">
+    <meta name="_csrf_token" content="{$_csrf_token ? $_csrf_token : ''}">
+    <meta name="cachedKey" content="{$_SESSION['_auth_token_'] ? $_SESSION['_auth_token_'] : ''}">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
+
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/back.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
+
+    <!-- For site js -->
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="_LAYUI_/layui.js"></script>
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+</head>
+<body>
+
+<div class="wrap">
+
+    <div class="container"  id="container">
+
+        <div class="layui-layout layui-layout-back-main" id="layui_layout" style="padding:0 15px 15px 15px;">
+
+            <!-- 右侧主体内容开启 -->
+            {__CONTENT__}
+            <!-- 右侧主体内容结束 -->
+
+        </div>
+    </div>
+
+</div>
+
+<!-- 加载js文件-->
+<!--  全局 -->
+<script type="text/javascript" src="__JS__/site.js"></script>
+<script type="text/javascript" src="__JS__/back.js"></script>
+<script>
+    layui.use(['layer', 'util'], function() {
+        var $ = layui.jquery,
+            layer = layui.layer,
+            util = layui.util;
+
+        var top = false, bar1 = false, bar2 = false,
+        metaUtil = $('meta[name="util"]').attr('content');
+        if (metaUtil !== undefined && metaUtil === 'true'){
+            top = true;
+            bar1 = true;
+            bar2 = true;
+        }
+
+        //回到顶部
+        //使用内部工具组件
+        util.fixbar({
+            top: top,
+            // bar1: bar1,
+//            bar2: bar2,
+            css: {right: 15, bottom: 15},
+            click: function(type){
+                if(type === 'bar1'){
+                    layer.msg('工具一');
+                }else if (type === 'bar2'){
+                    layer.msg('工具二');
+                }
+            }
+        });
+
+    });
+</script>
+
+</body>
+</html>
+

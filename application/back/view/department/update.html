@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+</head>
+
+<body style="max-width: 800px;max-height: 600px;margin: auto;">
+
+<section style="margin: 20px;">
+    {if condition="isset($meta_title)"}
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend style="text-align: center;">{$meta_title}</legend>
+    </fieldset>
+    {/if}
+    <form class="layui-form forms " id="defaultForm" action="" method="post" style="padding: 15px 0">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">部门名称：</label>
+            <div class="layui-input-block" style="padding-right: 120px;">
+                <input type="text" value="{$model.name}" name="name" lay-verify="require" placeholder="名称" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">部门等级：</label>
+            <div class="layui-input-block" style="padding-right: 120px;">
+                <select name="level" lay-verify="require" lay-search="">
+                    <option value="">可选部门</option>
+                    {volist name="model->levelList" id="item"}
+                    <option value="{$key}" {if condition="$model->level eq $key"}selected{/if}>{$item}</option>
+                    {/volist}
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">上级部门：</label>
+            <div class="layui-input-block" style="padding-right: 120px;">
+                {if condition="!empty($model.parent)"}
+                <input type="hidden" name="parent" value="{$model.parent}" data-value="{$model.parent}" lay-filter="parent" lay-search="refresh" class="layui-input" />
+                <input type="text" value="{$model->getParent->name}" data-value="{$model->getParent->name}" lay-filter="targetParent" class="layui-input"/>
+                {else /}
+                <input type="hidden" name="parent" value="" data-value="" lay-filter="parent" lay-search="refresh" class="layui-input" />
+                <input type="text" value="" data-value="" lay-filter="targetParent" class="layui-input"/>
+                {/if}
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-inline">
+                <button class="layui-btn" lay-submit="" lay-filter="submit">更新</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+<script>
+
+    layui.use(['form'],function () {
+        var form = layui.form();
+    });
+
+    $(function () {
+        var options = {
+            form:'#defaultForm',
+            success:console.log
+        };
+        Back.submit(options);
+
+        Site.search({
+            url: '/manage/ajax/getDepartment',
+            targetClass: '[lay-filter="targetParent"]',      // 输入框目标元素
+            parentClass: '.layui-input-block',          // 父级类
+            hiddenClass: '[lay-filter="parent"]',          // 隐藏域input
+            key:'name'
+        });
+
+    });
+
+</script>
+
+</body>
+
+</html>

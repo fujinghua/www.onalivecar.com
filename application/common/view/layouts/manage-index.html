@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="url" content="">
+    <meta name="_csrf_param" content="{$_csrf_param ? $_csrf_param : ''}">
+    <meta name="_csrf_token" content="{$_csrf_token ? $_csrf_token : ''}">
+    <meta name="cachedKey" content="{$_SESSION['_auth_token_'] ? $_SESSION['_auth_token_'] : ''}">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
+
+    <!-- For site css -->
+
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="_LAYUI_/layui.js"></script>
+
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/back.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
+
+    <script>
+        $(document).ready(function(){
+            layui.config({
+                base: '/static/js/' //设定扩展模块所在的目录
+            }).use(['layer', 'util'], function() {
+                var $ = layui.jquery,
+                    layer = layui.layer,
+                    util = layui.util;
+
+//        //回到顶部
+//        //使用内部工具组件
+//        util.fixbar({
+//            top: true,
+//            // bar1: true,
+//            bar2: true,
+//            css: {right: 15, bottom: 55},
+//            click: function(type){
+//                if(type === 'bar1'){
+//                    layer.msg('工具一');
+//                }else if (type === 'bar2'){
+//                    layer.msg('工具二');
+//                }
+//            }
+//        });
+
+            });
+
+        });
+    </script>
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+</head>
+<body>
+
+<div class="wrap">
+
+    <div class="container"  id="container">
+
+        <div class="layui-layout layui-layout-back" id="layui_layout">
+
+            <!-- 顶部区域开启 -->
+            {include file="common@layouts/manage-header" /}
+            <!-- 顶级区域结束 -->
+
+            <!-- 左侧侧边导航开始 -->
+            {include file="common@layouts/manage-sidebar" /}
+            <!-- 左侧侧边导航结束 -->
+
+            <!-- 右侧主体内容开启 -->
+            <div class="layui-body" id="dinner-body" style="padding:0;bottom: 0;">
+                <div class="layui-tab layui-tab-card dinner-tab-box" id="dinner-tab" lay-filter="switch-tab" lay-allowclose="true" lay-separator=" | ">
+                    <ul class="layui-tab-title" data-url="/manage/index/home.html?iframe=true"  data-icon="fa fa-circle-o" data-title="控制面板" data-id="NAV_1" data-closed="false" >
+                    </ul>
+                    <div class="layui-tab-content">
+                    </div>
+                </div>
+            </div>
+            <!-- 右侧主体内容结束 -->
+
+            <!-- 底部区域开启 -->
+            {include file="common@layouts/manage-footer" /}
+            <!-- 底部区域结束 -->
+
+            <!-- 其他区域开启 -->
+            <div class="layui-hide">
+                <i class="layui-icon">&#xe602;</i>
+            </div>
+            <div class="site-mobile-shade"></div>
+            <!-- 其他区域结束 -->
+
+        </div>
+    </div>
+
+</div>
+
+<!-- fakeLoader start -->
+<!--<div class="fakeloader"></div>-->
+<!-- fakeLoader end -->
+
+<!--锁屏模板 start-->
+<!--<script type="text/template" id="lock-temp">-->
+<!--<div class="dinner-header-lock" id="lock-box">-->
+<!--<div class="dinner-header-lock-img">-->
+<!--<img src="/static/images/default-user.png"/>-->
+<!--</div>-->
+<!--<div class="dinner-header-lock-name" id="lockUserName">Dinner</div>-->
+<!--<input type="text" class="dinner-header-lock-input" value="输入密码解锁.." name="lockPwd" id="lockPwd" />-->
+<!--<button class="layui-btn layui-btn-small" id="unlock">解锁</button>-->
+<!--</div>-->
+<!--</script>-->
+<!--锁屏模板 end -->
+
+<!-- 菜单控件 -->
+<!-- <div class="dinner-tab-menu">
+	<span class="layui-btn dinner-test">刷新</span>
+</div> -->
+
+<!-- iframe框架刷新操作 -->
+<!-- <div id="refresh_iframe" class="layui-btn refresh_iframe">刷新</div> -->
+
+<!-- 加载js文件-->
+<!-- 侧栏菜单 -->
+<script type="text/javascript" src="__JS__/navbar.js"></script>
+<!-- 重定义layui 的tab -->
+<script type="text/javascript" src="__JS__/tab.js"></script>
+<!--  布局控制 -->
+<script type="text/javascript" src="__JS__/layout.js"></script>
+<!--  全局 -->
+<!-- 是否引入就看默认首页是否使用到全局函数 -->
+<script type="text/javascript" src="__JS__/site.js"></script>
+
+</body>
+</html>
+
