@@ -7,7 +7,7 @@ layui.define(['layer', 'form'], function (exports) {
     var mod_name = 'verify',
         $ = layui.jquery,
         layer = top.layer === undefined ? layui.layer : top.layer,
-        form = layui.form();
+        form = layui.form;
 
     var Verify = function () {
         this.config = {

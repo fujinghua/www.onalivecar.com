@@ -74,7 +74,7 @@
         removeUrl:"{:url('/back/auth/removeChild')}",
     };
     layui.use(['form','layer'], function () {
-        var form = layui.form();
+        var form = layui.form;
         var layer = top.layui.layer ? top.layui.layer : layui.layer;
         var name = $('.name').html();
         url.addChildUrl += '?id='+name;

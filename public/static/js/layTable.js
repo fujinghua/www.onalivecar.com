@@ -7,7 +7,7 @@ layui.define(['layer', 'form','laypage'], function (exports) {
     var mod_name = 'layTable',
         $ = layui.jquery,
         layer = parent.layer === undefined ? layui.layer : parent.layer,
-        form = layui.form(),
+        form = layui.form,
     laypage = layui.laypage;
 
     var Table = function () {

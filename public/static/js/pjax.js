@@ -7,7 +7,7 @@ layui.define(['layer', 'form'], function (exports) {
     var mod_name = 'pjax',
         $ = layui.jquery,
         layer = parent.layer === undefined ? layui.layer : parent.layer,
-        form = layui.form();
+        form = layui.form;
 
     var Pjax = function () {
         this.config = {

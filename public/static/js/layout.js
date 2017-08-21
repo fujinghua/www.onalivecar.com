@@ -10,7 +10,7 @@ layui.config({
 
     window.jQuery = window.$ = layui.jquery;
     window.layer = layui.layer;
-    var element = layui.element(),
+    var element = layui.element,
         $ = layui.jquery,
         layer = layui.layer,
         navbar = layui.navbar(),

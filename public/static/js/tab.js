@@ -4,7 +4,7 @@ layui.define(['element','layer'], function(exports) {
 
     var mod_name = 'tab',
         $ = layui.jquery,
-        element = layui.element(),
+        element = layui.element,
         layer = parent.layer === undefined ? layui.layer : parent.layer,
         globalTabIdIndex = 0,
         Tab = function() {

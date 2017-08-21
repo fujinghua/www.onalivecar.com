@@ -45,7 +45,7 @@ Back.goSearch = function (keyword){
 Back.tableBase = function (){
     layui.use(['layer','form', 'laydate'], function () {
         var laydate = layui.laydate,
-            form = layui.form();
+            form = layui.form;
         Back.layer = top.layui.layer ? top.layui.layer : layui.layer ;
 
         $(document).off('click', '[lay-filter="date"]').on('click', '[lay-filter="date"]:not([readonly]):not([disabled])', function () {

@@ -32,20 +32,10 @@
 
     <form class="layui-form forms" id="defaultForm" action="" method="post" style="padding: 15px 0">
 
-        <div class="layui-form-item" style="display: none;">
-            <label class="layui-form-label">头像：</label>
-            <div class="layui-input-block" style="padding-right: 120px;">
-                <input type="file" id="avatar_file" name="file" placeholder="头像" class="layui-upload-file">
-                <input type="hidden" value="" name="avatar" id="avatar" placeholder="头像" class="layui-input">
-                <div lay-filter="show-url" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
-            </div>
-        </div>
-
         <div class="layui-form-item">
             <label class="layui-form-label">配置应用:</label>
             <div class="layui-input-block right-width">
-                <select name="app" lay-search >
-                    <option>请选择应用</option>
+                <select name="app" lay-verify="require"  lay-search >
                     {volist name="model->T('app')" id="item"}
                     <option value="{$key}" {if condition="$key eq $model.app"}selected{/if} >{$item}</option>
                     {/volist}
@@ -56,8 +46,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">配置类型:</label>
             <div class="layui-input-block right-width">
-                <select name="type" lay-search >
-                    <option>请选择类型</option>
+                <select name="type" lay-verify="require"  lay-search >
                     {volist name="model->T('type')" id="item"}
                     <option value="{$key}" {if condition="$key eq $model.type"}selected{/if} >{$item}</option>
                     {/volist}
@@ -68,14 +57,14 @@
         <div class="layui-form-item">
             <label class="layui-form-label">配置标识:</label>
             <div class="layui-input-block right-width">
-                <input type="text" value="{$model.name}" placeholder="配置标识" class="layui-input" readonly>
+                <input type="text" value="{$model.name}" lay-verify="require"  placeholder="配置标识" class="layui-input" readonly>
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">配置此值:</label>
             <div class="layui-input-block right-width">
-                <input type="text" value="{$model.value}" name="value" placeholder="配置此值" class="layui-input">
+                <input type="text" value="{$model.value}" lay-verify="require"  name="value" placeholder="配置此值" class="layui-input">
             </div>
         </div>
 
@@ -103,7 +92,7 @@
 <script>
 
     layui.use(['form'], function () {
-        var form = layui.form();
+        var form = layui.form;
 
     });
 

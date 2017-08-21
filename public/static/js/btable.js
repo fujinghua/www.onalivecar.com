@@ -4,10 +4,10 @@ layui.define(['element', 'common', 'paging', 'form'], function (exports) {
     var $ = layui.jquery,
         layerTips = parent.layer === undefined ? layui.layer : parent.layer,
         layer = layui.layer,
-        element = layui.element(),
+        element = layui.element,
         common = layui.common,
         paging = layui.paging(),
-        form = layui.form();
+        form = layui.form;
 
     var BTable = function () {
 		/**
