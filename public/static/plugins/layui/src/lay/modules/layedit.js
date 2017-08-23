@@ -387,12 +387,11 @@ layui.define(['layer', 'form'], function(exports){
         var that = this;
         layui.use('upload', function(upload){
           var uploadImage = set.uploadImage || {};
-          upload({
+          toolActive.haveUpload || upload.render({
             url: uploadImage.url
             ,method: uploadImage.type
             ,elem: $(that).find('input')[0]
-            ,unwrap: true
-            ,success: function(res){
+            ,done: function(res){
               if(res.code == 0){
                 res.data = res.data || {};
                 insertInline.call(iframeWin, 'img', {
@@ -404,6 +403,7 @@ layui.define(['layer', 'form'], function(exports){
               }
             }
           });
+          toolActive.haveUpload = true;
         });
       }
       //插入代码
