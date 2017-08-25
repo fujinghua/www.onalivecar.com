@@ -30,6 +30,7 @@ return [
     '_home_url'                     => '__MANAGE_URL__',
     // 是否自动登录
     '_auto_login'                     => true,
-    // 登录成功 返回URL
+    // 超级管理员ID
+    'superId'                     => '100',
 ];
 

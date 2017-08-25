@@ -111,4 +111,34 @@ class IndexController extends BackController
     {
         return $this->nav($this->getIdentity('id'));
     }
+
+    /**
+     * @description 代码更新，只能是超级管理员更新
+     * @author Sir Fu
+     */
+    public function deployAction()
+    {
+        $ret = ['status'=>'0','更新失败'];
+        if ($this->getIdentity('id') == config('identity.superId')){
+            $commands = [];
+            $commands[] = 'cd /www/wwwroot/www.onalivecar.com'; //打开目录
+            $commands[] = 'git checkout master'; // 切换到主分支
+            if (isset($_GET['merge'])){
+                $commands[] = 'git add -A'; //  提交所有变化
+                $commands[] = 'git commit -m \'在'.date('Y-m-d H:i:s').'手动更新代码\'';
+                $commands[] = 'git fetch origin master'; // 更新代码到本地仓库
+                $commands[] = 'git merge origin/master'; // 将远端master分支的代码merge进当前checkout分支
+                $commands[] = 'git push origin master:master'; // 使用merge工具解决merge冲突(git push A B:C,其中A和C是分别remote端的一个repository的名字和branch的名字，B是本地端branch的名字)
+            }else{
+                $commands[] = 'git pull origin master'; //直接从GitHub上更新代码到本地，会覆盖本地已修改的
+            }
+            if (function_exists('shell_exec')){
+                $ret = ['status'=>'1','更新成功'];
+                foreach ($commands as $command){
+                    shell_exec($command);
+                }
+            }
+        }
+        return json($ret);
+    }
 }
