@@ -42,13 +42,6 @@ class Ban extends Model
     protected $update = [];
 
     /**
-     * @return array
-     */
-    public static function getBanList(){
-        return self::T('ban');
-    }
-
-    /**
      * @inheritdoc
      */
     public function rules()
@@ -74,6 +67,13 @@ class Ban extends Model
             'ban' => '类型;0=无效,1=允许,2=禁止;',
             'created_at' => '变更时间',
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public static function getBanList(){
+        return self::T('ban');
     }
 
     /**

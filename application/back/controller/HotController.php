@@ -42,7 +42,7 @@ class HotController extends BackController
             }
         }
         $list = $model->where($where)->order('`order` ASC')->paginate($each);
-        $this->assign('meta_title', "楼市资讯");
+        $this->assign('meta_title', "车市资讯");
         $this->assign('model', $model);
         $this->assign('list', $list);
         return view('hot/index');
@@ -82,7 +82,7 @@ class HotController extends BackController
             }
         }
         $list = $model->where($where)->order('`order` ASC')->paginate($each);
-        $this->assign('meta_title', "楼盘资讯");
+        $this->assign('meta_title', "资讯");
         $this->assign('model', $model);
         $this->assign('list', $list);
         return view('hot/list');
@@ -116,7 +116,7 @@ class HotController extends BackController
             }
         }
         $list = $model->where($where)->order('`order` ASC')->paginate($each);
-        $this->assign('meta_title', "新房资讯");
+        $this->assign('meta_title', "新车资讯");
         $this->assign('model', $model);
         $this->assign('list', $list);
         return view('hot/list');
@@ -150,7 +150,7 @@ class HotController extends BackController
             }
         }
         $list = $model->where($where)->order('`order` ASC')->paginate($each);
-        $this->assign('meta_title', "二手房资讯");
+        $this->assign('meta_title', "二手车资讯");
         $this->assign('model', $model);
         $this->assign('list', $list);
         return view('hot/list');

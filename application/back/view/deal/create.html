@@ -38,10 +38,10 @@
 
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label"><span class="layui-color-danger">*</span>客户:</label>
+                <label class="layui-form-label"><span class="layui-color-danger">*</span>用户:</label>
                 <div class="layui-input-inline">
-                    <input type="hidden" value="" name="client_id" lay-verify="require" placeholder="客户" class="layui-input" lay-search="refresh" lay-filter="key">
-                    <input type="text" value="" lay-verify="require" placeholder="客户" class="layui-input" lay-filter="client_search">
+                    <input type="hidden" value="" name="client_id" lay-verify="require" placeholder="用户" class="layui-input" lay-search="refresh" lay-filter="key">
+                    <input type="text" value="" lay-verify="require" placeholder="用户" class="layui-input" lay-filter="client_search">
 
                 </div>
             </div>
@@ -94,8 +94,8 @@
             <div class="layui-inline">
                 <label class="layui-form-label"><span class="layui-color-danger"></span>销售者:</label>
                 <div class="layui-input-inline">
-                    <input type="hidden" value="" name="sellerId" lay-verify="" placeholder="客户" class="layui-input" lay-search="refresh" lay-filter="key">
-                    <input type="text" value="" lay-verify="" placeholder="客户" class="layui-input" lay-filter="sellerId_search">
+                    <input type="hidden" value="" name="sellerId" lay-verify="" placeholder="用户" class="layui-input" lay-search="refresh" lay-filter="key">
+                    <input type="text" value="" lay-verify="" placeholder="用户" class="layui-input" lay-filter="sellerId_search">
                 </div>
             </div>
             <div class="layui-inline">
@@ -108,9 +108,9 @@
 
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label"><span class="layui-color-danger">*</span>房号:</label>
+                <label class="layui-form-label"><span class="layui-color-danger">*</span>车号:</label>
                 <div class="layui-input-inline">
-                    <input type="text" value="" name="houseNo" lay-verify="require" placeholder="房号" maxlength="20" class="layui-input">
+                    <input type="text" value="" name="houseNo" lay-verify="require" placeholder="车号" maxlength="20" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
@@ -131,9 +131,9 @@
                 <label class="layui-text">元</label>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label"><span class="layui-color-danger">*</span>房款总价:</label>
+                <label class="layui-form-label"><span class="layui-color-danger">*</span>车款总价:</label>
                 <div class="layui-input-inline">
-                    <input type="text" value="" name="total" lay-verify="require" placeholder="房款总价" maxlength="11" class="layui-input">
+                    <input type="text" value="" name="total" lay-verify="require" placeholder="车款总价" maxlength="11" class="layui-input">
                 </div>
                 <label class="layui-text">元</label>
             </div>
@@ -163,9 +163,9 @@
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label"><span class="layui-color-danger"></span>楼盘返点:</label>
+                <label class="layui-form-label"><span class="layui-color-danger"></span>返点:</label>
                 <div class="layui-input-inline">
-                    <input type="text" value="" name="buildingReback" lay-verify="" placeholder="楼盘返点" class="layui-input">
+                    <input type="text" value="" name="buildingReback" lay-verify="" placeholder="返点" class="layui-input">
                 </div>
                 <label class="layui-text">%</label>
             </div>
@@ -231,7 +231,7 @@
     });
 
     Site.search({
-        url: '/back/ajax/getClient',
+        url: '/ajax/getClient',
         targetClass: '[lay-filter="client_search"]',          // 输入框目标元素
         parentClass: '.layui-input-inline',          // 父级类
         hiddenClass: '[name="client_id"]',          // 隐藏域input
@@ -239,7 +239,7 @@
     });
 
     Site.search({
-        url: '/back/ajax/getClient',
+        url: '/ajax/getClient',
         targetClass: '[lay-filter="sellerId_search"]',          // 输入框目标元素
         parentClass: '.layui-input-inline',          // 父级类
         hiddenClass: '[name="sellerId"]',          // 隐藏域input
@@ -249,7 +249,7 @@
     var indexUrl = Site.uploader({
         elem: '#url_file',
         targetElem: '#url',
-        url: '/back/ajax/uploader?file=file',
+        url: '/ajax/uploader?file=file',
         title: '成交单',
         isAjax: true,
         success: function (res, input) {

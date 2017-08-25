@@ -1907,7 +1907,7 @@ Site.getLayerIndex = function (selector, index) {
  * 1 －'Loading' （载入）已调用send()方法，正在发送请求
  * 2 －'Loaded' （载入完成）send()方法执行完成，已经接收到全部响应内容
  * 3 －'Interactive' （交互）正在解析响应内容
- * 4 －'Completed' （完成）响应内容解析完成，可以在客户端调用了
+ * 4 －'Completed' （完成）响应内容解析完成，可以在用户端调用了
  */
 Site.loadStatus = function (dom) {
     dom = dom || document;
@@ -2575,7 +2575,7 @@ Site.uploader = function (options) {
     uploaderIndex++;
     options = $.extend({
         elem: '.layui-upload-file',
-        url: '/back/ajax/uploader',
+        url: '/ajax/uploader',
         isAjax: true,
         before: null,  // 上传成功后的回调函数,参数 input 表单
         success: null, // 上传成功后的回调函数,参数res代表后天返回的数据，input是文件input 表单
@@ -2960,7 +2960,7 @@ function ajaxJump(url, _Callback) {
 //
 //        layer.open({
 //            type: 2,
-//            content: 'http://www.alivehouse.com/manage',
+//            content: 'http://www.onalivecar.com/manage',
 //            success: function(layero, index){
 //                // 在父窗口中获取iframe中的元素
 //                // 格式 $("#iframe的ID").contents().find("#iframe中的控件ID")

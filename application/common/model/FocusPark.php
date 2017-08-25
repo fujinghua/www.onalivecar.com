@@ -49,7 +49,7 @@ class FocusPark extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public static $groupList = ['1'=>'预定','2'=>'客户','4'=>'新房','5'=>'二手房','6'=>'楼房','7'=>'客服'];
+    public static $groupList = ['1'=>'预定','2'=>'客户','4'=>'新房','5'=>'二手房','6'=>'','7'=>'客服'];
 
     /**
      * @inheritdoc
@@ -76,7 +76,7 @@ class FocusPark extends Model
             'is_delete' => '时效;0=失效,1=有效;默认1;',
             'label_id' => '标签表ID',
             'target_id' => '目标表ID;根据group值外联',
-            'group' => '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=出租;默认1;',
+            'group' => '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=,7=客服,8=出租;默认1;',
             'name' => '标签',
             'description' => '详细描述',
             'created_at' => '创建时间',

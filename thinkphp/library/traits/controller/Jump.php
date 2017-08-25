@@ -103,7 +103,7 @@ trait Jump
     }
 
     /**
-     * 返回封装后的API数据到客户端
+     * 返回封装后的API数据到用户端
      * @access protected
      * @param mixed     $data 要返回的数据
      * @param integer   $code 返回的code

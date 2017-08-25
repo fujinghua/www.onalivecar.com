@@ -16,7 +16,7 @@ if (typeof Back === "undefined") {
  */
 Back.config = {
     layuiBase: '/static/js/',
-    getCity:'/back/ajax/getCity',
+    getCity:'/ajax/getCity',
 };
 
 Back.layer =  top.layui.layer ? top.layui.layer : layui.layer;

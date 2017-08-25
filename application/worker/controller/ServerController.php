@@ -6,7 +6,7 @@ use think\worker\Server;
 
 class ServerController extends Server
 {
-    protected $socket = 'websocket://www.alivehouse.com:2346';
+    protected $socket = 'websocket://www.onalivecar.com:2346';
 
 //    protected $port = '2346';
 
@@ -39,9 +39,9 @@ class ServerController extends Server
     }
 
     /**
-     * 当客户端的连接上发生错误时触发
-     * 当客户端的连接发生错误时，如果设置了$onError回调，则运行
-     * 错误一般为客户端断开连接导致数据发送失败、服务端的发送缓冲区满导致发送失败等
+     * 当用户端的连接上发生错误时触发
+     * 当用户端的连接发生错误时，如果设置了$onError回调，则运行
+     * 错误一般为用户端断开连接导致数据发送失败、服务端的发送缓冲区满导致发送失败等
      * 具体错误码及错误详情会以参数的形式传递给回调，参见手册
      * @param $connection
      * @param $code
@@ -109,7 +109,7 @@ class ServerController extends Server
 php server.php
 打开chrome浏览器，先打开push.app域名下的网页（js跨域不能通讯），按F12打开调试控制台，在Console一栏输入(或者把下面代码放入到html页面用js运行)
 
-ws = new WebSocket("ws://www.alivehouse.com:2346");
+ws = new WebSocket("ws://www.onalivecar.com:2346");
 ws.onopen = function() {
     alert("连接成功");
     ws.send('tom');

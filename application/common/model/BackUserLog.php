@@ -55,6 +55,43 @@ class BackUserLog extends Model
     protected $update = [];
 
     /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            'rule'=>[
+                ['back_user_id','number','用户 无效'],
+                ['route','max:255',],
+                ['url','max:255',],
+                ['user_agent','max:255',],
+                ['ip','max:255',],
+            ],
+            'msg'=>[]
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => '自增ID',
+            'back_user_id' => '表user主键',
+            'route' => '路由',
+            'url' => '地址',
+            'user_agent' => '客户端',
+            'gets' => 'GET方法',
+            'posts' => 'POST方法',
+            'target' => '目标',
+            'ip' => 'IP',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
+        ];
+    }
+
+    /**
      * @param null $target
      * @param null $userId
      * @param null $action
@@ -91,42 +128,6 @@ class BackUserLog extends Model
 
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            'rule'=>[
-                ['back_user_id','number','用户 无效'],
-                ['route','max:255',],
-                ['url','max:255',],
-                ['user_agent','max:255',],
-                ['ip','max:255',],
-            ],
-            'msg'=>[]
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => '自增ID',
-            'back_user_id' => '表user主键',
-            'route' => '路由',
-            'url' => '地址',
-            'user_agent' => '客户端',
-            'gets' => 'GET方法',
-            'posts' => 'POST方法',
-            'target' => '目标',
-            'ip' => 'IP',
-            'created_at' => '创建时间',
-            'updated_at' => '更新时间',
-        ];
-    }
 
     /**
      * @return \think\model\relation\HasOne

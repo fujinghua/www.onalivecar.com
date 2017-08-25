@@ -11,10 +11,10 @@ class DealValidate extends Validate
      * @var array
      */
     protected $rule = [
-        'client_id|客户' => ['require','exist:client,id'],
+        'client_id|用户' => ['require','exist:client,id'],
         'belongUserId|权属人' => ['require','exist:back_user,id'],
         'type|类型' => ['require'],
-        'houseNo|房号' => ['require'],
+        'houseNo|车号' => ['require'],
         'area|面积' => ['require'],
         'eachPrice|单价' => ['require'],
         'total|总价' => ['require'],

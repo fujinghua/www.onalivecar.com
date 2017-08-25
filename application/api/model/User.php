@@ -4,7 +4,7 @@ namespace app\api\model;
 use app\home\validate\UserValidate;
 
 use app\common\model\HomeUser;
-use app\common\model\UserloginLog;
+use app\common\model\LoginLog;
 use think\Request;
 
 /**
@@ -620,7 +620,7 @@ class User extends HomeUser
             return true;
         }
         $ip = self::get_client_ip();
-        UserloginLog::addLog($user->id,null,null,'1',$ip);
+        LoginLog::addLog($user->id,null,null,'1',$ip);
         return true;
     }
 
@@ -1276,7 +1276,7 @@ class User extends HomeUser
         }
     }
 
-    /**\@description 获取客户端IP
+    /**\@description 获取用户端IP
      * @return string|null
      */
     public static function get_client_ip(){

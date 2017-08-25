@@ -128,7 +128,7 @@ class App
         // 清空类的实例化
         Loader::clearInstance();
 
-        // 输出数据到客户端
+        // 输出数据到用户端
         if ($data instanceof Response) {
             $response = $data;
         } elseif (!is_null($data)) {

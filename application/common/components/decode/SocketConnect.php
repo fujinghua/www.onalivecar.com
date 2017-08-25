@@ -14,7 +14,7 @@ class SocketConnect{
     private $host = '0.0.0.0';
     private $port = 8010;
     private $maxUser = 10;
-    public  $accept = array(); //连接的客户端
+    public  $accept = array(); //连接的用户端
     private $cycle = array(); //循环连接池
     private $isHand = array();//握手信息
 
@@ -74,7 +74,7 @@ class SocketConnect{
         //配置socket
         socket_set_option($this->socket, SOL_SOCKET, SO_REUSEADDR, TRUE);
 
-        //绑定接口，最多10个人连接，超过的客户端连接会返回WSAECONNREFUSED错误
+        //绑定接口，最多10个人连接，超过的用户端连接会返回WSAECONNREFUSED错误
         $res = socket_bind($this->socket, $this->host, $this->port);
         if ( $res === false ){
             //判断绑定监听地址是否成功，失败则记录绑定监听失败原因,且退出程序

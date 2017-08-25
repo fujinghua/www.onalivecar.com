@@ -82,7 +82,7 @@ class Response
     }
 
     /**
-     * 发送数据到客户端
+     * 发送数据到用户端
      * @access public
      * @return mixed
      * @throws \InvalidArgumentException

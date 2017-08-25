@@ -4,6 +4,7 @@ namespace app\common\model;
 
 use app\common\model\Model;
 use app\common\model\BackUser;
+use app\common\validate\HotValidate;
 
 /**
  * This is the model class for table "{{%hot}}".
@@ -129,7 +130,7 @@ class Hot extends Model
             'is_delete' => '时效;0=失效,1=有效;默认1;',
             'is_passed' => '审核;1=已通过,2=审核中,3=未通过;默认1;',
             'back_user_id' => '后台管理员ID',
-            'type' => '父级类型:1=默认,2=首页,3=新房,4=二手房,5=楼盘,6=交易,;默认1;',
+            'type' => '父级类型:1=默认,2=首页,3=新房,4=二手房,5=,6=交易,;默认1;',
             'url' => '图片地址',
             'url_icon' => '图片缩略图',
             'target' => '跳转地址',

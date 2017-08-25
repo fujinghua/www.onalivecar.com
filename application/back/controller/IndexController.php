@@ -17,7 +17,6 @@ class IndexController extends BackController
      */
     public function indexAction()
     {
-        $this->assign('meta_title', "后台首页");
         return view('index');
     }
 

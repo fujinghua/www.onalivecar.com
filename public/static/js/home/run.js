@@ -1111,7 +1111,7 @@ Run.fileUpload2 = function (e, c, f) {
     }
     var a = {
         title: b,
-        frameSrcUrl: (top._siteDomain ? top._siteDomain : "") + "/back/fileUploadV2.php?settings=" + Helper.encodeUrl($.toJSON(d)) + "&ram=" + Math.random() + "&crossiframe=" + Helper.encodeUrl(d.crossiframe),
+        frameSrcUrl: (top._siteDomain ? top._siteDomain : "") + "/fileUploadV2.php?settings=" + Helper.encodeUrl($.toJSON(d)) + "&ram=" + Math.random() + "&crossiframe=" + Helper.encodeUrl(d.crossiframe),
         width: 950,
         height: 690,
         saveBeforePopup: false,
@@ -2534,16 +2534,16 @@ Run.cloneWebVersion = function () {
             if (c.trim() == "") {
                 alert("输入用户名不能为空！")
             } else {
-                var d = prompt("请输入客户类型：\n\n直销账号为0；  分销账号为1");
+                var d = prompt("请输入用户类型：\n\n直销账号为0；  分销账号为1");
                 if (d == null) {
                     return
                 } else {
                     if (d.trim() == "") {
-                        alert("输入客户类型不能为空！");
+                        alert("输入用户类型不能为空！");
                         return
                     } else {
                         if (d != 0 && d != 1) {
-                            alert("输入客户类型错误！");
+                            alert("输入用户类型错误！");
                             return
                         } else {
                             $.ajax({

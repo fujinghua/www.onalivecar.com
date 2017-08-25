@@ -119,7 +119,7 @@ class ClientController extends BackController
             ->field('t.*,b.id,b.username as createdBy')
             ->order('t.id DESC')->paginate($each);
 
-        $this->assign('meta_title', "客户清单");
+        $this->assign('meta_title', "用户清单");
         $this->assign('lang', Client::Lang());
         $this->assign('list', $list);
         return view('client/index');
@@ -153,7 +153,7 @@ class ClientController extends BackController
             }
         }
         return view('client/create',[
-            'meta_title'=>'添加客户',
+            'meta_title'=>'添加用户',
             'meta_util'=>'false',
             'model'=>$model,
             'city'=>$city,
@@ -205,7 +205,7 @@ class ClientController extends BackController
             }
         }
         return view('client/update',[
-            'meta_title'=>'添加客户',
+            'meta_title'=>'添加用户',
             'model'=>$model,
             'lang'=>Client::Lang(),
         ]);

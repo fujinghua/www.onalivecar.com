@@ -4,7 +4,7 @@ namespace app\common\model;
 
 use app\common\model\Model;
 use app\common\model\ClientServer;
-use app\common\model\DealOrder;
+use app\common\model\Deal;
 use app\common\model\Walk;
 
 /**
@@ -67,7 +67,7 @@ use app\common\model\Walk;
  * @property string $updated_at
  *
  * @property ClientServer[] $clientServers
- * @property DealOrder[] $takeOrders
+ * @property Deal[] $takeOrders
  * @property Walk[] $walks
  */
 class Client extends Model
@@ -78,6 +78,9 @@ class Client extends Model
      * @author Sir Fu
      */
     protected $table = '{{%client}}';
+    /**
+     * @var array
+     */
     protected $field = [
         'id',
         'is_delete',
@@ -240,9 +243,9 @@ class Client extends Model
     /**
      * @return \think\model\relation\HasMany
      */
-    public function getTakeOrders()
+    public function getDeals()
     {
-        return $this->hasMany(DealOrder::tableNameSuffix(), ['client_id' => 'id']);
+        return $this->hasMany(Deal::tableNameSuffix(), ['client_id' => 'id']);
     }
 
     /**

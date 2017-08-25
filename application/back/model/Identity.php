@@ -4,7 +4,7 @@ namespace app\back\model;
 use app\back\validate\IdentityValidate;
 
 use app\common\model\BackUser;
-use app\common\model\UserloginLog;
+use app\common\model\LoginLog;
 use app\common\model\Department;
 use think\Request;
 use app\common\components\rbac\AuthManager;
@@ -58,10 +58,10 @@ class Identity extends BackUser
     protected $table = '{{%back_user}}';
 
     //登录请求路由
-    public $loginUrl = 'back/login/login';
+    public $loginUrl = 'login/login';
 
     //所有账号类型
-    private static $departmentList = ['0'=>'全部','1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];
+    private static $departmentList = ['0'=>'全部','1'=>'董事会部门','2'=>'总经理部门','3'=>'客服部门'];
     //允许登录账号类型
     private static $allowList = ['0','1','2','3'];
     //允许登录账号 匹配类型
@@ -640,7 +640,7 @@ class Identity extends BackUser
             return true;
         }
         $ip = self::get_client_ip();
-        UserloginLog::addLog($identity->id,null,null,'1',$ip);
+        LoginLog::addLog($identity->id,null,null,'1',$ip);
         return true;
     }
 
@@ -1288,7 +1288,7 @@ class Identity extends BackUser
         }
     }
 
-    /**\@description 获取客户端IP
+    /**\@description 获取用户端IP
      * @return string|null
      */
     public static function get_client_ip(){

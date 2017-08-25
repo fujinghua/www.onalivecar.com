@@ -152,7 +152,7 @@ class Socket
     }
 
     /**
-     * 发送给指定客户端
+     * 发送给指定用户端
      * @author Zjmainstay
      * @param $tabid
      * @param $client_id

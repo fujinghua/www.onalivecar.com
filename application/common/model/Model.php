@@ -6,6 +6,7 @@ use think\Loader;
 use think\db\Query;
 use think\Config;
 use app\common\components\LangHelper;
+use think\Request;
 
 /**
  * @property array $rules
@@ -219,6 +220,38 @@ class Model extends \think\Model
             $table = str_replace($prefix,'',$table);
         }
         return $table;
+    }
+
+    /**
+     * @return Object|\think\Validate | \app\common\validate\Validate | null
+     */
+    public static function getValidate(){
+        $className = pathinfo(get_class(self::load()),PATHINFO_FILENAME);
+        $request = Request::instance();
+        /**
+         * @var $class \app\common\validate\Validate
+         */
+        $class = '\\app\\'.$request->module().'\\validate\\'.$className.'Validate';
+        if (!class_exists($class)){
+            $class = '\\app\\common\\validate\\'.$className.'Validate';
+        }
+        return $class::load();
+    }
+
+    /**
+     * @param array $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
     }
 
     /**

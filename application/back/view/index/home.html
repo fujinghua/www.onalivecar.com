@@ -18,7 +18,7 @@
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
         <legend>Do it ! </legend>
 
-        <form class="layui-form" id="default-form" action="/back/ajax/uploader.html?file=file" method="post" enctype="multipart/form-data">
+        <form class="layui-form" id="default-form" action="/ajax/uploader.html?file=file" method="post" enctype="multipart/form-data">
             <div class="layui-form-item">
                 <label class="layui-form-label">单文件上传</label>
                 {T:lang name='NewHouse' type="status" key="1" /}
@@ -41,7 +41,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">手机号码</label>
                 <div class="layui-input-inline">
-                    <input type="text" lay-verify="layAjax" lay-url="/back/ajax/phone" lay-error="已存在手机号" class="layui-input" />
+                    <input type="text" lay-verify="layAjax" lay-url="/ajax/phone" lay-error="已存在手机号" class="layui-input" />
                 </div>
             </div>
             <div class="layui-form-item">
@@ -58,7 +58,7 @@
                     <div lay-filter="loading" lay-src="/static/images/default-user.png" lay-class="user-images"
                          lay-title="个人信息" lay-alt="我的头像" style="width: 100%;">
                     </div>
-                    <a data-url="/back/user/view.html?iframe=true" class="img" lay-filter="url" data-title="个人信息">
+                    <a data-url="/user/view.html?iframe=true" class="img" lay-filter="url" data-title="个人信息">
                         <div lay-filter="loading" lay-src="/static/images/default-user.png" lay-class="user-images"
                              lay-title="个人信息" lay-alt="我的头像" style="width: 100%;">
                         </div>
@@ -499,7 +499,7 @@
             laydate = layui.laydate;
         var uploader = layui.uploader({
             elem:'.layui-upload-file',
-            url: '/back/ajax/uploader?file=build',
+            url: '/ajax/uploader?file=build',
             isAjax:true,
             max:5,
             success: function (res, input) {
@@ -511,7 +511,7 @@
         });
 
         var search = layui.search({
-            url: '/back/ajax/getCity',
+            url: '/ajax/getCity',
             targetClass: '.inputKey',          // 输入框目标元素
             parentClass: '.layui-input-inline',          // 父级类
             hiddenClass: '.inputHide',          // 隐藏域input
@@ -536,7 +536,7 @@
                 var message = true;
                 console.log(item.name);
                 $.ajax({
-                    url: "/back/user/index",
+                    url: "/user/index",
                     type: 'POST',
                     async: false,
                     data: {uaername: value},

@@ -141,7 +141,7 @@ return [
 
     // 视图输出字符串内容替换
     'view_replace_str'       => [
-        '_TITLE_'=>'[ At Alive Car ]',
+        '_TITLE_'=>'[ 南国車城 ]',
         '_LAYUI_'=>'/static/plugins/layui/src',
         '_PLUGINS_'=>'/static/plugins',
         '_SHORTCUT_'=>'/static/images/shortcut-icon-logo.png',

@@ -56,10 +56,10 @@
                     <input type="text" value="{$Think.get.keyword}" name="keyword" placeholder="请输入关键词" class="layui-input">
                 </div>
 
-                <label class="layui-form-label">客户端类型</label>
+                <label class="layui-form-label">用户端类型</label>
                 <div class="layui-input-inline">
                     <select name="type" lay-search >
-                        <option value="">客户端类型</option>
+                        <option value="">用户端类型</option>
                         <option value="">全部</option>
                         {volist name="lang['user_agent_type']" id="item"}
                         <option value="{$key}" {if condition="$key eq $Think.get.type"}selected{/if}>{$item}</option>
@@ -99,8 +99,8 @@
         <th>序号</th>
         <th>路由</th>
         <th>地址</th>
-        <th>客户端</th>
-        <th>客户类型</th>
+        <th>用户端</th>
+        <th>用户类型</th>
         <th>IP地址</th>
         <th>访问时间</th>
     </tr>

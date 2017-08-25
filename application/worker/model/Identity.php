@@ -53,7 +53,7 @@ class Identity extends HomeUser
     public $loginUrl = 'back/login/login';
 
     //所有账号类型
-    private static $departmentList = ['0'=>'全部','1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];
+    private static $departmentList = ['0'=>'全部','1'=>'董事会部门','2'=>'总经理部门','3'=>'客服部门'];
     //允许登录账号类型
     private static $allowList = ['0','1','2','3'];
     //允许登录账号 匹配类型

@@ -46,7 +46,7 @@ class Focus extends Model
     protected $update = [];
 
     //所有标签类型
-    private static $typeList = ['1'=>'预定','2'=>'客户','3'=>'房东','4'=>'新房','5'=>'二手房','6'=>'楼盘','7'=>'客服'];
+    private static $typeList = ['1'=>'预定','2'=>'客户','3'=>'房东','4'=>'新房','5'=>'二手房','6'=>'','7'=>'客服'];
 
     /**
      * @return array
@@ -82,7 +82,7 @@ class Focus extends Model
         return [
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
-            'type' => '父级类型:1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼盘,7=客服,8=;默认1;',
+            'type' => '父级类型:1=预定,2=客户,3=房东,4=新房,5=二手房,6=,7=客服,8=;默认1;',
             'name' => '标签',
             'description' => '标签备注',
             'created_at' => '创建时间',

@@ -33,7 +33,11 @@ class Label extends Model
         'is_delete',
         'type',
         'name',
+        'group',
+        'unique',
+        'order',
         'description',
+        'fieldName',
         'created_at',
         'updated_at',
     ];
@@ -59,14 +63,14 @@ class Label extends Model
     public function rules()
     {
         return [
-            'rule'=>[
-                ['type','number|in:0,1,2,3,4,5,6,7','类型 无效'],
-                ['is_delete','in:0,1','时效 无效'],
-                ['name','max:32'],
-                ['description','max:255'],
+            'rule' => [
+                ['type', 'number|in:0,1,2,3,4,5,6,7', '类型 无效'],
+                ['is_delete', 'in:0,1', '时效 无效'],
+                ['name', 'max:32'],
+                ['description', 'max:255'],
             ],
-            'msg'=>[
-                'type.in'=> '此类型不允许',
+            'msg' => [
+                'type.in' => '此类型不允许',
             ]
         ];
     }
@@ -79,9 +83,13 @@ class Label extends Model
         return [
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
-            'type' => '父级类型:1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼盘,7=客服,8=;默认1;',
+            'type' => '父级类型:1=预定,2=客户,3=房东,4=新房,5=二手房,6=,7=客服,8=;默认1;',
             'name' => '标签',
+            'group' => '组别',
+            'unique' => '识别',
+            'order' => '排序',
             'description' => '标签备注',
+            'fieldName' => '过滤字段',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];

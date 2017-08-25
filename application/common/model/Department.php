@@ -93,6 +93,22 @@ class Department extends Model
     }
 
     /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
+
+    /**
      * @return \think\model\relation\HasMany
      */
     public function getBackUsers()

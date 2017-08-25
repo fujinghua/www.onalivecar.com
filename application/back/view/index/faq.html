@@ -146,7 +146,7 @@
             ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
                 var lis = [];
                 //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
-                $.get('/back/index/faq?page='+page, function(res){
+                $.get('/index/faq?page='+page, function(res){
                     //假设你的列表返回在data集合中
                     layui.each(res.data, function(index, item){
                         var _index = index,group,title, bodyContent = '', push = false;

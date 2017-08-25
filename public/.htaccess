@@ -2,20 +2,20 @@
   Options +FollowSymlinks -Multiviews
   RewriteEngine On
 
-#绑定 www.alivehouse.com 到 PC端
-  RewriteCond %{HTTP_HOST} www.alivehouse.com$ [NC]
+#绑定 www.onalivecar.com 到 PC端
+  RewriteCond %{HTTP_HOST} www.onalivecar.com$ [NC]
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
 
-#绑定 m.alivehouse.com 到 手机端
-  RewriteCond %{HTTP_HOST} m.alivehouse.com$ [NC]
+#绑定 m.onalivecar.com 到 手机端
+  RewriteCond %{HTTP_HOST} m.onalivecar.com$ [NC]
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^(.*)$ phone.php/$1 [QSA,PT,L]
 
-#绑定 cms.alivehouse.com 到 后台
-  RewriteCond %{HTTP_HOST} cms.alivehouse.com$ [NC]
+#绑定 cms.onalivecar.com 到 后台
+  RewriteCond %{HTTP_HOST} cms.onalivecar.com$ [NC]
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^(.*)$ admin.php/$1 [QSA,PT,L]

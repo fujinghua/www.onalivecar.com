@@ -21,7 +21,7 @@ use app\common\model\NoticeRead;
 use app\common\model\Opinion;
 use app\common\model\OpinionRead;
 use app\common\model\Slider;
-use app\common\model\DealOrder;
+use app\common\model\Deal;
 use app\common\model\Upload;
 
 /**
@@ -132,14 +132,6 @@ class BackUser extends Model
     protected $update = [];
 
     /**
-     * @return array
-     */
-    public static function getDepartmentList()
-    {
-        return self::T('department');
-    }
-
-    /**
      * @inheritdoc
      */
     public function rules()
@@ -212,6 +204,14 @@ class BackUser extends Model
             'logined_at' => '登录时间',
             'updated_at' => '更新时间',
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public static function getDepartmentList()
+    {
+        return self::T('department');
     }
 
     /**

@@ -80,7 +80,7 @@
     <form class="layui-form" method="post" id="CreateForm" action="">
 
         <div class="layui-form-item">
-            <label class="layui-form-label">客户等级</label>
+            <label class="layui-form-label">用户等级</label>
             <div class="layui-input-block">
                 {volist name="lists" id="item"}
                 <input type="radio" name="Client[level]" value="{$key}" title="{$item}"  {if condition="$key eq 1"}checked=""{/if} >
@@ -98,7 +98,7 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">客户类型</label>
+            <label class="layui-form-label">用户类型</label>
             <div class="layui-input-block">
                 {volist name="typeLists" id="item"}
                 <input type="radio" name="Client[type]" value="{$key}" title="{$item}"  {if condition="$key eq 1"}checked=""{/if} >
@@ -107,7 +107,7 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">客户等级</label>
+            <label class="layui-form-label">用户等级</label>
             <div class="layui-input-block">
                 {volist name="lists" id="item"}
                 <input type="radio" name="Client[city_id]" value="{$key}" title="{$item}"  {if condition="$key eq 1"}checked=""{/if} >
@@ -116,9 +116,9 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">客户姓名:</label>
+            <label class="layui-form-label">用户姓名:</label>
             <div class="layui-input-inline">
-                <input type="text" value="" name="Client[real_name]" placeholder="客户姓名" class="layui-input">
+                <input type="text" value="" name="Client[real_name]" placeholder="用户姓名" class="layui-input">
             </div>
             <div class="layui-input-inline help-msg">
                 <i class="fa .fa-close"></i>
@@ -149,9 +149,9 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">客户头像:</label>
+            <label class="layui-form-label">用户头像:</label>
             <div class="layui-input-inline">
-                <input type="text" value="" name="Client[avatar]" placeholder="客户头像" class="layui-input">
+                <input type="text" value="" name="Client[avatar]" placeholder="用户头像" class="layui-input">
             </div>
         </div>
 

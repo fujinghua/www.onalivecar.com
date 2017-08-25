@@ -36,6 +36,7 @@ class Service extends Model
         'is_delete',
         'level',
         'back_user_id',
+        'service_name',
         'duration',
         'start_at',
         'end_at',
@@ -114,6 +115,7 @@ class Service extends Model
             'is_delete' => '时效;0=失效,1=有效;默认1;',
             'level' => '等级;1=普通客服;2=金牌客服;',
             'back_user_id' => '后台管理员ID',
+            'service_name' => '客服名称',
             'duration' => '有效时间',
             'start_at' => '开始时间',
             'end_at' => '结束时间',
@@ -128,6 +130,6 @@ class Service extends Model
      */
     public function getBackUser()
     {
-        return $this->hasOne(ucfirst(BackUser::tableNameSuffix()), 'back_user_id', 'id');
+        return $this->hasOne(ucfirst(BackUser::tableNameSuffix()), 'id', 'back_user_id');
     }
 }

@@ -116,4 +116,4 @@ phpfmt 插件参数
 * SourceTree
 * GitHub Desktop
 
-或其他 Git 图形界面客户端
+或其他 Git 图形界面用户端

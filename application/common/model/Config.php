@@ -102,7 +102,6 @@ class Config extends Model
         ];
     }
 
-
     //所有应用类型
     public static function getAppList(){
         return self::T('app');

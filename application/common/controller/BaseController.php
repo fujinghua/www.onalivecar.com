@@ -219,12 +219,7 @@ class BaseController extends Controller
     public function deleteFolder($pathStr, $root = true,$canDelete = false)
     {
         if (!is_dir($pathStr)) {
-//            if (strstr($pathStr, '/back/') !== false){
-//                $pathStr = preg_replace('/\/back\//', '/backend/web/', $pathStr, 1); //只替换一次
-//            }
-//            if (!is_dir($pathStr)) {
             return false;
-//            }
         }
 
         //$d不是static目录下的文件不给予删除

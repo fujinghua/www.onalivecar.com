@@ -152,11 +152,11 @@ class Deal extends Model
             'client_id' => '客户表id',
             'belongUserId' => '权属人id',
             'type' => '类型：1新房，2二手房',
-            'building_base_id' => '楼盘id',
+            'building_base_id' => 'id',
             'hand_house_id' => '房东id',
             'sellerId' => '销售者id',
             'sellerTel' => '销售人电话',
-            'buildingReback' => '楼盘返点',
+            'buildingReback' => '返点',
             'dealAward' => '成交奖励',
             'houseNo' => '房号',
             'area' => '面积',
@@ -191,6 +191,22 @@ class Deal extends Model
             'url' => '成交单',
             'url_icon' => '成交单略缩图',
         ];
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
     }
 
     /**

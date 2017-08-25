@@ -81,7 +81,7 @@
         <td>{$model.end_at}</td>
         <td style="width: 250px;text-align: center;" class="action">
             <a href="javascript:void(0);">
-                <button onclick="Site.showUrl('查看详情','/back/customer_service/view.html?id={$model.id}','62.8%','82%','2',true,true,'LAY_TRAVEL_{$model.id}',['0.372','#000'])" class="layui-btn layui-btn-small" >
+                <button onclick="Site.showUrl('查看详情','/customer_service/view.html?id={$model.id}','62.8%','82%','2',true,true,'LAY_TRAVEL_{$model.id}',['0.372','#000'])" class="layui-btn layui-btn-small" >
                 <i class="fa fa-eye"></i>
                 查看详情
                 </button>
@@ -101,7 +101,7 @@
     function updateModel(id) {
         $.ajax({
             type : "post",
-            url : '/back/customer_service/read?id='+ id,
+            url : '/customer_service/read?id='+ id,
             dataType : 'json',
             beforeSend : function() {
                 Site.loading();
@@ -139,7 +139,7 @@
     function deleteModel(id) {
         $.ajax({
             type : "post",
-            url : '/back/customer_service/delete?id='+ id,
+            url : '/customer_service/delete?id='+ id,
             dataType : 'json',
             beforeSend : function() {
                 Site.loading();

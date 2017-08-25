@@ -98,7 +98,7 @@ class AjaxController extends BackController
     }
 
     /**
-     * @description 获取楼盘
+     * @description 获取
      * @param null $name
      * @return \think\response\Json
      */
@@ -123,7 +123,7 @@ class AjaxController extends BackController
     }
 
     /**
-     * @description 获取房东
+     * @description 获取用户
      * @param null $name
      * @return \think\response\Json
      */

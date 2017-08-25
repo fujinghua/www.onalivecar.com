@@ -83,7 +83,7 @@
         <td>{$model.created_at}</td>
         <td style="width: 200px;text-align: center;" class="action">
             <a href="javascript:void(0);">
-                <button onclick="Site.showUrl('下载痕迹','/back/download/view.html?id={$model.id}','62.8%','82%','2',true,true,'LAY_TRAVEL_{$model.id}',['0.372','#000'])" class="layui-btn layui-btn-small" >
+                <button onclick="Site.showUrl('下载痕迹','/download/view.html?id={$model.id}','62.8%','82%','2',true,true,'LAY_TRAVEL_{$model.id}',['0.372','#000'])" class="layui-btn layui-btn-small" >
                 <i class="fa fa-eye"></i>
                     下载痕迹
                 </button>
@@ -103,7 +103,7 @@
     function updateModel(id) {
         $.ajax({
             type : "post",
-            url : '/back/download/read?id='+ id,
+            url : '/download/read?id='+ id,
             dataType : 'json',
             beforeSend : function() {
                 Site.loading();
@@ -141,7 +141,7 @@
     function deleteModel(id) {
         $.ajax({
             type : "post",
-            url : '/back/download/delete?id='+ id,
+            url : '/download/delete?id='+ id,
             dataType : 'json',
             beforeSend : function() {
                 Site.loading();

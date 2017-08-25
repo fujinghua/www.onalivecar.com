@@ -2,7 +2,7 @@
 
 namespace app\common\components;
 
-use app\back\model\Menu;
+use app\common\model\Menu;
 use app\common\components\Configs;
 
 /**
@@ -31,6 +31,11 @@ use app\common\components\Configs;
  */
 class MenuHelper
 {
+    /**
+     * @var string //后台是否绑定模块，如果绑定需要路由与绑定模块名重复的值去掉（绑定去除处理）
+     */
+    private static $_isBandModule = 'back';
+
     /**
      * @var string //路由前缀
      */
@@ -180,6 +185,18 @@ class MenuHelper
     {
         $res = '';
         if (!empty($route)) {
+
+            //后台是否绑定模块，如果绑定需要路由与绑定模块名重复的值去掉（绑定去除处理）
+            if(!empty(self::$_isBandModule)){
+                $module = '/'.self::$_isBandModule;
+                if(strpos($route,$module) === 0 ){
+                    $route = substr($route,strlen($module));
+                    // 如前缀没有斜杠，补上前缀斜杠
+                    if (substr($route, 0, 1) != '/') {
+                        $route = '/' . $route;
+                    }
+                }
+            }
             $url = [];
             $r = explode('&', $route);
             $url[0] = $r[0];

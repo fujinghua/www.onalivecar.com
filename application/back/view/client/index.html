@@ -81,10 +81,10 @@
     <tr>
         <!--<th style="width: 20px;"><input type="checkbox" lay-filter="selectAll" lay-group="tableItem" lay-skin="primary" /></th>-->
         <th>序号</th>
-        <th>客户名称</th>
+        <th>用户名称</th>
         <th>权属人</th>
         <th>需求类别</th>
-        <th>客户来源</th>
+        <th>用户来源</th>
         <th style="width:50px; text-align: center">操作</th>
     </tr>
     </thead>
@@ -117,9 +117,9 @@
 
 <script>
     var url = {
-        createUrl:"{:url('/back/client/create')}",
-        updateUrl:"{:url('/back/client/update')}",
-        deleteUrl:"{:url('/back/client/delete')}",
+        createUrl:"{:url('/client/create')}",
+        updateUrl:"{:url('/client/update')}",
+        deleteUrl:"{:url('/client/delete')}",
     };
     $(function() {
         //分页
