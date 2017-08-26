@@ -1,0 +1,299 @@
+---------------------------------------------------------------
+[ 2017-08-26T03:19:34+08:00 ] 127.0.0.1 127.0.0.1 GET /index/index
+[ info ] www.onalivecar.com/index/index [运行时间：0.030002s][吞吐率：33.33req/s] [内存消耗：351.88kb] [文件加载：58]
+[ info ] [ LANG ] F:\aliveDinner\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'back'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'back',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=s46dlqa2em7bu5f828qcnuuuh5',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://www.onalivecar.com/login/login',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.onalivecar.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001001s ]
+---------------------------------------------------------------
+[ 2017-08-26T03:19:34+08:00 ] 127.0.0.1 127.0.0.1 GET /login/login
+[ info ] www.onalivecar.com/login/login [运行时间：0.023002s][吞吐率：43.47req/s] [内存消耗：413.94kb] [文件加载：60]
+[ info ] [ LANG ] F:\aliveDinner\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'back'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'back',
+    1 => 'login',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=s46dlqa2em7bu5f828qcnuuuh5',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://www.onalivecar.com/login/login',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.onalivecar.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\back\controller\LoginController->loginAction[ F:\aliveDinner\upupw\www\www.onalivecar.com\application\back\controller\LoginController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] F:\aliveDinner\upupw\www\www.onalivecar.com\public/../application/back\view\login\login.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2017-08-26T03:19:37+08:00 ] 127.0.0.1 127.0.0.1 POST /login/login
+[ info ] www.onalivecar.com/login/login [运行时间：1.631094s][吞吐率：0.61req/s] [内存消耗：352.58kb] [文件加载：62]
+[ info ] [ LANG ] F:\aliveDinner\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'back'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'back',
+    1 => 'login',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=s46dlqa2em7bu5f828qcnuuuh5',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.onalivecar.com/login/login',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.onalivecar.com',
+  'accept' => '*/*',
+  'content-length' => '76',
+  'connection' => 'keep-alive',
+  'host' => 'www.onalivecar.com',
+)
+[ info ] [ PARAM ] array (
+  '__token__' => '44f26d7b19af77720a25eb1a401f500a',
+  'username' => 'username',
+  'password' => '123456',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\back\controller\LoginController->loginAction[ F:\aliveDinner\upupw\www\www.onalivecar.com\application\back\controller\LoginController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.004000s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_back_user` [ RunTime:0.005001s ]
+[ sql ] [ SQL ] SELECT `id` FROM `oac_back_user` WHERE  `username` = 'username' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `id` FROM `oac_back_user` WHERE  `username` = 'username' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `t`.*,d.name as departmentName FROM `oac_back_user` `t` INNER JOIN `oac_department` `d` ON `t`.`department_id`=`d`.`id` WHERE  `t`.`is_delete` = '1'  AND `t`.`username` = 'username'  AND `d`.`level` IN ('0','1','2','3') LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] UPDATE `oac_back_user` `t`  INNER JOIN `oac_department` `d` ON `t`.`department_id`=`d`.`id` SET `t`.`password`='$2y$13$P655p91uVADu143EKXihoe8TV.41yq1bo.dDLqGodevdYfSfRhVkq',`t`.`logined_at`='2017-08-26 03:19:36',`t`.`updated_at`='2017-08-26 03:19:36',`t`.`ip`='{\"last\":[\"127.0.0.1\",\"2017-08-26 02:05:24\"],\"current\":[\"127.0.0.1\",\"2017-08-26 03:19:36\"],\"often\":[\"127.0.0.1\"],\"haply\":[\"127.0.0.1\"],\"once\":{\"127.0.0.1\":[1,\"2017-08-26 03:19:36\"]}}',`t`.`status`='1'  WHERE  `t`.`username` = 'username'  AND `d`.`level` IN ('0','1','2','3') [ RunTime:0.073004s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_login_log` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] INSERT INTO `oac_login_log` (`route` , `url` , `user_agent` , `gets` , `posts` , `user_id` , `app` , `ip` , `target` , `created_at` , `updated_at`) VALUES ('back/login/login' , '/login/login' , 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' , '[]' , '{\"__token__\":\"44f26d7b19af77720a25eb1a401f500a\",\"username\":\"username\"}' , 100 , NULL , '1' , '127.0.0.1' , '2017-08-26 03:19:37' , '2017-08-26 03:19:37') [ RunTime:0.036002s ]
+---------------------------------------------------------------
+[ 2017-08-26T03:19:37+08:00 ] 127.0.0.1 127.0.0.1 GET /index/index
+[ info ] www.onalivecar.com/index/index [运行时间：0.207012s][吞吐率：4.83req/s] [内存消耗：412.70kb] [文件加载：73]
+[ info ] [ LANG ] F:\aliveDinner\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'back'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'back',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=s46dlqa2em7bu5f828qcnuuuh5',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://www.onalivecar.com/login/login',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.onalivecar.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\back\controller\IndexController->indexAction[ F:\aliveDinner\upupw\www\www.onalivecar.com\application\back\controller\IndexController.php ]
+[ info ] [ VIEW ] F:\aliveDinner\upupw\www\www.onalivecar.com\public/../application/back\view\index\index.html [ array (
+  0 => 'URL',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.003001s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_back_user_log` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] INSERT INTO `oac_back_user_log` (`route` , `url` , `user_agent` , `gets` , `posts` , `back_user_id` , `ip` , `target` , `created_at` , `updated_at`) VALUES ('/index/index' , '/index/index' , 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' , '[]' , '[]' , 100 , '127.0.0.1' , '允许访问：/back/index/index' , '2017-08-26 03:19:37' , '2017-08-26 03:19:37') [ RunTime:0.121007s ]
+[ log ] /index/index允许访问：/back/index/index
+---------------------------------------------------------------
+[ 2017-08-26T03:19:38+08:00 ] 127.0.0.1 127.0.0.1 GET /index/nav
+[ info ] www.onalivecar.com/index/nav [运行时间：0.060003s][吞吐率：16.67req/s] [内存消耗：456.12kb] [文件加载：76]
+[ info ] [ LANG ] F:\aliveDinner\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'back'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'back',
+    1 => 'index',
+    2 => 'nav',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=s46dlqa2em7bu5f828qcnuuuh5',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://www.onalivecar.com/index/index',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.onalivecar.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\back\controller\IndexController->navAction[ F:\aliveDinner\upupw\www\www.onalivecar.com\application\back\controller\IndexController.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_back_user_log` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] INSERT INTO `oac_back_user_log` (`route` , `url` , `user_agent` , `gets` , `posts` , `back_user_id` , `ip` , `target` , `created_at` , `updated_at`) VALUES ('/index/nav' , '/index/nav' , 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' , '[]' , '[]' , 100 , '127.0.0.1' , '允许访问：/back/index/nav_AJAX' , '2017-08-26 03:19:38' , '2017-08-26 03:19:38') [ RunTime:0.030002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_menu` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`parent`,`route`,`order`,`type`,`data` FROM `oac_menu` WHERE  `type` = 1 ORDER BY id asc [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_auth_assignment` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `a`.* FROM `oac_auth_assignment` `t` INNER JOIN `oac_auth_item` `a` ON `t`.`item_name`=`a`.`name` WHERE  `t`.`user_id` = '100'  AND `a`.`type` = 2 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `item_name` FROM `oac_auth_assignment` WHERE  `user_id` = 100 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_auth_item_child` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `oac_auth_item_child` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_auth_item` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `oac_auth_item` WHERE  `type` = 2  AND `name` IN ('客服部门','后台开放权限','/ajax/*','开放权限','/back/index/home','/back/index/index','/back/login/*','经理部门') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `id` FROM `oac_menu` WHERE  `type` = 1  AND `route` LIKE '/ajax/%' ORDER BY id asc [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `id` FROM `oac_menu` WHERE  `type` = 1  AND `route` LIKE '/back/%' ORDER BY id asc [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `id` FROM `oac_menu` WHERE  `type` = 1 ORDER BY id asc [ RunTime:0.000000s ]
+[ log ] /index/nav允许访问：/back/index/nav_AJAX
+---------------------------------------------------------------
+[ 2017-08-26T03:19:38+08:00 ] 127.0.0.1 127.0.0.1 GET /index/home.html?iframe=true
+[ info ] www.onalivecar.com/index/home.html?iframe=true [运行时间：0.079004s][吞吐率：12.66req/s] [内存消耗：497.77kb] [文件加载：73]
+[ info ] [ LANG ] F:\aliveDinner\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'back'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'back',
+    1 => 'index',
+    2 => 'home',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=s46dlqa2em7bu5f828qcnuuuh5',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://www.onalivecar.com/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.onalivecar.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'iframe' => 'true',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\back\controller\IndexController->homeAction[ F:\aliveDinner\upupw\www\www.onalivecar.com\application\back\controller\IndexController.php ]
+[ info ] [ VIEW ] F:\aliveDinner\upupw\www\www.onalivecar.com\public/../application/back\view\index\home.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.004000s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_back_user_log` [ RunTime:0.004000s ]
+[ sql ] [ SQL ] INSERT INTO `oac_back_user_log` (`route` , `url` , `user_agent` , `gets` , `posts` , `back_user_id` , `ip` , `target` , `created_at` , `updated_at`) VALUES ('/index/home.html?iframe=true' , '/index/home.html?iframe=true' , 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' , '{\"iframe\":\"true\"}' , '[]' , 100 , '127.0.0.1' , '允许访问：/back/index/home' , '2017-08-26 03:19:38' , '2017-08-26 03:19:38') [ RunTime:0.047003s ]
+[ log ] /index/home.html?iframe=true允许访问：/back/index/home
