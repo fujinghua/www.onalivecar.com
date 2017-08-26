@@ -8,7 +8,7 @@ use app\common\model\LoginLog;
 use think\Request;
 
 /**
- * @description This is the model class for table "{{%back_user}}".  扩展管理员
+ * @description This is the model class for table "{{%home_user}}".  扩展用户
  *
  * @property integer $id
  * @property integer $is_delete
