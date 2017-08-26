@@ -13,14 +13,14 @@
 namespace app\api\controller;
 
 
-use app\common\controller\BaseController;
+use app\common\controller\ApiController;
 use app\api\model\User;
 
 /**
  * 用户控制器 因为不需要检查登陆状态所以继承基础控制器 BaseController, 而不是继承ApiController
  * @author Sir Fu
  */
-class UserController extends BaseController
+class UserController extends ApiController
 {
     /**
      * 初始化方法
