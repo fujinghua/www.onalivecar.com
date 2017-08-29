@@ -16,7 +16,7 @@ class IndexController extends ApiController
      */
     public function indexAction()
     {
-        return json([]);
+        return json(['status'=>'1','info'=>'API']);
     }
 
     /**
@@ -25,7 +25,7 @@ class IndexController extends ApiController
      */
     public function missAction()
     {
-        return json([]);
+        return json(['status'=>'1','info'=>'无效请求']);
     }
 
 }

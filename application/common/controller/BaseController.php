@@ -18,6 +18,9 @@ class BaseController extends Controller
 {
     protected static $_helper;
 
+    //模块身份标识 (默认identity)
+    protected $identity = 'identity';
+
     /**
      * @description before action function
      */
@@ -38,35 +41,36 @@ class BaseController extends Controller
     }
 
     /**
-     * 初始化一些因模块不同，需要不同的配置信息
-     * @param string $module
+     * 初始化一些因模块不同，需要不同的配置信息(有默认值,默认值是后台身份识别)
      */
-    protected function init($module = 'manage')
+    protected function init()
     {
-        $module = config($module);
-        if ($module) {
-            config('identity',array_merge(config('identity'),$module));
+        $identity = $this->identity;
+        $identity = config($identity);
+        if ($identity) {
+            config('identity',array_merge(config('identity'),$identity));
         }
     }
 
     /**
-     * @param string $module
+     * 当前登陆身份标识
      */
-    protected function setSession($module = 'identity')
+    protected function setSession()
     {
-        $_SESSION[$module] = session(config($module . '.unique'));
+        $identity = $this->identity;
+        $_SESSION[$identity] = session(config($identity . '.unique'));
         $_SESSION['logined_at'] = session('logined_at');
 //        $this->assign('_csrf_param','_csrf_'.request()->module());
 //        $this->assign('_csrf_token',md5(time()));
-        if ($_SESSION['logined_at'] != strtotime($_SESSION[$module]['logined_at'])) {
-            $_SESSION['logined_at'] = strtotime($_SESSION[$module]['logined_at']);
+        if ($_SESSION['logined_at'] != strtotime($_SESSION[$identity]['logined_at'])) {
+            $_SESSION['logined_at'] = strtotime($_SESSION[$identity]['logined_at']);
             session('logined_at', $_SESSION['logined_at']);
-            $_SESSION['_auth_token_'] = md5($_SESSION[$module]['id'] . $_SESSION[$module]['logined_at']);
+            $_SESSION['_auth_token_'] = md5($_SESSION[$identity]['id'] . $_SESSION[$identity]['logined_at']);
         }
     }
 
     /**
-     * 执行此方法时，需要确定模块。默认\app\back\model\Identity::isGuest 验证
+     * 执行此方法时，需要确定对应模块配置相应的登陆配置不然读取默认。默认\app\back\model\Identity::isGuest 验证
      */
     protected function isUser()
     {
@@ -81,14 +85,14 @@ class BaseController extends Controller
     /**
      * @description before action function
      * if is a client return true, or return false;
-     * @param  string $module
      * @return bool
      */
-    protected function isGuest($module = 'manage')
+    protected function isGuest()
     {
         $ret = true;
         //用户登录检测
-        $model = config('identity.default_model');
+        $identity = $this->identity;
+        $model = config($identity . '.default_model');
         if (class_exists($model)){
             $uid = $model::isGuest();
             return $uid ? $uid : false;
@@ -98,13 +102,37 @@ class BaseController extends Controller
 
     /**
      * @param null $key
-     * @param string $module
+     * @param string|null $identity //留有此参数是为了控制对应模块的登陆信息
      * @return null
      */
-    protected function getIdentity($key = null, $module = 'identity')
+    protected function getIdentity($key = null, $identity = null)
     {
-        $identity = isset($_SESSION[$module]) ? $_SESSION[$module] : null;
+        if (empty($identity)){
+            $identity = $this->identity;
+        }
+        $identity = isset($_SESSION[$identity]) ? $_SESSION[$identity] : null;
         return !$key ? $identity : (isset($identity[$key]) ? $identity[$key] : null);
+    }
+
+    /**
+     * @param int $userId
+     * @param null $identity //留有此参数是为了控制对应模块的用户退出
+     * @return bool
+     */
+    protected function logout($userId = 0,$identity = null){
+        if (!empty($userId)){
+
+        }
+        $ret = true;
+        if (empty($identity)){
+            $identity = $this->identity;
+        }
+        $model = config($identity . '.default_model');
+        if (class_exists($model)){
+            $uid = $model::logout();
+            return $uid ? $uid : false;
+        }
+        return $ret;
     }
 
     /**
