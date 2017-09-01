@@ -16,7 +16,7 @@ class IndexController extends ApiController
      */
     public function indexAction()
     {
-        return json(['status'=>'1','info'=>'API']);
+        return json(['status'=>'1','info'=>'API接口']);
     }
 
     /**
