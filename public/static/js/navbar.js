@@ -437,9 +437,9 @@ layui.define(['element','layer'], function(exports) {
          * @return {string}
          */
         function getItem(item,parent) {
-            var  itemTag = 'li', itemHtml = '', _aClass ='', _iClass ='', _liClass ='', _itemUrl, unique = 'NAV_' ,_title = '', _attr = [],_attrContent = '';
+            var  itemTag = 'li', itemHtml = '', _aClass ='', _iClass ='', _liClass ='layui-nav-item ', _itemUrl, unique = 'NAV_' ,_title = '', _attr = [],_attrContent = '';
             if (item.data !== undefined && (item.data !== '' || item.data !== null)){
-                _liClass = (item.data.li_class !== undefined && item.data.li_class !== '') ? item.data.li_class : 'layui-nav-item';
+                _liClass += (item.data.li_class !== undefined && item.data.li_class !== '') ? item.data.li_class : '';
                 _aClass = (item.data.a_class !== undefined && item.data.a_class !== '') ? item.data.a_class : '';
                 _iClass = (item.data.i_class !== undefined && item.data.i_class !== '' ) ? item.data.i_class : '';
                 _attr = (item.data.attr !== undefined && item.data.attr !== '' ) ? item.data.attr : [];

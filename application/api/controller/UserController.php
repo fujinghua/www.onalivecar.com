@@ -17,26 +17,11 @@ use app\common\controller\ApiController;
 use app\api\model\User;
 
 /**
- * 用户控制器 因为不需要检查登陆状态所以继承基础控制器 BaseController, 而不是继承ApiController
+ * 用户控制器
  * @author Sir Fu
  */
 class UserController extends ApiController
 {
-    /**
-     * 初始化方法
-     * @author Sir Fu
-     */
-    protected function _initialize()
-    {
-        parent::_initialize();
-        if ($this->getRequest()->ip() != '127.0.0.1'){
-            config('app_debug',false);
-        }
-        // 初始化
-        $this->init('user');
-
-        $this->setSession('user');
-    }
 
     /**
      * @description 数据
@@ -53,8 +38,8 @@ class UserController extends ApiController
      */
     public function loginAction()
     {
-
-        if ($this->getRequest()->isAjax() && $this->getRequest()->isPost()) {
+        $ret = ['code'=>'0','msg'=>'登陆失败'];
+        if ($this->getRequest()->isPost()) {
             $username = trim($this->getRequest()->request('username'));
             $password = $this->getRequest()->request('password');
 
@@ -80,35 +65,19 @@ class UserController extends ApiController
                 $identity->password = $password;
                 $res = $identity->login();
                 if ($res instanceof User) {
-
-//                // 验证管理员表里是否有该用户
-//                $account_object = new Access();
-//                $where['uid']   = $identity->id;
-//                $account_info   = $account_object->where($where)->find();
-//                if (!$account_info) {
-////                    $this->error('该用户没有管理员权限' . $account_object->getError());
-//                }
-
-//                // 跳转
-//                if (0 < $account_info['uid'] && $account_info['uid'] === $identity->id) {
-//                    $this->success('登录成功！', url('Back/index/index'));
-//                } else {
-//                    $this->logoutAction();
-//                }
-                    return json(['status' => '1', 'info' => '登录成功', 'url' => url($this->getHomeUrl())]);
+                    $ret['code'] = '1';
+                    $ret['msg'] = '登录成功';
+                    $ret['uid'] = $res->id;
+                    $ret['token'] = $res->token;
                 } else {
-                    return json(['status' => '0', 'info' => $res]);
+                    $ret['msg'] = $res;
                 }
             } else {
-                return json(['status' => '0', 'info' => $validate->getError()]);
+                $ret['msg'] = $validate->getError();
             }
         }
 
-        if ($this->isGuest()) {
-            $this->goHome();
-        }
-
-        return json([]);
+        return json($ret);
     }
 
     /**
@@ -117,7 +86,7 @@ class UserController extends ApiController
     public function logoutAction()
     {
         User::logout();
-        return json([]);
+        return json(['code'=>'1','msg'=>'退出成功']);
     }
 
     /**

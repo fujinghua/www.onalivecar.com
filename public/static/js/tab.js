@@ -137,7 +137,11 @@ layui.define(['element','layer'], function(exports) {
         var that = this;
         var _config = that.config;
         if (_config.isBlank && data.target !== undefined && data.target !== false){
-            top.window.open(data.href);
+            if (data.target == '_self'){
+                top.window.location.href = data.href;
+            }else{
+                top.window.open(data.href);
+            }
             return;
         }
         var tabIndex = that.exists(data.title,data.id || null);
