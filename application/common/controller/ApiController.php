@@ -6,6 +6,10 @@ use app\common\controller\BaseController;
 
 class ApiController extends BaseController
 {
+
+    //模块身份标识
+    protected $identity = 'api';
+
     /**
      * 初始化方法
      * @author Sir Fu
@@ -16,25 +20,18 @@ class ApiController extends BaseController
         if ($this->getRequest()->ip() != '127.0.0.1') {
             config('app_debug', false);
         }
+
         // 初始化
-        $this->init('user');
+        $this->init();
 
-        $this->setSession('user');
+        // 设置SESSION
+        $this->setSession();
 
-//        // 登录检测,未登录，跳转到登录
-//        $this->isUser();
+        // 登录检测,未登录，跳转到登录
+        $this->isUser();
 
-        // 获取当前访问地址
-        $currentUrl = $this->getCurrentUrl();
+        // 获取当前用户属性
 
-        //兼容iframe
-        $url = $this->getUrl();
-        // 权限检测，首页不需要权限
-        if (!$this->accessCheck()) {
-            if (!('api/index/index' === strtolower($currentUrl) || $url === '/')) {
-                $this->error('拒绝访问', url('api/Index/index'), [], '1');
-            }
-        }
     }
 
     /**
@@ -43,7 +40,45 @@ class ApiController extends BaseController
      */
     protected function getUser($key = null)
     {
-        return $this->getIdentity($key, 'user');
+        return $this->getIdentity($key);
+    }
+
+    /**
+     * 执行此方法时，需要确定对应模块配置相应的登陆配置不然读取默认。默认\app\api\model\User::isGuest 验证
+     */
+    protected function isUser()
+    {
+        if (!$this->isGuest()) {
+            //还没登录跳转到登录页面
+            $this->throwHttp(['code'=>'801','msg'=>'未登录']);
+        }
+    }
+
+    /**
+     * @description before action function
+     * if is a client return true, or return false;
+     * @return bool
+     */
+    protected function isGuest()
+    {
+        $ret = true;
+        //用户登录检测
+        $identity = $this->identity;
+        $model = config($identity . '.default_model');
+        if (class_exists($model)){
+            $uid = $model::isGuest();
+            return $uid ? $uid : false;
+        }
+        return $ret;
+    }
+
+    /**
+     * 使用返回数据且中断程序
+     * @param array $options
+     */
+    protected function throwHttp($options = []){
+        $ret =  json_encode($options);
+        exit($ret);
     }
 
     /**

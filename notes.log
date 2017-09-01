@@ -1,0 +1,8 @@
+cd /www/wwwroot/www.onalivecar.com
+git checkout Mr.Liu
+git add -A
+updateDate=`date +"%Y-%m-%d %H:%M:%S"`
+git commit -m "[$updateDate] 日常执行合并"
+git fetch origin master
+git merge origin/master
+git push origin master:master
