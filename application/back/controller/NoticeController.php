@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\back\model\Notice;
+use app\common\model\Notice;
 
 class NoticeController extends BackController
 {

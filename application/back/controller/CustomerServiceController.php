@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\back\model\Service;
+use app\common\model\Service;
 
 class CustomerServiceController extends BackController
 {

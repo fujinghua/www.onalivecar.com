@@ -5,7 +5,7 @@ use think\Db;
 use think\Loader;
 use think\db\Query;
 use think\Config;
-use app\common\components\LangHelper;
+use app\common\lang\LangHelper;
 use think\Request;
 
 /**
@@ -256,7 +256,7 @@ class Model extends \think\Model
 
     /**
      * @description 获取 模型 数据包助手
-     * @return \app\common\components\LangHelper
+     * @return \app\common\lang\LangHelper
      */
     public static function getLangHelper(){
         return LangHelper::getInstance();

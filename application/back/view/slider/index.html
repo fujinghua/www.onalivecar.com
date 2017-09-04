@@ -26,9 +26,10 @@
             height: 330px;
             background-color: #f4f4f4;
         }
-        .item .img img{
+        .item .img,.item .img img{
             width: 300px;
             height: 200px;
+            max-width: 300px;
         }
         .item .title{
             padding: 15px;
@@ -109,7 +110,7 @@
     {volist name="list" id="model" key="key" empty="<p class='empty'><span style='text-align: center;'> 没有数据 </span> </p>"}
     <div class="item" data-key="{$model.id}">
         <div class="img">
-            <img src="{$model.url_icon}" title="{$model.title}" alt="{$model.title}">
+            <img src="{$model.url_icon}" layer-src="{$model.url}" lay-filter="gallery" title="{$model.title}" alt="{$model.title}">
         </div>
         <div class="title">
             <p>{$model.title}</p>

@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\back\model\Download;
+use app\common\model\Download;
 
 class DownloadController extends BackController
 {

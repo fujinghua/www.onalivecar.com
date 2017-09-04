@@ -66,17 +66,17 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label"><span class="layui-color-danger"></span>有效时长:</label>
+            <label class="layui-form-label"><span class="layui-color-danger"></span>有效时段:</label>
             <div class="layui-input-block right-width">
                 <div class="layui-inline">
                     <div class="layui-input-inline" style="width: 200px;">
-                        <input type="text" value="" name="start_at" lay-verify="" placeholder="开始时间" lay-filter="date" class="layui-input">
+                        <input type="text" value="" name="start_at" lay-verify="" placeholder="开始时间" lay-filter="startDate" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline" style="margin-right:0;">
                     <label class="layui-text" style="margin-left: -10px;"><span class="layui-color-danger"></span>--</label>
                     <div class="layui-input-inline" style="margin-left:10px;margin-right:0;width: 200px;">
-                        <input type="text" value="" name="end_at" lay-verify="" placeholder="结束时间" lay-filter="date" class="layui-input">
+                        <input type="text" value="" name="end_at" lay-verify="" placeholder="截止时间" lay-filter="endDate" class="layui-input">
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="layui-color-danger"></span>跳转地址:</label>
             <div class="layui-input-block right-width">
-                <input type="text" value="" name="target" lay-verify="" placeholder="跳转地址" class="layui-input">
+                <input type="text" value="" id="test1" name="target" lay-verify="" placeholder="跳转地址" class="layui-input">
             </div>
         </div>
 
@@ -142,14 +142,6 @@
             success: console.log
         };
         Back.submit(options);
-    });
-
-    Site.search({
-        url: '/ajax/getBackUser',
-        targetClass: '[lay-filter="username"]',          // 输入框目标元素
-        parentClass: '.layui-input-inline',          // 父级类
-        hiddenClass: '[name="back_user_id"]',          // 隐藏域input
-        key:'name'
     });
 
     var indexLogo = Site.uploader({

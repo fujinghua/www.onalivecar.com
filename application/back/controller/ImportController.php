@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\back\model\Ban;
+use app\common\model\Ban;
 
 class ImportController extends BackController
 {

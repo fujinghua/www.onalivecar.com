@@ -3,13 +3,13 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\back\model\City;
-use app\back\model\Client;
-use app\back\model\BackUser;
+use app\common\model\City;
+use app\common\model\Client;
+use app\common\model\BackUser;
 
-use app\back\model\ClientServer;
-use app\back\model\Deal;
-use app\back\model\Walk;
+use app\common\model\ClientServer;
+use app\common\model\Deal;
+use app\common\model\Walk;
 
 class ClientController extends BackController
 {

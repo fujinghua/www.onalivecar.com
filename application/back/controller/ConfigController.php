@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\back\model\Config;
+use app\common\model\Config;
 
 class ConfigController extends BackController
 {

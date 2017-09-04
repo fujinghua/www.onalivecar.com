@@ -15,8 +15,8 @@ namespace app\back\controller;
 
 use app\common\controller\BackController;
 use app\common\model\Model;
-use app\back\model\HomeUser;
-use app\back\model\HomeUserLog;
+use app\common\model\HomeUser;
+use app\common\model\HomeUserLog;
 
 /**
  * 用户控制器

@@ -927,6 +927,32 @@ Site.gallery = function (options, loop, key) {
     });
 };
 
+
+Site.initGallery = function (selector) {
+    selector = selector || 'img[lay-filter="gallery"][layer-src]';
+    $(document).off('click',selector).on('click',selector,function () {
+        var that = $(this);
+        var data ={
+            "title": that.attr('title'), //相册标题
+            "id": 20170904, //相册id
+            "start": 0, //初始显示的图片序号，默认0
+            "data": [   //相册包含的图片，数组格式
+                {
+                    "alt": that.attr('title'),
+                    "pid": 666, //图片id
+                    "src": that.attr('layer-src'), //原图地址
+                    "thumb": that.attr('src') //缩略图地址
+                }
+            ]
+        };
+        Site.gallery({
+            photos: data,
+            shade: Site.config.shade,
+            anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+        });
+    });
+};
+
 /*  */
 Site.resizeShowTab = function () {
     if (window.parent) {
@@ -2732,6 +2758,8 @@ $(function () {
     Site.initTip();
 
     Site.initTextarea();
+
+    Site.initGallery();
 
 
     setTimeout(function () {

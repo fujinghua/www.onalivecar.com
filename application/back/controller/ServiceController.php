@@ -3,8 +3,8 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\back\model\Service;
-use app\back\model\BackUser;
+use app\common\model\Service;
+use app\common\model\BackUser;
 
 class ServiceController extends BackController
 {

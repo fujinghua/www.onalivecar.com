@@ -446,6 +446,12 @@
 
 /** 动画 **/
 
+/** 画廊 **/
+
+img[lay-filter="gallery"][layer-src] {
+    cursor: pointer;
+}
+
 /** 响应式（前期不作为重心） **/
 
 /*========== layui.css end ===========*/

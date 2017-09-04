@@ -17,6 +17,7 @@ if (typeof Back === "undefined") {
 Back.config = {
     layuiBase: '/static/js/',
     getCity:'/ajax/getCity',
+    isHasInit:false,
 };
 
 Back.layer =  top.layui.layer ? top.layui.layer : layui.layer;
@@ -43,51 +44,45 @@ Back.goSearch = function (keyword){
  * 信息列表基础操作
  */
 Back.tableBase = function (){
+
+    if (Back.config.isHasInit){
+        return;
+    }
+    Back.config.isHasInit = true;
+
     layui.use(['layer','form', 'laydate'], function () {
         var laydate = layui.laydate,
             form = layui.form;
         Back.layer = top.layui.layer ? top.layui.layer : layui.layer ;
 
-        $(document).off('click', '[lay-filter="date"]').on('click', '[lay-filter="date"]:not([readonly]):not([disabled])', function () {
+        $('[lay-filter="date"]:not([readonly]):not([disabled])').each(function () {
             var that = $(this);
             var date = {
                 elem: this,
-                istime: true,
-                format: that.attr('lay-format') || 'YYYY-MM-DD',
-                choose: function (dates) { //选择好日期的回调
-                }
+                type:that.attr('lay-type') || 'date',
+                format: that.attr('lay-format') || 'yyyy-MM-dd',
             };
-            laydate(date);
+            laydate.render(date);
         });
 
-        $(document).off('click', '[lay-filter="startDate"]').on('click', '[lay-filter="startDate"]:not([readonly]):not([disabled])', function () {
+        $('[lay-filter="startDate"]:not([readonly]):not([disabled])').each(function () {
             var that = $(this);
-            if (that.hasAttribute('readonly') || that.hasAttribute('disabled')){
-                return;
-            }
             var date = {
                 elem: this,
-                istime: true,
-                format: "YYYY-MM-DD",
-                choose: function (dates) { //选择好日期的回调
-                }
+                type:that.attr('lay-type') || 'date',
+                format: that.attr('lay-format') || 'yyyy-MM-dd',
             };
-            laydate(date);
+            laydate.render(date);
         });
 
-        $(document).off('click', '[lay-filter="endDate"]').on('click', '[lay-filter="endDate"]:not([readonly]):not([disabled])', function () {
+        $('[lay-filter="endDate"]:not([readonly]):not([disabled])').each(function () {
             var that = $(this);
-            if (that.hasAttribute('readonly') || that.hasAttribute('disabled')){
-                return;
-            }
             var date = {
                 elem: this,
-                istime: true,
-                format: "YYYY-MM-DD",
-                choose: function (dates) { //选择好日期的回调
-                }
+                type:that.attr('lay-type') || 'date',
+                format: that.attr('lay-format') || 'yyyy-MM-dd',
             };
-            laydate(date);
+            laydate.render(date);
         });
 
         // 重置为空处理
@@ -139,7 +134,7 @@ Back.create = function (selector,options,url){
     var config = {
         scrollbar:false,
         type: 2,
-        title: '添加',
+        title: false,
         shade: 0.3,
         area: ['1050px', '62.8%'],
         content: undefined,
@@ -170,7 +165,7 @@ Back.update = function (selector,options,url){
     var config = {
         scrollbar:false,
         type: 2,
-        title: '编辑',
+        title: false,
         shade: 0.3,
         area: ['1050px', '62.8%'],
         content: undefined,
@@ -206,7 +201,7 @@ Back.action = function (selector,options,url,key){
     var config = {
         scrollbar:false,
         type: 2,
-        title: '操作提示',
+        title: false,
         shade: 0.3,
         area: ['1050px', '62.8%'],
         content: undefined,
@@ -242,7 +237,7 @@ Back.view = function (selector,options,url){
     var config = {
         scrollbar:false,
         type: 2,
-        title: '查看',
+        title: false,
         maxmin: true,
         shade: false,
         area: ['1050px', '62.8%'],

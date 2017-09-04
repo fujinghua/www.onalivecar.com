@@ -1,6 +1,6 @@
 /**
  
- @Name : layDate 5.0.1 日期时间控件
+ @Name : layDate 5.0.5 日期时间控件
  @Author: 贤心
  @Site：http://www.layui.com/laydate/
  @License：MIT
@@ -55,7 +55,7 @@
   }
 
   ,laydate = {
-    v: '5.0.1'
+    v: '5.0.5'
     ,config: {} //全局配置项
     ,index: (window.laydate && window.laydate.v) ? 100000 : 0
     ,path: ready.getPath
@@ -71,6 +71,7 @@
     ,ready: function(fn){
       var cssname = 'laydate', ver = ''
       ,path = (isLayui ? 'modules/laydate/' : 'theme/') + 'default/laydate.css?v='+ laydate.v + ver;
+      if(typeof define === 'function' && define.amd) return fn();
       isLayui ? layui.addcss(path, fn, cssname) : ready.link(path, fn, cssname);
       return this;
     }
@@ -438,7 +439,7 @@
     options.eventElem = lay(options.eventElem);
     
     if(!options.elem[0]) return;
-
+    
     //日期范围分隔符
     if(options.range === true) options.range = '-';
     
@@ -532,6 +533,15 @@
     
     if(options.show || isStatic) that.render();
     isStatic || that.events();
+    
+    //默认赋值
+    if(options.value){
+      if(options.value.constructor === Date){
+        that.setValue(that.parse(0, that.systemDate(options.value))); 
+      } else {
+        that.setValue(options.value); 
+      }
+    }
   };
   
   //控件主体渲染
@@ -874,6 +884,12 @@
     if(typeof value === 'string'){
       value = value.replace(/\s+/g, ' ').replace(/^\s|\s$/g, '');
     }
+    
+    //如果点击了开始，单未选择结束就关闭，则重新选择开始
+    if(that.startState && !that.endState){
+      delete that.startState;
+      that.endState = true;
+    };
 
     if(typeof value === 'string' && value){
       if(that.EXP_IF.test(value)){ //校验日期格式
@@ -894,7 +910,7 @@
         ) + '<br>已为你重置');
         error = true;
       }
-    } else if(typeof value === 'object'){
+    } else if(value && value.constructor === Date){ //如果值为日期对象时
       options.dateTime = that.systemDate(value);
     } else {
       options.dateTime = that.systemDate();
@@ -921,10 +937,11 @@
   Class.prototype.mark = function(td, YMD){
     var that = this
     ,mark, options = that.config;
-
     lay.each(options.mark, function(key, title){
       var keys = key.split('-');
-      if((keys[0] == YMD[0] || keys[0] == 0) && keys[1] == YMD[1] && keys[2] == YMD[2]){
+      if((keys[0] == YMD[0] || keys[0] == 0) //每年的每月
+      && (keys[1] == YMD[1] || keys[1] == 0) //每月的每日
+      && keys[2] == YMD[2]){ //特定日
         mark = title || YMD[2];
       }
     });
@@ -939,7 +956,6 @@
     ,options = that.config, timestrap = {}
     ,dateTime = options[index > 41 ? 'endDate' : 'dateTime']
     ,isOut, thisDateTime = lay.extend({}, dateTime, date || {});
-    
     lay.each({
       now: thisDateTime
       ,min: options.min
@@ -1112,12 +1128,18 @@
       lay.each(new Array(15), function(i){
         var li = lay.elem('li', {
           'lay-ym': yearNum
-        });
+        }), ymd = {year: yearNum};
         yearNum == listYM[0] && lay(li).addClass(THIS);
         li.innerHTML = yearNum + text;
         ul.appendChild(li);
-        
-        that.limit(lay(li), {year: yearNum}, index);
+        if(yearNum < that.firstDate.year){
+          ymd.month = options.min.month;
+          ymd.date = options.min.date;
+        } else if(yearNum >= that.firstDate.year){
+          ymd.month = options.max.month;
+          ymd.date = options.max.date;
+        }
+        that.limit(lay(li), ymd, index);
         yearNum++;
       });
       lay(elemYM[isCN ? 0 : 1]).attr('lay-ym', (yearNum - 8) + '-' + listYM[1])
@@ -1126,12 +1148,16 @@
       lay.each(new Array(12), function(i){
         var li = lay.elem('li', {
           'lay-ym': i
-        });
+        }), ymd = {year: listYM[0], month: i};
         i + 1 == listYM[1] && lay(li).addClass(THIS);
         li.innerHTML = lang.month[i] + (isCN ? '月' : '');
         ul.appendChild(li);
-        
-        that.limit(lay(li), {year: listYM[0], month: i}, index);
+        if(listYM[0] < that.firstDate.year){
+          ymd.date = options.min.date;
+        } else if(listYM[0] >= that.firstDate.year){
+          ymd.date = options.max.date;
+        }
+        that.limit(lay(li), ymd, index);
       });
       lay(elemYM[isCN ? 0 : 1]).attr('lay-ym', listYM[0] + '-' + listYM[1])
       .html(listYM[0] + text);
@@ -1191,6 +1217,7 @@
         if(index === 0){
           dateTime[type] = ym;
           if(isAlone) that.startDate[type] = ym;
+          that.limit(lay(that.footer).find(ELEM_CONFIRM), null, 0);
         } else { //范围选择
           if(isAlone){ //非date/datetime类型
             that.endDate[type] = ym;
@@ -1317,12 +1344,12 @@
   };
   
   //转义为规定格式的日期字符
-  Class.prototype.parse = function(state){
+  Class.prototype.parse = function(state, date){
     var that = this
     ,options = that.config
-    ,dateTime = state 
+    ,dateTime = date || (state 
       ? lay.extend({}, that.endDate, that.endTime)
-    : (options.range ? lay.extend({}, that.startDate, that.startTime) : options.dateTime)
+    : (options.range ? lay.extend({}, that.startDate, that.startTime) : options.dateTime))
     ,format = that.format.concat();
 
     //转义为规定格式
@@ -1587,7 +1614,9 @@
       ,confirm: function(){
         if(options.range){
           if(!that.endDate) return that.hint('请先选择日期范围');
-          if(lay(btn).hasClass(DISABLED)) return;
+          if(lay(btn).hasClass(DISABLED)) return that.hint(
+            options.type === 'time' ? TIPS_OUT.replace(/日期/g, '时间') : TIPS_OUT
+          );
         } else {
           if(lay(btn).hasClass(DISABLED)) return that.hint('不在有效日期或时间范围内');
         }
@@ -1696,8 +1725,12 @@
       //选择年月
       lay(header[2]).find('span').on('click', function(e){
         var othis = lay(this)
-        ,layYM = othis.attr('lay-ym').split('-')
+        ,layYM = othis.attr('lay-ym')
         ,layType = othis.attr('lay-type');
+        
+        if(!layYM) return;
+        
+        layYM = layYM.split('-');
 
         that.listYM[i] = [layYM[0] | 0, layYM[1] | 0];
         that.list(layType, i);
@@ -1763,8 +1796,8 @@
       that.remove();
     }).on('keydown', function(e){
       if(e.keyCode === 13){
-        e.preventDefault();
         if(lay('#'+ that.elemID)[0] && that.elemID === Class.thisElem){
+          e.preventDefault();
           lay(that.footer).find(ELEM_CONFIRM)[0].click();
         }
       }

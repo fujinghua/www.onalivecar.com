@@ -3,7 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\back\model\DeleteLog;
+use app\common\model\DeleteLog;
 
 class LogController extends BackController
 {

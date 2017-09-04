@@ -4,8 +4,8 @@ namespace app\back\controller;
 
 use app\common\components\rbac\Assignment;
 use app\common\controller\BackController;
-use app\back\model\BackUser;
-use app\back\model\Ban;
+use app\common\model\BackUser;
+use app\common\model\Ban;
 use app\common\model\AuthItem;
 use app\common\model\AuthAssignment;
 

@@ -3,8 +3,8 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\back\model\Client;
-use app\back\model\Deal;
+use app\common\model\Client;
+use app\common\model\Deal;
 
 
 class DealController extends BackController

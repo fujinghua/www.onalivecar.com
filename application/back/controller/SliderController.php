@@ -3,19 +3,10 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\back\model\Slider;
+use app\common\model\Slider;
 
 class SliderController extends BackController
 {
-
-    public function homeAction(){}
-    public function homeBetterAction(){}
-    public function newHouseAction(){}
-    public function secondHandHouseAction(){}
-    public function rentAction(){}
-    public function buildingAction(){}
-    public function contactAction(){}
-
     /**
      * @description 显示资源列表
      * @return \think\Response
@@ -66,7 +57,6 @@ class SliderController extends BackController
                 $validate = Slider::getValidate();
                 $validate->scene('create');
                 $data['back_user_id'] = $this->getIdentity('id');
-                $data['back_user_id'] = $this->getIdentity('id');
                 $data['created_at'] = date('Y-m-d H:i:s');
                 if ($validate->check($data) && $model->save($data)){
                     $type = $model->getValue('typeName',$data['type'],'default');
@@ -95,19 +85,6 @@ class SliderController extends BackController
     }
 
     /**
-     * 显示指定的资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function viewAction($id)
-    {
-        $this->assign('meta_title', "详情");
-        $model = Ban::load()->where(['id'=>$id])->find();
-        return view('config/view',['model'=>$model]);
-    }
-
-    /**
      * 保存更新的资源
      *
      * @param  int  $id
@@ -116,10 +93,8 @@ class SliderController extends BackController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $config = new Ban();
-        $configList = Ban::getTypeList();
-        $appList = Ban::getAppList();
-        $model = Ban::load()->where(['id'=>$id])->where($where)->find();
+        $config = new Slider();
+        $model = Slider::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
         }
@@ -129,20 +104,20 @@ class SliderController extends BackController
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = Ban::getValidate();
+                $validate = Slider::getValidate();
                 $validate->scene('update');
-                if ($validate->check($data) && Ban::update($data,['id'=>$id])){
-                    $this->success('更新成功','create','',1);
+                if ($validate->check($data) && Slider::update($data,['id'=>$id])){
+                    $this->success('更新成功','update',['id'=>$id],1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
                         $error = $config->getError();
                     }
-                    $this->error($error, 'create','',1);
+                    $this->error($error, 'update',['id'=>$id],1);
                 }
             }
         }
-        return view('config/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$configList]);
+        return view('slider/update',['meta_title'=>'编辑广告','model'=>$model]);
     }
 
     /**
@@ -155,7 +130,7 @@ class SliderController extends BackController
     {
         $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
         if ($this->getRequest()->isAjax()){
-            $result = Ban::update(['is_delete'=>'0'],['id'=>$id]);
+            $result = Slider::update(['is_delete'=>'0'],['id'=>$id]);
             if ($result){
                 $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
             }

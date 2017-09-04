@@ -65,7 +65,7 @@ layui.define('layer', function (exports) {
                 before: undefined,
                 //上传成功后的回调,参数有当前上传的数据，res,出发表单input，和全部图片cache
                 success: undefined,
-                //初始化执数据，res,出发表单input，和全部图片cache
+                //初始化执数据，res,出发表单input，和全部图片cache格式 [[{src:"{$model.url}",icon:"{$model.url_icon}",name:"{$model.title}"}，{src:"{$model.url}",icon:"{$model.url_icon}",name:"{$model.title}"}]]
                 data: undefined,
                 //设定上传的文件类型，也可以直接在input设置lay-type=""来取代；图片类型images。默认，不用设定;普通文件类型 file ;视频文件类型 video; 音频文件类型 audio
                 type: undefined,
