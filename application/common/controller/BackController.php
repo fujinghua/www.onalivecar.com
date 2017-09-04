@@ -34,7 +34,7 @@ class BackController extends BaseController
 
         //模板转换
         if ('back/index/index' === strtolower($currentUrl)){
-            $this->view->engine->layout('common@layouts/back-index2');
+            $this->view->engine->layout('common@layouts/back-index');
         }
 
         //兼容iframe
