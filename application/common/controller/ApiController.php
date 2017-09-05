@@ -28,7 +28,7 @@ class ApiController extends BaseController
         $this->setSession();
 
         // 登录检测,未登录，跳转到登录
-        $this->isUser();
+//        $this->isUser();
 
         // 获取当前用户属性
 
@@ -50,7 +50,7 @@ class ApiController extends BaseController
     {
         if (!$this->isGuest()) {
             //还没登录跳转到登录页面
-            $this->throwHttp(['code'=>'801','msg'=>'未登录']);
+            $this->throwHttp(['code' => '801', 'msg' => '未登录']);
         }
     }
 
@@ -65,7 +65,7 @@ class ApiController extends BaseController
         //用户登录检测
         $identity = $this->identity;
         $model = config($identity . '.default_model');
-        if (class_exists($model)){
+        if (class_exists($model)) {
             $uid = $model::isGuest();
             return $uid ? $uid : false;
         }
@@ -76,8 +76,9 @@ class ApiController extends BaseController
      * 使用返回数据且中断程序
      * @param array $options
      */
-    protected function throwHttp($options = []){
-        $ret =  json_encode($options);
+    protected function throwHttp($options = [])
+    {
+        $ret = json_encode($options);
         exit($ret);
     }
 
@@ -94,4 +95,34 @@ class ApiController extends BaseController
         return json($ret);
     }
 
+    /**
+     * Ajax方式返回数据到客户端
+     * @access protected
+     * @param mixed $data 要返回的数据
+     * @param String $type AJAX返回数据格式
+     * @return void
+     */
+    protected function ajaxReturn($data, $type = '')
+    {
+        if (empty($type)) $type = 'JSON';
+        switch (strtoupper($type)) {
+            case 'JSON' :
+                // 返回JSON数据格式到客户端 包含状态信息
+                header('Content-Type:application/json; charset=utf-8');
+                exit(json_encode($data));
+            case 'XML'  :
+                // 返回xml格式数据
+                header('Content-Type:text/xml; charset=utf-8');
+                exit(xml_encode($data));
+            case 'JSONP':
+                // 返回JSON数据格式到客户端 包含状态信息
+                header('Content-Type:application/json; charset=utf-8');
+                $handler = isset($_GET[C('VAR_JSONP_HANDLER')]) ? $_GET[C('VAR_JSONP_HANDLER')] : C('DEFAULT_JSONP_HANDLER');
+                exit($handler . '(' . json_encode($data) . ');');
+            case 'EVAL' :
+                // 返回可执行的js脚本
+                header('Content-Type:text/html; charset=utf-8');
+                exit($data);
+        }
+    }
 }

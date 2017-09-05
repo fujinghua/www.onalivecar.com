@@ -78,7 +78,10 @@ class UserController extends ApiController
                 $identity->password = $password;
                 $res = $identity->login();
                 if ($res instanceof User) {
-                    $info = ['token' => $res->token];
+                    $info = [
+                        'token' => $res->token,
+                        'userId' => $res->id
+                    ];
                     $this->ajaxReturn(['code' => 0000, 'code_str' => '登录成功', 'info' => $info]);
                 } else {
                     $this->ajaxReturn(['code' => 1006, 'code_str' => $res]);
