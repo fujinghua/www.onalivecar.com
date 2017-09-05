@@ -1,7 +1,8 @@
 <?php
+
 namespace app\api\model;
 
-use app\home\validate\UserValidate;
+use app\api\validate\UserValidate;
 
 use app\common\model\HomeUser;
 use app\common\model\LoginLog;
@@ -59,7 +60,7 @@ class User extends HomeUser
     protected $_user;
 
     //允许登录账号 匹配类型
-    private static $allowFind = ['username','phone','email'];
+    private static $allowFind = ['username', 'phone', 'email'];
     //密码加密前缀
     private static $passwordPrefix = 'home_';
     //密码加密后缀
@@ -150,30 +151,30 @@ class User extends HomeUser
     public function rules()
     {
         return [
-            'rule'=>[
-                ['is_delete','number','时效 无效'],
-                ['type','number','类型 无效'],
-                ['height','number','身高 无效'],
-                ['weight','number','体重 无效'],
-                ['status','number','状态 无效'],
-                ['sex','in:男,女',],
-                ['code','max:32',],
-                ['username','max:32',],
-                ['signature','max:32',],
-                ['auth_key','max:32',],
-                ['reg_ip','max:32',],
-                ['email','max:64',],
-                ['nickname','max:64',],
-                ['real_name','max:64',],
-                ['head_url','max:64',],
-                ['password','max:255',],
-                ['token','max:255',],
-                ['md5','max:64',],
-                ['password_reset_token','max:255',],
-                ['password_reset_code','max:255',],
-                ['reg_type','max:15',],
+            'rule' => [
+                ['is_delete', 'number', '时效 无效'],
+                ['type', 'number', '类型 无效'],
+                ['height', 'number', '身高 无效'],
+                ['weight', 'number', '体重 无效'],
+                ['status', 'number', '状态 无效'],
+                ['sex', 'in:男,女',],
+                ['code', 'max:32',],
+                ['username', 'max:32',],
+                ['signature', 'max:32',],
+                ['auth_key', 'max:32',],
+                ['reg_ip', 'max:32',],
+                ['email', 'max:64',],
+                ['nickname', 'max:64',],
+                ['real_name', 'max:64',],
+                ['head_url', 'max:64',],
+                ['password', 'max:255',],
+                ['token', 'max:255',],
+                ['md5', 'max:64',],
+                ['password_reset_token', 'max:255',],
+                ['password_reset_code', 'max:255',],
+                ['reg_type', 'max:15',],
             ],
-            'msg'=>[
+            'msg' => [
             ],
         ];
     }
@@ -214,12 +215,12 @@ class User extends HomeUser
      * @return boolean whether the user is logged in successfully
      * @return User|bool
      */
-    public function signUp($data)
+    public function register($data)
     {
         $res = false;
         $validate = self::getValidate();
-        $validate->scene('signUp');
-        if( $validate->check($data)){
+        $validate->scene('register');
+        if ($validate->check($data)) {
             $token = md5(md5($data['password']));
             // $this->thisTime 根据此值是否有值判断是否属于新增会员的密码，否则是老会员登录验证密码
             $this->thisTime = date('Y-m-d H:i:s');
@@ -230,23 +231,24 @@ class User extends HomeUser
             $data['registered_at'] = $this->thisTime;
             $data['updated_at'] = $this->thisTime;
             $data['md5'] = $token;
+            $data['token'] = $token;
             $model = new self();
-            $db= $model->save($data);  //这里的save()执行的是添加
-            if ($db){
+            $db = $model->save($data);  //这里的save()执行的是添加
+            if ($db) {
                 $padLength = 5;
-                if($model->id<99999){
+                if ($model->id < 99999) {
                     $padLength = 5;
-                }else if($model->id<999999){
+                } else if ($model->id < 999999) {
                     $padLength = 7;
-                }else if($model->id<99999999){
+                } else if ($model->id < 99999999) {
                     $padLength = 9;
-                }else if($model->id<99999999){
+                } else if ($model->id < 99999999) {
                     $padLength = 11;
-                }else if($model->id<9999999999){
+                } else if ($model->id < 9999999999) {
                     $padLength = 13;
                 }
-                $code = '1'.str_pad($model->id,$padLength,'0',STR_PAD_LEFT);
-                $model::update(['code'=>$code],['id'=>$model->id]);
+                $code = '1' . str_pad($model->id, $padLength, '0', STR_PAD_LEFT);
+                $model::update(['code' => $code], ['id' => $model->id]);
                 $res = $model;
             }
         }
@@ -260,17 +262,17 @@ class User extends HomeUser
      * @param $data array
      * @return User|bool
      */
-    public function updateUser($id,$data)
+    public function updateUser($id, $data)
     {
         $res = false;
         $validate = self::getValidate();
-        $where = ['id'=>$id];
+        $where = ['id' => $id];
         $validate->scene('update');
-        if( $validate->check($data)){
-            if(empty($data['password'])){
+        if ($validate->check($data)) {
+            if (empty($data['password'])) {
                 unset($data['password']);
                 unset($data['rePassword']);
-            }else{
+            } else {
                 $token = md5(md5($data['password']));
                 $this->thisTime = date('Y-m-d H:i:s');
                 $enPassword = $this->setPassword($data['password']);
@@ -280,7 +282,7 @@ class User extends HomeUser
             }
             //更新
             $where['id'] = $id;
-            return User::update($data,$where);
+            return User::update($data, $where);
         }
         return $res;
 
@@ -292,19 +294,19 @@ class User extends HomeUser
      * @param $data array
      * @return User|bool
      */
-    public function resetUser($id,$data)
+    public function resetUser($id, $data)
     {
         $res = false;
         $validate = self::getValidate();
         $validate->scene('reset');
-        if( $validate->check($data)){
+        if ($validate->check($data)) {
             $user = self::getUserById($id);
             $user->username = $user->getData('username');
-            if ($user->validatePassword($data['oldPassword'])){
-                if(empty($data['password'])){
+            if ($user->validatePassword($data['oldPassword'])) {
+                if (empty($data['password'])) {
                     unset($data['password']);
                     unset($data['rePassword']);
-                }else{
+                } else {
                     $token = md5(md5($data['password']));
                     $this->thisTime = date('Y-m-d H:i:s');
                     $enPassword = $this->setPassword($data['password']);
@@ -314,7 +316,7 @@ class User extends HomeUser
                 }
                 //更新
                 $where['id'] = $id;
-                return User::update($data,$where);
+                return User::update($data, $where);
             }
         }
         return $res;
@@ -327,56 +329,56 @@ class User extends HomeUser
      * @param int $duration
      * @return User|bool|string
      */
-    public function login( $duration = 0)
+    public function login($duration = 0)
     {
         $this->username = trim($this->username);
-        $this -> data([
-            'username'=>$this->username,
-            'password'=>$this->password,
-            '__token__'=>input('__token__'),
+        $this->data([
+            'username' => $this->username,
+            'password' => $this->password,
+            '__token__' => input('__token__'),
         ]);
         $validate = self::getValidate();
         $validate->scene('login');
-        if( $validate->check($this -> data)){
-            if ($user = $this->findUser()){
-                if ( $this->validatePassword($this->password)){
-                    if ($this->log()){
+        if ($validate->check($this->data)) {
+            if ($user = $this->findUser()) {
+                if ($this->validatePassword($this->password)) {
+                    if ($this->log()) {
                         $this->thisTime = date('Y-m-d H:i:s');
                         $enPassword = $this->setPassword($this->password);
                         //这里的save()执行的是更新
                         $data = [
-                            'password'=>$enPassword,
-                            'logined_at'=>$this->thisTime,
-                            'updated_at'=>$this->thisTime
+                            'password' => $enPassword,
+                            'logined_at' => $this->thisTime,
+                            'updated_at' => $this->thisTime
                         ];
 
-                        if ($this->thisIp){
+                        if ($this->thisIp) {
                             $data['ip'] = $this->thisIp;
                             $data['status'] = $this->thisStatus;
                         }
                         $result = $user->load()
-                            ->where([$this->thisFindBy=>$this->username])
-                            ->where('type','in',self::getAllowList())
+                            ->where([$this->thisFindBy => $this->username])
+                            ->where('type', 'in', self::getAllowList())
                             ->update($data);
-                        if($result){
+                        if ($result) {
                             $this->addLog();
                             //if true, default keep one week online;
-                            $default = $this->rememberMe ? config('user._rememberMe_duration') : ( config('user._default_duration') ? config('user._default_duration') : 0 ) ;
-                            $duration = $duration ? $duration : $default ;
+                            $default = $this->rememberMe ? config('user._rememberMe_duration') : (config('user._default_duration') ? config('user._default_duration') : 0);
+                            $duration = $duration ? $duration : $default;
                             $ret = $this->setUser($user, $duration);
-                        }else{
+                        } else {
                             $ret = '服务出错';
                         }
-                    }else{
+                    } else {
                         $ret = '未发现会员';
                     }
-                }else{
+                } else {
                     $ret = '密码错误';
                 }
-            }else{
+            } else {
                 $ret = '未存在此账号';
             }
-        }else{
+        } else {
             $ret = $validate->getError();
         }
         return $ret;
@@ -389,10 +391,10 @@ class User extends HomeUser
      */
     public static function logout()
     {
-        session(config('user._user'),null);
+        session(config('user._user'), null);
         session(config('user._auth_key'), null);
-        session(config('user._duration'),null);
-        session(config('user.unique'),null);
+        session(config('user._duration'), null);
+        session(config('user.unique'), null);
         return true;
     }
 
@@ -403,17 +405,18 @@ class User extends HomeUser
      */
     public function setLogout($user = null)
     {
-        session(config('user._user'),null);
+        session(config('user._user'), null);
         session(config('user._auth_key'), null);
-        session(config('user._duration'),null);
-        session(config('user.unique'),null);
+        session(config('user._duration'), null);
+        session(config('user.unique'), null);
         return true;
     }
 
     /**
      * @return Object|\think\Validate
      */
-    public static function getValidate(){
+    public static function getValidate()
+    {
         return UserValidate::load();
     }
 
@@ -422,11 +425,13 @@ class User extends HomeUser
      * @param string $scene
      * @return bool
      */
-    public static function check($data,$scene = ''){
+    public static function check($data, $scene = '')
+    {
+
         $validate = self::getValidate();
 
         //设定场景
-        if (is_string($scene) && $scene !== ''){
+        if (is_string($scene) && $scene !== '') {
             $validate->scene($scene);
         }
 
@@ -464,7 +469,7 @@ class User extends HomeUser
             return $ret;
         }
         $user = self::getUserById($id);
-        if (!$user){
+        if (!$user) {
             $ret = $user->getData($field);
 
         }
@@ -481,12 +486,12 @@ class User extends HomeUser
         // 记录登录SESSION和COOKIES
         $user = $this->getUser();
         $auth = [
-            'uid'      => $user->id,
+            'uid' => $user->id,
             'username' => $user->username,
         ];
         //if true, default keep one week online;
-        $default = $this->rememberMe ? config('user._rememberMe_duration') : ( config('user._default_duration') ? config('user._default_duration') : 0 ) ;
-        $duration = $duration ? $duration : $default ;
+        $default = $this->rememberMe ? config('user._rememberMe_duration') : (config('user._default_duration') ? config('user._default_duration') : 0);
+        $duration = $duration ? $duration : $default;
         session(config('user._auth_key'), $this->data_auth_sign($auth));
         $this->setUser($user, $duration);
         return self::isGuest();
@@ -502,7 +507,7 @@ class User extends HomeUser
     {
         // 数据类型检测
         if (!is_array($data)) {
-            $data = (array) $data;
+            $data = (array)$data;
         }
         ksort($data); //排序
         $code = http_build_query($data); // url编码并生成query字符串
@@ -538,7 +543,7 @@ class User extends HomeUser
      */
     private function log()
     {
-        if (!self::$isLog){
+        if (!self::$isLog) {
             return true;
         }
         $user = $this->findUser();
@@ -548,26 +553,26 @@ class User extends HomeUser
         $ret = false;
         $ip = json_decode($user->getData('ip'), true);
         $currentIp = request()->ip();
-        if (!$ip){
-            $ip = ['last'=>['127.0.0.1',date('Y-m-d H:i:s')], 'current'=>['127.0.0.1',date('Y-m-d H:i:s')],'often'=>[],'haply'=>[],'once'=>[]];
+        if (!$ip) {
+            $ip = ['last' => ['127.0.0.1', date('Y-m-d H:i:s')], 'current' => ['127.0.0.1', date('Y-m-d H:i:s')], 'often' => [], 'haply' => [], 'once' => []];
         }
-        if (in_array($currentIp,$ip['often'])){
+        if (in_array($currentIp, $ip['often'])) {
             $ret = true;
         }
         $time = 1;
         $date = date('Y-m-d H:i:s');
-        if (!$ret){
-            $unset =false;
-            foreach ($ip['once'] as $oKey => $oValue){
-                if (count($ip['once'])>=10 && !$unset){
+        if (!$ret) {
+            $unset = false;
+            foreach ($ip['once'] as $oKey => $oValue) {
+                if (count($ip['once']) >= 10 && !$unset) {
                     $unset = true;
                 }
-                if ($unset){
+                if ($unset) {
                     unset($ip['once'][$oKey]);
                 }
-                if ($oKey == $currentIp){
+                if ($oKey == $currentIp) {
                     $time += intval($oValue[0]);
-                    if (strtotime($oValue[0])+24*60*60 > time()){
+                    if (strtotime($oValue[0]) + 24 * 60 * 60 > time()) {
                         $time = $oValue[0];
                         $date = $oValue[1];
                     }
@@ -575,19 +580,19 @@ class User extends HomeUser
                 }
             }
         }
-        if (in_array($currentIp,$ip['haply'])){
+        if (in_array($currentIp, $ip['haply'])) {
             $ret = true;
-            if ($time >= 15){
+            if ($time >= 15) {
                 $ip['often'][] = $currentIp;
-                if (count($ip['often'])>10){
+                if (count($ip['often']) > 10) {
                     unset($ip['often'][0]);
                 }
                 $ip['often'] = array_values($ip['often']);
             }
-        }else{
-            if ($time >= 5){
+        } else {
+            if ($time >= 5) {
                 $ip['haply'][] = $currentIp;
-                if (count($ip['haply'])>10){
+                if (count($ip['haply']) > 10) {
                     unset($ip['haply'][0]);
                 }
                 $ip['haply'] = array_values($ip['haply']);
@@ -596,7 +601,7 @@ class User extends HomeUser
         $ip['once'][$currentIp][0] = $time;
         $ip['once'][$currentIp][1] = $date;
         $ip['last'] = $ip['current'];
-        $ip['current'] = [$currentIp,date('Y-m-d H:i:s')];
+        $ip['current'] = [$currentIp, date('Y-m-d H:i:s')];
         $this->thisIp = json_encode($ip);
         $this->thisStatus = $ret ? '1' : '0';
         return true;
@@ -610,17 +615,17 @@ class User extends HomeUser
      */
     private function addLog($user = null)
     {
-        if (!self::$isLog){
+        if (!self::$isLog) {
             return true;
         }
-        if (!$user){
+        if (!$user) {
             $user = $this->findUser();
         }
         if ($user === null) {
             return true;
         }
         $ip = self::get_client_ip();
-        LoginLog::addLog($user->id,null,null,'1',$ip);
+        LoginLog::addLog($user->id, null, null, '1', $ip);
         return true;
     }
 
@@ -634,12 +639,12 @@ class User extends HomeUser
     protected function setUser(User $_user, $duration = 0)
     {
         $user = $_user->getData();
-        $user['duration'] = $duration+time();
+        $user['duration'] = $duration + time();
         unset($user['password']);
         unset($user['md5']);
-        session(config('user._user'),$_user);
-        session(config('user._duration'),$duration+time());
-        session(config('user.unique'),$user);
+        session(config('user._user'), $_user);
+        session(config('user._duration'), $duration + time());
+        session(config('user.unique'), $user);
         return $_user;
     }
 
@@ -652,17 +657,17 @@ class User extends HomeUser
      */
     protected function setRememberMe(User $_user, $duration = 0)
     {
-        $duration = (int) $duration;
-        if ($duration<1 || !($_user && $_user->username)){
+        $duration = (int)$duration;
+        if ($duration < 1 || !($_user && $_user->username)) {
             return null;
         }
-        if ( $_user instanceof User){
+        if ($_user instanceof User) {
             $token = $this->generateRandomString() . '_' . time();
-            $db= $this->isUpdate(true,['username'=>$_user->getData('username')])->save([
-                'token'=> $token,
+            $db = $this->isUpdate(true, ['username' => $_user->getData('username')])->save([
+                'token' => $token,
             ]);  //这里的save()执行的是更新
-            if ($db){
-                session(config('user._duration'),time());
+            if ($db) {
+                session(config('user._duration'), time());
                 return $token;
             }
         }
@@ -676,7 +681,7 @@ class User extends HomeUser
      */
     protected function findUser($username = null)
     {
-        if (!$username){
+        if (!$username) {
             $username = $this->username;
         }
         if ($this->_user === null) {
@@ -701,18 +706,18 @@ class User extends HomeUser
      */
     public static function findByUsername($username)
     {
-        if (empty($username) || !in_array('username',self::$allowFind)) {
+        if (empty($username) || !in_array('username', self::$allowFind)) {
             return null;
         }
 
         $where = [
-            'is_delete'=>'1',
-            'username'=>$username,
+            'is_delete' => '1',
+            'username' => $username,
         ];
 
         return self::load()
             ->where($where)
-            ->where('type','in',self::getAllowList())
+            ->where('type', 'in', self::getAllowList())
             ->find();
     }
 
@@ -724,18 +729,18 @@ class User extends HomeUser
      */
     public static function findByPhone($phone)
     {
-        if (empty($phone) || !in_array('phone',self::getAllowFind())) {
+        if (empty($phone) || !in_array('phone', self::getAllowFind())) {
             return null;
         }
 
         $where = [
-            'is_delete'=>'1',
-            'phone'=>$phone,
+            'is_delete' => '1',
+            'phone' => $phone,
         ];
 
         return self::load()
             ->where($where)
-            ->where('type','in',self::getAllowList())
+            ->where('type', 'in', self::getAllowList())
             ->find();
     }
 
@@ -747,18 +752,18 @@ class User extends HomeUser
      */
     public static function findByEmail($email)
     {
-        if (empty($email) || !in_array('email',self::$allowFind)) {
+        if (empty($email) || !in_array('email', self::$allowFind)) {
             return null;
         }
 
         $where = [
-            'is_delete'=>'1',
-            'email'=>$email,
+            'is_delete' => '1',
+            'email' => $email,
         ];
 
         return self::load()
             ->where($where)
-            ->where('type','in',self::getAllowList())
+            ->where('type', 'in', self::getAllowList())
             ->find();
     }
 
@@ -776,13 +781,13 @@ class User extends HomeUser
 
 
         $where = [
-            'is_delete'=>'1',
-            'id'=>$id,
+            'is_delete' => '1',
+            'id' => $id,
         ];
 
         return self::load()
             ->where($where)
-            ->where('type','in',self::getAllowList())
+            ->where('type', 'in', self::getAllowList())
             ->find();
     }
 
@@ -793,7 +798,7 @@ class User extends HomeUser
      */
     protected function geToken()
     {
-        if (session(config('user._auth_key'))){
+        if (session(config('user._auth_key'))) {
             return session(config('user._auth_key'));
         }
         return null;
@@ -805,8 +810,8 @@ class User extends HomeUser
      */
     protected function setToken($_authKey = null)
     {
-        if (!$_authKey){
-            if (!$this->auth_key){
+        if (!$_authKey) {
+            if (!$this->auth_key) {
                 $this->setAuthKey();
             }
             $_authKey = $this->auth_key;
@@ -841,7 +846,7 @@ class User extends HomeUser
             return false;
         }
 
-        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
+        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
         $duration = config('user._passwordResetTokenExpire');
         return $timestamp + $duration >= time();
     }
@@ -853,7 +858,7 @@ class User extends HomeUser
     public static function getId()
     {
         $user = self::getUser();
-        if ($user){
+        if ($user) {
             return $user->id;
         }
         return null;
@@ -864,11 +869,11 @@ class User extends HomeUser
      */
     public function getAuthKey()
     {
-        if (!$this->auth_key){
+        if (!$this->auth_key) {
             $user = $this->getUser();
-            if ($user){
+            if ($user) {
                 $this->auth_key = $user->auth_key;
-            }else{
+            } else {
                 $this->auth_key = $this->getUser('auth_key');
             }
         }
@@ -880,7 +885,7 @@ class User extends HomeUser
      */
     public function setAuthKey()
     {
-        $this->setAttr('auth_key',md5(md5(time()).$this->username));
+        $this->setAttr('auth_key', md5(md5(time()) . $this->username));
         $this->setToken($this->auth_key);
     }
 
@@ -913,26 +918,26 @@ class User extends HomeUser
         }
 
         $user = $this->findUser();
-        $hash =$user->getData('password');
+        $hash = $user->getData('password');
 
-        if (self::$useMd5validate || empty($hash)){
-            $hash =$user->getData('md5');
-            if ($hash == md5(md5($password))){
+        if (self::$useMd5validate || empty($hash)) {
+            $hash = $user->getData('md5');
+            if ($hash == md5(md5($password))) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         }
 
         $password = $this->getJoinPassword($password);
 
-        if (self::$encryptType == 1){
-            if ($this->generateHash($password) === $hash){
+        if (self::$encryptType == 1) {
+            if ($this->generateHash($password) === $hash) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }elseif(self::$encryptType == 2){
+        } elseif (self::$encryptType == 2) {
             if (!preg_match('/^\$2[axy]\$(\d\d)\$[\.\/0-9A-Za-z]{22}/', $hash, $matches)
                 || $matches[1] < 4
                 || $matches[1] > 30
@@ -984,28 +989,29 @@ class User extends HomeUser
      */
     public function setPassword($password)
     {
-        $password = $this->getJoinPassword($password) ;
+        $password = $this->getJoinPassword($password);
         $password = $this->generateHash($password);
-        $this->setAttr('password',$password);
+        $this->setAttr('password', $password);
         return $password;
     }
 
     /**
      * @return string
      */
-    protected function getJoinPassword($password){
+    protected function getJoinPassword($password)
+    {
         $newPassword = $password;
-        if (self::$encryptType == 1){
-            $newPassword = self::$passwordPrefix.$password.self::$passwordSuffix;
-        }elseif (self::$encryptType == 2){
-            if (!$this->thisTime){//根据此值是否有值判断是否属于新增会员的密码，否则是老会员登录验证密码
+        if (self::$encryptType == 1) {
+            $newPassword = self::$passwordPrefix . $password . self::$passwordSuffix;
+        } elseif (self::$encryptType == 2) {
+            if (!$this->thisTime) {//根据此值是否有值判断是否属于新增会员的密码，否则是老会员登录验证密码
                 $user = $this->findUser();
-                if ($user){
+                if ($user) {
                     $login_time = self::$login_time;
                     $this->thisTime = $user->$login_time;
                 }
             }
-            $newPassword = self::$passwordPrefix.$password.self::$passwordSuffix.$this->thisTime;
+            $newPassword = self::$passwordPrefix . $password . self::$passwordSuffix . $this->thisTime;
         }
         return $newPassword;
     }
@@ -1022,16 +1028,16 @@ class User extends HomeUser
     {
         $ret = $string;
 
-        if (self::$encryptType ==1){
+        if (self::$encryptType == 1) {
             $hash = md5($string);
             return $hash;
-        }elseif(self::$encryptType == 2){
+        } elseif (self::$encryptType == 2) {
             $salt = $this->generateSalt($cost);
             $hash = crypt($string, $salt);
 
             // strlen() is safe since crypt() returns only ascii
             if (!is_string($hash) || strlen($hash) !== 60) {
-                $hash = substr(md5($string).md5(md5($string)),0,60);
+                $hash = substr(md5($string) . md5(md5($string)), 0, 60);
             }
 
             return $hash;
@@ -1046,14 +1052,14 @@ class User extends HomeUser
      */
     protected function generateSalt($cost = 13)
     {
-        $cost = (int) $cost;
+        $cost = (int)$cost;
         if ($cost < 4 || $cost > 31) {
             $cost = 13;
         }
 
         // Get a 20-byte random string
         $rand = $this->generateRandomKey(20);
-        if (!$rand){
+        if (!$rand) {
             $rand = md5($cost);
         }
         // Form the prefix that specifies Blowfish (bcrypt) algorithm and cost parameter.
@@ -1070,7 +1076,7 @@ class User extends HomeUser
      */
     public function generateRandomKey($length = 32)
     {
-        $length = (int) $length;
+        $length = (int)$length;
         if ($length < 1 || !is_int($length)) {
             $length = 20;
         }
@@ -1111,7 +1117,7 @@ class User extends HomeUser
         // CryptGenRandom on Windows. Elsewhere it directly reads /dev/urandom.
         if (function_exists('mcrypt_create_iv')) {
             $key = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
-            if ( mb_strlen($key, '8bit') === $length) {
+            if (mb_strlen($key, '8bit') === $length) {
                 return $key;
             }
         }
@@ -1219,13 +1225,13 @@ class User extends HomeUser
      */
     public static function getUser($name = null)
     {
-        $user =  session(config('user._user'));
-        if ($user && $user instanceof User){
+        $user = session(config('user._user'));
+        if ($user && $user instanceof User) {
             if (!is_string($name) || $name === '') {
                 return $user;
             }
 
-            if (is_string($name) && $user){
+            if (is_string($name) && $user) {
                 if (array_key_exists($name, $user->data)) {
                     return $user->data[$name];
                 }
@@ -1243,16 +1249,16 @@ class User extends HomeUser
     public static function isValidUser(User $_user = null)
     {
         $res = false;
-        if (!$_user){
+        if (!$_user) {
             $_user = new User();
             $_user->getUser();
         }
-        if (session(config('user._auth_key')) == self::data_auth_sign($_user)){
+        if (session(config('user._auth_key')) == self::data_auth_sign($_user)) {
             $res = true;
         }
-        $duration =  session(config('user._duration'));
-        if ( $duration && $_user && ($duration + config('user._default_duration')) > time()){
-            session(config('user._duration'),time()+config('user._default_duration'));
+        $duration = session(config('user._duration'));
+        if ($duration && $_user && ($duration + config('user._default_duration')) > time()) {
+            session(config('user._duration'), time() + config('user._default_duration'));
             $res = true;
         }
         return $res;
@@ -1279,15 +1285,16 @@ class User extends HomeUser
     /**\@description 获取用户端IP
      * @return string|null
      */
-    public static function get_client_ip(){
+    public static function get_client_ip()
+    {
         $IP = null;
         if (getenv('HTTP_CLIENT_IP') && strcasecmp(getenv('HTTP_CLIENT_IP'), 'unknown')) {
             $IP = getenv('HTTP_CLIENT_IP');
-        }elseif(getenv('HTTP_X_FORWARDED_FOR') && strcasecmp(getenv('HTTP_X_FORWARDED_FOR'), 'unknown')) {
+        } elseif (getenv('HTTP_X_FORWARDED_FOR') && strcasecmp(getenv('HTTP_X_FORWARDED_FOR'), 'unknown')) {
             $IP = getenv('HTTP_X_FORWARDED_FOR');
-        }elseif(getenv('REMOTE_ADDR') && strcasecmp(getenv('REMOTE_ADDR'), 'unknown')) {
+        } elseif (getenv('REMOTE_ADDR') && strcasecmp(getenv('REMOTE_ADDR'), 'unknown')) {
             $IP = getenv('REMOTE_ADDR');
-        }elseif(isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], 'unknown')) {
+        } elseif (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], 'unknown')) {
             $IP = $_SERVER['REMOTE_ADDR'];
         }
         return $IP;
@@ -1308,11 +1315,11 @@ class User extends HomeUser
     public function __get($name)
     {
         //排除一些非法属性名称
-        if (is_null($name) || !is_string($name) || $name === ''){
+        if (is_null($name) || !is_string($name) || $name === '') {
             return parent::__get($name);
         }
 
-        if (!property_exists($this,$name)){
+        if (!property_exists($this, $name)) {
             if (array_key_exists($name, $this->data)) {
                 return $this->data[$name];
             }

@@ -14,6 +14,7 @@ class IndexController extends ApiController
      * 默认方法
      * @author Sir Fu
      */
+    //测试下
     public function indexAction()
     {
         return json(['status'=>'1','info'=>'API']);
@@ -28,4 +29,12 @@ class IndexController extends ApiController
         return json(['status'=>'1','info'=>'无效请求']);
     }
 
+    /**
+     * @description The APP 全局MISS路由，一个父级操作.
+     * @return string
+     */
+    public function missLogin()
+    {
+        return json([]);
+    }
 }
