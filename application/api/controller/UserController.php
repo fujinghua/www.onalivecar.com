@@ -91,9 +91,6 @@ class UserController extends ApiController
 
             }
         }
-        if ($this->isGuest()) {
-            $this->goHome();
-        }
     }
 
     /**
