@@ -58,6 +58,7 @@ class LangHelper
             // 禁止类别
             'ban' => ['1' => '允许', '2' => '禁止'],
         ],
+        'brand' => [],
         'cloud' => [
         ],
         'config' => [

@@ -21,6 +21,9 @@ class BaseController extends Controller
     //模块身份标识 (默认identity)
     protected $identity = 'identity';
 
+    //SESSION_ID
+    protected $sessionId = null;
+
     /**
      * @description before action function
      */
@@ -42,10 +45,11 @@ class BaseController extends Controller
 
     /**
      * 初始化一些因模块不同，需要不同的配置信息(有默认值,默认值是后台身份识别)
+     * @param null $identity
      */
-    protected function init()
+    protected function init($identity= null)
     {
-        $identity = $this->identity;
+        $identity = $identity ? : $this->identity;
         $identity = config($identity);
         if ($identity) {
             config('identity',array_merge(config('identity'),$identity));
@@ -54,10 +58,11 @@ class BaseController extends Controller
 
     /**
      * 当前登陆身份标识
+     * @param null $identity
      */
-    protected function setSession()
+    protected function setSession($identity= null)
     {
-        $identity = $this->identity;
+        $identity = $identity ? : $this->identity;
         $_SESSION[$identity] = session(config($identity . '.unique'));
         $_SESSION['logined_at'] = session('logined_at');
 //        $this->assign('_csrf_param','_csrf_'.request()->module());

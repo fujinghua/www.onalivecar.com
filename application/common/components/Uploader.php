@@ -129,8 +129,8 @@ class Uploader
             }
             $info = self::getFileInfo();
         } catch (Exception $e) {
-            $res['code'] = 1;
-            $res['msg'] = '参数异常或服务繁忙';
+            $info['code'] = 1;
+            $info['msg'] = '参数异常或服务繁忙';
         }
 
         /**
