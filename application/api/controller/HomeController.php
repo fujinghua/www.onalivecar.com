@@ -17,7 +17,7 @@ class HomeController extends ApiController
     //测试下
     public function indexAction()
     {
-        $this->accessCheck();
+        $userId = $this->context->userId;
         $data = [
             'banner' => []
         ];
