@@ -20,6 +20,7 @@ class Images extends Model
 
     protected $field = [
         'id',
+        'target_unique',
         'target_id',
         'type',
         'url',
