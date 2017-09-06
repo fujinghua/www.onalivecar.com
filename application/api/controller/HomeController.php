@@ -39,7 +39,7 @@ class HomeController extends ApiController
         $field = ['url', 'url_icon', 'target', 'title', 'description',];
         $limit = 6;
         $model = Slider::load();
-        $result = $model->where($where)->limit($limit)->order('order ASC')->getField(implode(',', $field));
+        $result = $model->field($field)->where($where)->limit($limit)->order('order ASC')->select();
         $result = $model->asArray($result); //此方法是我自己写的
         if (!empty($result)) {
             $data = $result;

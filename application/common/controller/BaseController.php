@@ -51,8 +51,14 @@ class BaseController extends Controller
     {
         $identity = $identity ? : $this->identity;
         $identity = config($identity);
+        //身份
         if ($identity) {
             config('identity',array_merge(config('identity'),$identity));
+        }
+        //session识别
+        if (!empty($this->sessionId) && is_string($this->sessionId)){
+            config('session.id',$this->sessionId);
+            \think\Session::init(); //需要重新初始化SESSION
         }
     }
 
