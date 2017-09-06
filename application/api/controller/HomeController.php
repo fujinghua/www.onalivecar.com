@@ -26,10 +26,9 @@ class HomeController extends ApiController
             $res[$k]['brands'] = [];
         }
         $brand = Brand::load();
-        $hot = $brand->where(['is_delete' => '1'])->column('id,letter,name,icon');
-        //  $arr = $brand->asArray($hot);
-        $res = [];
-        foreach ($hot as $key => $value) {
+        $more = $brand->where(['is_delete' => '1'])->column('id,letter,name,icon');
+        $arr = $brand->asArray($more);
+        foreach ($arr as $key => $value) {
             if ($value['letter'] == 'a') {
                 unset($value['letter']);
                 $res[0]['brands'][] = $value;
@@ -110,7 +109,6 @@ class HomeController extends ApiController
                 $res[25]['brands'][] = $value;
             }
         }
-
         $info = [
             'hot' => [
                 ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'cate_id' => '1', 'name' => '奥迪'],
