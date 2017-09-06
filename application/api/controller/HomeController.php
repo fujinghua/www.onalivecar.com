@@ -140,7 +140,7 @@ class HomeController extends ApiController
         if (!empty($result)) {
             $data = $result;
         }
-        $ret['info']['banner'] = $data;
+        $ret['info'] = $data;
         return json($ret);
     }
 
