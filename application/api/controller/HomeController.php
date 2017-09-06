@@ -27,9 +27,9 @@ class HomeController extends ApiController
         }
         $brand = Brand::load();
         $hot = $brand->where(['is_delete' => '1'])->column('id,letter,name,icon');
-        $arr = $brand->asArray($hot);
-
-        foreach ($arr as $key => $value) {
+        //  $arr = $brand->asArray($hot);
+        $res = [];
+        foreach ($hot as $key => $value) {
             if ($value['letter'] == 'a') {
                 unset($value['letter']);
                 $res[0]['brands'][] = $value;
@@ -112,14 +112,29 @@ class HomeController extends ApiController
         }
 
         $info = [
-            'banner' => [],
-            'hot' => $hot,
+            'hot' => [
+                ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'cate_id' => '1', 'name' => '奥迪'],
+                ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'cate_id' => '2', 'name' => '奔驰'],
+                ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'cate_id' => '3', 'name' => '林肯']
+            ],
+            'more' => $res,
             'main' => [
                 ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'cate_id' => '1', 'name' => '奥迪'],
                 ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'cate_id' => '2', 'name' => '奔驰'],
                 ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'cate_id' => '3', 'name' => '林肯']
             ],
         ];
+        $ret = ['code' => '0000', 'code_str' => '获取数据成功', 'info' => $info];
+        return json($ret);
+    }
+
+    /**
+     * 首页轮播
+     * @author Sir Fu
+     */
+    public function sliderAction()
+    {
+        $info = [];
         $ret = ['code' => '0000', 'code_str' => '获取数据成功', 'info' => $info];
         $data = [];
         $model = Slider::load();
@@ -130,41 +145,6 @@ class HomeController extends ApiController
         $ret['info']['banner'] = $data;
         return json($ret);
     }
-
-//    /**
-//     * 首页轮播
-//     * @author Sir Fu
-//     */
-//    public function sliderAction()
-//    {
-//        $info = [
-//            'hot' => [
-//                ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'id' => '1', 'name' => '奥迪Q7'],
-//                ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'id' => '2', 'name' => '奔驰'],
-//                ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'id' => '3', 'name' => '林肯'],
-//                ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'id' => '4', 'name' => '玛莎拉蒂']
-//            ],
-//            'main' => [
-//                ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'cate_id' => '1', 'name' => '奥迪'],
-//                ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'cate_id' => '2', 'name' => '奔驰'],
-//                ['icon' => 'http://img1.xcarimg.com//PicLib//logo//pl1_160s.png?t=20170905', 'cate_id' => '3', 'name' => '林肯']
-//            ],
-//            'banner' => []
-//        ];
-//        $ret = ['code' => '0000', 'code_str' => '获取数据成功', 'info' => $info];
-//        $data = [];
-//        $where = ['is_delete' => '1', 'status' => '2'];
-//        $field = ['url', 'url_icon', 'target', 'title', 'description',];
-//        $limit = 6;
-//        $model = Slider::load();
-//        $result = $model->where($where)->limit($limit)->order('order ASC')->getField(implode(',', $field));
-//        $result = $model->asArray($result); //此方法是我自己写的
-//        if (!empty($result)) {
-//            $data = $result;
-//        }
-//        $ret['info']['banner'] = $data;
-//        return json($ret);
-//    }
 
 
 }
