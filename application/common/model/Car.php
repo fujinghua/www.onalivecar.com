@@ -35,18 +35,18 @@ class Car extends Model
     protected $table = '{{%car}}';
 
     protected $field = [
-        'id' => '车辆ID',
-        'name' => '车名称',
-        'name_alias' => '车别名或扩充名称',
-        'cate_id' => '类目表ID',
-        'total' => '总量',
-        'price' => '基本价格',
-        'title' => '描述信息',
-        'code' => '编码',
-        'images_id' => '默认图',
-        'images_unique' => '详细图片识别字符',
-        'created_at' => '创建时间',
-        'updated_at' => '更新时间',
+        'id',
+        'name',
+        'name_alias',
+        'cate_id',
+        'total',
+        'price',
+        'title',
+        'code',
+        'images_id',
+        'images_unique',
+        'created_at',
+        'updated_at',
     ];
 
     // 保存自动完成列表
@@ -63,10 +63,8 @@ class Car extends Model
     {
         return [
             'rule' => [
-                ['is_delete', 'in:0,1', '时效 无效'],
                 ['name', 'max:32'],
-                ['pinyin', 'max:150'],
-                ['icon', 'max:255'],
+                ['name_alias', 'max:150'],
             ],
             'msg' => [
 
@@ -94,28 +92,29 @@ class Car extends Model
             'updated_at' => '更新时间',
         ];
     }
+
     /**
-     * @return \yii\db\ActiveQuery
+     * @return \think\model\relation\HasOne
      */
     public function getCate()
     {
-        return $this->hasOne(Cate::className(), ['id' => 'cate_id']);
+        return $this->hasOne(ucfirst(Cate::tableNameSuffix()), 'cate_id','id');
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return \think\model\relation\HasMany
      */
     public function getCarProps()
     {
-        return $this->hasMany(CarProp::className(), ['car_id' => 'id']);
+        return $this->hasMany(ucfirst(CarProp::tableNameSuffix()), 'id','car_id');
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return \think\model\relation\HasMany
      */
     public function getCarSkus()
     {
-        return $this->hasMany(CarSku::className(), ['car_id' => 'id']);
+        return $this->hasMany(ucfirst(CarSku::tableNameSuffix()), 'id','car_id');
     }
 
 }

@@ -28,13 +28,13 @@ class CarSku extends Model
     protected $table = '{{%car_sku}}';
 
     protected $field = [
-        'id' => 'ID',
-        'sku' => '特征量ID组合',
-        'total' => 'Total',
-        'price' => 'Price',
-        'car_id' => '车辆表ID',
-        'created_at' => '创建时间',
-        'updated_at' => '更新时间',
+        'id',
+        'sku',
+        'total',
+        'price',
+        'car_id',
+        'created_at',
+        'updated_at',
     ];
 
     // 保存自动完成列表
@@ -51,10 +51,6 @@ class CarSku extends Model
     {
         return [
             'rule' => [
-                ['is_delete', 'in:0,1', '时效 无效'],
-                ['name', 'max:32'],
-                ['pinyin', 'max:150'],
-                ['icon', 'max:255'],
             ],
             'msg' => [
 
@@ -77,12 +73,13 @@ class CarSku extends Model
             'updated_at' => '更新时间',
         ];
     }
+
     /**
-     * @return \yii\db\ActiveQuery
+     * @return \think\model\relation\HasOne
      */
     public function getCar()
     {
-        return $this->hasOne(Car::className(), ['id' => 'car_id']);
+        return $this->hasOne(ucfirst(Car::tableNameSuffix()), 'car_id','id');
     }
 
 }

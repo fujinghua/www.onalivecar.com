@@ -31,15 +31,15 @@ class Cate extends Model
     protected $table = '{{%cate}}';
 
     protected $field = [
-        'id' => '类目ID',
-        'name' => '类目名称',
-        'pid' => '类目父ID',
-        'isParent' => '是否作为父级；0否，1是；默认为0',
-        'order' => '排序',
-        'level' => '分类深度',
-        'unique_id' => '扩展识别',
-        'created_at' => '创建时间',
-        'updated_at' => '更新时间',
+        'id',
+        'name',
+        'pid',
+        'isParent',
+        'order',
+        'level',
+        'unique_id',
+        'created_at',
+        'updated_at',
     ];
 
     // 保存自动完成列表
@@ -56,21 +56,12 @@ class Cate extends Model
     {
         return [
             'rule' => [
-                ['is_delete', 'in:0,1', '时效 无效'],
-                ['name', 'max:32'],
-                ['pinyin', 'max:150'],
-                ['icon', 'max:255'],
+                ['name', 'max:64'],
+                ['unique_id', 'max:32'],
             ],
             'msg' => [
 
             ],
-            [
-                [['name', 'pid', 'order'], 'required'],
-                [['pid', 'isParent', 'order', 'level'], 'integer'],
-                [['created_at', 'updated_at'], 'safe'],
-                [['name'], 'string', 'max' => 64],
-                [['unique_id'], 'string', 'max' => 32],
-            ]
         ];
     }
 
@@ -93,19 +84,19 @@ class Cate extends Model
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return \think\model\relation\HasMany
      */
     public function getCars()
     {
-        return $this->hasMany(Car::className(), ['cate_id' => 'id']);
+        return $this->hasMany(ucfirst(Car::tableNameSuffix()),'id','cate_id' );
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return \think\model\relation\HasMany
      */
     public function getCateProps()
     {
-        return $this->hasMany(CateProp::className(), ['cate_id' => 'id']);
+        return $this->hasMany(ucfirst(CateProp::tableNameSuffix()),'id','cate_id' );
     }
 
 }

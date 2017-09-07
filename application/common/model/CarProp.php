@@ -29,13 +29,13 @@ class CarProp extends Model
     protected $table = '{{%car_prop}}';
 
     protected $field = [
-        'id' => 'ID',
-        'car_id' => '车辆表ID',
-        'cate_prop_value_id' => '特征量表ID',
-        'type' => '是否自定义属性值；0=否，1=是；默认是0；',
-        'prop' => '自定义属性值',
-        'created_at' => '创建时间',
-        'updated_at' => '更新时间',
+        'id',
+        'car_id',
+        'cate_prop_value_id',
+        'type',
+        'prop',
+        'created_at',
+        'updated_at',
     ];
 
     // 保存自动完成列表
@@ -52,10 +52,7 @@ class CarProp extends Model
     {
         return [
             'rule' => [
-                ['is_delete', 'in:0,1', '时效 无效'],
-                ['name', 'max:32'],
-                ['pinyin', 'max:150'],
-                ['icon', 'max:255'],
+                ['prop', 'max:150'],
             ],
             'msg' => [
 
@@ -80,19 +77,19 @@ class CarProp extends Model
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return \think\model\relation\HasOne
      */
     public function getCar()
     {
-        return $this->hasOne(Car::className(), ['id' => 'car_id']);
+        return $this->hasOne(ucfirst(Car::tableNameSuffix()), 'car_id','id');
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return \think\model\relation\HasOne
      */
     public function getCatePropValue()
     {
-        return $this->hasOne(CatePropValue::className(), ['id' => 'cate_prop_value_id']);
+        return $this->hasOne(ucfirst(CatePropValue::tableNameSuffix()), 'cate_prop_value_id','id');
     }
 
 }

@@ -7,12 +7,13 @@ use think\db\Query;
 use think\Config;
 use app\common\lang\LangHelper;
 use think\Request;
+use app\common\model\IModel;
 
 /**
  * @property array $rules
  * @property array $attributeLabels
  */
-class Model extends \think\Model
+class Model extends \think\Model implements IModel
 {
 
     /**

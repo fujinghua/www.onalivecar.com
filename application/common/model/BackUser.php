@@ -427,7 +427,7 @@ class BackUser extends Model
      */
     public function getTakeOrders()
     {
-        return $this->hasMany(ucfirst(DealOrder::tableNameSuffix()), 'id', 'back_user_id');
+        return $this->hasMany(ucfirst(Deal::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
