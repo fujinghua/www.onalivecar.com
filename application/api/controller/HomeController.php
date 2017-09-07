@@ -138,7 +138,9 @@ class HomeController extends ApiController
         $model = Slider::load();
         $result = $model->where(['is_delete' => '1', 'status' => '2'])->limit('6')->column('url,url_icon,target,title');
         if (!empty($result)) {
-            $data = $result;
+            foreach ($result as $value) {
+                $data[] = $value;
+            }
         }
         $ret['info'] = $data;
         return json($ret);
