@@ -824,6 +824,14 @@ body .layui-footer .layui-main a {
 /* =======================================
 	 文本
 ================================== */
+
+.layui-title.title{
+    text-align: center;
+    font-size: 24px;
+    font-weight: normal;
+    color: #191b2e;
+}
+
 .layui-label{
     vertical-align: middle;
     height: 38px;

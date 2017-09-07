@@ -3,6 +3,7 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
+use app\common\model\Brand;
 use app\common\model\Cate;
 
 class CateController extends BackController
@@ -16,28 +17,24 @@ class CateController extends BackController
         $where = [];
         $each = 20;
         $model = Cate::load();
-        $request = $this->getRequest();
         $lang = Cate::Lang();
-        $type = trim($request->request('type'));
-        if ($type != ''){
-            if (in_array($type,array_keys($lang['type']))){
-                $where =  array_merge($where, ['type'=>$type]);
+        $request = $this->getRequest();
+        $key = trim($request->request('keyword'));
+        if ($key != ''){
+            $where[] = ['exp',"t.name like '%".$key."%' "];
+        }
+        $brand = trim($request->request('brand'));
+        if ($brand != ''){
+            if (in_array($brand,array_keys($lang['brand']))){
+                $where =  array_merge($where, ['brand'=>$brand]);
             }
         }
-        $app = trim($request->request('app'));
-        if ($app != ''){
-            if (in_array($app,array_keys($lang['app']))){
-                $where =  array_merge($where, ['app'=>$app]);
-            }
-        }
-        $status = trim($request->request('status'));
-        if ($status != ''){
-            if (in_array($status,array_keys($lang['status']))){
-                $where =  array_merge($where, ['status'=>$status]);
-            }
-        }
-        $list = $model->where($where)->order(['`level`'=>'ASC','`order`'=>'ASC'])->paginate($each);
-        $this->assign('meta_title', "类别清单");
+        $list = $model->alias('t')
+            ->join(Brand::tableName().' b','t.id = b.id','left')
+            ->where($where)
+            ->field('t.*,b.name as brand')
+            ->order(['`level`'=>'ASC','`order`'=>'ASC'])->paginate($each);
+        $this->assign('meta_title', "类目清单");
         $this->assign('model', $model);
         $this->assign('list', $list);
         return view('cate/index');
@@ -51,8 +48,11 @@ class CateController extends BackController
     public function createAction()
     {
         $model = new Cate();
+        $brand = Brand::load()->where(['is_delete'=>'1'])->order(['letter'=>'ASC','id'=>'ASC'])->column('name','id');
         if ($this->getRequest()->isPost()){
             $data = $model->filter($_POST);
+            dump($data);
+            exit();
             if ($data){
                 $validate = Cate::getValidate();
                 $validate->scene('create');
@@ -81,7 +81,7 @@ class CateController extends BackController
                 }
             }
         }
-        return view('cate/create',['meta_title'=>'添加广告','model'=>$model]);
+        return view('cate/create',['meta_title'=>'添加品牌','model'=>$model,'brand'=>$brand]);
     }
 
     /**

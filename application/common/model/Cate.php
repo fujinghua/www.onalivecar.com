@@ -14,6 +14,7 @@ use app\common\model\Model;
  * @property string $order
  * @property integer $level
  * @property string $unique_id
+ * @property string $title
  * @property string $created_at
  * @property string $updated_at
  *
@@ -38,6 +39,7 @@ class Cate extends Model
         'order',
         'level',
         'unique_id',
+        'title',
         'created_at',
         'updated_at',
     ];
@@ -58,6 +60,7 @@ class Cate extends Model
             'rule' => [
                 ['name', 'max:64'],
                 ['unique_id', 'max:32'],
+                ['title', 'max:255'],
             ],
             'msg' => [
 
@@ -78,6 +81,7 @@ class Cate extends Model
             'order' => '排序',
             'level' => '分类深度',
             'unique_id' => '扩展识别',
+            'title' => '说明',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];

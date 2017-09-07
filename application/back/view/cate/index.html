@@ -57,23 +57,16 @@
         <form class="layui-form layui-form-pane layui-form-search" action="">
             <div class="layui-form-item">
 
-                <label class="layui-form-label">类型:</label>
-                <div class="layui-input-inline">
-                    <select name="type" lay-verify="require" lay-search>
-                        <option value="">类型</option>
-                        <option value="">全部</option>
-                        {volist name="model->getLists('type')" id="item" }
-                        <option value="{$key}" {if condition="$key eq $Think.get.type"}selected{/if}>{$item}</option>
-                        {/volist}
-                    </select>
+                <label class="layui-form-label" style="width: 75px;">关键词:</label>
+                <div class="layui-input-inline search">
+                    <input type="text" name="keyword" placeholder="输入关键词" value="{$Think.get.keyword}" class="layui-input">
                 </div>
-
-                <label class="layui-form-label">状态:</label>
+                <label class="layui-form-label" style="width: 60px;">状态:</label>
                 <div class="layui-input-inline">
-                    <select name="status" lay-verify="require" lay-search>
-                        <option value="">状态</option>
-                        <option value="">全部</option>
-                        {volist name="model->getLists('status')" id="item" }
+                    <select name="brand" lay-search >
+                        <option value="">品牌</option>
+                        <option value="0">全部</option>
+                        {volist name="model->getLists('status')" id="item"}
                         <option value="{$key}" {if condition="$key eq $Think.get.status"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>
@@ -88,14 +81,11 @@
     </div>
 </section>
 
-<section class="layui-table-action">
+<section class="layui-table-action" style="display: none;">
     <div class="layui-form-item">
         <div class="layui-inline">
             <div class="layui-inline">
                 <!--<label class="layui-btn layui-btn-danger" lay-filter="delete">删除</label>-->
-            </div>
-            <div class="layui-inline">
-                <label class="layui-text layui-label"> (共 <em class="layui-color-danger">{$list->total()}</em> 条信息)</label>
             </div>
         </div>
         <div class="layui-inline" style="margin-right: 15px;">
@@ -106,25 +96,23 @@
     </div>
 </section>
 
-<div class="layui-table" style="margin: 15px;">
-    {volist name="list" id="model" key="key" empty="<p class='empty'><span style='text-align: center;'> 没有数据 </span> </p>"}
-    <div class="item" data-key="{$model.id}">
-        <div class="img">
-            <img src="{$model.url_icon}" layer-src="{$model.url}" lay-filter="gallery" title="{$model.title}" alt="{$model.title}">
-        </div>
-        <div class="title">
-            <p>{$model.title}</p>
-        </div>
-        <div style="text-align: center;" class="action">
-            <button class="layui-btn layui-btn-small" lay-filter="update">
-                <i class="layui-icon">&#xe640;</i>编辑
-            </button>
-            <button class="layui-btn layui-btn-small layui-btn-danger" lay-filter="delete">
-                <i class="layui-icon">&#xe640;</i>删除
-            </button>
-        </div>
-    </div>
-    {/volist}
+<div class="layui-container" style="width: 100%;">
+    <table class="layui-table" lay-data="{height:315, url:'/demo/table/user/', page:true, id:'test'}" lay-filter="test">
+        <thead>
+        <tr>
+            <th lay-data="{field:'id', width:80, sort: true}">序号</th>
+            <th lay-data="{field:'username', width:80}">图标</th>
+            <th lay-data="{field:'city', width:80}">城市</th>
+            <th lay-data="{field:'sign', width:177}">签名</th>
+            <th lay-data="{field:'experience', width:80, sort: true}">积分</th>
+            <th lay-data="{field:'score', width:80, sort: true}">评分</th>
+            <th lay-data="{field:'classify', width:80}">职业</th>
+            <th lay-data="{field:'wealth', width:135, sort: true}">财富</th>
+            <th lay-data="{field:'developer', width:135, sort: true}">发展</th>
+            <th lay-data="{field:'walk', width:135, sort: true}">未来</th>
+        </tr>
+        </thead>
+    </table>
 </div>
 
 <!-- 分页容器 -->
@@ -132,24 +120,26 @@
 
 <script>
     var url = {
-        createUrl:"{:url('/slider/create')}",
-        updateUrl:"{:url('/slider/update')}",
-        deleteUrl:"{:url('/slider/delete')}",
+        createUrl:"{:url('/cate/create')}",
+        updateUrl:"{:url('/cate/update')}",
+        deleteUrl:"{:url('/cate/delete')}",
     };
     $(function() {
         //分页
         Site.loadPage();
 
         //添加
-        Back.create('create',{content:url.createUrl,area:['1050px','88%']});
+        Back.create('create',{content:url.createUrl,area:['960px','62.8%']});
 
         //编辑
-        Back.update('update',{content:url.updateUrl,area:['1050px','88%']});
+        Back.update('update',{content:url.updateUrl,area:['960px','62.8%']});
 
         //删除
         Back.delete('delete',url.deleteUrl);
     });
-    layui.use([ 'layer','laydate', 'form'], function() {});
+    layui.use([ 'layer','table', 'form'], function() {
+        var table = layui.table;
+    });
 </script>
 
 </body>

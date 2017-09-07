@@ -365,10 +365,10 @@ Back.submit = function (_options){
         var layer = top.layui.layer || layui.layer;
 
         //绑定form提交
-        var forms = layui.forms().create({ELEM:options.form});
+        var forms = layui.forms;
 
         //自定义验证规则
-        forms.verify( options.verify);
+        forms.verify(options.verify);
 
         //监听提交
         forms.on('submit('+options.submit+')', function (data) {
@@ -377,6 +377,12 @@ Back.submit = function (_options){
                 //没有提交地址 中断
                 url = window.location.href;
             }
+
+            if ($form.hasClass('onSubmit')){
+                return;
+            }
+
+            $form.hasClass('onSubmit') || $form.addClass('onSubmit');
 
             $.ajax({
                 url:url,
@@ -408,6 +414,9 @@ Back.submit = function (_options){
                 error:function (data) {
                     layer.close(index);
                     layer.msg('提交出错');
+                },
+                complete: function(xhr, status) {
+                    !$form.hasClass('onSubmit') || $form.removeClass('onSubmit');
                 }
             });
             //必须中断

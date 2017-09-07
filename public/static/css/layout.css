@@ -483,6 +483,8 @@ body {
     color: #3e4849;
     font-family: 'Open Sans', Arial, Helvetica, sans-serif, "微软雅黑", "Microsoft YaHei", "Microsoft YaHei UI", "Segoe UI", Arial, Verdana, Sans-Serif, sans-serif;
     font-size: 12px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
 em {
