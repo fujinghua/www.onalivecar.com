@@ -1,4 +1,5 @@
 <?php
+
 namespace app\common\model;
 
 use think\Db;
@@ -16,72 +17,136 @@ use app\common\model\IModel;
 class Model extends \think\Model implements IModel
 {
 
+    // 保存自动完成列表
+    protected $auto = [];
+    // 新增自动完成列表
+    protected $insert = ['created_at'];
+    // 更新自动完成列表
+    protected $update = ['updated_at'];
+
+    /**
+     * 插入自动 赋值创建时间
+     */
+    public function setCreatedAtAttr()
+    {
+        return $this->setDate();
+    }
+
+    /**
+     * 更新自动 赋值更新时间
+     */
+    public function setUpdatedAtAttr()
+    {
+        return $this->setDate();
+    }
+
+    /**
+     * 扩展插入自动
+     * @param array $insert
+     * @param bool $all
+     */
+    public function extendInsert($insert = [],$all = false)
+    {
+        if ($all){
+            $this->insert = $insert;
+        }else{
+            $this->insert = array_merge($this->insert,$insert);
+        }
+        if (!in_array('created_at',$this->insert)){
+            array_push($this->insert,'created_at');
+        }
+    }
+
+    /**
+     * 扩展更新自动
+     * @param array $update
+     * @param bool $all
+     */
+    public function extendUpdate($update = [],$all = false)
+    {
+        if ($all){
+            $this->update = $update;
+        }else{
+            $this->update = array_merge($this->update,$update);
+        }
+        if (!in_array('updated_at',$this->update)){
+            array_push($this->update,'updated_at');
+        }
+    }
+
     /**
      * @return \app\common\components\Helper
      */
-    public static function getHelper(){
+    public static function getHelper()
+    {
         return \app\common\components\Helper::getInstance();
     }
 
-    public function getTableInformation($path = '',$namespace = ''){
-        if (!file_exists($path) || !is_dir($path)){
+    public function getTableInformation($path = '', $namespace = '')
+    {
+        if (!file_exists($path) || !is_dir($path)) {
             return;
         }
 
-        if ($od = opendir($path)){
-            $str = '<?php'.PHP_EOL.PHP_EOL;
-            $str .= 'class ClassModel {'.PHP_EOL;
+        if ($od = opendir($path)) {
+            $str = '<?php' . PHP_EOL . PHP_EOL;
+            $str .= 'class ClassModel {' . PHP_EOL;
             while (($file = readdir($od)) !== false)  //读取该目录内文件
             {
-                $tmp = explode('.',$file);
+                $tmp = explode('.', $file);
                 $className = $tmp[0];
-                if (!empty($className) && $className != 'Model'){
-                    $str .= '/**'.$className.'**/'.PHP_EOL;
-                    $str .= 'protected $field = ['.PHP_EOL;
-                    $className = $namespace.$className;
+                if (!empty($className) && $className != 'Model') {
+                    $str .= '/**' . $className . '**/' . PHP_EOL;
+                    $str .= 'protected $field = [' . PHP_EOL;
+                    $className = $namespace . $className;
                     /**
                      * @var $model \think\Model
                      */
                     $model = new $className;
                     $info = $model->getTableInfo();
-                    foreach ($info['fields'] as $field){
-                        $str .= "'".$field."',".PHP_EOL;
+                    foreach ($info['fields'] as $field) {
+                        $str .= "'" . $field . "'," . PHP_EOL;
                     }
-                    $str .= "];".PHP_EOL.PHP_EOL;
+                    $str .= "];" . PHP_EOL . PHP_EOL;
                 }
             }
-            $str .= "}".PHP_EOL.PHP_EOL;
-            @file_put_contents($path.'/ClassModel.php',$str);
+            $str .= "}" . PHP_EOL . PHP_EOL;
+            @file_put_contents($path . '/ClassModel.php', $str);
             closedir($od);
         }
     }
 
-    public function getTableInfoAll(){
+    public function getTableInfoAll()
+    {
         $sql = "select * from information_schema.columns where table_name='wf_soap_detail' ";
     }
 
     /**
      * @return array
      */
-    public function rules(){
+    public function rules()
+    {
         return [];
     }
 
     /**
      * @return array
      */
-    public function attributeLabels(){
+    public function attributeLabels()
+    {
         return [];
     }
 
 
     //自动日期格式
-    public function setDate(){
+    public function setDate()
+    {
         return date('Y-m-d H:i:s');
     }
 
     //自动时间戳
-    public function setTime(){
+    public function setTime()
+    {
         return time();
     }
 
@@ -89,16 +154,17 @@ class Model extends \think\Model implements IModel
      * @param array $data
      * @return array
      */
-    public function filter($data = []){
+    public function filter($data = [])
+    {
         $ret = [];
-        if (!empty($data) && is_array($data)){
+        if (!empty($data) && is_array($data)) {
             $field = $this->field;
-            if (!$field){
+            if (!$field) {
                 $field = $this->getTableInfo()['fields'];
             }
-            foreach ($field as $value){
-                $ret[$value] = isset($data[$value]) ? (is_array($data[$value]) ? (implode(',',$data[$value])) : $data[$value]) : null;
-                if ($ret[$value] === null){
+            foreach ($field as $value) {
+                $ret[$value] = isset($data[$value]) ? (is_array($data[$value]) ? (implode(',', $data[$value])) : $data[$value]) : null;
+                if ($ret[$value] === null) {
                     unset($ret[$value]);
                 }
             }
@@ -113,9 +179,9 @@ class Model extends \think\Model implements IModel
     public function __construct($data = [])
     {
 
-        if (is_callable([$this,'rules'])){
+        if (is_callable([$this, 'rules'])) {
             $rules = $this->rules();
-            if (is_array($rules)){
+            if (is_array($rules)) {
                 $this->validate = $rules;
             }
         }
@@ -125,13 +191,13 @@ class Model extends \think\Model implements IModel
         // 设置当前数据表和模型名
         if (!empty($this->table)) {
             $pattern = '{{%(.*?)}}';
-            if (preg_match($pattern,$this->table)){
-                $this->table = ltrim($this->table,'{{%');
-                $this->table = rtrim($this->table,'}}');
+            if (preg_match($pattern, $this->table)) {
+                $this->table = ltrim($this->table, '{{%');
+                $this->table = rtrim($this->table, '}}');
             }
-            if ($prefix = Config('database.prefix')){
-                if (strpos($this->table,$prefix) !== 0){
-                    $this->table = $prefix.$this->table;
+            if ($prefix = Config('database.prefix')) {
+                if (strpos($this->table, $prefix) !== 0) {
+                    $this->table = $prefix . $this->table;
                 }
             }
             $this->setTable($this->table);
@@ -142,25 +208,26 @@ class Model extends \think\Model implements IModel
      * @param null|array|\think\Model $resultSet
      * @return array
      */
-    public function asArray($resultSet = null){
+    public function asArray($resultSet = null)
+    {
         $ret = [];
-        if (empty($resultSet) || !(is_array($resultSet) || is_object($resultSet))){
+        if (empty($resultSet) || !(is_array($resultSet) || is_object($resultSet))) {
             return $ret;
         }
         $isTrueArray = false;
-        if ($resultSet instanceof $this){
+        if ($resultSet instanceof $this) {
             $ret = $resultSet->toArray();
-        }else if (is_array($resultSet)){
-            foreach ($resultSet as $model){
-                if ($model instanceof $this){
+        } else if (is_array($resultSet)) {
+            foreach ($resultSet as $model) {
+                if ($model instanceof $this) {
                     $ret[] = $model->toArray();
-                }else{
+                } else {
                     $isTrueArray = true;
                     break;
                 }
             }
         }
-        if ($isTrueArray){
+        if ($isTrueArray) {
             $ret = $resultSet;
         }
         return $ret;
@@ -168,19 +235,19 @@ class Model extends \think\Model implements IModel
 
     /**
      * 实例化（分层）模型
-     * @param string $name         Model名称
-     * @param string $layer        业务层名称
-     * @param bool   $appendSuffix 是否添加类名后缀
-     * @param string $common       公共模块名
+     * @param string $name Model名称
+     * @param string $layer 业务层名称
+     * @param bool $appendSuffix 是否添加类名后缀
+     * @param string $common 公共模块名
      * @return Object | \think\Model | \app\common\model\Model
      * @throws \think\exception\ClassNotFoundException
      */
     public static function load($name = '', $layer = 'model', $appendSuffix = false, $common = 'common')
     {
-        if ($name === ''){
+        if ($name === '') {
             $name = get_called_class();
         }
-        return Loader::model($name,$layer,$appendSuffix,$common);
+        return Loader::model($name, $layer, $appendSuffix, $common);
     }
 
     /**
@@ -205,8 +272,8 @@ class Model extends \think\Model implements IModel
     public static function tableNameSuffix()
     {
         $table = self::tableName();
-        if ($prefix = Config('database.prefix')){
-            $table = str_replace($prefix,'',$table);
+        if ($prefix = Config('database.prefix')) {
+            $table = str_replace($prefix, '', $table);
         }
         return $table;
     }
@@ -217,8 +284,8 @@ class Model extends \think\Model implements IModel
     public function getTableSuffix()
     {
         $table = $this->getTable();
-        if ($prefix = Config('database.prefix')){
-            $table = str_replace($prefix,'',$table);
+        if ($prefix = Config('database.prefix')) {
+            $table = str_replace($prefix, '', $table);
         }
         return $table;
     }
@@ -226,15 +293,16 @@ class Model extends \think\Model implements IModel
     /**
      * @return Object|\think\Validate | \app\common\validate\Validate | null
      */
-    public static function getValidate(){
-        $className = pathinfo(get_class(self::load()),PATHINFO_FILENAME);
+    public static function getValidate()
+    {
+        $className = pathinfo(get_class(self::load()), PATHINFO_FILENAME);
         $request = Request::instance();
         /**
          * @var $class \app\common\validate\Validate
          */
-        $class = '\\app\\'.$request->module().'\\validate\\'.$className.'Validate';
-        if (!class_exists($class)){
-            $class = '\\app\\common\\validate\\'.$className.'Validate';
+        $class = '\\app\\' . $request->module() . '\\validate\\' . $className . 'Validate';
+        if (!class_exists($class)) {
+            $class = '\\app\\common\\validate\\' . $className . 'Validate';
         }
         return $class::load();
     }
@@ -244,11 +312,12 @@ class Model extends \think\Model implements IModel
      * @param string $scene
      * @return bool
      */
-    public static function check($data,$scene = ''){
+    public static function check($data, $scene = '')
+    {
         $validate = self::getValidate();
 
         //设定场景
-        if (is_string($scene) && $scene !== ''){
+        if (is_string($scene) && $scene !== '') {
             $validate->scene($scene);
         }
 
@@ -259,7 +328,8 @@ class Model extends \think\Model implements IModel
      * @description 获取 模型 数据包助手
      * @return \app\common\lang\LangHelper
      */
-    public static function getLangHelper(){
+    public static function getLangHelper()
+    {
         return LangHelper::getInstance();
     }
 
@@ -267,11 +337,12 @@ class Model extends \think\Model implements IModel
      * @description 获取 当前 模型 的数据包 与实例 getLang 方法同样效果，一个静态方法，一个实例方法
      * @return array
      */
-    public static function Lang($field=null){
+    public static function Lang($field = null)
+    {
         $field = (string)($field);
-        if (is_string($field) && $field != ''){
-            $ret = LangHelper::getInstance()->getField(self::tableNameSuffix(),$field);
-        }else{
+        if (is_string($field) && $field != '') {
+            $ret = LangHelper::getInstance()->getField(self::tableNameSuffix(), $field);
+        } else {
             $ret = LangHelper::getInstance()->get(self::tableNameSuffix());
         }
         return $ret;
@@ -282,11 +353,12 @@ class Model extends \think\Model implements IModel
      * @param null $field
      * @return array
      */
-    public function getLang($field=null){
+    public function getLang($field = null)
+    {
         $field = (string)($field);
-        if (is_string($field) && $field != ''){
-            $ret = LangHelper::getInstance()->getField($this->getTableSuffix(),$field);
-        }else{
+        if (is_string($field) && $field != '') {
+            $ret = LangHelper::getInstance()->getField($this->getTableSuffix(), $field);
+        } else {
             $ret = LangHelper::getInstance()->get($this->getTableSuffix());
         }
         return $ret;
@@ -299,17 +371,18 @@ class Model extends \think\Model implements IModel
      * @param null $default
      * @return array|string
      */
-    public static function T($field=null,$key=null,$default=null){
+    public static function T($field = null, $key = null, $default = null)
+    {
         $ret = '';
         $key = (string)($key);
-        if (is_string($field) && $field != '' && is_string($key) && $key != '' ){
-            $ret = LangHelper::getInstance()->getValue(self::tableNameSuffix(),$field,$key);
-            if (empty($ret)){
+        if (is_string($field) && $field != '' && is_string($key) && $key != '') {
+            $ret = LangHelper::getInstance()->getValue(self::tableNameSuffix(), $field, $key);
+            if (empty($ret)) {
                 $ret = (string)$default;
             }
-        }else if (is_string($field) && $field != ''){
-            $ret = LangHelper::getInstance()->getField(self::tableNameSuffix(),$field);
-            if (empty($ret)){
+        } else if (is_string($field) && $field != '') {
+            $ret = LangHelper::getInstance()->getField(self::tableNameSuffix(), $field);
+            if (empty($ret)) {
                 $ret = (array)$default;
             }
         }
@@ -321,11 +394,12 @@ class Model extends \think\Model implements IModel
      * @param null $field
      * @return array
      */
-    public function getLists($field=null){
+    public function getLists($field = null)
+    {
         $field = (string)($field);
         $ret = [];
-        if (is_string($field) && $field != ''){
-            $ret = LangHelper::getInstance()->getField($this->getTableSuffix(),$field);
+        if (is_string($field) && $field != '') {
+            $ret = LangHelper::getInstance()->getField($this->getTableSuffix(), $field);
         }
         return $ret;
     }
@@ -337,12 +411,13 @@ class Model extends \think\Model implements IModel
      * @param null $default
      * @return string
      */
-    public function getValue($field=null,$key=null,$default=null){
+    public function getValue($field = null, $key = null, $default = null)
+    {
         $ret = '';
         $key = (string)($key);
-        if (is_string($field) && $field != '' && is_string($key) && $key != '' ){
-            $ret = LangHelper::getInstance()->getValue($this->getTableSuffix(),$field,$key);
-            if (empty($ret)){
+        if (is_string($field) && $field != '' && is_string($key) && $key != '') {
+            $ret = LangHelper::getInstance()->getValue($this->getTableSuffix(), $field, $key);
+            if (empty($ret)) {
                 $ret = (string)$default;
             }
         }

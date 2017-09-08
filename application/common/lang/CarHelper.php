@@ -2,7 +2,13 @@
 
 namespace app\common\lang;
 
-class CarAttr{
+
+/**
+ * Class LangHelper
+ * @package app\common\lang
+ */
+class CarHelper
+{
     /**
      * 单例容器
      * @var
@@ -11,7 +17,7 @@ class CarAttr{
 
     /**
      * 单例接口
-     * @return CarAttr
+     * @return \app\common\lang\CarHelper
      */
     public static function getInstance()
     {
@@ -23,19 +29,18 @@ class CarAttr{
 
     /**
      * 单例
-     * LangHelper constructor.
+     * CarHelper constructor.
      */
     private function __construct()
     {
 
     }
 
-
     /**
      * 模型语言包
      * @var array
      */
-    private static $attr = [
+    private static $lang = [
         '车身篇'=>[
             '车身尺寸-长*宽*高'=>[
                 '3.7M以下为微型车',
@@ -91,4 +96,58 @@ class CarAttr{
             '',
         ],
     ];
+
+    /**
+     * @param null $table
+     * @return array
+     */
+    public function get($table = null)
+    {
+        $ret = [];
+        if (is_string($table) && $table != '') {
+            $ret = isset(self::$lang[$table]) ? self::$lang[$table] : [];
+            if (!is_array($ret)) {
+                $ret = [];
+            }
+        }
+        return $ret;
+    }
+
+    /**
+     * @param null $table
+     * @param null $field
+     * @return array
+     */
+    public function getField($table = null, $field = null)
+    {
+        $ret = [];
+        if (is_string($table) && $table != '' && is_string($field) && $field != '') {
+            $ret = isset(self::$lang[$table][$field]) ? self::$lang[$table][$field] : [];
+            if (!is_array($ret)) {
+                $ret = [];
+            }
+        }
+        return $ret;
+    }
+
+    /**
+     * @param null $table
+     * @param null $field
+     * @param null $key
+     * @return string
+     */
+    public function getValue($table = null, $field = null, $key = null)
+    {
+        $ret = '';
+        $key = (string)($key);
+        if (is_string($table) && $table != '' && is_string($field) && $field != '' && is_string($key) && $key != '') {
+            $ret = isset(self::$lang[$table][$field][$key]) ? self::$lang[$table][$field][$key] : '';
+            if (!is_string($ret)) {
+                $ret = '';
+            }
+        }
+        return $ret;
+    }
+
 }
+

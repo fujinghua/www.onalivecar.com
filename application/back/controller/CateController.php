@@ -51,7 +51,17 @@ class CateController extends BackController
         $brand = Brand::load()->where(['is_delete'=>'1'])->order(['letter'=>'ASC','id'=>'ASC'])->column('name','id');
         if ($this->getRequest()->isPost()){
             $data = $model->filter($_POST);
-            dump($data);
+            $data =  [
+                'name' => '奥迪',
+                'pid' => '0',
+                'isParent' => '1',
+                'order' => '1',
+                'level' => '1',
+                'unique_id' => '1',
+                'title' => '奥迪品牌类目',
+            ];
+            $res = \app\common\model\Cate::load()->save($data);
+            dump($res);
             exit();
             if ($data){
                 $validate = Cate::getValidate();

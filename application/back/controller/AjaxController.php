@@ -23,7 +23,7 @@ class AjaxController extends BackController
         if ($level|| ($level = $this->getRequest()->get('level'))){
             $where = array_merge($where,['level'=>$level]);
         }
-        $cityList = \app\back\model\City::getCityList($where);
+        $cityList = \app\common\model\City::getCityList($where);
         if (!empty($cityList)){
             foreach ($cityList as $key => $value){
                 $ret[] = ['id'=>$key,'name'=>$value];
@@ -41,7 +41,7 @@ class AjaxController extends BackController
     {
         $ret = [];
         $where = ['is_delete'=>'1'];
-        $model = \app\back\model\Department::load();
+        $model = \app\common\model\Department::load();
         if ($name || ($name = $this->getRequest()->request('name'))){
             if ($name != ''){
                 $nameWhere = " `name` like '%".$name."%' ";
@@ -63,7 +63,7 @@ class AjaxController extends BackController
     public function getClientAction(){
         $ret = [];
         $where = ['is_delete'=>'1'];
-        $model = \app\back\model\Client::load();
+        $model = \app\common\model\Client::load();
         $name = trim($this->getRequest()->request('name'));
         if ($name != ''){
             $where[] = ['exp'," `userName` like '%".$name."%' "];
@@ -83,7 +83,7 @@ class AjaxController extends BackController
     public function getBackUserAction(){
         $ret = [];
         $where = ['is_delete'=>'1'];
-        $model = \app\back\model\BackUser::load();
+        $model = \app\common\model\BackUser::load();
         $name = trim($this->getRequest()->request('name'));
         if ($name != ''){
             $where[] = ['exp'," `username` like '%".$name."%' "];
@@ -102,11 +102,11 @@ class AjaxController extends BackController
      * @param null $name
      * @return \think\response\Json
      */
-    public function getBuildingBaseAction($name=null)
+    public function getCarAction($name=null)
     {
         $ret = [];
         $where = ['is_delete'=>'1'];
-        $model = \app\back\model\BuildingBase::load();
+        $model = \app\common\model\BuildingBase::load();
         if ($name || ($name = $this->getRequest()->request('name'))){
             if ($name != ''){
                 $nameWhere = " `title` like '%".$name."%' or `titlePinyin` like '%".$name."%'";
@@ -123,25 +123,30 @@ class AjaxController extends BackController
     }
 
     /**
-     * @description 获取用户
-     * @param null $name
+     * @description 获取
+     * @param null $pid
+     * @param null $level
      * @return \think\response\Json
      */
-    public function getHostAction($name=null)
+    public function getCateAction($pid=null,$level=null)
     {
         $ret = [];
         $where = ['is_delete'=>'1','type'=>'4'];
-        $model = \app\back\model\HomeUser::load();
-        if ($name || ($name = $this->getRequest()->request('name'))){
-            if ($name != ''){
-                $nameWhere = " `real_name` like '%".$name."%' ";
-                $model->where($nameWhere);
+        $model = \app\common\model\Cate::load();
+        if ($pid || ($pid = $this->getRequest()->request('pid'))){
+            if ($pid != ''){
+                $where['pid'] = $pid;
             }
         }
-        $list = $model->where($where)->limit(20)->select();
+        if ($level || ($level = $this->getRequest()->request('level'))){
+            if ($level != ''){
+                $where['level'] = $level;
+            }
+        }
+        $list = $model->where($where)->order(['level'=>'ASC','id'=>'ASC','`order`'=>'ASC'])->column('name,pid,id','id');
         if (!empty($list)){
-            foreach ($list as $item){
-                $ret[] = ['id'=>$item['id'],'name'=>$item['real_name']];
+            foreach ($list as $key => $item){
+                $ret[] = ['id'=>$key,'name'=>$item['name']];
             }
         }
         return json($ret);

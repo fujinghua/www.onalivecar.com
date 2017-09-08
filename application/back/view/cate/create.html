@@ -43,15 +43,22 @@
             </div>
         </div>
 
-        <div class="layui-form-item">
+        <div class="layui-form-item" style="display: none;">
             <label class="layui-form-label"><span class="layui-color-danger">*</span>品牌:</label>
             <div class="layui-input-block right-width">
-                <select name="unique_id" lay-verify="require" lay-filter="brand" lay-search>
+                <select name="unique_id" lay-verify="" lay-filter="brand" lay-search>
                     <option value="">选择品牌</option>
                     {volist name="brand" id="item" }
                     <option value="{$key}">{$item}</option>
                     {/volist}
                 </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="display: none;">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>车系:</label>
+            <div class="layui-input-block right-width">
+                <select name="series" lay-verify="" lay-filter="series" lay-search></select>
             </div>
         </div>
 
@@ -87,11 +94,36 @@
 
     layui.use(['form'], function () {
         var form = layui.form;
+        var level = parseInt($('[lay-filter="level"]:selected').val());
+        var brand = $('[lay-filter="brand"]');
+        var series = $('[lay-filter="series"]');
         form.on('radio(level)', function(data){
-            console.log(data);
+            level = parseInt(data.value);
+            if (level>1){
+                brand.attr('lay-verify','require');
+                brand.closest('.layui-form-item').fadeIn();
+            }
         });
         form.on('select(brand)', function(data){
-            console.log(data);
+            var pid = data.value;
+            if (level>2){
+                $.get("{:U('ajax/getCate')}",{pid:pid,level:level},function(data){
+                    console.log(data);
+                    if (data){
+                        series.html('<option value="">请选择</option>');
+                        if (data.length>0){
+                            var option = [];
+                            option.push('<option value="">请选择</option>');
+                            for (var k in data){
+                                option.push('<option value="'+k+'">'+data[k].name+'</option>');
+                            }
+                            series.html(option.join('')).attr('lay-verify','require');
+                        }
+                        form.render('select','series');
+                        series.closest('.layui-form-item').fadeIn();
+                    }
+                });
+            }
         });
     });
 
