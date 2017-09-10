@@ -15,29 +15,33 @@ class CateController extends BackController
     public function indexAction()
     {
         $where = [];
-        $each = 20;
+        $request = $this->getRequest();
+        $limit = $request->request('limit') ? : 20;
         $model = Cate::load();
         $lang = Cate::Lang();
-        $request = $this->getRequest();
         $key = trim($request->request('keyword'));
         if ($key != ''){
             $where[] = ['exp',"t.name like '%".$key."%' "];
         }
-        $brand = trim($request->request('brand'));
-        if ($brand != ''){
-            if (in_array($brand,array_keys($lang['brand']))){
-                $where =  array_merge($where, ['brand'=>$brand]);
+        $cate = trim($request->request('cate'));
+        if ($cate != ''){
+            if (in_array($cate,array_keys($lang['car']))){
+                $where =  array_merge($where, ['level'=>$cate]);
             }
         }
-        $list = $model->alias('t')
-            ->join(Brand::tableName().' b','t.id = b.id','left')
-            ->where($where)
-            ->field('t.*,b.name as brand')
-            ->order(['`level`'=>'ASC','`order`'=>'ASC'])->paginate($each);
-        $this->assign('meta_title', "类目清单");
-        $this->assign('model', $model);
-        $this->assign('list', $list);
-        return view('cate/index');
+        if ($this->getRequest()->request('isAjax')){
+            $list = $model->alias('t')
+                ->join(Brand::tableName().' b','t.id = b.id','left')
+                ->where($where)
+                ->field('t.*,b.name as brand')
+                ->order(['`level`'=>'ASC','`order`'=>'ASC'])->paginate($limit)->toArray();
+            $ret = ['code'=>'0','msg'=>'','count'=>$list['total'],'data'=>$list['data']];
+            return json($ret);
+        }else{
+            $this->assign('meta_title', "类目清单");
+            $this->assign('model', $model);
+            return view('cate/index');
+        }
     }
 
     /**
@@ -48,39 +52,55 @@ class CateController extends BackController
     public function createAction()
     {
         $model = new Cate();
-        $brand = Brand::load()->where(['is_delete'=>'1'])->order(['letter'=>'ASC','id'=>'ASC'])->column('name','id');
+        $brand = Cate::load()->where(['level'=>'1'])->order(['order'=>'ASC','id'=>'ASC'])->column('name,unique_id','id');
         if ($this->getRequest()->isPost()){
             $data = $model->filter($_POST);
-            $data =  [
-                'name' => '奥迪',
-                'pid' => '0',
-                'isParent' => '1',
-                'order' => '1',
-                'level' => '1',
-                'unique_id' => '1',
-                'title' => '奥迪品牌类目',
-            ];
-            $res = \app\common\model\Cate::load()->save($data);
-            dump($res);
-            exit();
-            if ($data){
+            if (isset($data['level'])){
+                $level = $data['level'];
                 $validate = Cate::getValidate();
-                $validate->scene('create');
-                $data['back_user_id'] = $this->getIdentity('id');
-                $data['created_at'] = date('Y-m-d H:i:s');
-                if ($validate->check($data) && $model->save($data)){
-                    $type = $model->getValue('typeName',$data['type'],'default');
-                    $prefix = '/static/uploads/slider/'.$type.'/'.$model->id.'/';
-                    //
-                    $to = $prefix.pathinfo($data['url'],PATHINFO_BASENAME);
-                    $from = $data['url'];
-                    $model->url = $to;
+                $data['order'] = (Cate::load()->where(['level'=>$data['level']])->max('`order`')+1);
+                if ($level == '3'){
+                    $validate->scene('createCar');
+                    $data['pid'] = $this->getRequest()->request('series_id');
+                    $data['isParent'] = '1';
+                    $data['title'] = isset($data['title']) ? $data['title'] : $data['name'].'车款类目';
+                }elseif ($level=='2'){
+                    $validate->scene('createSeries');
+                    $data['pid'] = $this->getRequest()->request('brand_id');
+                    $data['isParent'] = '1';
+                    $data['title'] = isset($data['title']) ? $data['title'] : $data['name'].'车型类目';
+                }else{
+                    $data['level'] = '1';
+                    $validate->scene('createBrand');
+                    $brandModel = new Brand();
+                    $pinyin = \app\common\components\ChineseToPinyin::encode($data['name'],'all');
+                    $letter = substr($pinyin,0,1);
+                    $order = Brand::load()->where(['letter'=>'a'])->max('`order`');
+                    $logo = $this->getRequest()->request('logo');
+                    $tmp = [
+                        'name'=>$data['name'],
+                        'letter'=>$letter,
+                        'pinyin'=>implode('',explode(' ',$pinyin)),
+                        'icon'=>$logo,
+                        'order'=>($order+1),
+                    ];
+                    $brandModel->save($tmp);
+                    $prefix = ROOT_PATH.'public';
+                    $path = $prefix.'/static/uploads/brand/'.$letter.'/'.$brandModel->id.'/';
+                    $to = $path.pathinfo($logo,PATHINFO_BASENAME);
+                    $from = $logo;
+                    $brandModel->icon = $to;
                     $this->copy($from,$to);
                     $icon = pathinfo($from,PATHINFO_DIRNAME).'/'.pathinfo($from,PATHINFO_FILENAME).'_icon.'.pathinfo($from,PATHINFO_EXTENSION);
-                    $to = $prefix.pathinfo($icon,PATHINFO_BASENAME);
-                    $model->url_icon = $to;
+                    $to = $path.pathinfo($icon,PATHINFO_BASENAME);
                     $this->copy($icon,$to);
-                    $model->isUpdate(true)->save();
+                    $brandModel->isUpdate(true)->save();
+                    $data['unique_id'] = $brandModel->id;
+                    $data['pid'] = '0';
+                    $data['isParent'] = '1';
+                    $data['title'] = isset($data['title']) ? $data['title'] : $data['name'].'品牌类目';
+                }
+                if ($validate->check($data) && $model->save($data)){
                     $this->success('添加成功','create','',1);
                 }else{
                     $error = $validate->getError();

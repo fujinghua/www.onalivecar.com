@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-08-26 00:11:48
+-- Generation Time: 2017-09-11 01:34:47
 -- 服务器版本： 10.1.9-MariaDB-log
 -- PHP Version: 7.0.1
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `oac_auth_assignment` (
   `item_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '分类权限等级',
   `user_id` bigint(20) NOT NULL COMMENT '分配对象UID',
-  `created_at` datetime NOT NULL COMMENT '创建时间'
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='角色权限分配表';
 
 --
@@ -52,8 +52,8 @@ CREATE TABLE IF NOT EXISTS `oac_auth_item` (
   `description` text COLLATE utf8_unicode_ci COMMENT '权限描述',
   `rule_name` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '使用规则',
   `data` text COLLATE utf8_unicode_ci COMMENT '补充说明',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '更新时间'
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='权限表';
 
 --
@@ -74,10 +74,10 @@ INSERT INTO `oac_auth_item` (`name`, `type`, `description`, `rule_name`, `data`,
 ('/user/*', 2, '用户控制路由', NULL, '', '2017-08-06 20:46:41', '2017-08-06 20:49:06'),
 ('AJAX请求总权限', 1, 'AJAX请求总权限', NULL, '', '2017-08-06 03:29:24', '2017-08-06 10:37:34'),
 ('下载总权限', 1, '下载控制器DownLoad', NULL, '', '2017-08-06 16:48:01', '2017-08-06 16:48:01'),
-('客服部门', 1, '客服部门等级权限', NULL, '', '2017-08-06 23:28:37', '2017-08-06 23:28:37'),
 ('前端权限总权限', 1, '模块home', NULL, '', '2017-05-27 00:00:00', '2017-08-06 16:13:13'),
 ('前端用户总权限', 1, '前端用户控制器HomeUser', NULL, '', '2017-08-06 16:49:14', '2017-08-06 16:49:14'),
 ('后台开放权限', 1, '后台开放权限', NULL, '', '2017-08-06 23:33:36', '2017-08-06 23:33:36'),
+('客服部门', 1, '客服部门等级权限', NULL, '', '2017-08-06 23:28:37', '2017-08-06 23:28:37'),
 ('开放权限', 1, '对所有人都开放权限', NULL, '', '2017-08-06 23:33:16', '2017-08-06 23:33:16'),
 ('意见反馈总权限', 1, '意见反馈控制器Opinion', NULL, '', '2017-08-06 20:25:14', '2017-08-06 20:25:14'),
 ('数据统计总权限', 1, '数据统计控制器Data', NULL, '', '2017-08-06 16:46:07', '2017-08-06 16:46:07'),
@@ -111,10 +111,10 @@ CREATE TABLE IF NOT EXISTS `oac_auth_item_child` (
 
 INSERT INTO `oac_auth_item_child` (`parent`, `child`) VALUES
 ('AJAX请求总权限', '/ajax/*'),
-('客服部门', '后台开放权限'),
 ('前端权限总权限', '/home/*'),
 ('后台开放权限', '/ajax/*'),
 ('后台开放权限', '开放权限'),
+('客服部门', '后台开放权限'),
 ('开放权限', '/back/index/home'),
 ('开放权限', '/back/index/index'),
 ('开放权限', '/back/login/*'),
@@ -136,8 +136,8 @@ INSERT INTO `oac_auth_item_child` (`parent`, `child`) VALUES
 CREATE TABLE IF NOT EXISTS `oac_auth_rule` (
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '规则名',
   `data` text COLLATE utf8_unicode_ci COMMENT '规则位置',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '更新时间'
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='权限规则';
 
 -- --------------------------------------------------------
@@ -185,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `oac_back_user` (
 
 INSERT INTO `oac_back_user` (`id`, `is_delete`, `code`, `department_id`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `md5`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
 (1, 1, '000000', 1, '00000000000', 0, NULL, 0, '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '0.0.0.0', NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(100, 1, '810100', 1, '10086110120', 0, NULL, 0, 'username', '$2y$13$uVtTLWYGMMIUdY5mW6Jo1O6HtCoO/rH7yLe532./Wx3zSh3kuQKhO', 'boom sakala !', NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 1, '{"last":["127.0.0.1","2017-08-22 19:51:49"],"current":["127.0.0.1","2017-08-24 01:04:25"],"often":["127.0.0.1"],"haply":["127.0.0.1"],"once":{"127.0.0.1":[1,"2017-08-24 01:04:25"]}}', '127.0.0.1', NULL, NULL, '2017-08-24 01:04:25', '2017-08-24 01:04:25');
+(100, 1, '810100', 1, '10086110120', 0, NULL, 0, 'username', '$2y$13$YiAW7GHURrN1yPjxmDekLO2mRiqxAQ.gK2O4bFAdCN9lxiX4/MiMC', 'boom sakala !', NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 0, '{"last":["183.23.79.51","2017-09-08 09:29:34"],"current":["113.77.137.155","2017-09-08 17:00:03"],"often":["127.0.0.1"],"haply":["127.0.0.1","150.255.121.27"],"once":{"183.23.79.51":[1,"2017-09-08 09:29:34"],"113.77.137.155":[1,"2017-09-08 17:00:03"]}}', '127.0.0.1', NULL, NULL, '2017-09-08 17:00:03', '2017-09-08 17:00:03');
 
 -- --------------------------------------------------------
 
@@ -217,23 +217,545 @@ CREATE TABLE IF NOT EXISTS `oac_ban` (
   `item_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '名称',
   `back_user_id` bigint(20) NOT NULL COMMENT 'UID',
   `ban` tinyint(1) unsigned DEFAULT '0' COMMENT '类型;0=允许;1=禁止;',
-  `created_at` datetime NOT NULL COMMENT '变更时间'
+  `created_at` datetime DEFAULT NULL COMMENT '变更时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='特殊权限禁止';
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `oac_server`
+-- 表的结构 `oac_brand`
 --
 
-CREATE TABLE IF NOT EXISTS `oac_server` (
-  `id` bigint(20) NOT NULL COMMENT 'ID',
-  `is_delete` tinyint(1) DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
-  `home_use_id` bigint(20) NOT NULL COMMENT '用户表ID',
-  `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
+CREATE TABLE IF NOT EXISTS `oac_brand` (
+  `id` int(11) NOT NULL COMMENT 'ID',
+  `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
+  `name` varchar(32) NOT NULL COMMENT '品牌名',
+  `letter` varchar(16) NOT NULL COMMENT '首字母',
+  `pinyin` varchar(150) DEFAULT NULL COMMENT '中文拼音',
+  `icon` varchar(255) NOT NULL COMMENT '品牌商标',
+  `order` int(11) DEFAULT NULL COMMENT '排序',
   `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户服务表';
+) ENGINE=InnoDB AUTO_INCREMENT=186 DEFAULT CHARSET=utf8 COMMENT='品牌表';
+
+--
+-- 转存表中的数据 `oac_brand`
+--
+
+INSERT INTO `oac_brand` (`id`, `is_delete`, `name`, `letter`, `pinyin`, `icon`, `order`, `created_at`, `updated_at`) VALUES
+(1, 1, '奥迪', 'a', 'aodi', '/static/uploads/brand/a/1/f2b8e9c22717eb9632bb6d903726f32b.png?t=20170906', 1, '2017-09-06 00:26:28', NULL),
+(2, 1, '阿斯顿·马丁', 'a', 'asidunmading', '/static/uploads/brand/a/2/f8dc3319cb2bf7219f7cb27ac6aa32b8.png?t=20170906', 2, '2017-09-06 00:26:28', NULL),
+(3, 1, '阿尔法·罗密欧', 'a', 'aerfaluomiou', '/static/uploads/brand/a/3/169bab5402c8ba99be735c9ba001bdbd.png?t=20170906', 3, '2017-09-06 00:26:28', NULL),
+(4, 1, '艾康尼克', 'a', 'aikangnike', '/static/uploads/brand/a/4/c14b9adbe3b0e101918d72ad1c8cb7df.png?t=20170906', 4, '2017-09-06 00:26:29', NULL),
+(5, 1, 'Alpina', 'a', 'Alpina', '/static/uploads/brand/a/5/4d14e38b7ae941a01b410637ae79887f.png?t=20170906', 5, '2017-09-06 00:26:29', NULL),
+(6, 1, '宝马', 'b', 'baoma', '/static/uploads/brand/b/6/f5eec9823d7184c545bbd6da441e8480.png?t=20170906', 1, '2017-09-06 00:26:29', NULL),
+(7, 1, '奔驰', 'b', 'benchi', '/static/uploads/brand/b/7/85a16dd2fdfdfcf4067c77d56acdf6c4.png?t=20170906', 2, '2017-09-06 00:26:29', NULL),
+(8, 1, '本田', 'b', 'bentian', '/static/uploads/brand/b/8/b18f4f88456c4d74a30ce29d1dbd48fe.png?t=20170906', 3, '2017-09-06 00:26:29', NULL),
+(9, 1, '别克', 'b', 'bieke', '/static/uploads/brand/b/9/3e444209b6f033fdea638450a39c85bf.png?t=20170906', 4, '2017-09-06 00:26:30', NULL),
+(10, 1, '标致', 'b', 'biaozhi', '/static/uploads/brand/b/10/ac103d3954fa15dbbb77ebf38320554d.png?t=20170906', 5, '2017-09-06 00:26:30', NULL),
+(11, 1, '比亚迪', 'b', 'biyadi', '/static/uploads/brand/b/11/92d89f6336af501addd56abb47a43ebc.png?t=20170906', 6, '2017-09-06 00:26:30', NULL),
+(12, 1, '宝骏', 'b', 'baojun', '/static/uploads/brand/b/12/999df9d8f2aadf1ddaa919569a93a803.png?t=20170906', 7, '2017-09-06 00:26:30', NULL),
+(13, 1, '奔腾', 'b', 'benteng', '/static/uploads/brand/b/13/f58c0f2bf5b9c217514ca1d62dbe494e.png?t=20170906', 8, '2017-09-06 00:26:30', NULL),
+(14, 1, '宝沃', 'b', 'baowo', '/static/uploads/brand/b/14/7de28d9cfd594027938bb64306f8457a.png?t=20170906', 9, '2017-09-06 00:26:30', NULL),
+(15, 1, '北京', 'b', 'beijing', '/static/uploads/brand/b/15/c6ec8e4be184ee8a0c1fd2f5b2d54f04.png?t=20170906', 10, '2017-09-06 00:26:30', NULL),
+(16, 1, '北汽绅宝', 'b', 'beiqishenbao', '/static/uploads/brand/b/16/38eea6f66e3b51d8f635a97d19186133.png?t=20170906', 11, '2017-09-06 00:26:31', NULL),
+(17, 1, '北汽幻速', 'b', 'beiqihuansu', '/static/uploads/brand/b/17/eb7e79d6e232911d5698f199941f51c3.png?t=20170906', 12, '2017-09-06 00:26:31', NULL),
+(18, 1, '比速汽车', 'b', 'bisuqiche', '/static/uploads/brand/b/18/4be4944699fae8c3072c3a7792004dd8.png?t=20170906', 13, '2017-09-06 00:26:31', NULL),
+(19, 1, '北汽新能源', 'b', 'beiqixinnengyuan', '/static/uploads/brand/b/19/eaac619e20ac67b36c21c14a7b7f5435.png?t=20170906', 14, '2017-09-06 00:26:31', NULL),
+(20, 1, '北汽威旺', 'b', 'beiqiweiwang', '/static/uploads/brand/b/20/2879e9fc9242fcf1f38b155dd0220ea5.png?t=20170906', 15, '2017-09-06 00:26:31', NULL),
+(21, 1, '北汽制造', 'b', 'beiqizhizao', '/static/uploads/brand/b/21/c569ddd3fd5256926d802cb76e2736a4.png?t=20170906', 16, '2017-09-06 00:26:31', NULL),
+(22, 1, '北汽道达', 'b', 'beiqidaoda', '/static/uploads/brand/b/22/47526654c7eb813f65793bae060b31ea.png?t=20170906', 17, '2017-09-06 00:26:31', NULL),
+(23, 1, '保时捷', 'b', 'baoshijie', '/static/uploads/brand/b/23/73c495aec85a2e569867ad844ce064c3.png?t=20170906', 18, '2017-09-06 00:26:32', NULL),
+(24, 1, '宾利', 'b', 'binli', '/static/uploads/brand/b/24/ae65858c70e86795fe7a58c8c5dfbdfa.png?t=20170906', 19, '2017-09-06 00:26:32', NULL),
+(25, 1, '布加迪', 'b', 'bujiadi', '/static/uploads/brand/b/25/f5f738a386ec1a902891d94c3f4dbd5a.png?t=20170906', 20, '2017-09-06 00:26:32', NULL),
+(26, 1, '巴博斯', 'b', 'babosi', '/static/uploads/brand/b/26/e7f33fd05d293550d8a1e26fe147bcfb.png?t=20170906', 21, '2017-09-06 00:26:32', NULL),
+(27, 1, '长城', 'c', 'changcheng', '/static/uploads/brand/c/27/7329c43ee12196d4f888b8e93f4e426a.png?t=20170906', 1, '2017-09-06 00:26:32', NULL),
+(28, 1, '长安汽车', 'c', 'changanqiche', '/static/uploads/brand/c/28/539d53a349f5c21ad71a413640303344.png?t=20170906', 2, '2017-09-06 00:26:32', NULL),
+(29, 1, '长安欧尚', 'c', 'changanoushang', '/static/uploads/brand/c/29/38415285fdffc37d8ff837c6c524f70e.png?t=20170906', 3, '2017-09-06 00:26:33', NULL),
+(30, 1, '长安轻型车', 'c', 'changanqingxingche', '/static/uploads/brand/c/30/aedb6b9c42230bf775ce8287be95b980.png?t=20170906', 4, '2017-09-06 00:26:33', NULL),
+(31, 1, '昌河', 'c', 'changhe', '/static/uploads/brand/c/31/3cfa6d4fd79073f199bfa45367547f74.png?t=20170906', 5, '2017-09-06 00:26:33', NULL),
+(32, 1, '成功汽车', 'c', 'chenggongqiche', '/static/uploads/brand/c/32/b0b1557605485ea1dbeb31d0485a5385.png?t=20170906', 6, '2017-09-06 00:26:33', NULL),
+(33, 1, '长江EV', 'c', 'changjiangEV', '/static/uploads/brand/c/33/2a81b49413cb6093cee85d8d0ff4e148.png?t=20170906', 7, '2017-09-06 00:26:33', NULL),
+(34, 1, '大众', 'd', 'dazhong', '/static/uploads/brand/d/34/34a5735bd7892901783a1958f45d246c.png?t=20170906', 1, '2017-09-06 00:26:33', NULL),
+(35, 1, 'DS', 'd', 'DS', '/static/uploads/brand/d/35/c1ece4c816ec5a97ee3b077720370492.png?t=20170906', 2, '2017-09-06 00:26:33', NULL),
+(36, 1, '东南', 'd', 'dongnan', '/static/uploads/brand/d/36/aefbef99f6da4212a63578c7ecefce6e.png?t=20170906', 3, '2017-09-06 00:26:34', NULL),
+(37, 1, '道奇', 'd', 'daoqi', '/static/uploads/brand/d/37/b4c3caef45efa6420df09c7930a5ce6b.png?t=20170906', 4, '2017-09-06 00:26:34', NULL),
+(38, 1, '东风', 'd', 'dongfeng', '/static/uploads/brand/d/38/83534a03b16ebefccd740ff5780f0df3.png?t=20170906', 5, '2017-09-06 00:26:34', NULL),
+(39, 1, '东风风行', 'd', 'dongfengfengxing', '/static/uploads/brand/d/39/50b768da4dc150a178a6a03e5faebd05.png?t=20170906', 6, '2017-09-06 00:26:34', NULL),
+(40, 1, '东风风神', 'd', 'dongfengfengshen', '/static/uploads/brand/d/40/7f2c741012249814c16a9d9b65991273.png?t=20170906', 7, '2017-09-06 00:26:34', NULL),
+(41, 1, '东风启辰', 'd', 'dongfengqichen', '/static/uploads/brand/d/41/5e38e76b440d666f2f9f5383d2b687df.png?t=20170906', 8, '2017-09-06 00:26:34', NULL),
+(42, 1, '东风风度', 'd', 'dongfengfengdu', '/static/uploads/brand/d/42/6ae6e130a47395767a6a273cd352772e.png?t=20170906', 9, '2017-09-06 00:26:35', NULL),
+(43, 1, '东风风光', 'd', 'dongfengfengguang', '/static/uploads/brand/d/43/fc50afcff1bdf7ec2361033ec3b9e486.png?t=20170906', 10, '2017-09-06 00:26:35', NULL),
+(44, 1, '东风小康', 'd', 'dongfengxiaokang', '/static/uploads/brand/d/44/a7008cdd5471781944a4dbfa2867ef70.png?t=20170906', 11, '2017-09-06 00:26:35', NULL),
+(45, 1, 'Detroit Electric', 'd', 'DetroitElectric', '/static/uploads/brand/d/45/4c5267a5c7f16354588103dc70867cc5.png?t=20170906', 12, '2017-09-06 00:26:35', NULL),
+(46, 1, '大发', 'd', 'dafa', '/static/uploads/brand/d/46/abe607acac2394669943f11590125e6f.png?t=20170906', 13, '2017-09-06 00:26:35', NULL),
+(47, 1, '电咖汽车', 'd', 'diankaqiche', '/static/uploads/brand/d/47/f4e3a274836836bfd55263054913c72c.png?t=20170906', 14, '2017-09-06 00:26:35', NULL),
+(48, 1, '丰田', 'f', 'fengtian', '/static/uploads/brand/f/48/35c506c310d180f0d0f157d88ecc9cb4.png?t=20170906', 1, '2017-09-06 00:26:35', NULL),
+(49, 1, '福特', 'f', 'fute', '/static/uploads/brand/f/49/034275541486aad92822cfb080c19484.png?t=20170906', 2, '2017-09-06 00:26:36', NULL),
+(50, 1, '菲亚特', 'f', 'feiyate', '/static/uploads/brand/f/50/286439ef752298f53b1d12f30885db3b.png?t=20170906', 3, '2017-09-06 00:26:36', NULL),
+(51, 1, '福田', 'f', 'futian', '/static/uploads/brand/f/51/12f77c6e6479a8990bf47fb7dfd3b071.png?t=20170906', 4, '2017-09-06 00:26:36', NULL),
+(52, 1, '法拉利', 'f', 'falali', '/static/uploads/brand/f/52/4fb0359e3ffe5fbb4bd98c07427a8ad6.png?t=20170906', 5, '2017-09-06 00:26:36', NULL),
+(53, 1, '福迪', 'f', 'fudi', '/static/uploads/brand/f/53/ebca46cb45d8ca88fe86580019be5ac0.png?t=20170906', 6, '2017-09-06 00:26:36', NULL),
+(54, 1, '风诺', 'f', 'fengnuo', '/static/uploads/brand/f/54/7fcd6a4a969d4a4c66fc1b7caf254591.png?t=20170906', 7, '2017-09-06 00:26:36', NULL),
+(55, 1, '福汽启腾', 'f', 'fuqiqiteng', '/static/uploads/brand/f/55/693decd3f1a988d1b1d75169d3cb7c2d.png?t=20170906', 8, '2017-09-06 00:26:36', NULL),
+(56, 1, '观致', 'g', 'guanzhi', '/static/uploads/brand/g/56/870d9049ed6ce9a5e0853e7c7f925b88.png?t=20170906', 1, '2017-09-06 00:26:37', NULL),
+(57, 1, '广汽传祺', 'g', 'guangqichuan', '/static/uploads/brand/g/57/408c3b72602094badf5bd06a8fb73b74.png?t=20170906', 2, '2017-09-06 00:26:37', NULL),
+(58, 1, '广汽吉奥', 'g', 'guangqijiao', '/static/uploads/brand/g/58/87b0c79100db3cb9b22d204c2a5b5476.png?t=20170906', 3, '2017-09-06 00:26:37', NULL),
+(59, 1, 'Genesis', 'g', 'Genesis', '/static/uploads/brand/g/59/e60e1dcb4bbe9bf50afd3900fd9c6c93.png?t=20170906', 4, '2017-09-06 00:26:37', NULL),
+(60, 1, 'GMC', 'g', 'GMC', '/static/uploads/brand/g/60/40d6e44a960e83e6ac60f6837b450d46.png?t=20170906', 5, '2017-09-06 00:26:37', NULL),
+(61, 1, '光冈', 'g', 'guanggang', '/static/uploads/brand/g/61/51fd4c0263a22b4da0aa06f7c1418796.png?t=20170906', 6, '2017-09-06 00:26:37', NULL),
+(62, 1, 'GLM', 'g', 'GLM', '/static/uploads/brand/g/62/f3b7009eec79724d8e443ffa90f7c7bd.png?t=20170906', 7, '2017-09-06 00:26:38', NULL),
+(63, 1, '哈弗', 'h', 'hafu', '/static/uploads/brand/h/63/7efbaafce7537aa7ffe2a2c63f0dd72d.png?t=20170906', 1, '2017-09-06 00:26:38', NULL),
+(64, 1, '海马', 'h', 'haima', '/static/uploads/brand/h/64/e41598537f9a71b6aab8c92de51fc53e.png?t=20170906', 2, '2017-09-06 00:26:38', NULL),
+(65, 1, '华泰', 'h', 'huatai', '/static/uploads/brand/h/65/64f111e21a6b97bceb65aeeeb998a765.png?t=20170906', 3, '2017-09-06 00:26:38', NULL),
+(66, 1, '华泰新能源', 'h', 'huataixinnengyuan', '/static/uploads/brand/h/66/c16b9a31bd61f2caa571fcf99e46b311.png?t=20170906', 4, '2017-09-06 00:26:38', NULL),
+(67, 1, '华颂', 'h', 'huasong', '/static/uploads/brand/h/67/3fc6303d8dcf17ff38261049ab7e457c.png?t=20170906', 5, '2017-09-06 00:26:38', NULL),
+(68, 1, '红旗', 'h', 'hongqi', '/static/uploads/brand/h/68/3172958956faa45854cae01ccb7cc805.png?t=20170906', 6, '2017-09-06 00:26:38', NULL),
+(69, 1, '汉腾', 'h', 'hanteng', '/static/uploads/brand/h/69/04fcf1bc199f735b6b77e5fe9fea0db6.png?t=20170906', 7, '2017-09-06 00:26:39', NULL),
+(70, 1, '哈飞', 'h', 'hafei', '/static/uploads/brand/h/70/1572214eb901c2ec1403f4608f550b9c.png?t=20170906', 8, '2017-09-06 00:26:39', NULL),
+(71, 1, '黄海', 'h', 'huanghai', '/static/uploads/brand/h/71/9e2d8033ea6895580a16448b1f0b6bed.png?t=20170906', 9, '2017-09-06 00:26:39', NULL),
+(72, 1, '海格', 'h', 'haige', '/static/uploads/brand/h/72/d5445763f18e2e9e2c628f0bfdf735c9.png?t=20170906', 10, '2017-09-06 00:26:39', NULL),
+(73, 1, '汇众', 'h', 'huizhong', '/static/uploads/brand/h/73/956316b16de813cf7fc17a236223ddd5.png?t=20170906', 11, '2017-09-06 00:26:39', NULL),
+(74, 1, '悍马', 'h', 'hanma', '/static/uploads/brand/h/74/4c4b70efd2fdbe4c7fe3f51f243bd30e.png?t=20170906', 12, '2017-09-06 00:26:39', NULL),
+(75, 1, '华普', 'h', 'huapu', '/static/uploads/brand/h/75/1ff06658aa9daf168a4c33d0809e6430.png?t=20170906', 13, '2017-09-06 00:26:40', NULL),
+(76, 1, '恒天', 'h', 'hengtian', '/static/uploads/brand/h/76/1ad493438fd5a1ff49d4a87545679e41.png?t=20170906', 14, '2017-09-06 00:26:40', NULL),
+(77, 1, '霍顿', 'h', 'huodun', '/static/uploads/brand/h/77/5e775ac6ffcfd1dd189b3b414eb2f8d4.png?t=20170906', 15, '2017-09-06 00:26:40', NULL),
+(78, 1, '合众汽车', 'h', 'hezhongqiche', '/static/uploads/brand/h/78/55fe8abc3b32edf3304d149a33cce7c6.png?t=20170906', 16, '2017-09-06 00:26:40', NULL),
+(79, 1, 'Italdesign', 'i', 'Italdesign', '/static/uploads/brand/i/79/d8cb2c9ba689e1568ecd96ff41862439.png?t=20170906', 1, '2017-09-06 00:26:40', NULL),
+(80, 1, '吉利', 'j', 'jili', '/static/uploads/brand/j/80/c480ec39f43980ee072aa7c320dee06b.png?t=20170906', 1, '2017-09-06 00:26:40', NULL),
+(81, 1, '江淮', 'j', 'jianghuai', '/static/uploads/brand/j/81/193e6bf5b1845fb0403ec2ed83482c54.png?t=20170906', 2, '2017-09-06 00:26:40', NULL),
+(82, 1, 'Jeep', 'j', 'Jeep', '/static/uploads/brand/j/82/95da7154f45fd1b2dbb561dcb4a00db4.png?t=20170906', 3, '2017-09-06 00:26:41', NULL),
+(83, 1, '捷豹', 'j', 'jiebao', '/static/uploads/brand/j/83/c8bc05ca378789ed8de3029588afe8dc.png?t=20170906', 4, '2017-09-06 00:26:41', NULL),
+(84, 1, '金杯', 'j', 'jinbei', '/static/uploads/brand/j/84/e45c532904adcbc5f861c1c226ca4106.png?t=20170906', 5, '2017-09-06 00:26:41', NULL),
+(85, 1, '江铃', 'j', 'jiangling', '/static/uploads/brand/j/85/a498cc32f1241001857bb490eacb3225.png?t=20170906', 6, '2017-09-06 00:26:41', NULL),
+(86, 1, '江铃集团轻汽', 'j', 'jianglingjituanqingqi', '/static/uploads/brand/j/86/b5df905fa52c1fb8abc8d4bf18f9f0c9.png?t=20170906', 7, '2017-09-06 00:26:41', NULL),
+(87, 1, '江铃集团新能源', 'j', 'jianglingjituanxinnengyuan', '/static/uploads/brand/j/87/55f2038ccf157af3d353e82b00eeb17d.png?t=20170906', 8, '2017-09-06 00:26:41', NULL),
+(88, 1, '金龙', 'j', 'jinlong', '/static/uploads/brand/j/88/0cac2c813409835539d81630396fc118.png?t=20170906', 9, '2017-09-06 00:26:42', NULL),
+(89, 1, '金旅', 'j', 'jinlv', '/static/uploads/brand/j/89/3701cadc763e29505cefeca4282a73e3.png?t=20170906', 10, '2017-09-06 00:26:42', NULL),
+(90, 1, '九龙', 'j', 'jiulong', '/static/uploads/brand/j/90/ef403f3993429c2733f2fcc1f63e32ef.png?t=20170906', 11, '2017-09-06 00:26:42', NULL),
+(91, 1, '君马汽车', 'j', 'junmaqiche', '/static/uploads/brand/j/91/71df408f887739880ff5c094f26b832c.png?t=20170906', 12, '2017-09-06 00:26:42', NULL),
+(92, 1, '凯迪拉克', 'k', 'kaidilake', '/static/uploads/brand/k/92/23e12d967a32e207d87d09d26e008912.png?t=20170906', 1, '2017-09-06 00:26:42', NULL),
+(93, 1, '克莱斯勒', 'k', 'kelaisile', '/static/uploads/brand/k/93/c62898f20622f605cd4c6a59a0ef5f88.png?t=20170906', 2, '2017-09-06 00:26:42', NULL),
+(94, 1, '凯翼', 'k', 'kaiyi', '/static/uploads/brand/k/94/d7e3dc54b12969b1ea18a9fdaa62c4e7.png?t=20170906', 3, '2017-09-06 00:26:42', NULL),
+(95, 1, '开瑞', 'k', 'kairui', '/static/uploads/brand/k/95/2dba5982c254b41ae1d9b8cc75c3269b.png?t=20170906', 4, '2017-09-06 00:26:43', NULL),
+(96, 1, '康迪全球鹰电动汽车', 'k', 'kangdiquanqiuyingdiandongqiche', '/static/uploads/brand/k/96/b147220d2c50ec6ee49db28d6dfdea1f.png?t=20170906', 5, '2017-09-06 00:26:43', NULL),
+(97, 1, '卡威', 'k', 'kawei', '/static/uploads/brand/k/97/d97141a81ccca9a25cef5104a7c5e50f.png?t=20170906', 6, '2017-09-06 00:26:43', NULL),
+(98, 1, '卡升', 'k', 'kasheng', '/static/uploads/brand/k/98/0b462d756fb51d5371b261c97c0c7091.png?t=20170906', 7, '2017-09-06 00:26:43', NULL),
+(99, 1, '卡尔森', 'k', 'kaersen', '/static/uploads/brand/k/99/756bc9b94383eab4dc2e901518018ee7.png?t=20170906', 8, '2017-09-06 00:26:43', NULL),
+(100, 1, '科尼赛克', 'k', 'kenisaike', '/static/uploads/brand/k/100/cf42f59bce4a26738bde76fbcd2b78c7.png?t=20170906', 9, '2017-09-06 00:26:43', NULL),
+(101, 1, 'KTM', 'k', 'KTM', '/static/uploads/brand/k/101/6ad3d849765ec1cd036cba209727a840.png?t=20170906', 10, '2017-09-06 00:26:43', NULL),
+(102, 1, '雷克萨斯', 'l', 'leikesasi', '/static/uploads/brand/l/102/579df5e76b134a7b7408a3e4d8996651.png?t=20170906', 1, '2017-09-06 00:26:44', NULL),
+(103, 1, '铃木', 'l', 'lingmu', '/static/uploads/brand/l/103/10a7e44ea28ecad4f58f3750ab6be4ad.png?t=20170906', 2, '2017-09-06 00:26:44', NULL),
+(104, 1, '雷诺', 'l', 'leinuo', '/static/uploads/brand/l/104/6e34e3dc065decca0ad63565099b49dd.png?t=20170906', 3, '2017-09-06 00:26:44', NULL),
+(105, 1, '路虎', 'l', 'luhu', '/static/uploads/brand/l/105/7716ad5b9c8441cc47f82d021f07c519.png?t=20170906', 4, '2017-09-06 00:26:44', NULL),
+(106, 1, '林肯', 'l', 'linken', '/static/uploads/brand/l/106/3419d234c4980abe953140c4086f8ad9.png?t=20170906', 5, '2017-09-06 00:26:44', NULL),
+(107, 1, '陆风', 'l', 'lufeng', '/static/uploads/brand/l/107/271cdda766bf938511989be1ecf31a34.png?t=20170906', 6, '2017-09-06 00:26:44', NULL),
+(108, 1, '力帆', 'l', 'lifan', '/static/uploads/brand/l/108/2a57ac05b159a34a4c1789ffb438905d.png?t=20170906', 7, '2017-09-06 00:26:44', NULL),
+(109, 1, '猎豹汽车', 'l', 'liebaoqiche', '/static/uploads/brand/l/109/34c2cd3c83ce4833e5295a90276be565.png?t=20170906', 8, '2017-09-06 00:26:45', NULL),
+(110, 1, '理念', 'l', 'linian', '/static/uploads/brand/l/110/71970071dfca30cfacf76504faa9615d.png?t=20170906', 9, '2017-09-06 00:26:45', NULL),
+(111, 1, '领克', 'l', 'lingke', '/static/uploads/brand/l/111/643942011ddf403d6c18c60fe616c8d1.png?t=20170906', 10, '2017-09-06 00:26:45', NULL),
+(112, 1, '陆地方舟', 'l', 'ludifangzhou', '/static/uploads/brand/l/112/a2e338c255f613bb125c76fb63914767.png?t=20170906', 11, '2017-09-06 00:26:45', NULL),
+(113, 1, '雷丁', 'l', 'leiding', '/static/uploads/brand/l/113/34d8bd5d4f4a3b4ff4c2ca3616352365.png?t=20170906', 12, '2017-09-06 00:26:45', NULL),
+(114, 1, '劳斯莱斯', 'l', 'laosilaisi', '/static/uploads/brand/l/114/6a3d7160e733ae1b3319f5d9744c21eb.png?t=20170906', 13, '2017-09-06 00:26:45', NULL),
+(115, 1, '兰博基尼', 'l', 'lanbojini', '/static/uploads/brand/l/115/b889166ae8fa68bbd2d7c790f4db18f7.png?t=20170906', 14, '2017-09-06 00:26:45', NULL),
+(116, 1, '路特斯', 'l', 'lutesi', '/static/uploads/brand/l/116/572fbe8318b23bdc858e48ba7c1267d5.png?t=20170906', 15, '2017-09-06 00:26:46', NULL),
+(117, 1, 'LOCAL MOTORS', 'l', 'LOCALMOTORS', '/static/uploads/brand/l/117/fe807cbce6a29c3181f75745af92ccf5.png?t=20170906', 16, '2017-09-06 00:26:46', NULL),
+(118, 1, '莲花汽车', 'l', 'lianhuaqiche', '/static/uploads/brand/l/118/fb578311cc10d1be475e573dd4c44905.png?t=20170906', 17, '2017-09-06 00:26:46', NULL),
+(119, 1, '拉达', 'l', 'lada', '/static/uploads/brand/l/119/3f70d7adabc47d5b3f51c38533e06470.png?t=20170906', 18, '2017-09-06 00:26:46', NULL),
+(120, 1, 'Lucid Motors', 'l', 'LucidMotors', '/static/uploads/brand/l/120/cb39607208c7beba051944b6558252cf.png?t=20170906', 19, '2017-09-06 00:26:46', NULL),
+(121, 1, '马自达', 'm', 'mazida', '/static/uploads/brand/m/121/33b46249e073120fd2d4586c8d10314f.png?t=20170906', 1, '2017-09-06 00:26:46', NULL),
+(122, 1, 'MG', 'm', 'MG', '/static/uploads/brand/m/122/d2e7a175919d4843e7aa17ecb4d43786.png?t=20170906', 2, '2017-09-06 00:26:46', NULL),
+(123, 1, 'MINI', 'm', 'MINI', '/static/uploads/brand/m/123/9b0ef1feef7f387e985f4e47ca8b9af0.png?t=20170906', 3, '2017-09-06 00:26:47', NULL),
+(124, 1, '玛莎拉蒂', 'm', 'mashaladi', '/static/uploads/brand/m/124/16ef62ffe05776f2a89deb1c342fc741.png?t=20170906', 4, '2017-09-06 00:26:47', NULL),
+(125, 1, '迈凯伦', 'm', 'maikailun', '/static/uploads/brand/m/125/902e90bfc34066486337d3e99b99e05a.png?t=20170906', 5, '2017-09-06 00:26:47', NULL),
+(126, 1, '明君汽车', 'm', 'mingjunqiche', '/static/uploads/brand/m/126/5cf14437d7fbc9758e4f6a0c8d74ad51.png?t=20170906', 6, '2017-09-06 00:26:47', NULL),
+(127, 1, '摩根', 'm', 'mogen', '/static/uploads/brand/m/127/49f94629e11c2057fddaf817388a24f2.png?t=20170906', 7, '2017-09-06 00:26:47', NULL),
+(128, 1, '迈巴赫', 'm', 'maibahe', '/static/uploads/brand/m/128/c21f8a6ba13b72cbe8788aa0fd64dc44.png?t=20170906', 8, '2017-09-06 00:26:47', NULL),
+(129, 1, '纳智捷', 'n', 'nazhijie', '/static/uploads/brand/n/129/e6ce1aee71927a47ad4aa8bea2f92148.png?t=20170906', 1, '2017-09-06 00:26:48', NULL),
+(130, 1, 'NEVS', 'n', 'NEVS', '/static/uploads/brand/n/130/3af13d0d8896da8758a44594c1e039dc.png?t=20170906', 2, '2017-09-06 00:26:48', NULL),
+(131, 1, '讴歌', 'o', 'ge', '/static/uploads/brand/o/131/1338f7c6547186e0931152c6ec618283.png?t=20170906', 1, '2017-09-06 00:26:48', NULL),
+(132, 1, '欧朗', 'o', 'oulang', '/static/uploads/brand/o/132/3d3bc292211ddc6a2ec559dfefa66a12.png?t=20170906', 2, '2017-09-06 00:26:48', NULL),
+(133, 1, '欧宝', 'o', 'oubao', '/static/uploads/brand/o/133/3e6564b881313c0b84df2032d15896fc.png?t=20170906', 3, '2017-09-06 00:26:48', NULL),
+(134, 1, '起亚', 'q', 'qiya', '/static/uploads/brand/q/134/678ef8b38bd9d2520425daff88e2388e.png?t=20170906', 1, '2017-09-06 00:26:48', NULL),
+(135, 1, '奇瑞', 'q', 'qirui', '/static/uploads/brand/q/135/f7527bdb6c2b677a8ca0162d62450216.png?t=20170906', 2, '2017-09-06 00:26:48', NULL),
+(136, 1, '前途', 'q', 'qiantu', '/static/uploads/brand/q/136/1bc5cb42080f6394622c8c581e52b5bb.png?t=20170906', 3, '2017-09-06 00:26:49', NULL),
+(137, 1, '奇点汽车', 'q', 'qidianqiche', '/static/uploads/brand/q/137/96ebef3bcaa471d924a01f55e31d0ef4.png?t=20170906', 4, '2017-09-06 00:26:49', NULL),
+(138, 1, '日产', 'r', 'richan', '/static/uploads/brand/r/138/686e1b59f996d27dd86456c162d268d8.png?t=20170906', 1, '2017-09-06 00:26:49', NULL),
+(139, 1, '荣威', 'r', 'rongwei', '/static/uploads/brand/r/139/fe4187fe6c77fefae14dc7bac63c6f66.png?t=20170906', 2, '2017-09-06 00:26:49', NULL),
+(140, 1, '瑞麒', 'r', 'rui', '/static/uploads/brand/r/140/c3f3e8fcb1d8fa996caf648445c0d315.png?t=20170906', 3, '2017-09-06 00:26:49', NULL),
+(141, 1, 'Rezvani', 'r', 'Rezvani', '/static/uploads/brand/r/141/a3c9fe4ba38c1dcfe62fc1a28859f371.png?t=20170906', 4, '2017-09-06 00:26:49', NULL),
+(142, 1, 'Rimac', 'r', 'Rimac', '/static/uploads/brand/r/142/2dfb1acdbcfbfe33c4a662f36a533425.png?t=20170906', 5, '2017-09-06 00:26:50', NULL),
+(143, 1, 'Rinspeed', 'r', 'Rinspeed', '/static/uploads/brand/r/143/8dacfbe97b2e0387f637fa6fab89679b.png?t=20170906', 6, '2017-09-06 00:26:50', NULL),
+(144, 1, '斯柯达', 's', 'sikeda', '/static/uploads/brand/s/144/2e81272a3e3989b54f7a50aeda2d40dd.png?t=20170906', 1, '2017-09-06 00:26:50', NULL),
+(145, 1, '三菱', 's', 'sanling', '/static/uploads/brand/s/145/25f15cced624f7b2697616836a4a857f.png?t=20170906', 2, '2017-09-06 00:26:50', NULL),
+(146, 1, '斯巴鲁', 's', 'sibalu', '/static/uploads/brand/s/146/f60d7a470bea100d67ee396b0d57f31c.png?t=20170906', 3, '2017-09-06 00:26:50', NULL),
+(147, 1, 'smart', 's', 'smart', '/static/uploads/brand/s/147/a80d14f45562f81be813a6f3261aafd2.png?t=20170906', 4, '2017-09-06 00:26:50', NULL),
+(148, 1, '双龙', 's', 'shuanglong', '/static/uploads/brand/s/148/f1bdeb5ffa3c01ff98ee9e4b80658621.png?t=20170906', 5, '2017-09-06 00:26:50', NULL),
+(149, 1, 'SWM斯威汽车', 's', 'SWMsiweiqiche', '/static/uploads/brand/s/149/859affe83a277c49bc3b22ab75040d45.png?t=20170906', 6, '2017-09-06 00:26:51', NULL),
+(150, 1, '上汽大通', 's', 'shangqidatong', '/static/uploads/brand/s/150/de525c0393f8bc308d015f67f05101c8.png?t=20170906', 7, '2017-09-06 00:26:51', NULL),
+(151, 1, '思铭', 's', 'siming', '/static/uploads/brand/s/151/411b46d0a58eb36ea3dbefdba6104c2f.png?t=20170906', 8, '2017-09-06 00:26:51', NULL),
+(152, 1, '双环', 's', 'shuanghuan', '/static/uploads/brand/s/152/3702e8452d52e02088bfd8ac9d91a3b2.png?t=20170906', 9, '2017-09-06 00:26:51', NULL),
+(153, 1, '陕汽通家', 's', 'shanqitongjia', '/static/uploads/brand/s/153/0aca2d53230448b5a9f76bbbe209bf7a.png?t=20170906', 10, '2017-09-06 00:26:51', NULL),
+(154, 1, 'TESLA', 't', 'TESLA', '/static/uploads/brand/t/154/389aa2e52955df905e915fea3ece4394.png?t=20170906', 1, '2017-09-06 00:26:51', NULL),
+(155, 1, '腾势汽车', 't', 'tengshiqiche', '/static/uploads/brand/t/155/c8653b6c241ac531c28974efff0177da.png?t=20170906', 2, '2017-09-06 00:26:52', NULL),
+(156, 1, '泰克鲁斯·腾风', 't', 'taikelusitengfeng', '/static/uploads/brand/t/156/9206887e4f085565c99e8ccd33877d02.png?t=20170906', 3, '2017-09-06 00:26:52', NULL),
+(157, 1, 'VLF Automotive', 'v', 'VLFAutomotive', '/static/uploads/brand/v/157/11a773dd485cb5cfb8d019327e0dcc37.png?t=20170906', 1, '2017-09-06 00:26:52', NULL),
+(158, 1, '沃尔沃', 'w', 'woerwo', '/static/uploads/brand/w/158/5e1c4d00b1f67f87b828c1cd2e79a008.png?t=20170906', 1, '2017-09-06 00:26:52', NULL),
+(159, 1, '五菱', 'w', 'wuling', '/static/uploads/brand/w/159/07ba27596731821be9874b9abc3b4769.png?t=20170906', 2, '2017-09-06 00:26:52', NULL),
+(160, 1, '五十铃', 'w', 'wushiling', '/static/uploads/brand/w/160/74bf06dc2d910b0f8becb353a93163b9.png?t=20170906', 3, '2017-09-06 00:26:52', NULL),
+(161, 1, '潍柴', 'w', 'weichai', '/static/uploads/brand/w/161/dcb2f1c857090dce12575b7e01603d1f.png?t=20170906', 4, '2017-09-06 00:26:52', NULL),
+(162, 1, 'WEY', 'w', 'WEY', '/static/uploads/brand/w/162/e2a6c82ebbdec4a6dec439730be40dcf.png?t=20170906', 5, '2017-09-06 00:26:53', NULL),
+(163, 1, '蔚来', 'w', 'weilai', '/static/uploads/brand/w/163/6831134f0205f3d91987cdb4bb0a4375.png?t=20170906', 6, '2017-09-06 00:26:53', NULL),
+(164, 1, '威马汽车', 'w', 'weimaqiche', '/static/uploads/brand/w/164/f67357cc452c8c67d693004b775fc82a.png?t=20170906', 7, '2017-09-06 00:26:53', NULL),
+(165, 1, '威兹曼', 'w', 'weiziman', '/static/uploads/brand/w/165/0e072e17eb71e6d0e9ad0338ebfbbdf6.png?t=20170906', 8, '2017-09-06 00:26:53', NULL),
+(166, 1, '威麟', 'w', 'wei', '/static/uploads/brand/w/166/11006074219ed784f4ea4ef0913607bd.png?t=20170906', 9, '2017-09-06 00:26:53', NULL),
+(167, 1, '瓦滋汽车', 'w', 'waziqiche', '/static/uploads/brand/w/167/9be35b1dc8c8f9d6b22aa1789abcf4a8.png?t=20170906', 10, '2017-09-06 00:26:53', NULL),
+(168, 1, '雪佛兰', 'x', 'xuefolan', '/static/uploads/brand/x/168/823ba2e13f5b26d2ebfe36b1a99095cd.png?t=20170906', 1, '2017-09-06 00:26:53', NULL),
+(169, 1, '现代', 'x', 'xiandai', '/static/uploads/brand/x/169/bd4b41a5579b61c14223c661bd5a9057.png?t=20170906', 2, '2017-09-06 00:26:54', NULL),
+(170, 1, '雪铁龙', 'x', 'xuetielong', '/static/uploads/brand/x/170/0d83ed5e08b46a808def821ff3869300.png?t=20170906', 3, '2017-09-06 00:26:54', NULL),
+(171, 1, '西雅特', 'x', 'xiyate', '/static/uploads/brand/x/171/2fefa779050f994086d604a4e7d289f5.png?t=20170906', 4, '2017-09-06 00:26:54', NULL),
+(172, 1, '小鹏汽车', 'x', 'xiaopengqiche', '/static/uploads/brand/x/172/d905872514a081c58ca7eb55082283ef.png?t=20170906', 5, '2017-09-06 00:26:54', NULL),
+(173, 1, '英菲尼迪', 'y', 'yingfeinidi', '/static/uploads/brand/y/173/70d15258d17b172c2912a04e0ae3eae0.png?t=20170906', 1, '2017-09-06 00:26:54', NULL),
+(174, 1, '一汽', 'y', 'yiqi', '/static/uploads/brand/y/174/e3ece8d059582428e2e5f650111551d4.png?t=20170906', 2, '2017-09-06 00:26:54', NULL),
+(175, 1, '野马汽车', 'y', 'yemaqiche', '/static/uploads/brand/y/175/59dd29bb89529e3d4e0bc2a1abbddd0b.png?t=20170906', 3, '2017-09-06 00:26:54', NULL),
+(176, 1, '永源', 'y', 'yongyuan', '/static/uploads/brand/y/176/3f772f31813fdfa8f2e24b5df22ed0f2.png?t=20170906', 4, '2017-09-06 00:26:55', NULL),
+(177, 1, '依维柯', 'y', 'yiweike', '/static/uploads/brand/y/177/79e512eb8ce481eaf4b4bc5ccbf32087.png?t=20170906', 5, '2017-09-06 00:26:55', NULL),
+(178, 1, '云度', 'y', 'yundu', '/static/uploads/brand/y/178/6ffd6c43994e65f4540062df835fe81f.png?t=20170906', 6, '2017-09-06 00:26:55', NULL),
+(179, 1, '众泰', 'z', 'zhongtai', '/static/uploads/brand/z/179/2d8e9ea6bd519759a54cf4be9b158d10.png?t=20170906', 1, '2017-09-06 00:26:55', NULL),
+(180, 1, '中华', 'z', 'zhonghua', '/static/uploads/brand/z/180/ef0142e4fd17806e0a384262e4572a16.png?t=20170906', 2, '2017-09-06 00:26:55', NULL),
+(181, 1, '中兴汽车', 'z', 'zhongxingqiche', '/static/uploads/brand/z/181/64c69d60e8b9c2416cbec483ef3e0faa.png?t=20170906', 3, '2017-09-06 00:26:55', NULL),
+(182, 1, '知豆', 'z', 'zhidou', '/static/uploads/brand/z/182/28f156ff52d220a74cb9db42e087c74e.png?t=20170906', 4, '2017-09-06 00:26:55', NULL),
+(183, 1, '之诺', 'z', 'zhinuo', '/static/uploads/brand/z/183/7636211f22fd8d9eb6c18fb2b6666858.png?t=20170906', 5, '2017-09-06 00:26:56', NULL),
+(184, 1, 'Zenvo', 'z', 'Zenvo', '/static/uploads/brand/z/184/a8bc48910a626586dc25c42023068711.png?t=20170906', 6, '2017-09-06 00:26:56', NULL),
+(185, 1, '正道汽车', 'z', 'zhengdaoqiche', '/static/uploads/brand/z/185/ed3a5867225273324171740c8b48f4f7.png?t=20170906', 7, '2017-09-06 00:26:56', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `oac_car`
+--
+
+CREATE TABLE IF NOT EXISTS `oac_car` (
+  `id` bigint(20) unsigned NOT NULL COMMENT '车辆ID',
+  `name` varchar(150) NOT NULL COMMENT '车名称',
+  `name_alias` varchar(255) NOT NULL COMMENT '车别名或扩充名称',
+  `cate_id` int(11) unsigned NOT NULL COMMENT '类目表ID',
+  `total` int(11) unsigned NOT NULL COMMENT '总量',
+  `price` int(11) NOT NULL COMMENT '基本价格',
+  `title` varchar(255) DEFAULT NULL COMMENT '描述信息',
+  `code` varchar(32) NOT NULL COMMENT '编码',
+  `images_id` bigint(20) unsigned NOT NULL COMMENT '默认图',
+  `images_unique` varchar(32) NOT NULL COMMENT '详细图片识别字符',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='汽车表';
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `oac_car_prop`
+--
+
+CREATE TABLE IF NOT EXISTS `oac_car_prop` (
+  `id` bigint(20) unsigned NOT NULL COMMENT 'ID',
+  `car_id` bigint(20) unsigned NOT NULL COMMENT '车辆表ID',
+  `cate_prop_value_id` int(11) unsigned NOT NULL COMMENT '特征量表ID',
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否自定义属性值；0=否，1=是；默认是0；',
+  `prop` varchar(150) DEFAULT NULL COMMENT '自定义属性值',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='汽车基本属性表';
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `oac_car_sell`
+--
+
+CREATE TABLE IF NOT EXISTS `oac_car_sell` (
+  `id` bigint(20) unsigned NOT NULL COMMENT '销售属性ID',
+  `cate_prop_value_id` int(11) unsigned NOT NULL COMMENT '特征值ID',
+  `cate_prop_id` int(11) unsigned NOT NULL COMMENT '特征量ID',
+  `prop_value` varchar(150) DEFAULT NULL COMMENT '特征值（允许自定义）',
+  `prop_extend` varchar(150) DEFAULT NULL COMMENT '扩展属性值',
+  `images_id` bigint(20) unsigned NOT NULL COMMENT '默认图',
+  `images_unique` varchar(32) NOT NULL COMMENT '详细图片识别字符',
+  `car_id` bigint(20) unsigned NOT NULL COMMENT '车辆表ID',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='汽车销售属性表';
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `oac_car_sku`
+--
+
+CREATE TABLE IF NOT EXISTS `oac_car_sku` (
+  `id` bigint(20) unsigned NOT NULL COMMENT 'ID',
+  `sku` varchar(255) NOT NULL COMMENT '特征量ID组合',
+  `total` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `car_id` bigint(20) unsigned NOT NULL COMMENT '车辆表ID',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='汽车SKU组合表';
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `oac_cate`
+--
+
+CREATE TABLE IF NOT EXISTS `oac_cate` (
+  `id` int(11) unsigned NOT NULL COMMENT '类目ID',
+  `name` varchar(64) NOT NULL COMMENT '类目名称',
+  `pid` int(11) NOT NULL COMMENT '类目父ID',
+  `isParent` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否作为父级；0否，1是；默认为0',
+  `order` int(11) unsigned NOT NULL COMMENT '排序',
+  `level` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '分类深度',
+  `unique_id` varchar(32) DEFAULT NULL COMMENT '扩展识别',
+  `title` varchar(255) DEFAULT NULL COMMENT '说明',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
+) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=utf8 COMMENT='类目表';
+
+--
+-- 转存表中的数据 `oac_cate`
+--
+
+INSERT INTO `oac_cate` (`id`, `name`, `pid`, `isParent`, `order`, `level`, `unique_id`, `title`, `created_at`, `updated_at`) VALUES
+(1, '奥迪', 0, 1, 0, 1, '1', '奥迪品牌', NULL, NULL),
+(2, '阿斯顿·马丁', 0, 1, 1, 1, '2', '阿斯顿·马丁品牌', NULL, NULL),
+(3, '阿尔法·罗密欧', 0, 1, 2, 1, '3', '阿尔法·罗密欧品牌', NULL, NULL),
+(4, '艾康尼克', 0, 1, 3, 1, '4', '艾康尼克品牌', NULL, NULL),
+(5, 'Alpina', 0, 1, 4, 1, '5', 'Alpina品牌', NULL, NULL),
+(6, '宝马', 0, 1, 5, 1, '6', '宝马品牌', NULL, NULL),
+(7, '奔驰', 0, 1, 6, 1, '7', '奔驰品牌', NULL, NULL),
+(8, '本田', 0, 1, 7, 1, '8', '本田品牌', NULL, NULL),
+(9, '别克', 0, 1, 8, 1, '9', '别克品牌', NULL, NULL),
+(10, '标致', 0, 1, 9, 1, '10', '标致品牌', NULL, NULL),
+(11, '比亚迪', 0, 1, 10, 1, '11', '比亚迪品牌', NULL, NULL),
+(12, '宝骏', 0, 1, 11, 1, '12', '宝骏品牌', NULL, NULL),
+(13, '奔腾', 0, 1, 12, 1, '13', '奔腾品牌', NULL, NULL),
+(14, '宝沃', 0, 1, 13, 1, '14', '宝沃品牌', NULL, NULL),
+(15, '北京', 0, 1, 14, 1, '15', '北京品牌', NULL, NULL),
+(16, '北汽绅宝', 0, 1, 15, 1, '16', '北汽绅宝品牌', NULL, NULL),
+(17, '北汽幻速', 0, 1, 16, 1, '17', '北汽幻速品牌', NULL, NULL),
+(18, '比速汽车', 0, 1, 17, 1, '18', '比速汽车品牌', NULL, NULL),
+(19, '北汽新能源', 0, 1, 18, 1, '19', '北汽新能源品牌', NULL, NULL),
+(20, '北汽威旺', 0, 1, 19, 1, '20', '北汽威旺品牌', NULL, NULL),
+(21, '北汽制造', 0, 1, 20, 1, '21', '北汽制造品牌', NULL, NULL),
+(22, '北汽道达', 0, 1, 21, 1, '22', '北汽道达品牌', NULL, NULL),
+(23, '保时捷', 0, 1, 22, 1, '23', '保时捷品牌', NULL, NULL),
+(24, '宾利', 0, 1, 23, 1, '24', '宾利品牌', NULL, NULL),
+(25, '布加迪', 0, 1, 24, 1, '25', '布加迪品牌', NULL, NULL),
+(26, '巴博斯', 0, 1, 25, 1, '26', '巴博斯品牌', NULL, NULL),
+(27, '长城', 0, 1, 26, 1, '27', '长城品牌', NULL, NULL),
+(28, '长安汽车', 0, 1, 27, 1, '28', '长安汽车品牌', NULL, NULL),
+(29, '长安欧尚', 0, 1, 28, 1, '29', '长安欧尚品牌', NULL, NULL),
+(30, '长安轻型车', 0, 1, 29, 1, '30', '长安轻型车品牌', NULL, NULL),
+(31, '昌河', 0, 1, 30, 1, '31', '昌河品牌', NULL, NULL),
+(32, '成功汽车', 0, 1, 31, 1, '32', '成功汽车品牌', NULL, NULL),
+(33, '长江EV', 0, 1, 32, 1, '33', '长江EV品牌', NULL, NULL),
+(34, '大众', 0, 1, 33, 1, '34', '大众品牌', NULL, NULL),
+(35, 'DS', 0, 1, 34, 1, '35', 'DS品牌', NULL, NULL),
+(36, '东南', 0, 1, 35, 1, '36', '东南品牌', NULL, NULL),
+(37, '道奇', 0, 1, 36, 1, '37', '道奇品牌', NULL, NULL),
+(38, '东风', 0, 1, 37, 1, '38', '东风品牌', NULL, NULL),
+(39, '东风风行', 0, 1, 38, 1, '39', '东风风行品牌', NULL, NULL),
+(40, '东风风神', 0, 1, 39, 1, '40', '东风风神品牌', NULL, NULL),
+(41, '东风启辰', 0, 1, 40, 1, '41', '东风启辰品牌', NULL, NULL),
+(42, '东风风度', 0, 1, 41, 1, '42', '东风风度品牌', NULL, NULL),
+(43, '东风风光', 0, 1, 42, 1, '43', '东风风光品牌', NULL, NULL),
+(44, '东风小康', 0, 1, 43, 1, '44', '东风小康品牌', NULL, NULL),
+(45, 'Detroit Electric', 0, 1, 44, 1, '45', 'Detroit Electric品牌', NULL, NULL),
+(46, '大发', 0, 1, 45, 1, '46', '大发品牌', NULL, NULL),
+(47, '电咖汽车', 0, 1, 46, 1, '47', '电咖汽车品牌', NULL, NULL),
+(48, '丰田', 0, 1, 47, 1, '48', '丰田品牌', NULL, NULL),
+(49, '福特', 0, 1, 48, 1, '49', '福特品牌', NULL, NULL),
+(50, '菲亚特', 0, 1, 49, 1, '50', '菲亚特品牌', NULL, NULL),
+(51, '福田', 0, 1, 50, 1, '51', '福田品牌', NULL, NULL),
+(52, '法拉利', 0, 1, 51, 1, '52', '法拉利品牌', NULL, NULL),
+(53, '福迪', 0, 1, 52, 1, '53', '福迪品牌', NULL, NULL),
+(54, '风诺', 0, 1, 53, 1, '54', '风诺品牌', NULL, NULL),
+(55, '福汽启腾', 0, 1, 54, 1, '55', '福汽启腾品牌', NULL, NULL),
+(56, '观致', 0, 1, 55, 1, '56', '观致品牌', NULL, NULL),
+(57, '广汽传祺', 0, 1, 56, 1, '57', '广汽传祺品牌', NULL, NULL),
+(58, '广汽吉奥', 0, 1, 57, 1, '58', '广汽吉奥品牌', NULL, NULL),
+(59, 'Genesis', 0, 1, 58, 1, '59', 'Genesis品牌', NULL, NULL),
+(60, 'GMC', 0, 1, 59, 1, '60', 'GMC品牌', NULL, NULL),
+(61, '光冈', 0, 1, 60, 1, '61', '光冈品牌', NULL, NULL),
+(62, 'GLM', 0, 1, 61, 1, '62', 'GLM品牌', NULL, NULL),
+(63, '哈弗', 0, 1, 62, 1, '63', '哈弗品牌', NULL, NULL),
+(64, '海马', 0, 1, 63, 1, '64', '海马品牌', NULL, NULL),
+(65, '华泰', 0, 1, 64, 1, '65', '华泰品牌', NULL, NULL),
+(66, '华泰新能源', 0, 1, 65, 1, '66', '华泰新能源品牌', NULL, NULL),
+(67, '华颂', 0, 1, 66, 1, '67', '华颂品牌', NULL, NULL),
+(68, '红旗', 0, 1, 67, 1, '68', '红旗品牌', NULL, NULL),
+(69, '汉腾', 0, 1, 68, 1, '69', '汉腾品牌', NULL, NULL),
+(70, '哈飞', 0, 1, 69, 1, '70', '哈飞品牌', NULL, NULL),
+(71, '黄海', 0, 1, 70, 1, '71', '黄海品牌', NULL, NULL),
+(72, '海格', 0, 1, 71, 1, '72', '海格品牌', NULL, NULL),
+(73, '汇众', 0, 1, 72, 1, '73', '汇众品牌', NULL, NULL),
+(74, '悍马', 0, 1, 73, 1, '74', '悍马品牌', NULL, NULL),
+(75, '华普', 0, 1, 74, 1, '75', '华普品牌', NULL, NULL),
+(76, '恒天', 0, 1, 75, 1, '76', '恒天品牌', NULL, NULL),
+(77, '霍顿', 0, 1, 76, 1, '77', '霍顿品牌', NULL, NULL),
+(78, '合众汽车', 0, 1, 77, 1, '78', '合众汽车品牌', NULL, NULL),
+(79, 'Italdesign', 0, 1, 78, 1, '79', 'Italdesign品牌', NULL, NULL),
+(80, '吉利', 0, 1, 79, 1, '80', '吉利品牌', NULL, NULL),
+(81, '江淮', 0, 1, 80, 1, '81', '江淮品牌', NULL, NULL),
+(82, 'Jeep', 0, 1, 81, 1, '82', 'Jeep品牌', NULL, NULL),
+(83, '捷豹', 0, 1, 82, 1, '83', '捷豹品牌', NULL, NULL),
+(84, '金杯', 0, 1, 83, 1, '84', '金杯品牌', NULL, NULL),
+(85, '江铃', 0, 1, 84, 1, '85', '江铃品牌', NULL, NULL),
+(86, '江铃集团轻汽', 0, 1, 85, 1, '86', '江铃集团轻汽品牌', NULL, NULL),
+(87, '江铃集团新能源', 0, 1, 86, 1, '87', '江铃集团新能源品牌', NULL, NULL),
+(88, '金龙', 0, 1, 87, 1, '88', '金龙品牌', NULL, NULL),
+(89, '金旅', 0, 1, 88, 1, '89', '金旅品牌', NULL, NULL),
+(90, '九龙', 0, 1, 89, 1, '90', '九龙品牌', NULL, NULL),
+(91, '君马汽车', 0, 1, 90, 1, '91', '君马汽车品牌', NULL, NULL),
+(92, '凯迪拉克', 0, 1, 91, 1, '92', '凯迪拉克品牌', NULL, NULL),
+(93, '克莱斯勒', 0, 1, 92, 1, '93', '克莱斯勒品牌', NULL, NULL),
+(94, '凯翼', 0, 1, 93, 1, '94', '凯翼品牌', NULL, NULL),
+(95, '开瑞', 0, 1, 94, 1, '95', '开瑞品牌', NULL, NULL),
+(96, '康迪全球鹰电动汽车', 0, 1, 95, 1, '96', '康迪全球鹰电动汽车品牌', NULL, NULL),
+(97, '卡威', 0, 1, 96, 1, '97', '卡威品牌', NULL, NULL),
+(98, '卡升', 0, 1, 97, 1, '98', '卡升品牌', NULL, NULL),
+(99, '卡尔森', 0, 1, 98, 1, '99', '卡尔森品牌', NULL, NULL),
+(100, '科尼赛克', 0, 1, 99, 1, '100', '科尼赛克品牌', NULL, NULL),
+(101, 'KTM', 0, 1, 100, 1, '101', 'KTM品牌', NULL, NULL),
+(102, '雷克萨斯', 0, 1, 101, 1, '102', '雷克萨斯品牌', NULL, NULL),
+(103, '铃木', 0, 1, 102, 1, '103', '铃木品牌', NULL, NULL),
+(104, '雷诺', 0, 1, 103, 1, '104', '雷诺品牌', NULL, NULL),
+(105, '路虎', 0, 1, 104, 1, '105', '路虎品牌', NULL, NULL),
+(106, '林肯', 0, 1, 105, 1, '106', '林肯品牌', NULL, NULL),
+(107, '陆风', 0, 1, 106, 1, '107', '陆风品牌', NULL, NULL),
+(108, '力帆', 0, 1, 107, 1, '108', '力帆品牌', NULL, NULL),
+(109, '猎豹汽车', 0, 1, 108, 1, '109', '猎豹汽车品牌', NULL, NULL),
+(110, '理念', 0, 1, 109, 1, '110', '理念品牌', NULL, NULL),
+(111, '领克', 0, 1, 110, 1, '111', '领克品牌', NULL, NULL),
+(112, '陆地方舟', 0, 1, 111, 1, '112', '陆地方舟品牌', NULL, NULL),
+(113, '雷丁', 0, 1, 112, 1, '113', '雷丁品牌', NULL, NULL),
+(114, '劳斯莱斯', 0, 1, 113, 1, '114', '劳斯莱斯品牌', NULL, NULL),
+(115, '兰博基尼', 0, 1, 114, 1, '115', '兰博基尼品牌', NULL, NULL),
+(116, '路特斯', 0, 1, 115, 1, '116', '路特斯品牌', NULL, NULL),
+(117, 'LOCAL MOTORS', 0, 1, 116, 1, '117', 'LOCAL MOTORS品牌', NULL, NULL),
+(118, '莲花汽车', 0, 1, 117, 1, '118', '莲花汽车品牌', NULL, NULL),
+(119, '拉达', 0, 1, 118, 1, '119', '拉达品牌', NULL, NULL),
+(120, 'Lucid Motors', 0, 1, 119, 1, '120', 'Lucid Motors品牌', NULL, NULL),
+(121, '马自达', 0, 1, 120, 1, '121', '马自达品牌', NULL, NULL),
+(122, 'MG', 0, 1, 121, 1, '122', 'MG品牌', NULL, NULL),
+(123, 'MINI', 0, 1, 122, 1, '123', 'MINI品牌', NULL, NULL),
+(124, '玛莎拉蒂', 0, 1, 123, 1, '124', '玛莎拉蒂品牌', NULL, NULL),
+(125, '迈凯伦', 0, 1, 124, 1, '125', '迈凯伦品牌', NULL, NULL),
+(126, '明君汽车', 0, 1, 125, 1, '126', '明君汽车品牌', NULL, NULL),
+(127, '摩根', 0, 1, 126, 1, '127', '摩根品牌', NULL, NULL),
+(128, '迈巴赫', 0, 1, 127, 1, '128', '迈巴赫品牌', NULL, NULL),
+(129, '纳智捷', 0, 1, 128, 1, '129', '纳智捷品牌', NULL, NULL),
+(130, 'NEVS', 0, 1, 129, 1, '130', 'NEVS品牌', NULL, NULL),
+(131, '讴歌', 0, 1, 130, 1, '131', '讴歌品牌', NULL, NULL),
+(132, '欧朗', 0, 1, 131, 1, '132', '欧朗品牌', NULL, NULL),
+(133, '欧宝', 0, 1, 132, 1, '133', '欧宝品牌', NULL, NULL),
+(134, '起亚', 0, 1, 133, 1, '134', '起亚品牌', NULL, NULL),
+(135, '奇瑞', 0, 1, 134, 1, '135', '奇瑞品牌', NULL, NULL),
+(136, '前途', 0, 1, 135, 1, '136', '前途品牌', NULL, NULL),
+(137, '奇点汽车', 0, 1, 136, 1, '137', '奇点汽车品牌', NULL, NULL),
+(138, '日产', 0, 1, 137, 1, '138', '日产品牌', NULL, NULL),
+(139, '荣威', 0, 1, 138, 1, '139', '荣威品牌', NULL, NULL),
+(140, '瑞麒', 0, 1, 139, 1, '140', '瑞麒品牌', NULL, NULL),
+(141, 'Rezvani', 0, 1, 140, 1, '141', 'Rezvani品牌', NULL, NULL),
+(142, 'Rimac', 0, 1, 141, 1, '142', 'Rimac品牌', NULL, NULL),
+(143, 'Rinspeed', 0, 1, 142, 1, '143', 'Rinspeed品牌', NULL, NULL),
+(144, '斯柯达', 0, 1, 143, 1, '144', '斯柯达品牌', NULL, NULL),
+(145, '三菱', 0, 1, 144, 1, '145', '三菱品牌', NULL, NULL),
+(146, '斯巴鲁', 0, 1, 145, 1, '146', '斯巴鲁品牌', NULL, NULL),
+(147, 'smart', 0, 1, 146, 1, '147', 'smart品牌', NULL, NULL),
+(148, '双龙', 0, 1, 147, 1, '148', '双龙品牌', NULL, NULL),
+(149, 'SWM斯威汽车', 0, 1, 148, 1, '149', 'SWM斯威汽车品牌', NULL, NULL),
+(150, '上汽大通', 0, 1, 149, 1, '150', '上汽大通品牌', NULL, NULL),
+(151, '思铭', 0, 1, 150, 1, '151', '思铭品牌', NULL, NULL),
+(152, '双环', 0, 1, 151, 1, '152', '双环品牌', NULL, NULL),
+(153, '陕汽通家', 0, 1, 152, 1, '153', '陕汽通家品牌', NULL, NULL),
+(154, 'TESLA', 0, 1, 153, 1, '154', 'TESLA品牌', NULL, NULL),
+(155, '腾势汽车', 0, 1, 154, 1, '155', '腾势汽车品牌', NULL, NULL),
+(156, '泰克鲁斯·腾风', 0, 1, 155, 1, '156', '泰克鲁斯·腾风品牌', NULL, NULL),
+(157, 'VLF Automotive', 0, 1, 156, 1, '157', 'VLF Automotive品牌', NULL, NULL),
+(158, '沃尔沃', 0, 1, 157, 1, '158', '沃尔沃品牌', NULL, NULL),
+(159, '五菱', 0, 1, 158, 1, '159', '五菱品牌', NULL, NULL),
+(160, '五十铃', 0, 1, 159, 1, '160', '五十铃品牌', NULL, NULL),
+(161, '潍柴', 0, 1, 160, 1, '161', '潍柴品牌', NULL, NULL),
+(162, 'WEY', 0, 1, 161, 1, '162', 'WEY品牌', NULL, NULL),
+(163, '蔚来', 0, 1, 162, 1, '163', '蔚来品牌', NULL, NULL),
+(164, '威马汽车', 0, 1, 163, 1, '164', '威马汽车品牌', NULL, NULL),
+(165, '威兹曼', 0, 1, 164, 1, '165', '威兹曼品牌', NULL, NULL),
+(166, '威麟', 0, 1, 165, 1, '166', '威麟品牌', NULL, NULL),
+(167, '瓦滋汽车', 0, 1, 166, 1, '167', '瓦滋汽车品牌', NULL, NULL),
+(168, '雪佛兰', 0, 1, 167, 1, '168', '雪佛兰品牌', NULL, NULL),
+(169, '现代', 0, 1, 168, 1, '169', '现代品牌', NULL, NULL),
+(170, '雪铁龙', 0, 1, 169, 1, '170', '雪铁龙品牌', NULL, NULL),
+(171, '西雅特', 0, 1, 170, 1, '171', '西雅特品牌', NULL, NULL),
+(172, '小鹏汽车', 0, 1, 171, 1, '172', '小鹏汽车品牌', NULL, NULL),
+(173, '英菲尼迪', 0, 1, 172, 1, '173', '英菲尼迪品牌', NULL, NULL),
+(174, '一汽', 0, 1, 173, 1, '174', '一汽品牌', NULL, NULL),
+(175, '野马汽车', 0, 1, 174, 1, '175', '野马汽车品牌', NULL, NULL),
+(176, '永源', 0, 1, 175, 1, '176', '永源品牌', NULL, NULL),
+(177, '依维柯', 0, 1, 176, 1, '177', '依维柯品牌', NULL, NULL),
+(178, '云度', 0, 1, 177, 1, '178', '云度品牌', NULL, NULL),
+(179, '众泰', 0, 1, 178, 1, '179', '众泰品牌', NULL, NULL),
+(180, '中华', 0, 1, 179, 1, '180', '中华品牌', NULL, NULL),
+(181, '中兴汽车', 0, 1, 180, 1, '181', '中兴汽车品牌', NULL, NULL),
+(182, '知豆', 0, 1, 181, 1, '182', '知豆品牌', NULL, NULL),
+(183, '之诺', 0, 1, 182, 1, '183', '之诺品牌', NULL, NULL),
+(184, 'Zenvo', 0, 1, 183, 1, '184', 'Zenvo品牌', NULL, NULL),
+(185, '正道汽车', 0, 1, 184, 1, '185', '正道汽车品牌', NULL, NULL),
+(186, 'A4', 1, 1, 1, 2, NULL, '奥迪 A4 车型', NULL, NULL),
+(187, '40 TFSI 进取型', 186, 1, 1, 3, NULL, '奥迪 A4 车型 40 TFSI 进取型 车款', NULL, NULL),
+(188, '40 TFSI 时尚型', 186, 1, 2, 3, NULL, '奥迪 A4 车型 40 TFSI 时尚型 车款', NULL, NULL),
+(189, '40 TFSI 风尚型', 186, 1, 3, 3, NULL, '奥迪 A4 车型 40 TFSI 风尚型 车款', NULL, NULL),
+(190, '40 boom 运动款', 186, 1, 4, 3, NULL, '奥迪 A4 车型 40 boom 运动款', '2017-09-11 00:15:05', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `oac_cate_prop`
+--
+
+CREATE TABLE IF NOT EXISTS `oac_cate_prop` (
+  `id` int(11) unsigned NOT NULL COMMENT '特征量ID',
+  `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
+  `name` varchar(64) NOT NULL COMMENT '属性名',
+  `cate_id` int(11) unsigned NOT NULL COMMENT '所属类目ID',
+  `pid` int(11) unsigned DEFAULT NULL COMMENT '父级特征量ID',
+  `cid` int(11) unsigned DEFAULT NULL COMMENT '下级特征量ID',
+  `isAlias` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否允许别名;0=否，1=是，默认是0',
+  `isColor` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否颜色属性;0=否，1=是，默认是0',
+  `isEnum` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否枚举属性;0=否，1=是，默认是0',
+  `isAlive` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否输入属性;0=否，1=是，默认是1',
+  `isUnique` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否关键属性;0=否，1=是，默认是1',
+  `isSeller` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否销售属性;0=否，1=是，默认是1',
+  `order` int(11) unsigned DEFAULT NULL COMMENT '排序',
+  `level` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '分类深度',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='特征量表';
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `oac_cate_prop_value`
+--
+
+CREATE TABLE IF NOT EXISTS `oac_cate_prop_value` (
+  `id` int(11) unsigned NOT NULL COMMENT '特征值ID',
+  `is_delete` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
+  `value` varchar(150) NOT NULL COMMENT '特征值',
+  `cate_prop_id` int(11) unsigned NOT NULL COMMENT '特征量表ID',
+  `order` int(11) unsigned NOT NULL COMMENT '排序',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='特征值表';
 
 -- --------------------------------------------------------
 
@@ -265,12 +787,12 @@ CREATE TABLE IF NOT EXISTS `oac_config` (
 INSERT INTO `oac_config` (`id`, `is_delete`, `app`, `title`, `name`, `value`, `group`, `type`, `options`, `tip`, `created_at`, `updated_at`, `order`, `status`) VALUES
 (1, 1, 1, '站点开关', 'TOGGLE_WEB_SITE', '1', 1, 'toggle', '0:关闭\r\n1:开启', '站点关闭后将不能访问', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 1),
 (2, 1, 1, '网站标题', 'WEB_SITE_TITLE', 'Hao Fang Zhi Ye', 1, 'text', '', '网站标题前台显示标题', '2017-08-03 01:57:20', '2017-08-03 01:57:20', 2, 1),
-(3, 1, 1, '网站口号', 'WEB_SITE_SLOGAN', '海南情义车地产营销策划有限公司 好车置业', 1, 'text', '', '网站口号、宣传标语、一句话介绍', '2017-08-03 01:56:42', '2017-08-03 01:56:42', 3, 1),
+(3, 1, 1, '网站口号', 'WEB_SITE_SLOGAN', '海南情义房地产营销策划有限公司 好房置业', 1, 'text', '', '网站口号、宣传标语、一句话介绍', '2017-08-03 01:56:42', '2017-08-03 01:56:42', 3, 1),
 (4, 1, 1, '网站LOGO', 'WEB_SITE_LOGO', '', 1, 'picture', '', '网站LOGO', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, 1),
 (5, 0, 1, '网站反色LOGO', 'WEB_SITE_LOGO_INVERSE', '', 1, 'picture', '', '匹配深色背景上的LOGO', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 1),
-(6, 1, 1, '网站描述', 'WEB_SITE_DESCRIPTION', '海南情义车地产营销策划有限公司 好车置业', 1, 'textarea', '', '网站搜索引擎描述', '2017-08-03 01:56:22', '2017-08-03 01:56:22', 6, 1),
-(7, 1, 1, '网站关键字', 'WEB_SITE_KEYWORD', '海南情义车地产营销策划有限公司 好车置业', 1, 'textarea', '', '网站搜索引擎关键字', '2017-08-03 01:56:01', '2017-08-03 01:56:01', 7, 1),
-(8, 1, 1, '版权信息', 'WEB_SITE_COPYRIGHT', 'Copyright © 海南情义车地产营销策划有限公司 All rights reserved.', 1, 'text', '', '设置在网站底部显示的版权信息，如“版权所有 © 2017-2017好车置业”', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 8, 1),
+(6, 1, 1, '网站描述', 'WEB_SITE_DESCRIPTION', '海南情义房地产营销策划有限公司 好房置业', 1, 'textarea', '', '网站搜索引擎描述', '2017-08-03 01:56:22', '2017-08-03 01:56:22', 6, 1),
+(7, 1, 1, '网站关键字', 'WEB_SITE_KEYWORD', '海南情义房地产营销策划有限公司 好房置业', 1, 'textarea', '', '网站搜索引擎关键字', '2017-08-03 01:56:01', '2017-08-03 01:56:01', 7, 1),
+(8, 1, 1, '版权信息', 'WEB_SITE_COPYRIGHT', 'Copyright © 海南情义房地产营销策划有限公司 All rights reserved.', 1, 'text', '', '设置在网站底部显示的版权信息，如“版权所有 © 2017-2017好房置业”', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 8, 1),
 (9, 1, 1, '网站备案号', 'WEB_SITE_ICP', 'XXX 号', 1, 'text', '', '设置在网站底部显示的备案号，如“琼ICP备1502017号"', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 9, 1),
 (10, 0, 1, '站点统计', 'WEB_SITE_STATISTICS', '', 1, 'textarea', '', '支持百度、Google、cnzz等所有Javascript的统计代码', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 10, 1),
 (11, 1, 1, '公司名称', 'COMPANY_TITLE', '【 Hao Fang Zhi Ye 】', 3, 'text', '', '', '2017-08-03 01:55:37', '2017-08-03 01:55:37', 1, 1),
@@ -312,9 +834,9 @@ CREATE TABLE IF NOT EXISTS `oac_contact` (
   `home_user_id` bigint(20) DEFAULT '0' COMMENT '前端用户表ID',
   `back_user_id` bigint(20) DEFAULT '0' COMMENT '后台客服ID',
   `readed` tinyint(1) DEFAULT '1' COMMENT '是否阅读; 1=未读 ,2=已读',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='联系我们';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='联系我们';
 
 -- --------------------------------------------------------
 
@@ -331,7 +853,7 @@ CREATE TABLE IF NOT EXISTS `oac_contact_read` (
   `content` longtext COMMENT '通知信息内容',
   `notes` longtext COMMENT '备注',
   `reback` longtext COMMENT '回馈',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='联系我们审阅表';
 
@@ -347,7 +869,7 @@ CREATE TABLE IF NOT EXISTS `oac_deal` (
   `home_use_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '用用户表id',
   `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '类型',
   `eachPrice` float(20,0) NOT NULL COMMENT '成交单价',
-  `total` int(11) NOT NULL DEFAULT '0' COMMENT '车款总价',
+  `total` int(11) NOT NULL DEFAULT '0' COMMENT '房款总价',
   `dealDate` varchar(20) NOT NULL DEFAULT '' COMMENT '成交时间',
   `payWay` tinyint(1) NOT NULL DEFAULT '0' COMMENT '付款方式;1一次性，2分期付款',
   `notes` varchar(500) NOT NULL DEFAULT '' COMMENT '备注',
@@ -372,7 +894,7 @@ CREATE TABLE IF NOT EXISTS `oac_delete_log` (
   `back_user_id` bigint(20) DEFAULT NULL COMMENT '后台客服ID',
   `delete_id` bigint(20) NOT NULL COMMENT '被操作ID',
   `notes` longtext COLLATE utf8_unicode_ci COMMENT '备注',
-  `created_at` datetime NOT NULL COMMENT '创建时间'
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='删除记录表';
 
 -- --------------------------------------------------------
@@ -390,7 +912,7 @@ CREATE TABLE IF NOT EXISTS `oac_department` (
   `code` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '编号',
   `order` bigint(20) DEFAULT '0' COMMENT '顺序',
   `level` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '等级;0=无效;1=默认;',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='部门表';
 
@@ -419,7 +941,8 @@ CREATE TABLE IF NOT EXISTS `oac_download` (
   `table_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '目标表名',
   `table_id` bigint(20) NOT NULL COMMENT '表的id',
   `table_category` text COLLATE utf8_unicode_ci NOT NULL COMMENT '类别信息',
-  `created_at` datetime NOT NULL COMMENT '创建时间'
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='删除记录表';
 
 -- --------------------------------------------------------
@@ -464,7 +987,7 @@ CREATE TABLE IF NOT EXISTS `oac_home_user` (
   `registered_at` datetime DEFAULT NULL COMMENT '注册时间',
   `logined_at` datetime DEFAULT NULL COMMENT '登录时间',
   `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='前台用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='前台用户表';
 
 --
 -- 转存表中的数据 `oac_home_user`
@@ -472,7 +995,11 @@ CREATE TABLE IF NOT EXISTS `oac_home_user` (
 
 INSERT INTO `oac_home_user` (`id`, `is_delete`, `code`, `type`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `ID_cards`, `province`, `city`, `county`, `weChat`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `md5`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
 (100, 1, '100100', 4, '10086110110', 0, NULL, 0, 'iloveyou', '$2y$13$LEdih.ohMLwZy7tcK3CAy.wWN1oK.Fyfn.zXnKNS2OZ3aIg27cn8e', NULL, '张三', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 0, '{"last":["127.0.0.1","2017-08-10 04:43:19"],"current":["127.0.0.1","2017-08-10 04:43:19"],"often":[],"haply":[],"once":{"127.0.0.1":[1,"2017-08-10 04:43:19"]}}', '127.0.0.1', NULL, '2017-08-09 21:58:33', '2017-08-10 04:43:19', '2017-08-10 04:43:19'),
-(102, 1, '100102', 4, '13656465564', 0, NULL, 0, 'boomsakala', '$2y$13$yItFA6C4WEKwPfI3F3/h0.nIRE0/.ADAWGvl0xBF9HKsTQ/PVp4N2', NULL, '李四', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 1, '{"last":["127.0.0.1","2017-08-11 22:05:26"],"current":["127.0.0.1","2017-08-11 23:55:53"],"often":[],"haply":["127.0.0.1"],"once":{"127.0.0.1":[11,"2017-08-11 23:55:53"]}}', '127.0.0.1', NULL, '2017-08-10 04:10:42', '2017-08-11 23:55:53', '2017-08-11 23:55:53');
+(102, 1, '100102', 4, '13656465564', 0, NULL, 0, 'boomsakala', '$2y$13$yItFA6C4WEKwPfI3F3/h0.nIRE0/.ADAWGvl0xBF9HKsTQ/PVp4N2', NULL, '李四', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 1, '{"last":["127.0.0.1","2017-08-11 22:05:26"],"current":["127.0.0.1","2017-08-11 23:55:53"],"often":[],"haply":["127.0.0.1"],"once":{"127.0.0.1":[11,"2017-08-11 23:55:53"]}}', '127.0.0.1', NULL, '2017-08-10 04:10:42', '2017-08-11 23:55:53', '2017-08-11 23:55:53'),
+(105, 1, '100105', 1, '13337338919', 0, NULL, 0, '13337338919', '$2y$13$qXrYFsvGzSptIY2tsaLsJOTT5ToS6lx9DujntPCNKrHGNXoTyqmfO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 0, '{"last":["116.24.83.50","2017-09-05 13:45:18"],"current":["116.25.251.117","2017-09-06 09:13:08"],"often":[],"haply":["116.24.83.50"],"once":{"116.25.250.70":[2,"2017-09-01 13:10:15"],"116.24.83.50":[6,"2017-09-05 13:45:18"],"116.25.251.117":[1,"2017-09-06 09:13:08"]}}', '116.25.250.70', NULL, '2017-09-01 13:01:07', '2017-09-06 09:13:08', '2017-09-06 09:13:08'),
+(106, 1, '100106', 1, '15602957370', 0, NULL, 0, '15602957370', '$2y$13$TSW8TJluibjYpfROvVAKCO0EJx2uDCcwCjaR08P5CNCCBhF4LeI5W', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, '6cf71f4d494269628376ffa20384fa13', '6cf71f4d494269628376ffa20384fa13', NULL, NULL, NULL, 1, '{"last":["113.116.157.125","2017-09-07 21:58:22"],"current":["183.14.30.161","2017-09-08 15:25:56"],"often":[],"haply":["183.14.29.38","183.14.30.161"],"once":{"183.14.31.97":[4,"2017-09-05 18:33:39"],"183.14.29.38":[9,"2017-09-06 11:38:50"],"113.87.89.240":[1,"2017-09-06 23:21:07"],"183.14.30.161":[6,"2017-09-08 15:25:56"],"112.97.63.99":[1,"2017-09-07 18:57:47"],"113.87.88.219":[3,"2017-09-07 21:49:10"],"113.116.157.125":[4,"2017-09-07 21:58:22"]}}', '183.14.31.97', NULL, '2017-09-05 17:22:58', '2017-09-08 15:25:56', '2017-09-08 15:25:56'),
+(107, 1, '100107', 1, '18575591760', 0, NULL, 0, '18575591760', '$2y$13$LgXsKGKsi48pJRzXZFdbmOp7mJkqrT3BzSZIt8mC/TdGEsLdCm0xi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, '4e7e8e75d64b3a2eea5a59e0cb1253bf', '4e7e8e75d64b3a2eea5a59e0cb1253bf', NULL, NULL, NULL, 0, '{"last":["127.0.0.1","2017-09-08 16:01:35"],"current":["183.14.30.161","2017-09-08 16:01:35"],"often":[],"haply":[],"once":{"183.14.30.161":[1,"2017-09-08 16:01:35"]}}', '183.14.30.161', NULL, '2017-09-08 15:55:07', '2017-09-08 16:01:35', '2017-09-08 16:01:35'),
+(108, 1, '100108', 1, '18823795203', 0, NULL, 0, '18823795203', '$2y$13$hBfgJihE3//5dsfjJi/A2eiXojaXhgTywyygvJj77m0IQT70IDcbG', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, '061aa5ea4d6debf22f118a6dafcb5c84', '061aa5ea4d6debf22f118a6dafcb5c84', NULL, NULL, NULL, 0, '{"last":["127.0.0.1","2017-09-08 16:24:55"],"current":["113.77.137.155","2017-09-08 16:24:55"],"often":[],"haply":[],"once":{"113.77.137.155":[1,"2017-09-08 16:24:55"]}}', '113.77.137.155', NULL, '2017-09-08 16:24:39', '2017-09-08 16:24:55', '2017-09-08 16:24:55');
 
 -- --------------------------------------------------------
 
@@ -516,8 +1043,8 @@ CREATE TABLE IF NOT EXISTS `oac_hot` (
   `order` int(11) unsigned NOT NULL DEFAULT '1' COMMENT '拖拽顺序',
   `app` tinyint(1) NOT NULL DEFAULT '2' COMMENT '应用;0=后台;1=前台;',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态;0=失效,1=预定,2=上架,3=下架;默认1;',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '修改时间'
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='推荐表';
 
 -- --------------------------------------------------------
@@ -527,14 +1054,16 @@ CREATE TABLE IF NOT EXISTS `oac_hot` (
 --
 
 CREATE TABLE IF NOT EXISTS `oac_images` (
-  `id` bigint(20) NOT NULL COMMENT '主键ID',
+  `id` bigint(20) unsigned NOT NULL COMMENT '主键ID',
+  `target_unique` varchar(32) NOT NULL COMMENT '目标识别索引',
   `target_id` bigint(20) NOT NULL COMMENT '目标索引',
   `type` tinyint(1) NOT NULL COMMENT '父级类型:1=车国;默认1;',
   `url` varchar(255) NOT NULL COMMENT '图片地址',
   `url_icon` varchar(255) DEFAULT NULL COMMENT '缩略图',
   `title` varchar(255) DEFAULT NULL COMMENT '图片广告标题',
-  `created_at` datetime DEFAULT NULL COMMENT '创建时间'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='图片表';
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='图片表';
 
 -- --------------------------------------------------------
 
@@ -552,7 +1081,7 @@ CREATE TABLE IF NOT EXISTS `oac_label` (
   `order` varchar(4) DEFAULT NULL COMMENT '排序',
   `description` varchar(255) DEFAULT NULL COMMENT '标签备注',
   `fieldName` varchar(32) DEFAULT NULL COMMENT '过滤字段',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='标签表';
 
@@ -573,8 +1102,8 @@ CREATE TABLE IF NOT EXISTS `oac_label_park` (
   `unique` varchar(32) DEFAULT NULL COMMENT '标识',
   `order` varchar(4) DEFAULT NULL COMMENT '排序',
   `description` varchar(255) NOT NULL COMMENT '详细描述',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '修改时间'
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='标签关系表';
 
 -- --------------------------------------------------------
@@ -597,7 +1126,78 @@ CREATE TABLE IF NOT EXISTS `oac_login_log` (
   `ip` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'IP',
   `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='登陆记录';
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='登陆记录';
+
+--
+-- 转存表中的数据 `oac_login_log`
+--
+
+INSERT INTO `oac_login_log` (`id`, `user_id`, `app`, `route`, `url`, `user_agent`, `user_agent_type`, `gets`, `posts`, `target`, `ip`, `created_at`, `updated_at`) VALUES
+(14, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', 1, '[]', '{"__token__":"6b99912ef9dfd00dea2b3bd631663a72","username":"username"}', '150.255.121.27', '1', '2017-08-26 03:03:06', '2017-08-26 03:03:06'),
+(15, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', 1, '[]', '{"__token__":"10bc2743af5332cd4be0fbfe80041c4e","username":"username"}', '150.255.121.27', '1', '2017-08-26 13:47:44', '2017-08-26 13:47:44'),
+(16, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', 1, '[]', '{"__token__":"9bdd692fea4fba226c6dc52f8befe86a","username":"username"}', '150.255.121.27', '1', '2017-08-26 13:48:27', '2017-08-26 13:48:27'),
+(17, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', 1, '[]', '{"__token__":"7c25cb501f3e88fa8753dc88164fa55d","username":"username"}', '150.255.121.27', '1', '2017-08-26 17:41:17', '2017-08-26 17:41:17'),
+(18, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', 1, '[]', '{"__token__":"c12c7dd825fbb12874cadb27b82d9f1e","username":"username"}', '150.255.121.27', '1', '2017-08-26 23:50:07', '2017-08-26 23:50:07'),
+(19, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', 1, '[]', '{"__token__":"edd2c8afce08a9d10463da0c094c4d0a","username":"username"}', '150.255.121.27', '1', '2017-08-27 01:59:52', '2017-08-27 01:59:52'),
+(20, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', 1, '[]', '{"__token__":"41cfb13bbc2a0e3ec98b389a0ba4c0c6","username":"username"}', '150.255.121.27', '1', '2017-08-27 23:57:15', '2017-08-27 23:57:15'),
+(21, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"__token__":"afd9b72ada97708749851bf2f9881997","username":"username"}', '116.25.248.15', '1', '2017-08-28 08:59:14', '2017-08-28 08:59:14'),
+(22, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36', 1, '[]', '{"__token__":"f59f5260e05899164e41541c3f84ce0d","username":"username"}', '220.174.120.240', '1', '2017-08-28 09:00:58', '2017-08-28 09:00:58'),
+(23, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8', 1, '[]', '{"__token__":"62af8e2f4e863a6db08e4c1d2d58878e","username":"username"}', '14.156.38.163', '1', '2017-08-28 09:02:40', '2017-08-28 09:02:40'),
+(24, 103, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.25.250.70', '1', '2017-09-01 12:50:45', '2017-09-01 12:50:45'),
+(25, 103, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.25.250.70', '1', '2017-09-01 12:52:31', '2017-09-01 12:52:31'),
+(26, 103, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.25.250.70', '1', '2017-09-01 12:53:59', '2017-09-01 12:53:59'),
+(27, 103, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.25.250.70', '1', '2017-09-01 12:54:41', '2017-09-01 12:54:41'),
+(28, 103, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.25.250.70', '1', '2017-09-01 12:55:00', '2017-09-01 12:55:00'),
+(29, 103, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.25.250.70', '1', '2017-09-01 12:55:09', '2017-09-01 12:55:09'),
+(30, 105, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.25.250.70', '1', '2017-09-01 13:01:46', '2017-09-01 13:01:46'),
+(31, 105, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.25.250.70', '1', '2017-09-01 13:10:16', '2017-09-01 13:10:16'),
+(32, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8', 1, '[]', '{"__token__":"fb1c49700d75be2ccf15a98df286d313","username":"username"}', '183.23.79.88', '1', '2017-09-04 10:23:07', '2017-09-04 10:23:07'),
+(33, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36', 1, '[]', '{"__token__":"1c0297576c0ec0f104900e5102b9cff0","username":"username"}', '223.199.240.98', '1', '2017-09-04 11:07:10', '2017-09-04 11:07:10'),
+(34, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8', 1, '[]', '{"__token__":"b23e654048860cd85811c697a1af1d78","username":"username"}', '183.23.79.88', '1', '2017-09-04 11:12:21', '2017-09-04 11:12:21'),
+(35, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', 1, '[]', '{"__token__":"06a9c9a5dc0d652625afda9a903f9ad0","username":"username"}', '150.255.121.27', '1', '2017-09-05 00:37:21', '2017-09-05 00:37:21'),
+(36, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', 1, '[]', '{"__token__":"8f463fbae649961b7401b194fd30b83d","username":"username"}', '150.255.121.27', '1', '2017-09-05 00:37:59', '2017-09-05 00:37:59'),
+(37, 105, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.24.83.50', '1', '2017-09-05 11:06:21', '2017-09-05 11:06:21'),
+(38, 105, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.24.83.50', '1', '2017-09-05 11:08:16', '2017-09-05 11:08:16'),
+(39, 105, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.24.83.50', '1', '2017-09-05 11:24:11', '2017-09-05 11:24:11'),
+(40, 105, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.24.83.50', '1', '2017-09-05 11:24:40', '2017-09-05 11:24:40'),
+(41, 105, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.24.83.50', '1', '2017-09-05 11:35:42', '2017-09-05 11:35:42'),
+(42, 105, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.24.83.50', '1', '2017-09-05 13:45:19', '2017-09-05 13:45:19'),
+(43, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8', 1, '[]', '{"__token__":"77583ab92b8abdd6fea53eadeb8e7fe3","username":"username"}', '183.41.18.13', '1', '2017-09-05 15:22:39', '2017-09-05 15:22:39'),
+(44, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.31.97', '1', '2017-09-05 17:23:39', '2017-09-05 17:23:39'),
+(45, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.31.97', '1', '2017-09-05 17:38:31', '2017-09-05 17:38:31'),
+(46, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.31.97', '1', '2017-09-05 17:46:03', '2017-09-05 17:46:03'),
+(47, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.31.97', '1', '2017-09-05 18:33:40', '2017-09-05 18:33:40'),
+(48, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36', 1, '[]', '{"__token__":"a6d6bcc8aa0aa6e65f8050827c245bce","username":"username"}', '119.41.58.33', '1', '2017-09-06 08:43:03', '2017-09-06 08:43:03'),
+(49, 105, NULL, 'api/user/login', '/user/login', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36', 1, '[]', '{"username":"13337338919"}', '116.25.251.117', '1', '2017-09-06 09:13:09', '2017-09-06 09:13:09'),
+(50, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.29.38', '1', '2017-09-06 11:06:18', '2017-09-06 11:06:18'),
+(51, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.29.38', '1', '2017-09-06 11:24:07', '2017-09-06 11:24:07'),
+(52, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.29.38', '1', '2017-09-06 11:24:26', '2017-09-06 11:24:26'),
+(53, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.29.38', '1', '2017-09-06 11:25:36', '2017-09-06 11:25:36'),
+(54, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.29.38', '1', '2017-09-06 11:27:01', '2017-09-06 11:27:01'),
+(55, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.29.38', '1', '2017-09-06 11:28:44', '2017-09-06 11:28:44'),
+(56, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.29.38', '1', '2017-09-06 11:31:44', '2017-09-06 11:31:44'),
+(57, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.29.38', '1', '2017-09-06 11:33:17', '2017-09-06 11:33:17'),
+(58, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.29.38', '1', '2017-09-06 11:38:51', '2017-09-06 11:38:51'),
+(59, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8', 1, '[]', '{"__token__":"09bd8f47d8c11536d6ff4b0eec728ceb","username":"username"}', '113.77.136.230', '1', '2017-09-06 23:05:57', '2017-09-06 23:05:57'),
+(60, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '113.87.89.240', '1', '2017-09-06 23:21:08', '2017-09-06 23:21:08'),
+(61, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.30.161', '1', '2017-09-07 18:49:37', '2017-09-07 18:49:37'),
+(62, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.30.161', '1', '2017-09-07 18:49:42', '2017-09-07 18:49:42'),
+(63, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.30.161', '1', '2017-09-07 18:49:45', '2017-09-07 18:49:45'),
+(64, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.30.161', '1', '2017-09-07 18:50:44', '2017-09-07 18:50:44'),
+(65, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '112.97.63.99', '1', '2017-09-07 18:57:48', '2017-09-07 18:57:48'),
+(66, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.30.161', '1', '2017-09-07 19:39:35', '2017-09-07 19:39:35'),
+(67, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '113.87.88.219', '1', '2017-09-07 21:47:27', '2017-09-07 21:47:27'),
+(68, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '113.87.88.219', '1', '2017-09-07 21:47:45', '2017-09-07 21:47:45'),
+(69, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '113.87.88.219', '1', '2017-09-07 21:49:11', '2017-09-07 21:49:11'),
+(70, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '113.116.157.125', '1', '2017-09-07 21:57:47', '2017-09-07 21:57:47'),
+(71, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '113.116.157.125', '1', '2017-09-07 21:58:05', '2017-09-07 21:58:05'),
+(72, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '113.116.157.125', '1', '2017-09-07 21:58:15', '2017-09-07 21:58:15'),
+(73, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '113.116.157.125', '1', '2017-09-07 21:58:22', '2017-09-07 21:58:22'),
+(74, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8', 1, '[]', '{"__token__":"d8b08cd9c73b69a971e1ee3ce08754b6","username":"username"}', '183.23.79.51', '1', '2017-09-08 09:29:34', '2017-09-08 09:29:34'),
+(75, 106, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"15602957370"}', '183.14.30.161', '1', '2017-09-08 15:25:57', '2017-09-08 15:25:57'),
+(76, 107, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (com.yinji.singer; build:1.0; iOS 10.3.3) Alamofire/4.4.0', 1, '[]', '{"username":"18575591760"}', '183.14.30.161', '1', '2017-09-08 16:01:36', '2017-09-08 16:01:36'),
+(77, 108, NULL, 'api/user/login', '/user/login', 'GotTalentCar/1.0 (pboer.store.disstore; build:1.0; iOS 10.1.0) Alamofire/4.4.0', 1, '[]', '{"username":"18823795203"}', '113.77.137.155', '1', '2017-09-08 16:24:56', '2017-09-08 16:24:56'),
+(78, 100, NULL, 'back/login/login', '/login/login', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8', 1, '[]', '{"__token__":"ff28cfdb6ab242fa0ec3cb5a8a6d56d9","username":"username"}', '113.77.137.155', '1', '2017-09-08 17:00:04', '2017-09-08 17:00:04');
 
 -- --------------------------------------------------------
 
@@ -620,75 +1220,77 @@ CREATE TABLE IF NOT EXISTS `oac_menu` (
 -- 转存表中的数据 `oac_menu`
 --
 
-INSERT INTO `oac_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`) VALUES
-(1, '控制面板', NULL, '/back/index/home', 0, 1, '{"li_class":"","a_class":"Index-Home","i_class":"fa fa-circle-o"}'),
-(2, '业务服务', NULL, NULL, 1, 2, '{"li_class":"","a_class":"User","i_class":"fa fa-circle-o"}'),
-(3, '个人信息', NULL, NULL, 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(4, '信息录入', NULL, NULL, 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(5, '车源管理', NULL, NULL, 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(6, '用户管理', NULL, NULL, 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(7, '求购管理', NULL, NULL, 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(8, '交易管理', NULL, NULL, 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(9, '员工管理', NULL, NULL, 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(10, '广告管理', NULL, NULL, 9, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(12, '网站维护', NULL, NULL, 11, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(13, '系统配置', NULL, NULL, 12, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(14, '其他管理', NULL, NULL, 13, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(15, '常见问题', NULL, '/back/index/faq', 14, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(16, '数据统计', NULL, '/back/data/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(31, '跟进服务', 2, '/back/services/onServices', 1, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(35, '服务清单', 2, '/back/services/index', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(50, '我的信息', 3, '/back/user/view', 0, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(51, '修改密码', 3, '/back/user/resetPassword', 1, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(52, '日志信息', 3, '/back/user/log', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(90, '我的车国', 5, '/back/house/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(91, '新车录入', 5, '/back/house/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(92, '二手车录入', 5, '/back/hand_house/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(97, '车源清单', 5, '/back/house/super', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(98, '清单', 5, '/back/build/index', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(110, '我的用户', 6, '/back/client/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(111, '用户录入', 6, '/back/client/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(130, '我的求购', 7, '/back/contact/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(131, '求购抢接', 7, '/back/contact/get', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(132, '求购清单', 7, '/back/contact/super', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(150, '我的交易', 8, '/back/deal/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(151, '交易清单', 8, '/back/deal/super', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(152, '交易录入', 8, '/back/deal/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(170, '管理员清单', 9, '/back/user/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(171, '添加管理员', 9, '/back/user/register', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(172, '权限管理', 9, '/back/auth/index', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(173, '浏览管理日志', 9, '/back/client/log', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(174, '浏览删除日志', 9, '/back/client/logDelete', 4, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(175, '客服推荐', 9, '/back/service/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(176, '部门管理', 9, '/back/department/index', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(230, '企业信息', 12, '/back/maintain/company', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(231, '楼市资讯', 12, '/back/hot/index', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(232, '新车资讯', 12, '/back/hot/house', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(233, '二手车资讯', 12, '/back/hot/handHouse', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(234, '资讯', 12, '/back/hot/build', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(236, '用户反馈', 12, '/back/opinion/index', 6, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(237, '广告清单', 12, '/back/slider/index', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(238, '广告录入', 12, '/back/slider/create', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(239, '网站主题', 12, '/back/maintain/theme', 9, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(240, '生成页面', 12, '/back/maintain/page', 10, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(241, '数据库管理', 12, '/back/maintain/database', 11, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(242, '清理缓存', 12, '/back/maintain/cache', 12, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(243, '通知信息', 12, '/back/notice/index', 13, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(250, '基本设置', 13, '/back/config/index', 0, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(251, '站点管理', 13, '/back/settings/site', 1, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(252, '安全设置', 13, '/back/settings/safety', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(253, '短信接口设置', 13, '/back/settings/message', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(254, '推送接口设置', 13, '/back/settings/push', 4, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(255, '邮箱设置', 13, '/back/settings/email', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(256, '系统日志管理', 13, '/back/settings/log', 6, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(257, '防采集管理', 13, '/back/settings/defend', 7, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(270, '基本配置', 14, '/back/config/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(271, '日记管理', 14, '/back/log/index', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(274, '上传管理', 14, '/back/upload/index', 4, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(275, '下载管理', 14, '/back/download/index', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(277, '用户清单', 14, '/back/home_user/index', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(278, '标签清单', 14, '/back/label/index', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(279, '类型清单', 14, '/back/type/index', 9, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}');
+INSERT INTO `oac_menu` (`id`, `name`, `is_delete`, `parent`, `route`, `order`, `type`, `data`) VALUES
+(1, '控制面板', 1, NULL, '/back/index/home', 1, 1, '{"li_class":"","a_class":"Index-Home","i_class":"fa fa-circle-o"}'),
+(2, '业务服务', 1, NULL, NULL, 1, 2, '{"li_class":"","a_class":"User","i_class":"fa fa-circle-o"}'),
+(3, '个人信息', 1, NULL, NULL, 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(4, '信息录入', 1, NULL, NULL, 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(5, '车源管理', 1, NULL, NULL, 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(6, '用户管理', 1, NULL, NULL, 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(7, '求购管理', 1, NULL, NULL, 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(8, '交易管理', 1, NULL, NULL, 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(9, '员工管理', 1, NULL, NULL, 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(10, '广告管理', 1, NULL, NULL, 9, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(12, '网站维护', 1, NULL, NULL, 11, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(13, '系统配置', 1, NULL, NULL, 12, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(14, '其他管理', 1, NULL, NULL, 13, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(15, '常见问题', 1, NULL, '/back/index/faq', 14, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(16, '数据统计', 1, NULL, '/back/data/index', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(17, '退出', 1, NULL, '/back/login/logout', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-sign-out","attr":{"target":"_blank"}}'),
+(31, '跟进服务', 1, 2, '/back/services/onServices', 1, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(35, '服务清单', 1, 2, '/back/services/index', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(50, '我的信息', 1, 3, '/back/user/view', 0, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(51, '修改密码', 1, 3, '/back/user/resetPassword', 1, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(52, '日志信息', 1, 3, '/back/user/log', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(90, '我的车国', 1, 5, '/back/house/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(91, '新车录入', 1, 5, '/back/house/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(92, '二手车录入', 1, 5, '/back/hand_house/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(97, '车源清单', 1, 5, '/back/house/super', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(98, '汽车类目', 1, 5, '/back/cate/index', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(99, '添加类目', 1, 5, '/back/cate/create', 9, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(110, '我的用户', 1, 6, '/back/client/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(111, '用户录入', 1, 6, '/back/client/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(130, '我的求购', 1, 7, '/back/contact/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(131, '求购抢接', 1, 7, '/back/contact/get', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(132, '求购清单', 1, 7, '/back/contact/super', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(150, '我的交易', 1, 8, '/back/deal/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(151, '交易清单', 1, 8, '/back/deal/super', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(152, '交易录入', 1, 8, '/back/deal/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(170, '管理员清单', 1, 9, '/back/user/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(171, '添加管理员', 1, 9, '/back/user/register', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(172, '权限管理', 1, 9, '/back/auth/index', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(173, '浏览管理日志', 1, 9, '/back/client/log', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(174, '浏览删除日志', 1, 9, '/back/client/logDelete', 4, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(175, '客服推荐', 1, 9, '/back/service/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(176, '部门管理', 1, 9, '/back/department/index', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(230, '企业信息', 1, 12, '/back/maintain/company', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(231, '楼市资讯', 1, 12, '/back/hot/index', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(232, '新车资讯', 1, 12, '/back/hot/house', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(233, '二手车资讯', 1, 12, '/back/hot/handHouse', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(234, '楼盘资讯', 1, 12, '/back/hot/build', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(236, '用户反馈', 1, 12, '/back/opinion/index', 6, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(237, '广告清单', 1, 12, '/back/slider/index', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(238, '广告录入', 1, 12, '/back/slider/create', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(239, '网站主题', 1, 12, '/back/maintain/theme', 9, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(240, '生成页面', 1, 12, '/back/maintain/page', 10, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(241, '数据库管理', 1, 12, '/back/maintain/database', 11, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(242, '清理缓存', 1, 12, '/back/maintain/cache', 12, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(243, '通知信息', 1, 12, '/back/notice/index', 13, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(250, '基本设置', 1, 13, '/back/config/index', 0, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(251, '站点管理', 1, 13, '/back/settings/site', 1, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(252, '安全设置', 1, 13, '/back/settings/safety', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(253, '短信接口设置', 1, 13, '/back/settings/message', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(254, '推送接口设置', 1, 13, '/back/settings/push', 4, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(255, '邮箱设置', 1, 13, '/back/settings/email', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(256, '系统日志管理', 1, 13, '/back/settings/log', 6, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(257, '防采集管理', 1, 13, '/back/settings/defend', 7, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(270, '基本配置', 1, 14, '/back/config/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(271, '日记管理', 1, 14, '/back/log/index', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(274, '上传管理', 1, 14, '/back/upload/index', 4, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(275, '下载管理', 1, 14, '/back/download/index', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(277, '用户清单', 1, 14, '/back/home_user/index', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(278, '标签清单', 1, 14, '/back/label/index', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(279, '类型清单', 1, 14, '/back/type/index', 9, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}');
 
 -- --------------------------------------------------------
 
@@ -705,10 +1307,10 @@ CREATE TABLE IF NOT EXISTS `oac_notice` (
   `is_passed` tinyint(1) unsigned DEFAULT '1' COMMENT '状态;0=无效;1=待审核,2=已通过,3=未通过,4=保存,5=已推送;',
   `order` bigint(20) NOT NULL COMMENT '顺序',
   `notes` longtext COLLATE utf8_unicode_ci COMMENT '备注',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '更新时间',
-  `start_at` datetime NOT NULL COMMENT '开始时间',
-  `end_at` datetime NOT NULL COMMENT '截止时间'
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间',
+  `start_at` datetime DEFAULT NULL COMMENT '开始时间',
+  `end_at` datetime DEFAULT NULL COMMENT '截止时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='通知信息表';
 
 -- --------------------------------------------------------
@@ -726,7 +1328,7 @@ CREATE TABLE IF NOT EXISTS `oac_notice_read` (
   `readed` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否阅读; 0=未读 ,1=已读',
   `notes` longtext COMMENT '备注',
   `reback` longtext COMMENT '回馈',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='通知信息审阅表';
 
@@ -744,8 +1346,8 @@ CREATE TABLE IF NOT EXISTS `oac_on_links` (
   `logo` varchar(255) NOT NULL DEFAULT '' COMMENT 'logo',
   `url` varchar(255) NOT NULL DEFAULT '' COMMENT '链接',
   `type` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '类型',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime NOT NULL COMMENT '更新时间',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间',
   `sort` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='友情链接表';
@@ -766,7 +1368,7 @@ CREATE TABLE IF NOT EXISTS `oac_opinion` (
   `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '联系人',
   `contact` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '联系方式',
   `readed` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否阅读;0=未读,1=已读',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='意见表';
 
@@ -785,7 +1387,7 @@ CREATE TABLE IF NOT EXISTS `oac_opinion_read` (
   `content` longtext COMMENT '意见内容',
   `notes` longtext COMMENT '备注',
   `reback` longtext COMMENT '回馈',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='意见审阅表';
 
@@ -1196,7 +1798,7 @@ INSERT INTO `oac_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `nam
 (384, '110107', '石景山区', 33, 0, 0, 'Shijingshan Qu', 'SJS', NULL),
 (385, '110108', '海淀区', 33, 0, 0, 'Haidian Qu', 'HDN', NULL),
 (386, '110109', '门头沟区', 33, 0, 0, 'Mentougou Qu', 'MTG', NULL),
-(387, '110111', '车山区', 33, 0, 0, 'Fangshan Qu', 'FSQ', NULL),
+(387, '110111', '房山区', 33, 0, 0, 'Fangshan Qu', 'FSQ', NULL),
 (388, '110112', '通州区', 33, 0, 0, 'Tongzhou Qu', 'TZQ', '北京市'),
 (389, '110113', '顺义区', 33, 0, 0, 'Shunyi Qu', 'SYI', NULL),
 (390, '110114', '昌平区', 33, 0, 0, 'Changping Qu', 'CP Q', NULL),
@@ -1666,7 +2268,7 @@ INSERT INTO `oac_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `nam
 (855, '210212', '旅顺口区', 72, 0, 0, 'Lvshunkou Qu ', 'LSK', NULL),
 (856, '210213', '金州区', 72, 0, 0, 'Jinzhou Qu', 'JZH', NULL),
 (857, '210224', '长海县', 72, 0, 0, 'Changhai Xian', 'CHX', NULL),
-(858, '210281', '瓦车店市', 72, 0, 0, 'Wafangdian Shi', 'WFD', NULL),
+(858, '210281', '瓦房店市', 72, 0, 0, 'Wafangdian Shi', 'WFD', NULL),
 (859, '210282', '普兰店市', 72, 0, 0, 'Pulandian Shi', 'PLD', NULL),
 (860, '210283', '庄河市', 72, 0, 0, 'Zhuanghe Shi', 'ZHH', NULL),
 (861, '210301', '市辖区', 73, 0, 0, 'Shixiaqu', '2', NULL),
@@ -1831,7 +2433,7 @@ INSERT INTO `oac_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `nam
 (1020, '230103', '南岗区', 94, 0, 0, 'Nangang Qu', 'NGQ', NULL),
 (1021, '230104', '道外区', 94, 0, 0, 'Daowai Qu', 'DWQ', NULL),
 (1022, '230110', '香坊区', 94, 0, 0, 'Xiangfang Qu', '2', NULL),
-(1024, '230108', '平车区', 94, 0, 0, 'Pingfang Qu', 'PFQ', NULL),
+(1024, '230108', '平房区', 94, 0, 0, 'Pingfang Qu', 'PFQ', NULL),
 (1025, '230109', '松北区', 94, 0, 0, 'Songbei Qu', '2', NULL),
 (1026, '230111', '呼兰区', 94, 0, 0, 'Hulan Qu', '2', NULL),
 (1027, '230123', '依兰县', 94, 0, 0, 'Yilan Xian', 'YLH', NULL),
@@ -2889,7 +3491,7 @@ INSERT INTO `oac_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `nam
 (2083, '420322', '郧西县', 206, 0, 0, 'Yunxi Xian', 'YNX', NULL),
 (2084, '420323', '竹山县', 206, 0, 0, 'Zhushan Xian', 'ZHS', NULL),
 (2085, '420324', '竹溪县', 206, 0, 0, 'Zhuxi Xian', 'ZXX', NULL),
-(2086, '420325', '车县', 206, 0, 0, 'Fang Xian', 'FAG', NULL),
+(2086, '420325', '房县', 206, 0, 0, 'Fang Xian', 'FAG', NULL),
 (2087, '420381', '丹江口市', 206, 0, 0, 'Danjiangkou Shi', 'DJK', NULL),
 (2088, '420501', '市辖区', 207, 0, 0, 'Shixiaqu', '2', NULL),
 (2089, '420502', '西陵区', 207, 0, 0, 'Xiling Qu', 'XLQ', NULL),
@@ -4372,6 +4974,21 @@ INSERT INTO `oac_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `nam
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `oac_server`
+--
+
+CREATE TABLE IF NOT EXISTS `oac_server` (
+  `id` bigint(20) NOT NULL COMMENT 'ID',
+  `is_delete` tinyint(1) DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
+  `home_use_id` bigint(20) NOT NULL COMMENT '用户表ID',
+  `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户服务表';
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `oac_session`
 --
 
@@ -4394,7 +5011,7 @@ CREATE TABLE IF NOT EXISTS `oac_slider` (
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `is_passed` tinyint(1) NOT NULL DEFAULT '2' COMMENT '审核;1=未通过,2=审核中,3=已通过;默认2',
   `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:1=默认,2=首页,3=车国;默认1;',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:1=默认,2=首页,;默认1;',
   `url` varchar(255) DEFAULT NULL COMMENT '图片地址',
   `url_icon` varchar(150) DEFAULT NULL COMMENT '略缩图',
   `target` varchar(255) DEFAULT NULL COMMENT '跳转地址',
@@ -4404,11 +5021,22 @@ CREATE TABLE IF NOT EXISTS `oac_slider` (
   `end_at` varchar(20) DEFAULT NULL COMMENT '结束时间',
   `order` int(11) unsigned NOT NULL DEFAULT '1' COMMENT '拖拽顺序',
   `app` tinyint(1) NOT NULL DEFAULT '1' COMMENT '应用;1=后台;2=前台',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态;0=失效,1=预定,1=上架,2=下架;默认1;',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态;0=失效,1=预定,2=上架,3=下架;默认1;',
   `isDefault` tinyint(1) DEFAULT '2' COMMENT '是否是默认图片',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='广告表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='广告表';
+
+--
+-- 转存表中的数据 `oac_slider`
+--
+
+INSERT INTO `oac_slider` (`id`, `is_delete`, `is_passed`, `back_user_id`, `type`, `url`, `url_icon`, `target`, `title`, `description`, `start_at`, `end_at`, `order`, `app`, `status`, `isDefault`, `created_at`, `updated_at`) VALUES
+(1, 1, 3, 100, 1, '/static/uploads/slider/default/1/a66f3d3107c2cdbf027bc1335c4f3686.jpg', '/static/uploads/slider/default/1/a66f3d3107c2cdbf027bc1335c4f3686_icon.jpg', '/index/index', 'BMW', '全新BMW系列', '', '', 1, 1, 2, 2, '2017-09-04 21:31:34', NULL),
+(2, 1, 3, 100, 1, '/static/uploads/slider/default/2/2acfe55f7b857cd5331d198ca53f90f1.jpg', '/static/uploads/slider/default/2/2acfe55f7b857cd5331d198ca53f90f1_icon.jpg', '/index/index', 'BMW M3', '全新 BMW M3', '', '', 1, 1, 2, 2, '2017-09-05 00:21:43', '2017-09-05 00:21:43'),
+(3, 1, 3, 100, 1, '/static/uploads/slider/default/3/025b6e5d2b6730df0dccb9ebea905ebe.jpg', '/static/uploads/slider/default/3/025b6e5d2b6730df0dccb9ebea905ebe_icon.jpg', '', '智能', '', '', '', 1, 1, 2, 2, '2017-09-05 00:24:03', NULL),
+(4, 1, 3, 100, 1, '/static/uploads/slider/default/4/2015b165b87666b64826c45c096f295c.jpg', '/static/uploads/slider/default/4/2015b165b87666b64826c45c096f295c_icon.jpg', '', '绿野', '', '', '', 1, 1, 2, 2, '2017-09-05 00:24:28', NULL),
+(5, 1, 3, 100, 1, '/static/uploads/slider/default/5/b700b4eb073017c1b8c6b92f0f9c4db8.jpg', '/static/uploads/slider/default/5/b700b4eb073017c1b8c6b92f0f9c4db8_icon.jpg', '', '', '', '', '', 1, 1, 2, 1, '2017-09-05 00:29:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -4425,10 +5053,9 @@ CREATE TABLE IF NOT EXISTS `oac_type` (
   `unique` varchar(32) DEFAULT NULL COMMENT '标识',
   `order` varchar(4) DEFAULT NULL COMMENT '排序',
   `description` varchar(255) DEFAULT NULL COMMENT '类型备注',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '修改时间'
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='类型表';
-
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='类型表';
 
 -- --------------------------------------------------------
 
@@ -4447,8 +5074,8 @@ CREATE TABLE IF NOT EXISTS `oac_type_park` (
   `unique` varchar(32) DEFAULT NULL COMMENT '标识',
   `order` varchar(4) DEFAULT NULL COMMENT '排序',
   `description` varchar(255) NOT NULL COMMENT '详细描述',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '修改时间'
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='类型关系表';
 
 -- --------------------------------------------------------
@@ -4470,8 +5097,8 @@ CREATE TABLE IF NOT EXISTS `oac_upload` (
   `sha1` char(40) DEFAULT '' COMMENT '文件sha1编码',
   `location` varchar(15) NOT NULL DEFAULT '' COMMENT '文件存储位置',
   `download` bigint(20) NOT NULL DEFAULT '0' COMMENT '下载次数',
-  `created_at` datetime NOT NULL COMMENT '上传时间',
-  `updated_at` datetime NOT NULL COMMENT '修改时间',
+  `created_at` datetime DEFAULT NULL COMMENT '上传时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '修改时间',
   `sort` bigint(20) NOT NULL DEFAULT '0' COMMENT '排序',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文件上传表';
@@ -4487,8 +5114,8 @@ CREATE TABLE IF NOT EXISTS `oac_walk` (
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `home_user_id` bigint(20) NOT NULL COMMENT '用户表ID',
   `on_server` tinyint(1) NOT NULL DEFAULT '1' COMMENT '跟进;0=未跟进,1=已跟进;默认1;',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '修改时间'
+  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户跟进表';
 
 --
@@ -4549,12 +5176,60 @@ ALTER TABLE `oac_ban`
   ADD KEY `oac_back_ban_assignment_ibfk_2` (`back_user_id`);
 
 --
--- Indexes for table `oac_server`
+-- Indexes for table `oac_brand`
 --
-ALTER TABLE `oac_server`
+ALTER TABLE `oac_brand`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oac_car`
+--
+ALTER TABLE `oac_car`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `back_user_id` (`back_user_id`),
-  ADD KEY `home_user_id` (`home_use_id`) USING BTREE;
+  ADD KEY `cate_id` (`cate_id`);
+
+--
+-- Indexes for table `oac_car_prop`
+--
+ALTER TABLE `oac_car_prop`
+  ADD KEY `car_id` (`car_id`),
+  ADD KEY `cate_prop_value_id` (`cate_prop_value_id`);
+
+--
+-- Indexes for table `oac_car_sell`
+--
+ALTER TABLE `oac_car_sell`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cate_prop_value_id` (`cate_prop_value_id`),
+  ADD KEY `cate_prop_id` (`cate_prop_id`);
+
+--
+-- Indexes for table `oac_car_sku`
+--
+ALTER TABLE `oac_car_sku`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `car_id` (`car_id`);
+
+--
+-- Indexes for table `oac_cate`
+--
+ALTER TABLE `oac_cate`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `unique_id` (`unique_id`);
+
+--
+-- Indexes for table `oac_cate_prop`
+--
+ALTER TABLE `oac_cate_prop`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cate_id` (`cate_id`);
+
+--
+-- Indexes for table `oac_cate_prop_value`
+--
+ALTER TABLE `oac_cate_prop_value`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cate_prop_id` (`cate_prop_id`);
 
 --
 -- Indexes for table `oac_config`
@@ -4635,7 +5310,8 @@ ALTER TABLE `oac_hot`
 --
 ALTER TABLE `oac_images`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `target` (`target_id`,`type`);
+  ADD KEY `target` (`target_id`,`type`),
+  ADD KEY `target_unique` (`target_unique`);
 
 --
 -- Indexes for table `oac_label`
@@ -4711,6 +5387,14 @@ ALTER TABLE `oac_region`
   ADD KEY `level` (`level`);
 
 --
+-- Indexes for table `oac_server`
+--
+ALTER TABLE `oac_server`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `back_user_id` (`back_user_id`),
+  ADD KEY `home_user_id` (`home_use_id`) USING BTREE;
+
+--
 -- Indexes for table `oac_session`
 --
 ALTER TABLE `oac_session`
@@ -4766,10 +5450,40 @@ ALTER TABLE `oac_back_user`
 ALTER TABLE `oac_back_user_log`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID';
 --
--- AUTO_INCREMENT for table `oac_server`
+-- AUTO_INCREMENT for table `oac_brand`
 --
-ALTER TABLE `oac_server`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+ALTER TABLE `oac_brand`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=186;
+--
+-- AUTO_INCREMENT for table `oac_car`
+--
+ALTER TABLE `oac_car`
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '车辆ID';
+--
+-- AUTO_INCREMENT for table `oac_car_sell`
+--
+ALTER TABLE `oac_car_sell`
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '销售属性ID';
+--
+-- AUTO_INCREMENT for table `oac_car_sku`
+--
+ALTER TABLE `oac_car_sku`
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID';
+--
+-- AUTO_INCREMENT for table `oac_cate`
+--
+ALTER TABLE `oac_cate`
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '类目ID',AUTO_INCREMENT=191;
+--
+-- AUTO_INCREMENT for table `oac_cate_prop`
+--
+ALTER TABLE `oac_cate_prop`
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '特征量ID';
+--
+-- AUTO_INCREMENT for table `oac_cate_prop_value`
+--
+ALTER TABLE `oac_cate_prop_value`
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '特征值ID';
 --
 -- AUTO_INCREMENT for table `oac_config`
 --
@@ -4779,7 +5493,7 @@ ALTER TABLE `oac_config`
 -- AUTO_INCREMENT for table `oac_contact`
 --
 ALTER TABLE `oac_contact`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
 -- AUTO_INCREMENT for table `oac_contact_read`
 --
@@ -4809,7 +5523,7 @@ ALTER TABLE `oac_download`
 -- AUTO_INCREMENT for table `oac_home_user`
 --
 ALTER TABLE `oac_home_user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID',AUTO_INCREMENT=103;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID',AUTO_INCREMENT=109;
 --
 -- AUTO_INCREMENT for table `oac_home_user_log`
 --
@@ -4824,7 +5538,7 @@ ALTER TABLE `oac_hot`
 -- AUTO_INCREMENT for table `oac_images`
 --
 ALTER TABLE `oac_images`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID';
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID';
 --
 -- AUTO_INCREMENT for table `oac_label`
 --
@@ -4839,7 +5553,7 @@ ALTER TABLE `oac_label_park`
 -- AUTO_INCREMENT for table `oac_login_log`
 --
 ALTER TABLE `oac_login_log`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID',AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID',AUTO_INCREMENT=79;
 --
 -- AUTO_INCREMENT for table `oac_menu`
 --
@@ -4876,15 +5590,20 @@ ALTER TABLE `oac_opinion_read`
 ALTER TABLE `oac_region`
   MODIFY `id` double NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5029;
 --
+-- AUTO_INCREMENT for table `oac_server`
+--
+ALTER TABLE `oac_server`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+--
 -- AUTO_INCREMENT for table `oac_slider`
 --
 ALTER TABLE `oac_slider`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `oac_type`
 --
 ALTER TABLE `oac_type`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
 -- AUTO_INCREMENT for table `oac_type_park`
 --
@@ -4938,11 +5657,42 @@ ALTER TABLE `oac_ban`
   ADD CONSTRAINT `oac_ban_ibfk_2` FOREIGN KEY (`back_user_id`) REFERENCES `oac_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `oac_server`
+-- 限制表 `oac_car`
 --
-ALTER TABLE `oac_server`
-  ADD CONSTRAINT `oac_server_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `oac_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `oac_server_ibfk_2` FOREIGN KEY (`home_use_id`) REFERENCES `oac_home_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `oac_car`
+  ADD CONSTRAINT `oac_car_ibfk_1` FOREIGN KEY (`cate_id`) REFERENCES `oac_cate` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- 限制表 `oac_car_prop`
+--
+ALTER TABLE `oac_car_prop`
+  ADD CONSTRAINT `oac_car_prop_ibfk_1` FOREIGN KEY (`car_id`) REFERENCES `oac_car` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `oac_car_prop_ibfk_2` FOREIGN KEY (`cate_prop_value_id`) REFERENCES `oac_cate_prop_value` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- 限制表 `oac_car_sell`
+--
+ALTER TABLE `oac_car_sell`
+  ADD CONSTRAINT `oac_car_sell_ibfk_1` FOREIGN KEY (`cate_prop_value_id`) REFERENCES `oac_cate_prop_value` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `oac_car_sell_ibfk_2` FOREIGN KEY (`cate_prop_id`) REFERENCES `oac_cate_prop` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- 限制表 `oac_car_sku`
+--
+ALTER TABLE `oac_car_sku`
+  ADD CONSTRAINT `oac_car_sku_ibfk_1` FOREIGN KEY (`car_id`) REFERENCES `oac_car` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- 限制表 `oac_cate_prop`
+--
+ALTER TABLE `oac_cate_prop`
+  ADD CONSTRAINT `oac_cate_prop_ibfk_1` FOREIGN KEY (`cate_id`) REFERENCES `oac_cate` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- 限制表 `oac_cate_prop_value`
+--
+ALTER TABLE `oac_cate_prop_value`
+  ADD CONSTRAINT `oac_cate_prop_value_ibfk_1` FOREIGN KEY (`cate_prop_id`) REFERENCES `oac_cate_prop` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 限制表 `oac_contact`
@@ -5008,6 +5758,13 @@ ALTER TABLE `oac_opinion`
 ALTER TABLE `oac_opinion_read`
   ADD CONSTRAINT `oac_opinion_read_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `oac_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `oac_opinion_read_ibfk_2` FOREIGN KEY (`opinion_id`) REFERENCES `oac_opinion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- 限制表 `oac_server`
+--
+ALTER TABLE `oac_server`
+  ADD CONSTRAINT `oac_server_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `oac_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `oac_server_ibfk_2` FOREIGN KEY (`home_use_id`) REFERENCES `oac_home_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 限制表 `oac_slider`

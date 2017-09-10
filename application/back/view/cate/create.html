@@ -46,19 +46,21 @@
         <div class="layui-form-item" style="display: none;">
             <label class="layui-form-label"><span class="layui-color-danger">*</span>品牌:</label>
             <div class="layui-input-block right-width">
-                <select name="unique_id" lay-verify="" lay-filter="brand" lay-search>
+                <select name="brand_id" lay-verify="" lay-filter="brand" lay-search>
                     <option value="">选择品牌</option>
                     {volist name="brand" id="item" }
-                    <option value="{$key}">{$item}</option>
+                    <option value="{$item.id}">{$item.name}</option>
                     {/volist}
                 </select>
             </div>
         </div>
 
-        <div class="layui-form-item" style="display: none;">
-            <label class="layui-form-label"><span class="layui-color-danger">*</span>车系:</label>
+        <div class="layui-form-item" style="display: none;" lay-filter="seriesContainer">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>车型:</label>
             <div class="layui-input-block right-width">
-                <select name="series" lay-verify="" lay-filter="series" lay-search></select>
+                <select name="series_id" lay-verify="" lay-filter="series" lay-search>
+                    <option value="">选择车型</option>
+                </select>
             </div>
         </div>
 
@@ -66,6 +68,15 @@
             <label class="layui-form-label"><span class="layui-color-danger">*</span>类目名称:</label>
             <div class="layui-input-block right-width">
                 <input type="text" value="" name="name" lay-verify="require" placeholder="类目名称" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="display: none;">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>品牌商标:</label>
+            <div class="layui-input-block" style="padding-right: 120px;">
+                <input type="file" id="logo_file" name="file" placeholder="上传图片" class="layui-upload-file" lay-filter="logo" lay-error="品牌商标不能为空">
+                <input type="hidden" value="" name="logo" id="logo" placeholder="上传图片" class="layui-input">
+                <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
             </div>
         </div>
 
@@ -97,29 +108,45 @@
         var level = parseInt($('[lay-filter="level"]:selected').val());
         var brand = $('[lay-filter="brand"]');
         var series = $('[lay-filter="series"]');
+        var logo = $('[lay-filter="logo"]');
         form.on('radio(level)', function(data){
             level = parseInt(data.value);
-            if (level>1){
+            if (level===3){
                 brand.attr('lay-verify','require');
                 brand.closest('.layui-form-item').fadeIn();
+                series.attr('lay-verify','require');
+                series.closest('.layui-form-item').fadeIn();
+                logo.closest('.layui-form-item').hide();
+            }else if (level===2){
+                brand.attr('lay-verify','require');
+                brand.closest('.layui-form-item').fadeIn();
+                series.attr('lay-verify','');
+                series.closest('.layui-form-item').hide();
+                logo.closest('.layui-form-item').hide();
+            }else {
+                brand.attr('lay-verify','');
+                brand.closest('.layui-form-item').hide();
+                series.attr('lay-verify','');
+                series.closest('.layui-form-item').hide();
+                logo.closest('.layui-form-item').fadeIn();
+
             }
         });
         form.on('select(brand)', function(data){
             var pid = data.value;
-            if (level>2){
-                $.get("{:U('ajax/getCate')}",{pid:pid,level:level},function(data){
-                    console.log(data);
+            if (level===3){
+                series.html('');
+                $.get("{:url('ajax/getCate')}",{pid:pid},function(data){
                     if (data){
-                        series.html('<option value="">请选择</option>');
+                        var option = [];
+                        option.push('<option value="">请选择</option>');
                         if (data.length>0){
-                            var option = [];
-                            option.push('<option value="">请选择</option>');
                             for (var k in data){
-                                option.push('<option value="'+k+'">'+data[k].name+'</option>');
+                                option.push('<option value="'+data[k].id+'">'+data[k].name+'</option>');
                             }
-                            series.html(option.join('')).attr('lay-verify','require');
                         }
-                        form.render('select','series');
+                        series.html(option.join('')).attr('lay-verify','require');
+                        form.render('select');
                         series.closest('.layui-form-item').fadeIn();
                     }
                 });
@@ -136,10 +163,10 @@
     });
 
     var indexLogo = Site.uploader({
-        elem:'#url_file',
-        targetElem:'#url',
+        elem:'#logo_file',
+        targetElem:'#logo',
         url: '/ajax/uploader?file=file',
-        title:'上传广告图',
+        title:'上传品牌商标',
         isAjax:true,
         success: function (res, input) {
             console.log(res);

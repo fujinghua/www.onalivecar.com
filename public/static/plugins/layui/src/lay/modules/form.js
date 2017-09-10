@@ -77,7 +77,7 @@ layui.define('layer', function(exports){
       return filter ? ('[lay-filter="' + filter +'"]') : '';
     }())
     ,items = {
-      
+
       //下拉选择框
       select: function(){
         var TIPS = '请选择', CLASS = 'layui-form-select', TITLE = 'layui-select-title'

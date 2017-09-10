@@ -46,22 +46,17 @@ class BrandController extends BackController
     {
         $model = new Brand();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Label']) ? $_POST['Label'] : []);
-            $data['updated_at'] = date('Y-m-d H:i:s');
-            $data['created_at'] = date('Y-m-d H:i:s');
-            $model = new Brand();
-            $data = [];
+            $data = $model->filter($_POST);
             $path = ROOT_PATH.'public/static/uploads/brand/';
             $pinyin = \app\common\components\ChineseToPinyin::encode($data['name'],'all');
             $data['pinyin'] = implode('',explode(' ',$pinyin));
             $data['icon'] = ' ';
-            $data['created_at'] = date('Y-m-d H:i:s');
             $res = $model->save($data);
             if ($res){
                 $to =$path .$data['letter'].'/'. $model->id . '/' . md5(date("YmdHis") . rand(10000, 99999)) . '.png';
                 $this->getFolder(pathinfo($to,PATHINFO_DIRNAME));
                 $this->copy(ROOT_PATH.$data['icon'],$to);
-                $to = str_replace(ROOT_PATH,'/',$to);
+                $to = str_replace(ROOT_PATH.'public/','/',$to);
                 $order = Brand::load()->where(['letter'=>$data['letter']])->count()+1;
                 $model->isUpdate(true)->save(['icon'=>$to.'?t='.date('Ymd'),'order'=>$order]);
             }

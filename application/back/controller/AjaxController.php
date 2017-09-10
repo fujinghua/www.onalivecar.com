@@ -131,7 +131,7 @@ class AjaxController extends BackController
     public function getCateAction($pid=null,$level=null)
     {
         $ret = [];
-        $where = ['is_delete'=>'1','type'=>'4'];
+        $where = [];
         $model = \app\common\model\Cate::load();
         if ($pid || ($pid = $this->getRequest()->request('pid'))){
             if ($pid != ''){

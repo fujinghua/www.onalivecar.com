@@ -23,7 +23,10 @@ class CateValidate extends Validate
      * @var array
      */
     protected $scene = [
-        'create'   =>  ['is_delete'],
+        'create'   =>  [],
+        'createBrand'   =>  [],
+        'createSeries'   =>  [],
+        'createCar'   =>  [],
         'update'  =>  [],
         'save'  =>  [],
         'not'  =>  [],
