@@ -1,0 +1,46 @@
+---------------------------------------------------------------
+[ 2017-09-10T21:04:27+08:00 ] 127.0.0.1 127.0.0.1 GET /login/login
+[ info ] www.onalivecar.com/login/login [运行时间：0.022001s][吞吐率：45.45req/s] [内存消耗：380.67kb] [文件加载：62]
+[ info ] [ LANG ] F:\aliveDinner\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'back'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'back',
+    1 => 'login',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=58tbh2epj1r1be7kp93ilq4o60',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.onalivecar.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\back\controller\LoginController->loginAction[ F:\aliveDinner\upupw\www\www.onalivecar.com\application\back\controller\LoginController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] F:\aliveDinner\upupw\www\www.onalivecar.com\public/../application/back\view\login\login.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.004001s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000000s ]
