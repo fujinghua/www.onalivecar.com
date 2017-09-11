@@ -36,13 +36,6 @@ class DeleteLog extends Model
         'created_at',
     ];
 
-    // 保存自动完成列表
-    protected $auto = [];
-    // 新增自动完成列表
-    protected $insert = [];
-    // 更新自动完成列表
-    protected $update = [];
-
     public static $tableList = ['0'=>'全部','1'=>'表一','2'=>'表二'];
 
     public static function getTableList(){

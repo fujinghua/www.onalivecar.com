@@ -39,9 +39,6 @@ class Brand extends Model
         'updated_at',
     ];
 
-    // 保存自动完成列表
-    protected $auto = [];
-
     /**
      * @inheritdoc
      */

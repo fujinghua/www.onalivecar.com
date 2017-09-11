@@ -56,13 +56,6 @@ class Upload extends Model
         'status',
     ];
 
-    // 保存自动完成列表
-    protected $auto = [];
-    // 新增自动完成列表
-    protected $insert = [];
-    // 更新自动完成列表
-    protected $update = [];
-
     //所有标签类型
     private static $typeList = ['1'=>'jpg','2'=>'png','3'=>'gif','4'=>'excel'];
 

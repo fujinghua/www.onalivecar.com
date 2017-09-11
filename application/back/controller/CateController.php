@@ -54,6 +54,8 @@ class CateController extends BackController
         $model = new Cate();
         $brand = Cate::load()->where(['level'=>'1'])->order(['order'=>'ASC','id'=>'ASC'])->column('name,unique_id','id');
         if ($this->getRequest()->isPost()){
+            $unique = 'car';
+            $model->unique = $unique;
             $data = $model->filter($_POST);
             if (isset($data['level'])){
                 $level = $data['level'];

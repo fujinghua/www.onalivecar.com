@@ -45,13 +45,6 @@ class DealScale extends Model
         'earnestDate',
     ];
 
-    // 保存自动完成列表
-    protected $auto = [];
-    // 新增自动完成列表
-    protected $insert = [];
-    // 更新自动完成列表
-    protected $update = [];
-
     public static $houseType = ['1'=>'新房','2'=>'二手房'];
 
     public static function getHouseType(){

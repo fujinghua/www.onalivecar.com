@@ -38,13 +38,6 @@ class Focus extends Model
         'updated_at',
     ];
 
-    // 保存自动完成列表
-    protected $auto = [];
-    // 新增自动完成列表
-    protected $insert = [];
-    // 更新自动完成列表
-    protected $update = [];
-
     //所有标签类型
     private static $typeList = ['1'=>'预定','2'=>'客户','3'=>'房东','4'=>'新房','5'=>'二手房','6'=>'','7'=>'客服'];
 

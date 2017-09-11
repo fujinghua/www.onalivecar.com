@@ -69,6 +69,10 @@
     background-color: #f8f8f8;
 }
 
+.layui-table-view .layui-table-tool{
+    text-align: center;
+}
+
 /* 引用 */
 
 /* 字段集合 */

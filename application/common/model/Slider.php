@@ -58,13 +58,6 @@ class Slider extends Model
         'updated_at',
     ];
 
-    // 保存自动完成列表
-    protected $auto = [];
-    // 新增自动完成列表
-    protected $insert = [];
-    // 更新自动完成列表
-    protected $update = [];
-
     /**
      * @inheritdoc
      */

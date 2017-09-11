@@ -20,9 +20,12 @@ use app\common\model\Model;
  *
  * @property Car[] $cars
  * @property CateProp[] $cateProps
+ *
+ * @property string $unique
  */
 class Cate extends Model
 {
+    public $unique = 'cate';
 
     /**
      * 数据库表名
@@ -38,14 +41,26 @@ class Cate extends Model
         'isParent',
         'order',
         'level',
+        'unique_code',
         'unique_id',
         'title',
         'created_at',
         'updated_at',
     ];
 
-    // 保存自动完成列表
-    protected $auto = [];
+    /**
+     * 新增自动完成列表
+     * @var array
+     */
+    protected $insert = ['created_at','unique_code'];
+
+    /**
+     * 插入自动 赋值类目组别识别码
+     */
+    public function setUniqueCodeAttr()
+    {
+        return $this->unique;
+    }
 
     /**
      * @inheritdoc
@@ -76,7 +91,8 @@ class Cate extends Model
             'isParent' => '是否作为父级；0否，1是；默认为0',
             'order' => '排序',
             'level' => '分类深度',
-            'unique_id' => '扩展识别',
+            'unique_code' => '类目组别识别码',
+            'unique_id' => '扩展识别ID',
             'title' => '说明',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',

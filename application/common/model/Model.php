@@ -41,40 +41,6 @@ class Model extends \think\Model implements IModel
     }
 
     /**
-     * 扩展插入自动
-     * @param array $insert
-     * @param bool $all
-     */
-    public function extendInsert($insert = [],$all = false)
-    {
-        if ($all){
-            $this->insert = $insert;
-        }else{
-            $this->insert = array_merge($this->insert,$insert);
-        }
-        if (!in_array('created_at',$this->insert)){
-            array_push($this->insert,'created_at');
-        }
-    }
-
-    /**
-     * 扩展更新自动
-     * @param array $update
-     * @param bool $all
-     */
-    public function extendUpdate($update = [],$all = false)
-    {
-        if ($all){
-            $this->update = $update;
-        }else{
-            $this->update = array_merge($this->update,$update);
-        }
-        if (!in_array('updated_at',$this->update)){
-            array_push($this->update,'updated_at');
-        }
-    }
-
-    /**
      * @return \app\common\components\Helper
      */
     public static function getHelper()
