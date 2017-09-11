@@ -57,24 +57,16 @@
         <form class="layui-form layui-form-pane layui-form-search" action="">
             <div class="layui-form-item">
 
-                <label class="layui-form-label">类型:</label>
-                <div class="layui-input-inline">
-                    <select name="type" lay-verify="require" lay-search>
-                        <option value="">类型</option>
-                        <option value="">全部</option>
-                        {volist name="model->getLists('type')" id="item" }
-                        <option value="{$key}" {if condition="$key eq $Think.get.type"}selected{/if}>{$item}</option>
-                        {/volist}
-                    </select>
+                <label class="layui-form-label" style="width: 75px;">关键词:</label>
+                <div class="layui-input-inline search">
+                    <input type="text" name="keyword" lay-filter="keyword" placeholder="输入关键词" value="{$Think.get.keyword}" class="layui-input">
                 </div>
-
-                <label class="layui-form-label">状态:</label>
+                <label class="layui-form-label" style="width: 60px;">类型:</label>
                 <div class="layui-input-inline">
-                    <select name="status" lay-verify="require" lay-search>
-                        <option value="">状态</option>
+                    <select name="cate" lay-search lay-filter="cate">
                         <option value="">全部</option>
-                        {volist name="model->getLists('status')" id="item" }
-                        <option value="{$key}" {if condition="$key eq $Think.get.status"}selected{/if}>{$item}</option>
+                        {volist name="model->getLists('car')" id="item"}
+                        <option value="{$key}" {if condition="$key eq $Think.get.cate"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>
                 </div>
@@ -88,14 +80,11 @@
     </div>
 </section>
 
-<section class="layui-table-action">
+<section class="layui-table-action" style="display: none;">
     <div class="layui-form-item">
         <div class="layui-inline">
             <div class="layui-inline">
                 <!--<label class="layui-btn layui-btn-danger" lay-filter="delete">删除</label>-->
-            </div>
-            <div class="layui-inline">
-                <label class="layui-text layui-label"> (共 <em class="layui-color-danger">{$list->total()}</em> 条信息)</label>
             </div>
         </div>
         <div class="layui-inline" style="margin-right: 15px;">
@@ -106,50 +95,103 @@
     </div>
 </section>
 
-<div class="layui-table" style="margin: 15px;">
-    {volist name="list" id="model" key="key" empty="<p class='empty'><span style='text-align: center;'> 没有数据 </span> </p>"}
-    <div class="item" data-key="{$model.id}">
-        <div class="img">
-            <img src="{$model.url_icon}" layer-src="{$model.url}" lay-filter="gallery" title="{$model.title}" alt="{$model.title}">
-        </div>
-        <div class="title">
-            <p>{$model.title}</p>
-        </div>
-        <div style="text-align: center;" class="action">
-            <button class="layui-btn layui-btn-small" lay-filter="update">
-                <i class="layui-icon">&#xe640;</i>编辑
-            </button>
-            <button class="layui-btn layui-btn-small layui-btn-danger" lay-filter="delete">
-                <i class="layui-icon">&#xe640;</i>删除
-            </button>
-        </div>
-    </div>
-    {/volist}
+<div class="layui-container" style="width: 100%;">
+    <table id="table" lay-filter="table"></table>
 </div>
-
-<!-- 分页容器 -->
-<div id="paging" class="paging" data-total="{$list->total()}" data-rows="{$list->listRows()}" data-currentPage="{$list->currentPage()}"></div>
 
 <script>
     var url = {
-        createUrl:"{:url('/slider/create')}",
-        updateUrl:"{:url('/slider/update')}",
-        deleteUrl:"{:url('/slider/delete')}",
+        createUrl:"{:url('/cate_prop/create')}",
+        updateUrl:"{:url('/cate_prop/update')}",
+        deleteUrl:"{:url('/cate_prop/delete')}",
     };
     $(function() {
-        //分页
-        Site.loadPage();
 
         //添加
-        Back.create('create',{content:url.createUrl,area:['1050px','88%']});
+        Back.create('create',{content:url.createUrl,area:['960px','90%']});
 
         //编辑
-        Back.update('update',{content:url.updateUrl,area:['1050px','88%']});
+        Back.update('update',{content:url.updateUrl,area:['960px','90%']});
 
         //删除
         Back.delete('delete',url.deleteUrl);
     });
-    layui.use([ 'layer','laydate', 'form'], function() {});
+    layui.use([ 'layer','table', 'form'], function() {
+        var table = layui.table;
+        var _width = document.documentElement.clientWidth;//获取页面可见宽度
+        _width = _width-80*9-100-140;
+        var search = window.location.search;
+        //执行渲染
+        table.render({
+            elem: '#table' //指定原始表格元素选择器（推荐id选择器）
+//            , height: 400 //容器高度
+            , url: '/cate_prop/index.html'+search
+            , page: true
+            , method: 'get'
+            , where: {isAjax: true}
+            , limits: [20, 40, 60, 100, 150, 300]
+            , limit: 20
+            , cols: [
+                [
+                    {checkbox: true}, //其它参数在此省略
+                    {field: 'id', width: 80, sort: true, title: '序号'},
+                    {field: 'level', width: 80, sort: true, title: '类型'},
+                    {field: 'name', width: (_width/3), title: '名称', templet: '#nameTpl'},
+                    {field: 'cate_id', width: 80, sort: true, title: '所属类目'},
+                    {field: 'pid', width: (_width/3), sort: true, title: '父级特征量'},
+                    {field: 'cid', width: (_width/3), sort: true, title: '下级特征量'},
+                    {field: 'isColor', width: 80, title: '是否颜色属性'},
+                    {field: 'isEnum', width: 80, title: '是否枚举属性'},
+                    {field: 'isAlive', width: 80, title: '是否输入属性'},
+                    {field: 'isUnique', width: 80, title: '是否关键属性'},
+                    {field: 'isSeller', width: 80, title: '是否销售属性'},
+                    {field: 'created_at', width: 100, title: '创建时间'},
+                    {field: 'action', width: 140, title: '操作', align: 'center', toolbar: '#barAction'},
+                ]
+            ] //设置表头
+//            ,skin: 'row' //行边框风格
+            ,even: true //开启隔行背景
+//            ,size: 'sm' //小尺寸的表格
+        });
+
+        //监听工具条
+        table.on('tool(table)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值
+            var tr = obj.tr; //获得当前行 tr 的DOM对象
+
+            if(layEvent === 'update'){ //查看
+                //do somehing
+
+                //同步更新缓存对应的值
+                obj.update({
+                    username: '123'
+                    ,title: 'xxx'
+                });
+            } else if(layEvent === 'delete'){ //删除
+                layer.confirm('真的删除行么', function(index){
+                    obj.del(); //删除对应行（tr）的DOM结构
+                    layer.close(index);
+                    //向服务端发送删除指令
+                });
+            } else if(layEvent === 'view'){ //编辑
+                //do something
+            }
+        });
+    });
+</script>
+
+<script type="text/html" id="nameTpl">
+    <span>{{d.name}}</span>
+    {{#  if(d.icon !== null){ }}
+    <span><img src="{{d.icon}}" alt="{{d.name}}" style="width: 40px;height: 30px;"></span>
+    {{#  } }}
+</script>
+
+<!--toolbar-->
+<script type="text/html" id="barAction">
+    <a class="layui-btn layui-btn-mini" lay-event="update">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="delete">删除</a>
 </script>
 
 </body>

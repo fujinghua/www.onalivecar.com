@@ -105,16 +105,6 @@
         updateUrl:"{:url('/cate/update')}",
         deleteUrl:"{:url('/cate/delete')}",
     };
-    var keyword = '',cate = '',sort = '';
-    $(document).on('change','[lay-filter="keyword"]',function () {
-        keyword = $(this).val();
-    });
-    $(document).on('change','[lay-filter="cate"]',function () {
-        cate = $(this).val();
-    });
-    $(document).on('change','[lay-filter="sort"]',function () {
-        sort = $(this).val();
-    });
     $(function() {
 
         //添加
@@ -128,11 +118,14 @@
     });
     layui.use([ 'layer','table', 'form'], function() {
         var table = layui.table;
+        var _width = document.documentElement.clientWidth;//获取页面可见宽度
+        _width = _width-100-100-100-100-170;
+        var search = window.location.search;
         //执行渲染
         table.render({
             elem: '#table' //指定原始表格元素选择器（推荐id选择器）
 //            , height: 400 //容器高度
-            , url: '/cate/index/'
+            , url: '/cate/index.html'+search
             , page: true
             , method: 'get'
             , where: {isAjax: true}
@@ -141,14 +134,13 @@
             , cols: [
                 [
                     {checkbox: true}, //其它参数在此省略
-                    {field: 'id', width: 80, sort: true, title: '序号'},
-                    {field: 'level', width: 80, sort: true, title: '类型'},
-                    {field: 'name', width: 100, title: '名称'},
-                    {field: 'unique_id', width: 80, title: '图标', templet: '#iconTpl'},
-                    {field: 'pid', width: 100, sort: true, title: '父类'},
-                    {field: 'title', width: 177, title: '附加说明'},
+                    {field: 'id', width: 100, sort: true, title: '序号'},
+                    {field: 'level', width: 100, sort: true, title: '类型'},
+                    {field: 'name', width: (_width/4), title: '名称', templet: '#nameTpl'},
+                    {field: 'pid', width: (_width/4), sort: true, title: '父类'},
+                    {field: 'title', width: (_width/2), title: '附加说明'},
                     {field: 'created_at', width: 100, title: '创建时间'},
-                    {field: 'action', width: 100, title: '操作', align: 'center', toolbar: '#barAction'},
+                    {field: 'action', width: 140, title: '操作', align: 'center', toolbar: '#barAction'},
                 ]
             ] //设置表头
 //            ,skin: 'row' //行边框风格
@@ -157,41 +149,43 @@
         });
 
         //监听工具条
-        table.on('tool(barAction)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+        table.on('tool(table)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值
             var tr = obj.tr; //获得当前行 tr 的DOM对象
 
-            if(layEvent === 'detail'){ //查看
+            if(layEvent === 'update'){ //查看
                 //do somehing
-            } else if(layEvent === 'del'){ //删除
-                layer.confirm('真的删除行么', function(index){
-                    obj.del(); //删除对应行（tr）的DOM结构
-                    layer.close(index);
-                    //向服务端发送删除指令
-                });
-            } else if(layEvent === 'edit'){ //编辑
-                //do something
 
                 //同步更新缓存对应的值
                 obj.update({
                     username: '123'
                     ,title: 'xxx'
                 });
+            } else if(layEvent === 'delete'){ //删除
+                layer.confirm('真的删除行么', function(index){
+                    obj.del(); //删除对应行（tr）的DOM结构
+                    layer.close(index);
+                    //向服务端发送删除指令
+                });
+            } else if(layEvent === 'view'){ //编辑
+                //do something
             }
         });
     });
 </script>
 
-<script type="text/html" id="iconTpl">
-    <span>{{d.unique_id}}</span>
+<script type="text/html" id="nameTpl">
+    <span>{{d.name}}</span>
+    {{#  if(d.icon !== null){ }}
+    <span><img src="{{d.icon}}" alt="{{d.name}}" style="width: 40px;height: 30px;"></span>
+    {{#  } }}
 </script>
 
 <!--toolbar-->
 <script type="text/html" id="barAction">
-    <a class="layui-btn layui-btn-mini" lay-event="detail">查看</a>
-    <a class="layui-btn layui-btn-mini" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-mini" lay-event="update">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="delete">删除</a>
 </script>
 
 </body>

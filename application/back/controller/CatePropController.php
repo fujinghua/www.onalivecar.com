@@ -3,10 +3,10 @@
 namespace app\back\controller;
 
 use app\common\controller\BackController;
-use app\common\model\Brand;
 use app\common\model\Cate;
+use app\common\model\CateProp;
 
-class CateController extends BackController
+class CatePropController extends BackController
 {
     /**
      * @description 显示资源列表
@@ -17,8 +17,8 @@ class CateController extends BackController
         $where = [];
         $request = $this->getRequest();
         $limit = $request->request('limit') ? : 20;
-        $model = Cate::load();
-        $lang = Cate::Lang();
+        $model = CateProp::load();
+        $lang = CateProp::Lang();
         $key = trim($request->request('keyword'));
         if ($key != ''){
             $where[] = ['exp',"t.name like '%".$key."%' "];
@@ -31,16 +31,16 @@ class CateController extends BackController
         }
         if ($this->getRequest()->request('isAjax')){
             $list = $model->alias('t')
-                ->join(Brand::tableName().' b','t.id = b.id','left')
+                ->join(CateProp::tableName().' b','t.id = b.id','left')
                 ->where($where)
                 ->field('t.*,b.name as brand,b.icon as icon')
                 ->order(['`level`'=>'ASC','`order`'=>'ASC'])->paginate($limit)->toArray();
             $ret = ['code'=>'0','msg'=>'','count'=>$list['total'],'data'=>$list['data']];
             return json($ret);
         }else{
-            $this->assign('meta_title', "类目清单");
+            $this->assign('meta_title', "汽车配置");
             $this->assign('model', $model);
-            return view('cate/index');
+            return view('cateProp/index');
         }
     }
 
@@ -51,8 +51,9 @@ class CateController extends BackController
      */
     public function createAction()
     {
-        $model = new Cate();
-        $brand = Cate::load()->where(['level'=>'1'])->order(['order'=>'ASC','id'=>'ASC'])->column('name,unique_id','id');
+        $model = new CateProp();
+        $cate = Cate::load()->where(['level'=>'1'])->order(['order'=>'ASC','id'=>'ASC'])->column('name,unique_id','id');
+        $cateProp = CateProp::load()->where(['level'=>'1'])->order(['order'=>'ASC','id'=>'ASC'])->column('name,cate_id','id');
         if ($this->getRequest()->isPost()){
             $unique = 'car';
             $model->unique = $unique;
@@ -113,7 +114,7 @@ class CateController extends BackController
                 }
             }
         }
-        return view('cate/create',['meta_title'=>'添加品牌','model'=>$model,'brand'=>$brand]);
+        return view('cateProp/create',['meta_title'=>'添加汽车配置','model'=>$model,'cateProp'=>$cateProp,'cate'=>$cate]);
     }
 
     /**
