@@ -2031,6 +2031,18 @@ alive-bg-gray    用于设置元素经典灰色背景
  内联模块  方位  九宫格
  ======================*/
 
+/*居中*/
+.center-parent {
+    position: relative;
+}
+
+.center-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%, 150%);
+}
+
 /* 西北区 */
 .alive-topLeft {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */

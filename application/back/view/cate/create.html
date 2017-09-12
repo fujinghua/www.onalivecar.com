@@ -38,7 +38,7 @@
             <label class="layui-form-label"><span class="layui-color-danger">*</span>类目类型:</label>
             <div class="layui-input-block right-width">
                 {volist name="model->getLists('car')" id="item" }
-                <input type="radio" value="{$key}" name="level" title="{$item}" lay-verify="checked" lay-group="level" lay-filter="level" class="layui-input">
+                <input type="radio" value="{$key}" name="\$level" title="{$item}" lay-verify="checked" lay-group="level" lay-filter="level" class="layui-input">
                 {/volist}
             </div>
         </div>
