@@ -31,6 +31,13 @@
 /** 页面元素 **/
 
 /*=======================
+ 弹出层
+========================*/
+.layui-layer-setwin .layui-layer-close2:hover {
+    background-position: -180px -31px;
+}
+
+/*=======================
  form
 ========================*/
 .checkbox-left .layui-form-checkbox {

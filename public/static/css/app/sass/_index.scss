@@ -1,0 +1,282 @@
+@charset "utf-8";
+
+/*** 首页 ***/
+
+.page-index{
+    margin-top: 30px;
+    
+    .in-title{
+        position: relative;
+        
+        h4{
+            font-size: 15px;
+            font-weight: bold;
+        }
+        
+        .line{
+            position: absolute;
+            top: 20px;
+            width: 24px;
+            height: 1px;
+            border-bottom: 3px solid #f84b9c;
+        }
+    }
+    
+    .in-briefing{
+        margin-top: 20px;
+        
+        li{
+            margin-bottom: 15px;
+        }
+        
+        .moudle-card{
+            font-size: 13px;
+            padding: 15px;
+            line-height: 18px;
+            cursor: pointer;
+            
+            a{
+                @include transition-curve(0.4s);
+            }
+            
+            &:hover{
+                a{
+                    color: $color-main;
+                }
+            }
+        }
+    }
+    
+    .in-banner{
+        width: 100%;
+        height: 240px;
+    }
+    
+    .in-tag{
+        
+        .layui-tab-content{
+            padding: 10px 0;
+        }
+        
+        .layui-tab-title{
+            li{
+                color: #797979;
+            }
+            .layui-this{
+                color: #000;
+                
+                &:after{
+                    border-bottom: 2px solid $color-main;
+                }
+            }
+        }
+    }
+    
+    .in-menu{
+        
+        margin-bottom: 20px;
+
+        .layui-btn-group{
+            width: 100%;
+        }
+        
+        .layui-btn{
+            width: 50%;
+            padding: 0px;
+            font-size: 12px;
+        }
+    }
+    
+    .in-interview-img{
+        margin-top: 20px;
+        width: 100%;
+        
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+    
+    .in-interview-summary{
+        margin: 20px 0 20px;
+        font-size: 14px;
+        line-height: 24px;
+    }
+    
+    .in-avdimg{
+        margin: 10px 0 10px;
+        
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+    
+    .in-news{
+        margin-top: 10px;
+        
+        li{
+            
+            margin-bottom: 25px;
+            
+            h4{
+                a{
+                    font-size: 15px;
+                    color: #000;
+                    font-weight: bold;
+                    @include transition-curve(0.4s);
+                    
+                    &:hover{
+                        color: $color-main;
+                    }
+                }
+            }
+            
+            .in-news-list{
+                
+                margin-top: 15px;
+                
+                .news-img{
+                    display: inline-block;
+                    width: 200px;
+                    margin-right: 10px;
+                    vertical-align: top;
+                }
+                
+                .news-con{
+                    display: inline-block;
+                    position: relative;
+                    width: 340px;
+                    height: 110px;
+                    font-size: 14px;
+                    color: #5e5c65;
+                    line-height: 24px;
+                    
+                    .con-time{
+                        position: absolute;
+                        left: 0px;
+                        bottom: 5px;
+                        font-size: 14px;
+                        color: #979797;
+                        line-height: 0px;
+                        
+                        .layui-icon{
+                            margin-right: 4px;
+                            font-size: 13px;
+                        }
+                        
+                        span{
+                            margin-right: 10px;
+                        }
+                        
+                        a{
+                            color: #979797;
+                            @include transition-curve(0.4s);
+                            &:hover{
+                                color: $color-main;
+                            }
+                        }
+                    }
+                    
+                    .con-btn{
+                        position: absolute;
+                        right: 0px;
+                        bottom: 5px;
+                        font-size: 14px;
+                        color: $color-main;
+                        line-height: 0px;
+                    }
+                }
+            }
+            
+            
+        }
+    }
+}
+
+.page-search{
+    
+    .moudle-card{
+        padding: 15px 15px 10px;
+    }
+    
+    .layui-form-item{
+        margin-bottom: 0px;
+    }
+}
+
+.page-search-alone{
+    margin-top: 20px;
+}
+
+.page-anchor{
+    
+    .moudle-card{
+        position: relative;
+        margin: 0px auto;
+        width: 260px;
+        border-radius: 2px;
+    }
+    
+    .anchor-img{
+        width: 100%;
+        border-radius: 2px 2px 0px 0px;
+        overflow: hidden;
+    }
+    
+    .anchor-con{
+        padding: 20px;
+        
+        .name{
+            position: relative;
+            color: #1d1d1d;
+            font-size: 16px;
+            line-height: 21px;
+            text-align: left;
+            font-weight: 400;
+            
+            .line{
+                bottom: -5px;
+                left: 0px;
+                position: absolute;
+                width: 34px;
+                height: 1px;
+                background: #f84b9c;
+            }
+        }
+        
+        .info{
+            margin-top: 25px;
+            font-size: 12px;
+            min-height: 36px;
+            color: #a7a7a7;
+            line-height: 18px;
+            text-align: left;
+        }
+    }
+    
+    .anchor-link{
+        padding: 0px 0px 20px 20px;
+        
+        .layui-btn{
+            padding: 0px 20px;
+        }
+    }
+    
+    .anchor-platform{
+        top: 22px;
+        left: -2px;
+        position: absolute;
+        z-index: 10;
+        padding: 6px;
+        border-radius: 0 2px 2px 0;
+        background: $color-blue;
+        color: #FFF;
+        font-size: 12px;
+        text-align: center;
+    }
+    
+    .layui-col-lg3{
+        margin-bottom: 8px;
+    }
+}

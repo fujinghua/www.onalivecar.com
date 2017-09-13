@@ -1,0 +1,75 @@
+@charset "utf-8";
+
+/*** 公用 ***/
+//旋转
+@mixin transform($degree){
+    transform: rotate($degree);
+    -ms-transform: rotate($degree); /* IE 9 */
+    -webkit-transform: rotate($degree); /* Safari and Chrome */
+}
+
+//平滑过渡
+@mixin transition($time){
+    -webkit-transition: all $time linear;
+    transition: all $time linear;
+}
+
+//贝塞尔曲线过渡
+@mixin transition-curve($time){
+    -webkit-transition: all $time cubic-bezier(0.215, 0.61, 0.355, 1) 0s;;
+    transition: all $time cubic-bezier(0.215, 0.61, 0.355, 1) 0s;;
+}
+
+//透明
+@mixin opacity($num){
+    filter: alpha(opacity = ($num * 100)); /* IE 8 */
+    -moz-opacity:$num;
+    -khtml-opacity: $num;
+    opacity: $num;
+}
+
+//阴影
+@mixin shadow($con){
+    -webkit-box-shadow: $con;
+    -moz-box-shadow: $con;
+    box-shadow: $con;
+}
+
+//动画
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin animation($parameter){
+    -webkit-animation:$parameter; /* Safari 和 Chrome */
+    animation:$parameter;
+}
+
+//小图标
+@mixin icon($w,$h,$x,$y){
+    display: block;
+    background-image: url(img/ICON.png);
+    background-size: 245px 165px;
+    width: $w;
+    height: $h;
+    background-position: $x $y;
+}
+
+//英文背景
+@mixin engBG{
+    font-family: "arial";
+    font-weight: 800;
+    color: $color-title-bg;
+    font-size: 60px;
+}

@@ -1,0 +1,287 @@
+@charset "utf-8";
+
+/*** 新闻 ***/
+.page-news{
+    margin-top: 25px;
+    
+    .news-sides{
+        
+        .title{
+            position: absolute;
+            width: 100%;
+            bottom: 0px;
+            
+            .title-text{
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                z-index: 10;
+                color: #FFF;
+                padding-left: 20px;
+                text-align: left;
+                line-height: 50px;
+            }
+            
+            .title-bg{
+                width: 100%;
+                background: #000000;
+                height: 50px;
+                @include opacity(0.6);
+            }
+        }
+    }
+    
+    .news-side{
+        
+        .moudle-card{
+            padding: 15px;
+            margin-bottom: 20px;
+            
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+        
+        .in-menu{
+    
+            .layui-btn-group{
+                width: 100%;
+            }
+            
+            .layui-btn{
+                width: 50%;
+                padding: 0px;
+                font-size: 12px;
+            }
+        }
+        
+        .in-title{
+            position: relative;
+            
+            h4{
+                font-size: 13px;
+                font-weight: bold;
+            }
+            
+            .line{
+                position: absolute;
+                top: 20px;
+                width: 24px;
+                height: 1px;
+                border-bottom: 3px solid #f84b9c;
+            }
+        }
+        
+        .in-list{
+            margin-top: 30px;
+            li{
+                margin-bottom: 15px;
+                
+                a{
+                    @include transition-curve(0.4s);
+                    
+                    &:hover{
+                        color: $color-main;
+                        border-bottom: 1px dotted #f84b9c;
+                    }
+                }
+                
+                .layui-icon{
+                    font-size: 12px;
+                }
+                
+            }
+        }
+    }
+    
+    .news-list{
+        
+        margin-top: 20px;
+        
+        .moudle-card{
+            padding: 15px;
+        }
+        
+        li{
+            overflow: hidden;
+            margin-bottom: 20px;
+            
+            h4{
+                a{
+                    font-size: 15px;
+                    color: #000;
+                    font-weight: bold;
+                    @include transition-curve(0.4s);
+                    
+                    &:hover{
+                        color: $color-main;
+                    }
+                }
+            }
+            
+            .in-news-list{
+                
+                margin-top: 15px;
+                
+                .news-img{
+                    display: inline-block;
+                    width: 200px;
+                    margin-right: 10px;
+                    vertical-align: top;
+                }
+                
+                .news-con{
+                    display: inline-block;
+                    position: relative;
+                    width: 400px;
+                    height: 110px;
+                    font-size: 14px;
+                    color: #5e5c65;
+                    line-height: 24px;
+                    
+                    .con-time{
+                        position: absolute;
+                        left: 0px;
+                        bottom: 5px;
+                        font-size: 12px;
+                        color: #979797;
+                        line-height: 0px;
+                        
+                        .layui-icon{
+                            margin-right: 5px;
+                            font-size: 13px;
+                        }
+                        
+                        span{
+                            margin-right: 15px;
+                            
+                            a{
+                                color: #979797;
+                                @include transition-curve(0.4s);
+                    
+                                &:hover{
+                                    color: $color-main;
+                                }
+                            }
+                        }
+                    }
+
+                    .con-btn{
+                        position: absolute;
+                        right: 0px;
+                        bottom: 5px;
+                        font-size: 14px;
+                        color: $color-main;
+                        line-height: 0px;
+                    }
+                }
+            }
+        }
+    }
+    
+    .news-list-more{
+        margin: 15px 0;
+        text-align: center;
+    }
+    
+    .news-con{
+        margin-bottom: 20px;
+        
+        .moudle-card{
+            padding: 20px;
+        }
+        
+        .con-photo{
+            img{
+                margin-bottom: 20px;
+            }
+        }
+        
+        h1{
+            margin-bottom: 10px;
+            color: #000;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: left;
+            line-height: 36px;
+        }
+        
+        .panel{
+            margin-bottom: 10px;
+            
+            span{
+                margin-right: 15px;
+                display: inline-block;
+                font-size: 12px;
+                line-height: 20px;
+                color: #a7a7a7;
+            }
+            
+            a{
+                color: #a7a7a7;
+                @include transition-curve(0.4s);
+                
+                &:hover{
+                    color: $color-main;
+                }
+            }
+        }
+        
+        .line{
+            position: relative;
+            width: 100%;
+            border-bottom: 1px solid #f0f0f4;
+            
+            .s{
+                position: absolute;
+                pointer-events: none;
+                z-index: 1;
+                left: 0px;
+                bottom: 0px;
+                width: 50px;
+                height: 54px;
+                border-bottom: 2px solid #f84b9c;
+            }
+        }
+        
+        .con{
+            margin: 30px 0 20px;
+            line-height: 30px;
+            font-size: 16px;
+            color: #3d464d;
+            
+            img{
+                max-width: 100%;
+                height: auto;
+            }
+        }
+        
+        .foot-tip{
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        .other-news{
+            margin: 30px 0 0;
+        }
+    }
+    
+}
+
+.page-404{
+    min-height: 500px;
+}
+
+.left-anchor-img{
+    margin-bottom: 20px;
+    
+    .moudle-card{
+        width: 100%;
+        
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+}

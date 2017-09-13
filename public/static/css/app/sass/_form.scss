@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+//按钮
+.zb-btn{
+    background: $color-main;
+    @include shadow(0px 0px 13px rgba($color-main,0.30));
+    @include transition-curve(0.4s);
+    
+    &:hover{
+        @include shadow(0px 3px 20px rgba($color-main,0.7));
+    }
+}
+
+.zb-btn-primary{
+    &:hover{
+        border-color: $color-main;
+    }
+}
+
+.zb-btn-linear{
+    background: -webkit-linear-gradient(left, $color-purple, $color-main); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, $color-purple, $color-main); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, $color-purple, $color-main); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, $color-purple, $color-main); /* 标准的语法 */
+}
+
+//下拉菜单
+.layui-form-item{
+    
+    .layui-form-select{
+        dl{
+            .layui-this{
+                background: $color-blue;
+            }
+        }
+    }
+}
+
+.layui-nav{
+    .layui-nav-child{
+        dd.layui-this{
+            a{
+                background: $color-blue;
+            }
+        }
+    }
+}
+
+.layui-nav-child{
+    
+    dd.layui-this{
+        background: $color-blue;
+    }
+    
+}
+
+//开关
+.layui-form-onswitch{
+    border-color: $color-blue;
+    background-color: $color-blue;
+}

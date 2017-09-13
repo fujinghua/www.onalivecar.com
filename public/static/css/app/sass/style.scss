@@ -1,0 +1,58 @@
+@charset "utf-8";
+/*!
+ * Theme Name: 主播百科2.0
+ * Theme URI: https://www.zhubobook.com
+ * Author: 天边鱼
+ * Author URI: https://www.tianbianyu.com
+ * Description: 主播百科主题
+ * Version: 2.0
+ * Tags: 简洁
+ * Text Domain: zbTheme
+*/
+
+/*** 颜色 ***/
+$color-bg: #f5f4f8; //背景色
+$color-main: #f84b9c; //主色调-粉色
+$color-blue: #60bac7; //辅色调-青色
+$color-purple: #e03d97; //辅色调-紫色
+$color-title-bg: #eae9ef; //页面标题英文背景
+$color-line: #f0f0f4; //页面标题下划线
+$color-tag: #b0adbc; //页面TAG
+
+body{
+    font-family: PingFang SC,Lantinghei SC,Helvetica Neue,Helvetica,Arial,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,STHeitiSC-Light,simsun,\\5B8B\4F53,WenQuanYi Zen Hei,WenQuanYi Micro Hei,"sans-serif";
+    background-color: $color-bg;
+}
+
+ul{
+    margin: 0px;
+    padding: 0px;
+    li{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+    }
+}
+a{
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+@import 'mixins'; //常用函数
+
+@import 'moudle/head'; //头部
+@import 'moudle/banner'; //幻灯片
+@import 'moudle/card'; //卡片
+@import 'moudle/form'; //表单
+@import 'moudle/title'; //表单
+@import 'moudle/foot'; //底部
+
+@import 'page/index'; //首页
+@import 'page/anchor'; //主播详情
+@import 'page/nav'; //导航
+@import 'page/news'; //新闻
+@import 'page/form'; //表单
+
+@import 'responsive'; //响应式

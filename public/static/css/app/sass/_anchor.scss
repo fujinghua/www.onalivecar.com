@@ -1,0 +1,377 @@
+@charset "utf-8";
+
+/*** 主播详情 ***/
+.page-head-line{
+    width: 100%;
+    height: 2px;
+    background: $color-main;
+}
+
+.page-anchor-con{
+    position: relative;
+    height: 580px;
+    
+    .anchor-bg{
+        position: absolute;
+        z-index: 50;
+        left: 105px;
+        width: 260px;
+        height: 470px;
+        overflow: hidden;
+        background: -webkit-linear-gradient(top, #7431a0, #7e2ba0); /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(top, #7431a0, #7e2ba0); /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(top, #7431a0, #7e2ba0); /* Firefox 3.6 - 15 */
+        background: linear-gradient(to top, #7431a0, #7e2ba0); /* 标准的语法 */
+       
+        .bg-01{
+            position: absolute;
+            top: -280px;
+            right: -50px;
+            width: 541px;
+            height: 541px;
+            background: url(images/anchor_bg_01.png) center center no-repeat;
+        }
+        
+        .bg-02{
+            position: absolute;
+            top: -180px;
+            right: 80px;
+            width: 303px;
+            height: 303px;
+            background: url(images/anchor_bg_02.png) center center no-repeat;
+        }
+    }
+    
+    .anchor-line{
+        position: absolute;
+        pointer-events: none;
+        z-index: 101;
+        top: 72px;
+        left: 286px;
+        width: 350px;
+        height: 490px;
+        border: 3px solid #FFF;
+    }
+    
+    .anchor-img{
+        position: absolute;
+        z-index: 100;
+        top: 89px;
+        left: 303px;
+        width: 350px;
+        height: 490px;
+        overflow: hidden;
+        
+        .layui-carousel-ind{
+            top: -40px;
+            
+            ul{
+                position: absolute;
+                right: 20px;
+                background: none;
+                
+                li{
+                    width: 14px;
+                    height: 14px;
+                    border-radius: 20px;
+                    background-color: rgba(255,255,255,1);
+                }
+                .layui-this{
+                    width: 24px;
+                }
+            }
+        }
+    }
+    
+    .anchor-platform{
+        position: absolute;
+        z-index: 102;
+        top: 107px;
+        left: 321px;
+        font-size: 14px;
+        color: #FFF;
+        font-weight: bold;
+    }
+    
+    .anchor-num{
+        position: absolute;
+        z-index: 103;
+        top: 320px;
+        left: 120px;
+        color: #FFF;
+        font-weight: bold;
+        font-size: 12px;
+        
+        .link-num{
+            font-size: 24px;
+        }
+        
+        .line{
+            display: block;
+            margin: 10px 0;
+            width: 22px;
+            height: 4px;
+            background: #60bac7;
+        }
+    }
+    
+    .anchor-con{
+        position: absolute;
+        z-index: 105;
+        width: 486px;
+        top: 183px;
+        right: -35px;
+        
+        h1{
+            position: relative;
+            z-index: 11;
+            font-weight: bold;
+            margin: 0px;
+            padding: 0px;
+            font-size: 48px;
+        }
+        
+        .line{
+            position: absolute;
+            top: 48px;
+            left: -101px;
+            width: 87px;
+            height: 4px;
+            background: $color-main;
+        }
+        
+        .engname{
+            position: absolute;
+            z-index: 9;
+            top: 25px;
+            left: -10px;
+            font-family: "arial";
+            font-weight: 800;
+            color: #eae9ef;
+            font-size: 60px;
+        }
+        
+        .tag-list{
+            position: relative;
+            z-index: 12;
+            top: 28px;
+            left: 0px;
+            
+            li{
+                display: inline-block;
+                margin-right: 6px;
+                margin-bottom: 6px;
+                
+                a{
+                    display: block;
+                    padding: 6px 17px;
+                    background: $color-blue;
+                    color: #FFF;
+                    border-radius: 2px;
+                    font-size: 12px;
+                    @include transition-curve(0.4s);
+                    @include shadow(0px 0px 13px rgba($color-blue,0.01));
+                    
+                    &:hover{
+                        background: darken($color-blue,5%);
+                        @include shadow(0px 5px 15px rgba(darken($color-blue,20%),0.4));
+                    }
+                }
+                
+            }
+        }
+        
+        .con{
+            position: relative;
+            font-size: 14px;
+            line-height: 24px;
+            margin-top: 40px;
+            
+            .icon{
+                width: 28px;
+                height: 20px;
+                background: url(images/anchor_bg_03.png) no-repeat;
+            }
+            
+            p{
+                margin: 15px 0;
+            }
+        }
+        
+        .link{
+            
+            .live-btn{
+                padding: 0px 35px;
+            }
+        }
+    }
+    
+}
+
+.page-anchor-contect{
+    margin: 0px auto;
+    width: 1000px;
+    
+    .layui-tab-title{
+        height: 50px;
+        border-bottom: 1px solid #e7e6ed;
+        li{
+            color: #797979;
+            line-height: 52px;
+        }
+        .layui-this{
+            color: #000;
+            font-weight: bold;
+            
+            &:after{
+                height: 51px;
+                border-bottom: 2px solid $color-main;
+            }
+        }
+    }
+    
+    .layui-tab-brief{
+        .layui-tab-title{
+            .layui-this{
+                &:after{
+                    border-bottom: 2px solid $color-main;
+                }
+            }
+        }
+    }
+    
+    .layui-tab-content{
+        padding: 0px;
+    }
+    
+    .layui-timeline{
+        
+        .layui-timeline-item{
+            padding-bottom: 35px;
+            
+            &:before{
+                background-color: #e7e6ed;
+            }
+        }
+        
+        .layui-timeline-axis{
+            top: 3px;
+            left: -4px;
+            height: 13px;
+            line-height: 13px;
+        }
+        
+        .layui-icon{
+            font-size: 16px;
+            color: #e7e6ed;
+        }
+    }
+    
+    
+    .anchor-contect-con{
+        
+        margin-left: 160px;
+        
+        .first{
+            height: 20px;
+            padding-bottom: 20px;
+        }
+        
+        .last{
+            position: absolute;
+            left: 5px;
+            top: 0;
+            z-index: 0;
+            width: 1px;
+            height: 100%;
+            background-color: #e2e2e2;
+        }
+        
+        .left-tt{
+            position: absolute;
+            width: 150px;
+            text-align: right;
+            left: -170px;
+            color: #000;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .right-con{
+            font-size: 14px;
+            color: #000;
+            padding: 0 30px;
+            
+            a{
+                color: #f84b9c;
+                border-bottom: 1px dotted #f84b9c;
+            }
+            
+            .time{
+                margin: 15px 0;
+                color: #c4c3c8;
+            }
+        }
+        
+        .name-input{
+            margin-top: -15px;
+        }
+        
+    }
+    
+    .anchor-contect-news{
+        .page-news{
+            padding: 0px 30px 10px;
+        }
+    }
+    
+    .anchor-contect-img{
+        .page-anchor{
+            padding: 30px 0 30px;
+        }
+    }
+    
+}
+
+.page-laypage{
+    margin: 30px 0 50px;
+    
+    .screen-reader-text{
+        display: none;
+    }
+    
+    .nav-links{
+        text-align: center;
+    }
+    
+    .page-numbers{
+        margin-left: 5px;
+        padding: 0px 15px;
+        display: inline-block;
+        height: 32px;
+        text-align: center;
+        line-height: 32px;
+        font-size: 12px;
+        text-align: center;
+        color: #FFF;
+        border-radius: 2px;
+        background: $color-main;
+        @include shadow(0px 0px 13px rgba($color-main,0.30));
+        @include transition-curve(0.4s);
+        
+        &:hover{
+            background: darken($color-main,1%);
+            @include shadow(0px 3px 27px rgba($color-main,0.6));
+        }
+    }
+    
+    .current{
+        background: #282828;
+        @include shadow(0px 0px 13px rgba(#282828,0.30));
+        
+        &:hover{
+            background: #000000;
+            @include shadow(0px 3px 27px rgba(#000,0.6));
+        }
+    }
+}

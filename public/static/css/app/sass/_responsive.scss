@@ -1,0 +1,273 @@
+@charset "utf-8";
+
+/*** 响应式 ***/
+
+//小屏幕
+@media screen and (max-width:768px){
+    //导航
+    .page-head{
+        .pc-nav{
+            display: none;
+        }
+        .mo-nav{
+            display: block;
+        }
+    }
+    
+    //首页幻灯片
+    .page-banner{
+        height: 250px;
+        
+        .banner{
+            .banner-img{
+                background-size: cover;
+            }
+        }
+        
+        .banner-con{
+            width: 100%;
+            margin: 0px;
+            left: auto;
+            z-index: 100;
+            
+            .banner-name{
+                top: 60px;
+                left: auto;
+                right: 70px;
+                
+                .name{
+                    font-size: 20px;
+                }
+                
+                .name-02{
+                    font-size: 20px;
+                }
+                
+                .live{
+                    margin-top: 5px;
+                    font-size: 12px;
+                }
+                
+                .live-en{
+                    margin-top: 30px;
+                    
+                }
+                
+                .line{
+                    margin-top: 15px;
+                    
+                    span{
+                        width: 14px;
+                        height: 4px;
+                    }
+                    
+                }
+            }
+            
+            .banner-date{
+                top: 45px;
+                left: 62px;
+            }
+            
+            .banner-text{
+                top: 140px;
+                left: 62px;
+                font-size: 12px;
+                
+                p{
+                    display: none;
+                    min-height: 45px;
+                }
+            }
+        }
+    }
+    
+    //首页细节
+    .page-index{
+        margin-bottom: 20px;
+        
+        .in-banner{
+            height: 140px;
+            
+            .in-banner-img{
+                img{
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+        
+        .in-interview-img{
+            img{
+                width: 240px;
+                height: auto;
+            }
+        }
+        
+        .in-briefing{
+            li{
+                display: none;
+                
+                &:first-child{
+                    display: block;
+                }
+                
+                &:nth-child(2){
+                    display: block;
+                }
+                
+                &:nth-child(3){
+                    display: block;
+                }
+            }
+        }
+        .in-tag{
+            margin-top: 20px;
+        }
+    }
+    
+    //搜索
+    .page-search{
+        .zb-btn{
+            width: 100%;
+        }
+    }
+    
+    //标题
+    .page-title{
+        margin-top: 30px;
+        min-height: 45px;
+        
+        .title{
+            margin-top: 0px;
+        }
+        
+        .title-eng{
+            font-size: 32px;
+        }
+    }
+    
+    //主播列表
+    .page-anchor{
+        .moudle-card{
+            width: 100%;
+        }
+        .anchor-img{
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    
+    //导航
+    .page-nav{
+        .nav-con{
+            .web-link{
+                height: 130px;
+                
+                .link-con{
+                    padding: 18px;
+                    padding-top: 0px;
+                }
+            }
+        }
+    }
+    
+    //新闻
+    .page-news{
+        .news-list{
+            li{
+                .in-news-list{
+                    .news-con{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .news-side{
+            .in-avdimg{
+                padding: 5px;
+            }
+        }
+        
+    }
+    
+    //主播详情
+    .page-anchor-con{
+        height: 680px;
+        
+        .anchor-bg{
+            left: 0px;
+        }
+        .anchor-line{
+            top: 30px;
+            left: 60px;
+            width: 260px;
+            height: 364px;
+        }
+        .anchor-img{
+            top: 47px;
+            left: 77px;
+            width: 260px;
+            height: 364px;
+            
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+        .anchor-platform{
+            top: 58px;
+            left: 90px;
+        }
+        .anchor-con{
+            top: 400px;
+            left: 10px;
+            right: auto;
+            width: auto;
+            
+            h1{
+                color: #FFF;
+                font-size: 34px;
+            }
+            
+            .engname{
+                left: 0px;
+                font-size: 47px;
+            }
+            
+            .line{
+                display: none;
+            }
+            
+            .tag-list{
+                top: 40px;
+            }
+        }
+        .anchor-num{
+            top: 120px;
+            left: 10px;
+        }
+    }
+    
+    .page-anchor-contect{
+        width: 100%;
+        
+        .anchor-contect-con{
+            margin-left: 90px;
+        }
+    }
+}
+
+@media screen and (min-width:768px){
+    
+}
+
+@media screen and (min-width:992px){
+    
+}
+
+@media screen and (min-width:1200px){
+    
+}

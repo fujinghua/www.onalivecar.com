@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+/*** 底部 ***/
+
+.page-foot{
+    margin-top: 30px;
+    overflow: hidden;
+    width: 100%;
+    padding: 55px 0px 140px;
+    background: #FFF;
+    
+    .foot-logo{
+        font-size: 12px;
+        line-height: 18px;
+        color: #a7a7a7;
+        
+        img{
+            margin-bottom: 20px;
+            width: 102px;
+            height: auto;
+        }
+    }
+    
+    .foot-link{
+        margin-top: 35px;
+        
+        .title{
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .link{
+            li{
+                margin-bottom: 5px;
+                font-size: 12px;
+                color: #a7a7a7;
+                line-height: 24px;
+                
+                a{
+                    color: #a7a7a7;
+                    @include transition-curve(0.4s);
+                    
+                    &:hover{
+                        color: $color-main;
+                    }
+                }
+            }
+            
+        }
+        
+        .link-con{
+            
+        }
+    }
+}
