@@ -123,7 +123,7 @@ class AjaxController extends BackController
     }
 
     /**
-     * @description 获取
+     * @description 获取分类
      * @param null $pid
      * @param null $level
      * @return \think\response\Json
@@ -144,6 +144,36 @@ class AjaxController extends BackController
             }
         }
         $list = $model->where($where)->order(['level'=>'ASC','id'=>'ASC','`order`'=>'ASC'])->column('name,pid,id','id');
+        if (!empty($list)){
+            foreach ($list as $key => $item){
+                $ret[] = ['id'=>$key,'name'=>$item['name']];
+            }
+        }
+        return json($ret);
+    }
+
+    /**
+     * @description 获取特征量
+     * @param null $pid
+     * @param null $level
+     * @return \think\response\Json
+     */
+    public function getCatePropAction($pid=null,$level=null)
+    {
+        $ret = [];
+        $where = [];
+        $model = \app\common\model\CateProp::load();
+        if ($pid || ($pid = $this->getRequest()->request('pid'))){
+            if ($pid != ''){
+                $where['pid'] = $pid;
+            }
+        }
+        if ($level || ($level = $this->getRequest()->request('level'))){
+            if ($level != ''){
+                $where['level'] = $level;
+            }
+        }
+        $list = $model->where($where)->order(['level'=>'ASC','id'=>'ASC','`order`'=>'ASC'])->column('name,id,cid,pid','id');
         if (!empty($list)){
             foreach ($list as $key => $item){
                 $ret[] = ['id'=>$key,'name'=>$item['name']];

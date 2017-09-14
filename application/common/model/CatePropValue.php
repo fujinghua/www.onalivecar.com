@@ -35,6 +35,7 @@ class CatePropValue extends Model
         'value',
         'cate_prop_id',
         'order',
+        'extra',
         'created_at',
         'updated_at',
     ];
@@ -65,6 +66,7 @@ class CatePropValue extends Model
             'value' => '特征值',
             'cate_prop_id' => '特征量表ID',
             'order' => '排序',
+            'extra' => '附加参数',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];

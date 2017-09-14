@@ -51,7 +51,7 @@
                     </select>
                 </div>
                 <div class="layui-input-inline" style="width: 30%;">
-                    <select name="unique_id" lay-verify="require" lay-filter="unique" lay-search>
+                    <select name="cate_id" lay-verify="require" lay-filter="cate" lay-search>
                         <option value="">选择车款</option>
                     </select>
                 </div>
@@ -61,16 +61,16 @@
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="layui-color-danger">*</span>是否存在父级:</label>
             <div class="layui-input-block right-width">
-                <input type="radio" value="0" name="isParent" title="否" lay-verify="checked" lay-group="isParent" class="layui-input" checked>
-                <input type="radio" value="1" name="isParent" title="是" lay-verify="checked" lay-group="isParent" class="layui-input">
+                <input type="radio" value="0" name="isParent" title="否" lay-verify="checked" lay-group="isParent" lay-filter="isParent" class="layui-input" checked>
+                <input type="radio" value="1" name="isParent" title="是" lay-verify="checked" lay-group="isParent" lay-filter="isParent" class="layui-input">
             </div>
         </div>
 
-        <div class="layui-form-item">
+        <div class="layui-form-item" style="display: none;">
             <label class="layui-form-label"><span class="layui-color-danger">*</span>选择父级:</label>
             <div class="layui-input-block">
                 <div class="layui-input-inline" style="width: 30%;">
-                    <select lay-verify="" lay-filter="level" lay-search lay-level="1">
+                    <select lay-verify="" lay-filter="level" lay-search lay-level="1" lay-group="pid" lay-error="至少选择一个父类">
                         <option value="">请选择</option>
                         {volist name="cateProp" id="item" }
                         <option value="{$item.id}">{$item.name}</option>
@@ -78,24 +78,38 @@
                     </select>
                 </div>
                 <div class="layui-input-inline" style="width: 30%;">
-                    <select lay-verify="" lay-filter="level" lay-search lay-level="2">
+                    <select lay-verify="" lay-filter="level" lay-search lay-level="2" lay-group="pid" lay-error="至少选择一个父类">
                         <option value="">请选择</option>
                     </select>
                 </div>
                 <div class="layui-input-inline" style="width: 30%;">
-                    <select lay-verify="" lay-filter="level" lay-search lay-level="3">
+                    <select lay-verify="" lay-filter="level" lay-search lay-level="3" lay-group="pid" lay-error="至少选择一个父类">
                         <option value="">请选择</option>
                     </select>
                 </div>
                 <input type="hidden" value="" name="pid" lay-verify="" class="layui-input">
+                <input type="hidden" value="" name="pName" lay-verify="" class="layui-input">
+                <input type="hidden" value="" name="level" lay-verify="" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label"><span class="layui-color-danger">*</span>类目名称:</label>
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>配置特征量:</label>
             <div class="layui-input-block right-width">
                 <div class="layui-input-inline" style="width: 91%;">
-                    <input type="text" value="" name="name" lay-verify="require" placeholder="类目名称" class="layui-input">
+                    <input type="text" value="" name="name" lay-verify="require" placeholder="配置特征量" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="container-value">
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="layui-color-danger"></span>配置特征值:</label>
+                <div class="layui-input-block right-width">
+                    <div class="layui-input-inline" style="width: 91%;position: relative;">
+                        <input type="text" value="" name="value[]" lay-verify="" placeholder="配置特征值(附加参数)" class="layui-input" style="padding-right: 64px;">
+                        <label class="layui-btn" lay-filter="addValue" style="position: absolute;right: 0;top: 0;">添加</label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,13 +146,18 @@
                 <input type="radio" value="0" name="isSeller" title="否" lay-verify="checked" lay-group="isSeller" class="layui-input" checked>
                 <input type="radio" value="1" name="isSeller" title="是" lay-verify="checked" lay-group="isSeller" class="layui-input">
             </div>
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>是否公共属性:</label>
+            <div class="layui-input-inline right-width">
+                <input type="radio" value="0" name="isPublic" title="否" lay-verify="checked" lay-group="isPublic" class="layui-input" checked>
+                <input type="radio" value="1" name="isPublic" title="是" lay-verify="checked" lay-group="isPublic" class="layui-input">
+            </div>
         </div>
 
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label"></label>
                 <button class="layui-btn" lay-submit="" lay-filter="submit">添加</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <button type="submit" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
 
@@ -155,50 +174,104 @@
         var level = parseInt($('[lay-filter="level"]:selected').val());
         var brand = $('[lay-filter="brand"]');
         var series = $('[lay-filter="series"]');
-        var logo = $('[lay-filter="logo"]');
-        form.on('radio(level)', function(data){
+        var cate = $('[lay-filter="cate"]');
+        var pid = $('[lay-filter="pid"]');
+        form.on('radio(isParent)', function(data){
             level = parseInt(data.value);
-            if (level===3){
-                brand.attr('lay-verify','require');
-                brand.closest('.layui-form-item').fadeIn();
-                series.attr('lay-verify','require');
-                series.closest('.layui-form-item').fadeIn();
-                logo.closest('.layui-form-item').hide();
-            }else if (level===2){
-                brand.attr('lay-verify','require');
-                brand.closest('.layui-form-item').fadeIn();
-                series.attr('lay-verify','');
-                series.closest('.layui-form-item').hide();
-                logo.closest('.layui-form-item').hide();
-            }else {
-                brand.attr('lay-verify','');
-                brand.closest('.layui-form-item').hide();
-                series.attr('lay-verify','');
-                series.closest('.layui-form-item').hide();
-                logo.closest('.layui-form-item').fadeIn();
-
+            if (level===1){
+                pid.attr('lay-verify','require');
+                $('[lay-filter="level"][lay-level]').closest('.layui-form-item').fadeIn();
+                $('[lay-filter="level"]').each(function () {
+                    $(this).attr('lay-verify','exist');
+                });
+            }else{
+                pid.attr('lay-verify','');
+                $('[lay-filter="level"][lay-level]').closest('.layui-form-item').hide();
+                $('[lay-filter="level"]').each(function () {
+                    $(this).attr('lay-verify','');
+                });
             }
         });
         form.on('select(brand)', function(data){
             var pid = data.value;
-            if (level===3){
+            $.get("{:url('ajax/getCate')}",{pid:pid},function(data){
                 series.html('');
-                $.get("{:url('ajax/getCate')}",{pid:pid},function(data){
-                    if (data){
-                        var option = [];
-                        option.push('<option value="">请选择</option>');
-                        if (data.length>0){
-                            for (var k in data){
-                                option.push('<option value="'+data[k].id+'">'+data[k].name+'</option>');
-                            }
+                cate.html('');
+                if (data){
+                    var option = [];
+                    option.push('<option value="">请选择</option>');
+                    if (data.length>0){
+                        for (var k in data){
+                            option.push('<option value="'+data[k].id+'">'+data[k].name+'</option>');
                         }
-                        series.html(option.join('')).attr('lay-verify','require');
-                        form.render('select');
-                        series.closest('.layui-form-item').fadeIn();
                     }
-                });
-            }
+                    series.html(option.join('')).attr('lay-verify','require');
+                }
+                form.render('select');
+            });
         });
+        form.on('select(series)', function(data){
+            var pid = data.value;
+            $.get("{:url('ajax/getCate')}",{pid:pid},function(data){
+                cate.html('');
+                if (data){
+                    var option = [];
+                    option.push('<option value="">请选择</option>');
+                    if (data.length>0){
+                        for (var k in data){
+                            option.push('<option value="'+data[k].id+'">'+data[k].name+'</option>');
+                        }
+                    }
+                    cate.html(option.join('')).attr('lay-verify','require');
+                }
+                form.render('select');
+            });
+        });
+        form.on('select(level)', function(data){
+            var pid = data.value;
+            var level = parseInt($(data.elem).attr('lay-level'));
+            $('[name="pid"]').val(pid);
+            $('[name="level"]').val(level);
+            $('[name="pName"]').val($(data.elem).find('option:selected').html());
+            if (level>1){
+                $('[name="name"]').val($(data.elem).find('option:selected').html());
+            }
+            if (level>=3){
+                return;
+            }
+            var select = $('[lay-filter="level"][lay-level="'+(level+1)+'"]');
+            $.get("{:url('ajax/getCateProp')}",{pid:pid},function(data){
+                select.html('');
+                if (data){
+                    var option = [];
+                    option.push('<option value="">请选择</option>');
+                    if (data.length>0){
+                        for (var k in data){
+                            option.push('<option value="'+data[k].id+'">'+data[k].name+'</option>');
+                        }
+                    }
+                    select.html(option.join(''));
+                }
+                form.render('select');
+            });
+        });
+    });
+
+    //添加配置特征值
+    $(document).on('click','[lay-filter="addValue"]',function () {
+       var html = ' <div class="layui-form-item"> ' +
+           '<label class="layui-form-label"><span class="layui-color-danger"></span></label> ' +
+           '<div class="layui-input-block right-width">' +
+           '<div class="layui-input-inline" style="width: 91%;position: relative;">' +
+           '<input type="text" value="" name="value[]" lay-verify="" placeholder="配置特征值(附加参数)" class="layui-input" style="padding-right: 64px;">' +
+           '<label class="layui-btn layui-btn-danger" lay-filter="deleteValue" style="position: absolute;right: 0;top: 0;">删除</label>' +
+           '</div></div></div>';
+       $('.container-value').append(html);
+    });
+
+    //删除配置特征值
+    $(document).on('click','[lay-filter="deleteValue"]',function () {
+       $(this).closest('.layui-form-item').remove();
     });
 
     $(function () {

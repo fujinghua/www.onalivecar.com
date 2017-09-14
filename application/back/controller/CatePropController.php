@@ -5,6 +5,7 @@ namespace app\back\controller;
 use app\common\controller\BackController;
 use app\common\model\Cate;
 use app\common\model\CateProp;
+use app\common\model\CatePropValue;
 
 class CatePropController extends BackController
 {
@@ -55,55 +56,38 @@ class CatePropController extends BackController
         $cate = Cate::load()->where(['level'=>'1'])->order(['order'=>'ASC','id'=>'ASC'])->column('name,unique_id','id');
         $cateProp = CateProp::load()->where(['level'=>'1'])->order(['order'=>'ASC','id'=>'ASC'])->column('name,cate_id','id');
         if ($this->getRequest()->isPost()){
-            $unique = 'car';
-            $model->unique = $unique;
             $data = $model->filter($_POST);
-            if (isset($data['level'])){
-                $level = $data['level'];
-                $validate = Cate::getValidate();
-                $data['order'] = (Cate::load()->where(['level'=>$data['level']])->max('`order`')+1);
-                if ($level == '3'){
-                    $validate->scene('createCar');
-                    $data['pid'] = $this->getRequest()->request('series_id');
-                    $data['isParent'] = '1';
-                    $data['title'] = isset($data['title']) ? $data['title'] : $data['name'].'车款类目';
-                }elseif ($level=='2'){
-                    $validate->scene('createSeries');
-                    $data['pid'] = $this->getRequest()->request('brand_id');
-                    $data['isParent'] = '1';
-                    $data['title'] = isset($data['title']) ? $data['title'] : $data['name'].'车型类目';
-                }else{
-                    $data['level'] = '1';
-                    $validate->scene('createBrand');
-                    $brandModel = new Brand();
-                    $pinyin = \app\common\components\ChineseToPinyin::encode($data['name'],'all');
-                    $letter = substr($pinyin,0,1);
-                    $order = Brand::load()->where(['letter'=>'a'])->max('`order`');
-                    $logo = $this->getRequest()->request('logo');
-                    $tmp = [
-                        'name'=>$data['name'],
-                        'letter'=>$letter,
-                        'pinyin'=>implode('',explode(' ',$pinyin)),
-                        'icon'=>$logo,
-                        'order'=>($order+1),
-                    ];
-                    $brandModel->save($tmp);
-                    $prefix = ROOT_PATH.'public';
-                    $path = $prefix.'/static/uploads/brand/'.$letter.'/'.$brandModel->id.'/';
-                    $to = $path.pathinfo($logo,PATHINFO_BASENAME);
-                    $from = $logo;
-                    $brandModel->icon = $to;
-                    $this->copy($from,$to);
-                    $icon = pathinfo($from,PATHINFO_DIRNAME).'/'.pathinfo($from,PATHINFO_FILENAME).'_icon.'.pathinfo($from,PATHINFO_EXTENSION);
-                    $to = $path.pathinfo($icon,PATHINFO_BASENAME);
-                    $this->copy($icon,$to);
-                    $brandModel->isUpdate(true)->save();
-                    $data['unique_id'] = $brandModel->id;
-                    $data['pid'] = '0';
-                    $data['isParent'] = '1';
-                    $data['title'] = isset($data['title']) ? $data['title'] : $data['name'].'品牌类目';
-                }
-                if ($validate->check($data) && $model->save($data)){
+            if (!empty($_REQUEST['isPublic'])){
+                $data['cate_id'] = $_REQUEST['brand_id'];
+            }
+            if (!empty($data)){
+                $validate = CateProp::getValidate();
+                if ($validate->check($data)){
+                    if ($_REQUEST['pName'] != $data['name']){
+                        $data['level'] ++;
+                        if ($data['level'] > 3){
+                            $data['level'] = 3;
+                        }
+                        $model->save($data);
+                    }else{
+                        $model = CateProp::load()->where(['name'=>$data['name']])->find();
+                    }
+                    if (!empty($_REQUEST['value'])){
+                        if (is_array($_REQUEST['value'])){
+                            foreach ($_REQUEST['value'] as $item){
+                                $catePropValue = new CatePropValue();
+                                $value = str_replace('（','(',str_replace('）',')',$item));
+                                $extra = '';
+                                if (strstr($value,'(') !==false && strstr($value,')') !==false){
+                                    $value = str_replace(')','',$value);
+                                    $tmp = explode('(',$value);
+                                    $value = $tmp[0];
+                                    $extra = $tmp[1];
+                                }
+                                $catePropValue->save(['value' =>$value, 'cate_prop_id' => $model->id,'extra'=>$extra]);
+                            }
+                        }
+                    }
                     $this->success('添加成功','create','',1);
                 }else{
                     $error = $validate->getError();

@@ -335,17 +335,37 @@ layui.define('form', function (exports) {
                 //exist 使用方式 lay-verify="exist" lay-group="XXX" lay-error="XXX"
                 exist: function (value, item) {
                     var $this = $(item);
-                    if (!$this.checked || (!$this.is('input[type="checkbox"]') && $.trim(value) === '')) {
+                    var has;
+                    if ($this.is('input[type="checkbox"]') || $this.is('input[type="radio"]')){
+                        if($this.checked){
+                            has = true;
+                        }
+                    }else if ($.trim(value) !== ''){
+                        has = true;
+                    }
+                    if (!has) {
                         var group = $this.attr('lay-group');
-                        var message = $this.attr('lay-error') || $this.closest('[lay-error]').attr('lay-error') || '至少选择一个 ' + $this.attr('name');
+                        var message = $this.attr('lay-error') || $this.closest('[lay-error]').attr('lay-error') || '至少选择一个 ' + ($this.attr('name')||'选项');
                         var pass = false;
                         //检查checkbox radio类型
                         var checked = $('input[lay-group="' + group + '"]:checked');
                         if (checked.length > 0) {
                             pass = true;
                         } else {
-                            //检查其他类型
+                            //检查其他类型 正常input
                             $('input[lay-group="' + group + '"][type!="checkbox"][type!="radio"]').each(function () {
+                                if ($.trim($(this).val()) !== '') {
+                                    pass = true;
+                                }
+                            });
+                            //检查其他类型 select
+                            $('select[lay-group="' + group + '"]').each(function () {
+                                if ($.trim($(this).val()) !== '') {
+                                    pass = true;
+                                }
+                            });
+                            //检查其他类型 textarea
+                            $('textarea[lay-group="' + group + '"]').each(function () {
                                 if ($.trim($(this).val()) !== '') {
                                     pass = true;
                                 }
