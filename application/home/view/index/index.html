@@ -1,0 +1,11 @@
+<!-- 加载公共模板文件开启 -->
+<div class="bs-container" style="min-height: 1334px;background-color: rgba(244,244,244,.9);">
+
+    <div class="layui-row">
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md4 layui-col-lg4 layui-col-xs-offset3 layui-col-sm-offset3 layui-col-md-offset4 layui-col-lg-offset4" style="text-align: center;font-size: 18px;line-height: 22px;">
+            你好！{if condition="isset($_SESSION['identity']['username'])"}{$_SESSION['identity']['username']}{/if}, 欢迎登录！
+        </div>
+    </div>
+
+</div>
+<!-- 加载公共模板文件结束 -->

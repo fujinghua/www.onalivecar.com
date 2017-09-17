@@ -1,0 +1,57 @@
+
+<section>
+
+    <div class="layui-side side bs-side" id="bs_side" style="display: none;">
+        <div class="layui-side-scroll bs-side-scroll bs-side-body" id="bs_nav_side" lay-filter="side">
+            <div id="bs_nav_side_header">
+                <div class="user-photo" id="user_profile" style="position: absolute;">
+                    <a href="/user/view" class="img" title="个人信息">
+                        <img class="user-images" src="/static/images/default-user.png" title="个人信息" alt="我的头像" />
+                    </a>
+                    <p>你好！{if condition="isset($_SESSION['identity']['username'])"}{$_SESSION['identity']['username']}{/if}, 欢迎登录</p>
+                </div>
+                <ul class="layui-nav layui-nav-tree">
+                    <li class="layui-nav-item " style="">
+                        <a class="" href="/login/logout.html">
+                            <i class="fa fa-sign-out"></i>
+                            <cite class="title" title="退出" target="_self">退出</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item " style="">
+                        <a class="" href="/index/notice.html">
+                            <i class="fa fa-circle-o"></i>
+                            <cite class="title" title="消息">消息</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item " style="">
+                        <a class="" href="/index/config.html">
+                            <i class="fa fa-circle-o"></i>
+                            <cite class="title" title="设置">设置</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item " style="">
+                        <a class="" href="/log/index.html">
+                            <i class="fa fa-circle-o"></i>
+                            <cite class="title" title="日记管理">日记管理</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item " style="">
+                        <a class="Index-Home" href="/index/faq.html">
+                            <i class="fa fa-circle-o"></i>
+                            <cite class="title" title="常见问题">常见问题</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item " style="">
+                        <a class="" href="/index/contact.html">
+                            <i class="fa fa-circle-o"></i>
+                            <cite class="title" title="联系我们">联系我们</cite>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfloat"></div>
+
+</section>

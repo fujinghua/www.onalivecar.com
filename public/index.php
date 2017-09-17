@@ -14,8 +14,12 @@
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
 
+
+
 //可以绑定模块处理 ( 开发测试使用 )
-if ($_SERVER['HTTP_HOST'] == '47.94.105.213:88'){ //绑定端口88 到 api 模块  （接口）
+if (strstr($_SERVER['HTTP_HOST'],':888') !== false){ //绑定端口888 到 home 模块  （接口）
+    define('BIND_MODULE','home');
+}elseif ($_SERVER['HTTP_HOST'] == '47.94.105.213:88'){ //绑定端口88 到 api 模块  （接口）
     define('BIND_MODULE','api');
 }else{ // 其他所有的请求绑定到后台
     define('BIND_MODULE','back');
