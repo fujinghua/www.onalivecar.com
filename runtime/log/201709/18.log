@@ -6401,3 +6401,191 @@
 [ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
 [ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.013001s ]
 [ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2017-09-18T20:33:53+08:00 ] 192.168.1.2 192.168.1.3 GET /index/index
+[ info ] 192.168.1.2:888/index/index [运行时间：0.470027s][吞吐率：2.13req/s] [内存消耗：452.44kb] [文件加载：61]
+[ info ] [ LANG ] F:\aliveDinner\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-requested-with' => 'com.android.browser',
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip,deflate',
+  'q-refer' => '001203',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 6.0; en-us; H60-L01 Build/HDH60-L01) AppleWebKit/537.36 (KHTML, like Gecko)Version/4.0 Chrome/37.0.0.0 MQQBrowser/6.0 Mobile Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'x-wap-profile' => 'http://wap1.huawei.com/uaprof/HUAWEI_H60_L01_UAProfile.xml',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.2:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.019001s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.072004s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.174010s ]
+---------------------------------------------------------------
+[ 2017-09-18T20:33:54+08:00 ] 192.168.1.2 192.168.1.3 GET /user/login
+[ info ] 192.168.1.2:888/user/login [运行时间：0.052003s][吞吐率：19.23req/s] [内存消耗：383.58kb] [文件加载：64]
+[ info ] [ LANG ] F:\aliveDinner\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'user',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-requested-with' => 'com.android.browser',
+  'cookie' => 'PHPSESSID=7q0aqr528d7rvoruqckslptul2',
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip,deflate',
+  'q-refer' => '001203',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 6.0; en-us; H60-L01 Build/HDH60-L01) AppleWebKit/537.36 (KHTML, like Gecko)Version/4.0 Chrome/37.0.0.0 MQQBrowser/6.0 Mobile Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'x-wap-profile' => 'http://wap1.huawei.com/uaprof/HUAWEI_H60_L01_UAProfile.xml',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.2:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\UserController->loginAction[ F:\aliveDinner\upupw\www\www.onalivecar.com\application\home\controller\UserController.php ]
+[ info ] [ VIEW ] F:\aliveDinner\upupw\www\www.onalivecar.com\public/../application/home\view\user\login.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.011001s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2017-09-18T20:34:02+08:00 ] 192.168.1.2 192.168.1.3 POST /user/login
+[ info ] 192.168.1.2:888/user/login [运行时间：2.283131s][吞吐率：0.44req/s] [内存消耗：336.70kb] [文件加载：65]
+[ info ] [ LANG ] F:\aliveDinner\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'user',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7q0aqr528d7rvoruqckslptul2',
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip,deflate',
+  'referer' => 'http://192.168.1.2:888/user/login',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 6.0; en-us; H60-L01 Build/HDH60-L01) AppleWebKit/537.36 (KHTML, like Gecko)Version/4.0 Chrome/37.0.0.0 MQQBrowser/6.0 Mobile Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://192.168.1.2:888',
+  'accept' => '*/*',
+  'content-length' => '73',
+  'x-wap-profile' => 'http://wap1.huawei.com/uaprof/HUAWEI_H60_L01_UAProfile.xml',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.2:888',
+)
+[ info ] [ PARAM ] array (
+  '__token__' => '956455e465b7a0586486b8cdc8d9d99f',
+  'username' => 'phone',
+  'password' => '123456',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\UserController->loginAction[ F:\aliveDinner\upupw\www\www.onalivecar.com\application\home\controller\UserController.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_home_user` [ RunTime:0.033002s ]
+[ sql ] [ SQL ] SELECT `id` FROM `oac_home_user` WHERE  `username` = 'phone' LIMIT 1 [ RunTime:0.004000s ]
+[ sql ] [ SQL ] SELECT `id` FROM `oac_home_user` WHERE  `username` = 'phone' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `oac_home_user` WHERE  `is_delete` = 1  AND `username` = 'phone'  AND `type` IN (1,2,3,4) LIMIT 1 [ RunTime:0.001001s ]
+[ sql ] [ SQL ] UPDATE `oac_home_user`  SET `password`='$2y$13$vnrYgNHr9rzjzwOX7qaNguS4lXlx4eFgesO2Y0vXWYzavv2E58u3e',`logined_at`='2017-09-18 20:34:01',`updated_at`='2017-09-18 20:34:01',`ip`='{\"last\":[\"192.168.1.3\",\"2017-09-18 01:22:10\"],\"current\":[\"192.168.1.3\",\"2017-09-18 20:34:01\"],\"often\":[],\"haply\":[\"192.168.1.3\"],\"once\":{\"127.0.0.1\":[2,\"2017-09-17 22:30:51\"],\"192.168.1.3\":[7,\"2017-09-18 20:34:01\"]}}',`status`=1  WHERE  `username` = 'phone'  AND `type` IN (1,2,3,4) [ RunTime:0.032002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_login_log` [ RunTime:0.030002s ]
+[ sql ] [ SQL ] INSERT INTO `oac_login_log` (`route` , `url` , `user_agent` , `gets` , `posts` , `user_id` , `app` , `ip` , `target` , `created_at` , `updated_at`) VALUES ('home/user/login' , '/user/login' , 'Mozilla/5.0 (Linux; U; Android 6.0; en-us; H60-L01 Build/HDH60-L01) AppleWebKit/537.36 (KHTML, like Gecko)Version/4.0 Chrome/37.0.0.0 MQQBrowser/6.0 Mobile Safari/537.36' , '[]' , '{\"__token__\":\"956455e465b7a0586486b8cdc8d9d99f\",\"username\":\"phone\"}' , 101 , NULL , '1' , '192.168.1.3' , '2017-09-18 20:34:02' , '2017-09-18 20:34:02') [ RunTime:0.026002s ]
+---------------------------------------------------------------
+[ 2017-09-18T20:34:02+08:00 ] 192.168.1.2 192.168.1.3 GET /index/index
+[ info ] 192.168.1.2:888/index/index [运行时间：0.027001s][吞吐率：37.04req/s] [内存消耗：380.13kb] [文件加载：64]
+[ info ] [ LANG ] F:\aliveDinner\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-requested-with' => 'com.android.browser',
+  'cookie' => 'PHPSESSID=7q0aqr528d7rvoruqckslptul2',
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip,deflate',
+  'referer' => 'http://192.168.1.2:888/user/login',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 6.0; en-us; H60-L01 Build/HDH60-L01) AppleWebKit/537.36 (KHTML, like Gecko)Version/4.0 Chrome/37.0.0.0 MQQBrowser/6.0 Mobile Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'x-wap-profile' => 'http://wap1.huawei.com/uaprof/HUAWEI_H60_L01_UAProfile.xml',
+  'connection' => 'keep-alive',
+  'host' => '192.168.1.2:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\IndexController->indexAction[ F:\aliveDinner\upupw\www\www.onalivecar.com\application\home\controller\IndexController.php ]
+[ info ] [ VIEW ] F:\aliveDinner\upupw\www\www.onalivecar.com\public/../application/home\view\index\index.html [ array (
+  0 => 'URL',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000000s ]
