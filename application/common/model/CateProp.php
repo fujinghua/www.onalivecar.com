@@ -11,8 +11,6 @@ use app\common\model\Model;
  * @property integer $is_delete
  * @property string $name
  * @property string $cate_id
- * @property string $pid
- * @property string $cid
  * @property integer $isAlias
  * @property integer $isColor
  * @property integer $isEnum
@@ -43,8 +41,6 @@ class CateProp extends Model
         'is_delete',
         'name',
         'cate_id',
-        'pid',
-        'cid',
         'isPublic',
         'isAlias',
         'isColor',
@@ -53,7 +49,6 @@ class CateProp extends Model
         'isUnique',
         'isSeller',
         'order',
-        'level',
         'created_at',
         'updated_at',
     ];
@@ -83,8 +78,6 @@ class CateProp extends Model
             'is_delete' => '时效;0=失效,1=有效;默认1;',
             'name' => '属性名',
             'cate_id' => '所属类目ID',
-            'pid' => '父级特征量ID',
-            'cid' => '下级特征量ID',
             'isPublic' => '是否公共属性;0=否，1=是，默认是0',
             'isAlias' => '是否允许别名;0=否，1=是，默认是0',
             'isColor' => '是否颜色属性;0=否，1=是，默认是0',
@@ -93,7 +86,6 @@ class CateProp extends Model
             'isUnique' => '是否关键属性;0=否，1=是，默认是1',
             'isSeller' => '是否销售属性;0=否，1=是，默认是1',
             'order' => '排序',
-            'level' => '分类深度',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];

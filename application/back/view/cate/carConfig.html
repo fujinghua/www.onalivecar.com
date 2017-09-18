@@ -63,10 +63,10 @@
                 </div>
                 <label class="layui-form-label" style="width: 60px;">类型:</label>
                 <div class="layui-input-inline">
-                    <select name="cate_id" lay-search lay-filter="cate">
+                    <select name="cate" lay-search lay-filter="cate">
                         <option value="">全部</option>
-                        {volist name="cateList" id="item"}
-                        <option value="{$key}" {if condition="$key eq $Think.get.cate_id"}selected{/if}>{$item}</option>
+                        {volist name="model->getLists($model->unique)" id="item"}
+                        <option value="{$key}" {if condition="$key eq $Think.get.cate"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>
                 </div>
@@ -101,31 +101,32 @@
 
 <script>
     var url = {
-        createUrl:"{:url('/cate_prop/create')}",
-        updateUrl:"{:url('/cate_prop/update')}",
-        deleteUrl:"{:url('/cate_prop/delete')}",
+        createUrl:"{:url('/cate/createConfig')}",
+        updateUrl:"{:url('/cate/update')}",
+        deleteUrl:"{:url('/cate/delete')}",
     };
     $(function() {
 
         //添加
-        Back.create('create',{content:url.createUrl,area:['960px','90%']});
+        Back.create('create',{content:url.createUrl,area:['960px','628px']});
 
         //编辑
-        Back.update('update',{content:url.updateUrl,area:['960px','90%']});
+        Back.update('update',{content:url.updateUrl,area:['960px','628px']});
 
         //删除
         Back.delete('delete',url.deleteUrl);
     });
+
     layui.use([ 'layer','table', 'form'], function() {
         var table = layui.table;
         var _width = document.documentElement.clientWidth;//获取页面可见宽度
-        _width = _width-80*9-100-140;
+        _width = _width-100-100-100-100-170;
         var search = window.location.search;
         //执行渲染
         table.render({
-            elem: '#table' //指定原始表格元素选择器（推荐id选择器）
+            elem: '#table' //指定原始表格元素选择器（推荐id选择器） ,不是lay-filter选择器
 //            , height: 400 //容器高度
-            , url: '/cate_prop/index.html'+search
+            , url: '/cate/carConfig.html'+search
             , page: true
             , method: 'get'
             , where: {isAjax: true}
@@ -134,16 +135,13 @@
             , cols: [
                 [
                     {checkbox: true}, //其它参数在此省略
-                    {field: 'id', width: 80, sort: true, title: '序号'},
-                    {field: 'name', width: (_width/3), title: '名称', templet: '#nameTpl'},
-                    {field: 'cate_id', width: 80, sort: true, title: '所属类目'},
-                    {field: 'isColor', width: 80, title: '是否颜色属性'},
-                    {field: 'isEnum', width: 80, title: '是否枚举属性'},
-                    {field: 'isAlive', width: 80, title: '是否输入属性'},
-                    {field: 'isUnique', width: 80, title: '是否关键属性'},
-                    {field: 'isSeller', width: 80, title: '是否销售属性'},
-                    {field: 'created_at', width: 100, title: '创建时间'},
-                    {field: 'action', width: 140, title: '操作', align: 'center', toolbar: '#barAction'},
+                    {field: 'id', width: 100+'px', sort: true, title: '序号'},
+                    {field: 'level', width: 100+'px', sort: true, title: '类型'},
+                    {field: 'name', width: (_width/4)+'px', title: '名称', templet: '#nameTpl'},
+                    {field: 'pid', width: (_width/4)+'px', sort: true, title: '父类'},
+                    {field: 'title', width: (_width/2)+'px', title: '附加说明'},
+                    {field: 'created_at', width: 100+'px', title: '创建时间'},
+                    {field: 'action', width: 140+'px', title: '操作', align: 'center', toolbar: '#barAction'},
                 ]
             ] //设置表头
 //            ,skin: 'row' //行边框风格

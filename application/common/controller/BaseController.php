@@ -2,9 +2,6 @@
 
 namespace app\common\controller;
 
-use app\common\model\BackUser;
-use app\common\model\BuildingDetail;
-use app\common\model\Department;
 use think\Controller;
 use think\response\View;
 use think\Request;

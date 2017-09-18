@@ -27,6 +27,7 @@ class CateValidate extends Validate
         'createBrand'   =>  [],
         'createSeries'   =>  [],
         'createCar'   =>  [],
+        'createCarConfig'   =>  [],
         'update'  =>  [],
         'save'  =>  [],
         'not'  =>  [],

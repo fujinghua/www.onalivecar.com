@@ -15,32 +15,34 @@ class CatePropController extends BackController
      */
     public function indexAction()
     {
+        $type = '2';
         $where = [];
         $request = $this->getRequest();
         $limit = $request->request('limit') ? : 20;
         $model = CateProp::load();
-        $lang = CateProp::Lang();
         $key = trim($request->request('keyword'));
         if ($key != ''){
             $where[] = ['exp',"t.name like '%".$key."%' "];
         }
-        $cate = trim($request->request('cate'));
+        $cateList = Cate::load()->where(['level'=>'1','type'=>$type])->order(['order'=>'ASC','id'=>'ASC'])->column('name','id');
+        $cate = trim($request->request('cate_id'));
         if ($cate != ''){
-            if (in_array($cate,array_keys($lang['car']))){
+            if (in_array($cate,array_keys($cateList))){
                 $where =  array_merge($where, ['level'=>$cate]);
             }
         }
         if ($this->getRequest()->request('isAjax')){
             $list = $model->alias('t')
-                ->join(CateProp::tableName().' b','t.id = b.id','left')
+                ->join(Cate::tableName().' c','t.cate_id = c.id','left')
                 ->where($where)
-                ->field('t.*,b.name as brand,b.icon as icon')
-                ->order(['`level`'=>'ASC','`order`'=>'ASC'])->paginate($limit)->toArray();
+                ->field('t.*,c.name as cateName')
+                ->order(['`c`.`id`'=>'ASC','`t`.`order`'=>'ASC'])->paginate($limit)->toArray();
             $ret = ['code'=>'0','msg'=>'','count'=>$list['total'],'data'=>$list['data']];
             return json($ret);
         }else{
             $this->assign('meta_title', "汽车配置");
             $this->assign('model', $model);
+            $this->assign('cateList', $cateList);
             return view('cateProp/index');
         }
     }
@@ -53,25 +55,13 @@ class CatePropController extends BackController
     public function createAction()
     {
         $model = new CateProp();
-        $cate = Cate::load()->where(['level'=>'1'])->order(['order'=>'ASC','id'=>'ASC'])->column('name,unique_id','id');
-        $cateProp = CateProp::load()->where(['level'=>'1'])->order(['order'=>'ASC','id'=>'ASC'])->column('name,cate_id','id');
+        $type = '2';
+        $cateList = Cate::load()->where(['level'=>'1','type'=>$type])->order(['order'=>'ASC','id'=>'ASC'])->column('name','id');
         if ($this->getRequest()->isPost()){
             $data = $model->filter($_POST);
-            if (!empty($_REQUEST['isPublic'])){
-                $data['cate_id'] = $_REQUEST['brand_id'];
-            }
             if (!empty($data)){
                 $validate = CateProp::getValidate();
-                if ($validate->check($data)){
-                    if ($_REQUEST['pName'] != $data['name']){
-                        $data['level'] ++;
-                        if ($data['level'] > 3){
-                            $data['level'] = 3;
-                        }
-                        $model->save($data);
-                    }else{
-                        $model = CateProp::load()->where(['name'=>$data['name']])->find();
-                    }
+                if ($validate->check($data) && $model->save($data)){
                     if (!empty($_REQUEST['value'])){
                         if (is_array($_REQUEST['value'])){
                             foreach ($_REQUEST['value'] as $item){
@@ -98,7 +88,7 @@ class CatePropController extends BackController
                 }
             }
         }
-        return view('cateProp/create',['meta_title'=>'添加汽车配置','model'=>$model,'cateProp'=>$cateProp,'cate'=>$cate]);
+        return view('cateProp/create',['meta_title'=>'添加汽车配置','model'=>$model,'cateList'=>$cateList]);
     }
 
     /**

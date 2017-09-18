@@ -36,6 +36,7 @@ class Cate extends Model
 
     protected $field = [
         'id',
+        'type',
         'name',
         'pid',
         'isParent',
@@ -86,6 +87,7 @@ class Cate extends Model
     {
         return [
             'id' => '类目ID',
+            'type' => '分类类别',
             'name' => '类目名称',
             'pid' => '类目父ID',
             'isParent' => '是否作为父级；0否，1是；默认为0',

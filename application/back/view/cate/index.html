@@ -65,7 +65,7 @@
                 <div class="layui-input-inline">
                     <select name="cate" lay-search lay-filter="cate">
                         <option value="">全部</option>
-                        {volist name="model->getLists('car')" id="item"}
+                        {volist name="model->getLists($model->unique)" id="item"}
                         <option value="{$key}" {if condition="$key eq $Think.get.cate"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>

@@ -35,61 +35,16 @@
     <form class="layui-form forms" id="defaultForm" action="" method="post" style="padding: 15px 0">
 
         <div class="layui-form-item">
-            <label class="layui-form-label"><span class="layui-color-danger">*</span>选择汽车系列:</label>
-            <div class="layui-input-block">
-                <div class="layui-input-inline" style="width: 30%;">
-                    <select name="brand_id" lay-verify="require" lay-filter="brand" lay-search>
-                        <option value="">选择品牌</option>
-                        {volist name="cate" id="item" }
-                        <option value="{$item.id}">{$item.name}</option>
-                        {/volist}
-                    </select>
-                </div>
-                <div class="layui-input-inline" style="width: 30%;">
-                    <select name="series_id" lay-verify="require" lay-filter="series" lay-search>
-                        <option value="">选择车型</option>
-                    </select>
-                </div>
-                <div class="layui-input-inline" style="width: 30%;">
-                    <select name="cate_id" lay-verify="require" lay-filter="cate" lay-search>
-                        <option value="">选择车款</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label"><span class="layui-color-danger">*</span>是否存在父级:</label>
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>选择配置目录:</label>
             <div class="layui-input-block right-width">
-                <input type="radio" value="0" name="isParent" title="否" lay-verify="checked" lay-group="isParent" lay-filter="isParent" class="layui-input" checked>
-                <input type="radio" value="1" name="isParent" title="是" lay-verify="checked" lay-group="isParent" lay-filter="isParent" class="layui-input">
-            </div>
-        </div>
-
-        <div class="layui-form-item" style="display: none;">
-            <label class="layui-form-label"><span class="layui-color-danger">*</span>选择父级:</label>
-            <div class="layui-input-block">
-                <div class="layui-input-inline" style="width: 30%;">
-                    <select lay-verify="" lay-filter="level" lay-search lay-level="1" lay-group="pid" lay-error="至少选择一个父类">
-                        <option value="">请选择</option>
-                        {volist name="cateProp" id="item" }
-                        <option value="{$item.id}">{$item.name}</option>
+                <div class="layui-input-inline" style="width: 91%;">
+                    <select name="cate_id" lay-verify="require" lay-filter="brand" lay-search>
+                        <option value="">选择配置目录</option>
+                        {volist name="cateList" id="item" }
+                        <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
                 </div>
-                <div class="layui-input-inline" style="width: 30%;">
-                    <select lay-verify="" lay-filter="level" lay-search lay-level="2" lay-group="pid" lay-error="至少选择一个父类">
-                        <option value="">请选择</option>
-                    </select>
-                </div>
-                <div class="layui-input-inline" style="width: 30%;">
-                    <select lay-verify="" lay-filter="level" lay-search lay-level="3" lay-group="pid" lay-error="至少选择一个父类">
-                        <option value="">请选择</option>
-                    </select>
-                </div>
-                <input type="hidden" value="" name="pid" lay-verify="" class="layui-input">
-                <input type="hidden" value="" name="pName" lay-verify="" class="layui-input">
-                <input type="hidden" value="" name="level" lay-verify="" class="layui-input">
             </div>
         </div>
 
@@ -123,7 +78,7 @@
             <label class="layui-form-label"><span class="layui-color-danger">*</span>是否枚举属性:</label>
             <div class="layui-input-inline right-width">
                 <input type="radio" value="0" name="isEnum" title="否" lay-verify="checked" lay-group="isEnum" class="layui-input" checked>
-                <input type="radio" value="1" name="isEnum" title="是" lay-verify="checked" lay-group="isEnum" class="layui-input">
+                <input type="radio" value="1" name="isEnum" title="是" lay-verify="checked" lay-group="isEnum" class="layui-input" >
             </div>
         </div>
 
@@ -131,7 +86,7 @@
             <label class="layui-form-label"><span class="layui-color-danger">*</span>是否输入属性:</label>
             <div class="layui-input-inline right-width">
                 <input type="radio" value="0" name="isAlive" title="否" lay-verify="checked" lay-group="isAlive" class="layui-input" checked>
-                <input type="radio" value="1" name="isAlive" title="是" lay-verify="checked" lay-group="isAlive" class="layui-input">
+                <input type="radio" value="1" name="isAlive" title="是" lay-verify="checked" lay-group="isAlive" class="layui-input" >
             </div>
             <label class="layui-form-label"><span class="layui-color-danger">*</span>是否关键属性:</label>
             <div class="layui-input-inline right-width">
@@ -149,7 +104,7 @@
             <label class="layui-form-label"><span class="layui-color-danger">*</span>是否公共属性:</label>
             <div class="layui-input-inline right-width">
                 <input type="radio" value="0" name="isPublic" title="否" lay-verify="checked" lay-group="isPublic" class="layui-input" checked>
-                <input type="radio" value="1" name="isPublic" title="是" lay-verify="checked" lay-group="isPublic" class="layui-input">
+                <input type="radio" value="1" name="isPublic" title="是" lay-verify="checked" lay-group="isPublic" class="layui-input" >
             </div>
         </div>
 

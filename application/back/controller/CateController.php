@@ -9,15 +9,18 @@ use app\common\model\Cate;
 class CateController extends BackController
 {
     /**
-     * @description 显示资源列表
+     * @description 汽车分类清单
      * @return \think\Response
      */
     public function indexAction()
     {
-        $where = [];
+        $unique = 'car';
+        $type = '1';
+        $where = ['t.type'=>$type];
         $request = $this->getRequest();
         $limit = $request->request('limit') ? : 20;
         $model = Cate::load();
+        $model->unique = $unique;
         $lang = Cate::Lang();
         $key = trim($request->request('keyword'));
         if ($key != ''){
@@ -25,7 +28,7 @@ class CateController extends BackController
         }
         $cate = trim($request->request('cate'));
         if ($cate != ''){
-            if (in_array($cate,array_keys($lang['car']))){
+            if (in_array($cate,array_keys($lang[$model->unique]))){
                 $where =  array_merge($where, ['level'=>$cate]);
             }
         }
@@ -45,6 +48,46 @@ class CateController extends BackController
     }
 
     /**
+     * @description 汽车配置清单
+     * @return \think\Response
+     */
+    public function carConfigAction()
+    {
+        $unique = 'carConfig';
+        $type = '2';
+        $where = ['t.type'=>$type];
+        $request = $this->getRequest();
+        $limit = $request->request('limit') ? : 20;
+        $model = Cate::load();
+        $model->unique = $unique;
+        $lang = Cate::Lang();
+        $key = trim($request->request('keyword'));
+        if ($key != ''){
+            $where[] = ['exp',"t.name like '%".$key."%' "];
+        }
+        $cate = trim($request->request('cate'));
+        if ($cate != ''){
+            if (in_array($cate,array_keys($lang[$model->unique]))){
+                $where =  array_merge($where, ['level'=>$cate]);
+            }
+        }
+
+        if ($this->getRequest()->request('isAjax')){
+            $list = $model->alias('t')
+                ->join(Brand::tableName().' b','t.id = b.id','left')
+                ->where($where)
+                ->field('t.*,b.name as brand,b.icon as icon')
+                ->order(['`level`'=>'ASC','`order`'=>'ASC'])->paginate($limit)->toArray();
+            $ret = ['code'=>'0','msg'=>'','count'=>$list['total'],'data'=>$list['data']];
+            return json($ret);
+        }else{
+            $this->assign('meta_title', "类目清单");
+            $this->assign('model', $model);
+            return view('cate/carConfig');
+        }
+    }
+
+    /**
      * 显示创建资源表单页.| 保存新建的资源
      *
      * @return \think\Response
@@ -52,13 +95,16 @@ class CateController extends BackController
     public function createAction()
     {
         $model = new Cate();
-        $brand = Cate::load()->where(['level'=>'1'])->order(['order'=>'ASC','id'=>'ASC'])->column('name,unique_id','id');
+        $unique = 'car';
+        $type = '1';
+        $model->unique = $unique;
+        $brand = Cate::load()->where(['level'=>'1','type'=>$type])->order(['order'=>'ASC','id'=>'ASC'])->column('name,unique_id','id');
         if ($this->getRequest()->isPost()){
-            $unique = 'car';
-            $model->unique = $unique;
             $data = $model->filter($_POST);
             if (isset($data['level'])){
                 $level = $data['level'];
+                $data['type'] = $type;
+                $data['unique_code'] = $unique;
                 $validate = Cate::getValidate();
                 $data['order'] = (Cate::load()->where(['level'=>$data['level']])->max('`order`')+1);
                 if ($level == '3'){
@@ -115,6 +161,45 @@ class CateController extends BackController
         }
         return view('cate/create',['meta_title'=>'添加品牌','model'=>$model,'brand'=>$brand]);
     }
+
+    /**
+     * 显示创建资源表单页.| 保存新建的资源
+     *
+     * @return \think\Response
+     */
+    public function createConfigAction()
+    {
+        $model = new Cate();
+        $unique = 'carConfig';
+        $type = '2';
+        $model->unique = $unique;
+        $parent = Cate::load()->where(['level'=>'1','type'=>$type])->order(['order'=>'ASC','id'=>'ASC'])->column('name,unique_id','id');
+        if ($this->getRequest()->isPost()){
+            $data = $model->filter($_POST);
+            if (isset($data['level'])){
+                $data['type'] = $type;
+                $data['unique_code'] = $unique;
+                $data['isParent'] = '1';
+                $validate = Cate::getValidate();
+                $data['order'] = (Cate::load()->where(['level'=>$data['level'],'type'=>$type])->max('`order`')+1);
+                $validate->scene('createCarConfig');
+                $pid = $this->getRequest()->request('parent_id');
+                $data['pid'] = empty($pid) ? '0' : $pid;
+                $data['title'] = !empty($data['title']) ? $data['title'] : $data['name'].' 配置';
+                if ($validate->check($data) && $model->save($data)){
+                    $this->success('添加成功','createConfig','',1);
+                }else{
+                    $error = $validate->getError();
+                    if (empty($error)){
+                        $error = $model->getError();
+                    }
+                    $this->error($error, 'createConfig','',1);
+                }
+            }
+        }
+        return view('cate/createConfig',['meta_title'=>'添加配置','model'=>$model,'parent'=>$parent]);
+    }
+
 
     /**
      * 保存更新的资源
