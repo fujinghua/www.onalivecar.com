@@ -5804,3 +5804,600 @@
 [ sql ] [ DB ] CONNECT:[ UseTime:0.010001s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
 [ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.015001s ]
 [ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2017-09-18T09:06:31+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] 127.0.0.1:888/ [运行时间：0.840048s][吞吐率：1.19req/s] [内存消耗：451.12kb] [文件加载：61]
+[ info ] [ LANG ] D:\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => '127.0.0.1:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008001s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.057003s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.016001s ]
+---------------------------------------------------------------
+[ 2017-09-18T09:06:31+08:00 ] 127.0.0.1 127.0.0.1 GET /user/login
+[ info ] 127.0.0.1:888/user/login [运行时间：0.078005s][吞吐率：12.82req/s] [内存消耗：380.29kb] [文件加载：64]
+[ info ] [ LANG ] D:\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'user',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=slompjaoak63novds91b02ukl2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => '127.0.0.1:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\UserController->loginAction[ D:\upupw\www\www.onalivecar.com\application\home\controller\UserController.php ]
+[ info ] [ VIEW ] D:\upupw\www\www.onalivecar.com\public/../application/home\view\user\login.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.015001s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2017-09-18T09:08:16+08:00 ] 127.0.0.1 127.0.0.1 GET /user/login
+[ info ] 127.0.0.1:888/user/login [运行时间：0.060003s][吞吐率：16.67req/s] [内存消耗：333.66kb] [文件加载：60]
+[ info ] [ LANG ] D:\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'user',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=slompjaoak63novds91b02ukl2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => '127.0.0.1:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\UserController->loginAction[ D:\upupw\www\www.onalivecar.com\application\home\controller\UserController.php ]
+[ info ] [ VIEW ] D:\upupw\www\www.onalivecar.com\public/../application/home\view\user\login.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010001s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.013000s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2017-09-18T09:08:19+08:00 ] 127.0.0.1 127.0.0.1 GET /user/login
+[ info ] 127.0.0.1:888/user/login [运行时间：0.025002s][吞吐率：40.00req/s] [内存消耗：333.33kb] [文件加载：60]
+[ info ] [ LANG ] D:\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'user',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=slompjaoak63novds91b02ukl2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => '127.0.0.1:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\UserController->loginAction[ D:\upupw\www\www.onalivecar.com\application\home\controller\UserController.php ]
+[ info ] [ VIEW ] D:\upupw\www\www.onalivecar.com\public/../application/home\view\user\login.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.014001s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2017-09-18T09:08:20+08:00 ] 127.0.0.1 127.0.0.1 GET /user/login
+[ info ] 127.0.0.1:888/user/login [运行时间：0.051003s][吞吐率：19.61req/s] [内存消耗：333.33kb] [文件加载：60]
+[ info ] [ LANG ] D:\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'user',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=slompjaoak63novds91b02ukl2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => '127.0.0.1:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\UserController->loginAction[ D:\upupw\www\www.onalivecar.com\application\home\controller\UserController.php ]
+[ info ] [ VIEW ] D:\upupw\www\www.onalivecar.com\public/../application/home\view\user\login.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012001s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.027001s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2017-09-18T10:04:44+08:00 ] 127.0.0.1 127.0.0.1 GET /user/login
+[ info ] 127.0.0.1:888/user/login [运行时间：0.036002s][吞吐率：27.78req/s] [内存消耗：337.12kb] [文件加载：60]
+[ info ] [ LANG ] D:\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'user',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=slompjaoak63novds91b02ukl2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => '127.0.0.1:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\UserController->loginAction[ D:\upupw\www\www.onalivecar.com\application\home\controller\UserController.php ]
+[ info ] [ VIEW ] D:\upupw\www\www.onalivecar.com\public/../application/home\view\user\login.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.014001s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2017-09-18T10:04:44+08:00 ] 127.0.0.1 127.0.0.1 GET /user/login
+[ info ] 127.0.0.1:888/user/login [运行时间：0.043002s][吞吐率：23.25req/s] [内存消耗：336.09kb] [文件加载：60]
+[ info ] [ LANG ] D:\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'user',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=slompjaoak63novds91b02ukl2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => '127.0.0.1:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\UserController->loginAction[ D:\upupw\www\www.onalivecar.com\application\home\controller\UserController.php ]
+[ info ] [ VIEW ] D:\upupw\www\www.onalivecar.com\public/../application/home\view\user\login.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002001s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.029001s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2017-09-18T10:04:45+08:00 ] 127.0.0.1 127.0.0.1 GET /user/login
+[ info ] 127.0.0.1:888/user/login [运行时间：0.030002s][吞吐率：33.33req/s] [内存消耗：336.09kb] [文件加载：60]
+[ info ] [ LANG ] D:\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'user',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=slompjaoak63novds91b02ukl2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => '127.0.0.1:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\UserController->loginAction[ D:\upupw\www\www.onalivecar.com\application\home\controller\UserController.php ]
+[ info ] [ VIEW ] D:\upupw\www\www.onalivecar.com\public/../application/home\view\user\login.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003001s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.019001s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2017-09-18T10:04:50+08:00 ] 127.0.0.1 127.0.0.1 POST /user/login
+[ info ] 127.0.0.1:888/user/login [运行时间：0.118006s][吞吐率：8.47req/s] [内存消耗：337.36kb] [文件加载：62]
+[ info ] [ LANG ] D:\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'user',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=slompjaoak63novds91b02ukl2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.1:888/user/login',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://127.0.0.1:888',
+  'accept' => '*/*',
+  'content-length' => '73',
+  'connection' => 'keep-alive',
+  'host' => '127.0.0.1:888',
+)
+[ info ] [ PARAM ] array (
+  '__token__' => '73c9a070cffc36c7958ca563fab25ba5',
+  'username' => 'phone',
+  'password' => '123456',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\UserController->loginAction[ D:\upupw\www\www.onalivecar.com\application\home\controller\UserController.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.013001s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_home_user` [ RunTime:0.050003s ]
+[ sql ] [ SQL ] SELECT `id` FROM `oac_home_user` WHERE  `username` = 'phone' LIMIT 1 [ RunTime:0.008001s ]
+---------------------------------------------------------------
+[ 2017-09-18T10:05:00+08:00 ] 127.0.0.1 127.0.0.1 POST /user/login
+[ info ] 127.0.0.1:888/user/login [运行时间：1.394080s][吞吐率：0.72req/s] [内存消耗：336.01kb] [文件加载：65]
+[ info ] [ LANG ] D:\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'user',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=slompjaoak63novds91b02ukl2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.1:888/user/login',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://127.0.0.1:888',
+  'accept' => '*/*',
+  'content-length' => '76',
+  'connection' => 'keep-alive',
+  'host' => '127.0.0.1:888',
+)
+[ info ] [ PARAM ] array (
+  '__token__' => '73c9a070cffc36c7958ca563fab25ba5',
+  'username' => 'iloveyou',
+  'password' => '123456',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\UserController->loginAction[ D:\upupw\www\www.onalivecar.com\application\home\controller\UserController.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003001s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.013000s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_home_user` [ RunTime:0.013001s ]
+[ sql ] [ SQL ] SELECT `id` FROM `oac_home_user` WHERE  `username` = 'iloveyou' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `id` FROM `oac_home_user` WHERE  `username` = 'iloveyou' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `oac_home_user` WHERE  `is_delete` = 1  AND `username` = 'iloveyou'  AND `type` IN (1,2,3,4) LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] UPDATE `oac_home_user`  SET `password`='$2y$13$44q8SBMcbP434xe7xx1oE.hOYTSAiw89Ls/jOLvDnnmyGrxMjOAUy',`logined_at`='2017-09-18 10:04:59',`updated_at`='2017-09-18 10:04:59',`ip`='{\"last\":[\"127.0.0.1\",\"2017-08-10 04:43:19\"],\"current\":[\"127.0.0.1\",\"2017-09-18 10:04:59\"],\"often\":[],\"haply\":[],\"once\":{\"127.0.0.1\":[2,\"2017-09-18 10:04:59\"]}}',`status`=0  WHERE  `username` = 'iloveyou'  AND `type` IN (1,2,3,4) [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_login_log` [ RunTime:0.047003s ]
+[ sql ] [ SQL ] INSERT INTO `oac_login_log` (`route` , `url` , `user_agent` , `gets` , `posts` , `user_id` , `app` , `ip` , `target` , `created_at` , `updated_at`) VALUES ('home/user/login' , '/user/login' , 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1' , '[]' , '{\"__token__\":\"73c9a070cffc36c7958ca563fab25ba5\",\"username\":\"iloveyou\"}' , 100 , NULL , '1' , '127.0.0.1' , '2017-09-18 10:05:00' , '2017-09-18 10:05:00') [ RunTime:0.029001s ]
+---------------------------------------------------------------
+[ 2017-09-18T10:05:00+08:00 ] 127.0.0.1 127.0.0.1 GET /index/index
+[ info ] 127.0.0.1:888/index/index [运行时间：0.045003s][吞吐率：22.22req/s] [内存消耗：383.44kb] [文件加载：65]
+[ info ] [ LANG ] D:\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=slompjaoak63novds91b02ukl2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.1:888/user/login',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => '127.0.0.1:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\IndexController->indexAction[ D:\upupw\www\www.onalivecar.com\application\home\controller\IndexController.php ]
+[ info ] [ VIEW ] D:\upupw\www\www.onalivecar.com\public/../application/home\view\index\index.html [ array (
+  0 => 'URL',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001001s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.015000s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2017-09-18T10:05:40+08:00 ] 127.0.0.1 127.0.0.1 GET /index/index
+[ info ] 127.0.0.1:888/index/index [运行时间：0.055004s][吞吐率：18.18req/s] [内存消耗：357.27kb] [文件加载：58]
+[ info ] [ LANG ] D:\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=slompjaoak63novds91b02ukl2; onalivecar_token=123',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.1:888/user/login',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => '127.0.0.1:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\IndexController->indexAction[ D:\upupw\www\www.onalivecar.com\application\home\controller\IndexController.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011001s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.030001s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2017-09-18T10:07:39+08:00 ] 127.0.0.1 127.0.0.1 GET /index/index
+[ info ] 127.0.0.1:888/index/index [运行时间：0.025001s][吞吐率：40.00req/s] [内存消耗：354.03kb] [文件加载：60]
+[ info ] [ LANG ] D:\upupw\www\www.onalivecar.com\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=slompjaoak63novds91b02ukl2; onalivecar_token=123',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.1:888/user/login',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => '127.0.0.1:888',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\IndexController->indexAction[ D:\upupw\www\www.onalivecar.com\application\home\controller\IndexController.php ]
+[ info ] [ VIEW ] D:\upupw\www\www.onalivecar.com\public/../application/home\view\index\index.html [ array (
+  0 => 'URL',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=onalivecar;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oac_config` [ RunTime:0.013001s ]
+[ sql ] [ SQL ] SELECT `value` FROM `oac_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001000s ]

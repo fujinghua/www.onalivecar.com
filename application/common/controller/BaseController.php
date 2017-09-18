@@ -16,7 +16,11 @@ use app\common\components\rbac\AccessControl;
  */
 class BaseController extends Controller
 {
-    protected static $_helper;
+    // 写成私有 这样算是简单单例
+    /**
+     * @var \think\Cookie
+     */
+    private static $_cookie;
 
     //模块身份标识 (默认identity)
     protected $identity = 'identity';
@@ -711,10 +715,7 @@ class BaseController extends Controller
      */
     public static function getHelper()
     {
-        if (!self::$_helper) {
-            self::$_helper = \app\common\components\Helper::getInstance();
-        }
-        return self::$_helper;
+        return \app\common\components\Helper::getInstance();
     }
 
     /**
@@ -723,6 +724,17 @@ class BaseController extends Controller
     public function getRequest()
     {
         return \think\Request::instance();
+    }
+
+    /**
+     * @return \think\Cookie
+     */
+    public static function getCookie()
+    {
+        if (!self::$_cookie){
+            self::$_cookie = new \think\Cookie();
+        }
+        return self::$_cookie;
     }
 
     public function _after()
