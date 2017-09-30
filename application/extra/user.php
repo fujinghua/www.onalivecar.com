@@ -1,5 +1,6 @@
 <?php
 
+
 // 前端用户登录扩展配置定义文件
 return [
     // 当前SESSION登录默认标识
@@ -17,7 +18,7 @@ return [
     // 当前用户对象SESSION　key
     '_user'                       => '__USER__',
     // 当前用户 自动登录 SESSION　key
-    '_auth_key'                       => '__AUTH_KEY_USER__',
+    '_auth_key'                       => '__USER_AUTH_KEY__',
     // 当前用户 登录有效期 SESSION　key
     '_duration'                       => '__DURATION_USER__',
     // 当前用户 登录 默认有效期时间

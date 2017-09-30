@@ -59,6 +59,7 @@ class UserController extends HomeController
 
                 //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
                 $identity = new User();
+                $identity->identity = $this->identity;
                 $identity->username = $username;
                 $identity->password = $password;
                 $res = $identity->login();

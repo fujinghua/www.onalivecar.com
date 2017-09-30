@@ -43,9 +43,14 @@ use think\Request;
  * @property string $logined_at
  * @property string $updated_at
  *
+ * @property string $identity
+ *
  */
 class User extends HomeUser
 {
+
+    //此登录模型 身份标识 (默认identity)
+    public $identity = 'home';
 
     /**
      * 数据库表名
@@ -70,7 +75,7 @@ class User extends HomeUser
     //加密方式；可选参数1和2；默认是1；
     private static $encryptType = '2';
     //加密方式；可选参数1和2；默认是1；
-    private static $login_time = 'updated_at';
+    private static $login_time_field = 'logined_at';
     //是否开启登录IP记录
     private static $isLog = true;
     //用户加密SSL
@@ -212,14 +217,15 @@ class User extends HomeUser
     /**
      * Logs in a user using the provided username and password.
      * @param $data array
+     * @param $scene string
      * @return boolean whether the user is logged in successfully
      * @return User|bool
      */
-    public function register($data)
+    public function register($data,$scene = 'register')
     {
         $res = false;
         $validate = self::getValidate();
-        $validate->scene('register');
+        $validate->scene($scene);
         if ($validate->check($data)) {
             $token = md5(md5($data['password']));
             // $this->thisTime 根据此值是否有值判断是否属于新增会员的密码，否则是老会员登录验证密码
@@ -229,7 +235,7 @@ class User extends HomeUser
             $data['password'] = $enPassword;
             $data['reg_ip'] = User::getIp();
             $data['registered_at'] = $this->thisTime;
-            $data['updated_at'] = $this->thisTime;
+            $data[self::$login_time_field] = $this->thisTime;
             $data['md5'] = $token;
             $data['token'] = $token;
             $model = new self();
@@ -277,7 +283,7 @@ class User extends HomeUser
                 $this->thisTime = date('Y-m-d H:i:s');
                 $enPassword = $this->setPassword($data['password']);
                 $data['password'] = $enPassword;
-                $data['updated_at'] = $this->thisTime;
+                $data[self::$login_time_field] = $this->thisTime;
                 $data['md5'] = $token;
             }
             //更新
@@ -311,7 +317,7 @@ class User extends HomeUser
                     $this->thisTime = date('Y-m-d H:i:s');
                     $enPassword = $this->setPassword($data['password']);
                     $data['password'] = $enPassword;
-                    $data['updated_at'] = $this->thisTime;
+                    $data[self::$login_time_field] = $this->thisTime;
                     $data['md5'] = $token;
                 }
                 //更新
@@ -348,7 +354,7 @@ class User extends HomeUser
                         //这里的save()执行的是更新
                         $data = [
                             'password' => $enPassword,
-                            'logined_at' => $this->thisTime,
+                            self::$login_time_field => $this->thisTime,
                             'updated_at' => $this->thisTime
                         ];
 
@@ -363,7 +369,7 @@ class User extends HomeUser
                         if ($result) {
                             $this->addLog();
                             //if true, default keep one week online;
-                            $default = $this->rememberMe ? config('user._rememberMe_duration') : (config('user._default_duration') ? config('user._default_duration') : 0);
+                            $default = $this->rememberMe ? config($this->identity.'._rememberMe_duration') : (config($this->identity.'._default_duration') ? config($this->identity.'._default_duration') : 0);
                             $duration = $duration ? $duration : $default;
                             $ret = $this->setUser($user, $duration);
                         } else {
@@ -391,10 +397,8 @@ class User extends HomeUser
      */
     public static function logout()
     {
-        session(config('user._user'), null);
-        session(config('user._auth_key'), null);
-        session(config('user._duration'), null);
-        session(config('user.unique'), null);
+        $model = new static();
+        $model->setLogout();
         return true;
     }
 
@@ -405,10 +409,10 @@ class User extends HomeUser
      */
     public function setLogout($user = null)
     {
-        session(config('user._user'), null);
-        session(config('user._auth_key'), null);
-        session(config('user._duration'), null);
-        session(config('user.unique'), null);
+        session(config($this->identity.'._user'), null);
+        session(config($this->identity.'._auth_key'), null);
+        session(config($this->identity.'._duration'), null);
+        session(config($this->identity.'.unique'), null);
         return true;
     }
 
@@ -490,9 +494,9 @@ class User extends HomeUser
             'username' => $user->username,
         ];
         //if true, default keep one week online;
-        $default = $this->rememberMe ? config('user._rememberMe_duration') : (config('user._default_duration') ? config('user._default_duration') : 0);
+        $default = $this->rememberMe ? config($this->identity.'._rememberMe_duration') : (config($this->identity.'._default_duration') ? config($this->identity.'._default_duration') : 0);
         $duration = $duration ? $duration : $default;
-        session(config('user._auth_key'), $this->data_auth_sign($auth));
+        session(config($this->identity.'._auth_key'), $this->data_auth_sign($auth));
         $this->setUser($user, $duration);
         return self::isGuest();
     }
@@ -642,9 +646,9 @@ class User extends HomeUser
         $user['duration'] = $duration + time();
         unset($user['password']);
         unset($user['md5']);
-        session(config('user._user'), $_user);
-        session(config('user._duration'), $duration + time());
-        session(config('user.unique'), $user);
+        session(config($this->identity.'._user'), $_user);
+        session(config($this->identity.'._duration'), $duration + time());
+        session(config($this->identity.'.unique'), $user);
         return $_user;
     }
 
@@ -667,7 +671,7 @@ class User extends HomeUser
                 'token' => $token,
             ]);  //这里的save()执行的是更新
             if ($db) {
-                session(config('user._duration'), time());
+                session(config($this->identity.'._duration'), time());
                 return $token;
             }
         }
@@ -798,8 +802,8 @@ class User extends HomeUser
      */
     protected function geToken()
     {
-        if (session(config('user._auth_key'))) {
-            return session(config('user._auth_key'));
+        if (session(config($this->identity.'._auth_key'))) {
+            return session(config($this->identity.'._auth_key'));
         }
         return null;
     }
@@ -816,7 +820,7 @@ class User extends HomeUser
             }
             $_authKey = $this->auth_key;
         }
-        session(config('user._auth_key'), $_authKey);
+        session(config($this->identity.'._auth_key'), $_authKey);
     }
 
     /**
@@ -846,8 +850,9 @@ class User extends HomeUser
             return false;
         }
 
+        $model = new static();
         $timestamp = (int)substr($token, strrpos($token, '_') + 1);
-        $duration = config('user._passwordResetTokenExpire');
+        $duration = config($model->identity.'._passwordResetTokenExpire');
         return $timestamp + $duration >= time();
     }
 
@@ -1007,8 +1012,8 @@ class User extends HomeUser
             if (!$this->thisTime) {//根据此值是否有值判断是否属于新增会员的密码，否则是老会员登录验证密码
                 $user = $this->findUser();
                 if ($user) {
-                    $login_time = self::$login_time;
-                    $this->thisTime = $user->$login_time;
+                    $login_time_field = self::$login_time_field;
+                    $this->thisTime = $user->$login_time_field;
                 }
             }
             $newPassword = self::$passwordPrefix . $password . self::$passwordSuffix . $this->thisTime;
@@ -1225,7 +1230,8 @@ class User extends HomeUser
      */
     public static function getUser($name = null)
     {
-        $user = session(config('user._user'));
+        $model = new static();
+        $user = session(config($model->identity.'._user'));
         if ($user && $user instanceof User) {
             if (!is_string($name) || $name === '') {
                 return $user;
@@ -1253,12 +1259,13 @@ class User extends HomeUser
             $_user = new User();
             $_user->getUser();
         }
-        if (session(config('user._auth_key')) == self::data_auth_sign($_user)) {
+        $model = new static();
+        if (session(config($model->identity.'._auth_key')) == self::data_auth_sign($_user)) {
             $res = true;
         }
-        $duration = session(config('user._duration'));
-        if ($duration && $_user && ($duration + config('user._default_duration')) > time()) {
-            session(config('user._duration'), time() + config('user._default_duration'));
+        $duration = session(config($model->identity.'._duration'));
+        if ($duration && $_user && ($duration + config($model->identity.'._default_duration')) > time()) {
+            session(config($model->identity.'._duration'), time() + config($model->identity.'._default_duration'));
             $res = true;
         }
         return $res;

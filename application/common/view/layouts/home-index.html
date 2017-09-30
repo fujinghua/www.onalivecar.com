@@ -5,14 +5,14 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Cache-Control" content="no-transform">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="url" content="">
     <meta name="_csrf_param" content="{$_csrf_param ? $_csrf_param : ''}">
     <meta name="_csrf_token" content="{$_csrf_token ? $_csrf_token : ''}">
-    <meta name="cachedKey" content="{$_SESSION['_auth_token_'] ? $_SESSION['_auth_token_'] : ''}">
+    <meta name="cachedKey" content="{$_SESSION['_auth_token_'][$identity] ? $_SESSION['_auth_token_'][$identity] : ''}">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
@@ -38,10 +38,19 @@
         $(document).ready(function () {
             layui.config({
                 base: '/static/js/' //设定扩展模块所在的目录
-            }).use(['layer', 'util'], function () {
+            }).use(['layer', 'util', 'menu'], function () {
                 var $ = layui.jquery,
                     layer = layui.layer,
                     util = layui.util;
+
+                var menu = layui.menu;
+
+                menu.set({
+                    elem:"#webTopBox",
+                    buttonElem:"#webBottomBox",
+                });
+
+                menu.render();
 
                 // 回到顶部
                 // 使用内部工具组件
@@ -72,22 +81,22 @@
 <script type="text/javascript">
 
     //html root的字体计算应该放在最前面，这样计算就不会有误差了/
-    var _htmlFontSize = (function(){
+    var _htmlFontSize = (function () {
         var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
-        if(clientWidth > 768 && clientWidth < 1280){
+        if (clientWidth > 768 && clientWidth < 1280) {
             clientWidth = 768;
-        }else if(clientWidth >= 1280){
+        } else if (clientWidth >= 1280) {
             clientWidth = 512;
         }
-        document.documentElement.style.fontSize = clientWidth * 1/16+"px";
-        return clientWidth * 1/16;
+        document.documentElement.style.fontSize = clientWidth * 1 / 16 + "px";
+        return clientWidth * 1 / 16;
     })();
 
 </script>
 
 <div class="webLeft"></div>
 
-<div class="webBody bs-webBody" id="bs_webBody">
+<div class="webBody bs-webBody layui-top-parent" id="bs_webBody">
 
     <!-- 加载提示开始 -->
     <div id="webLoading" class="loading" style="display:none;">
@@ -142,6 +151,7 @@
 <!--  布局控制 -->
 <script type="text/javascript" src="__JS__/app/layout.js"></script>
 <!--  全局 -->
+
 <!-- 是否引入就看默认首页是否使用到全局函数 -->
 <script type="text/javascript" src="__JS__/app/app.js"></script>
 

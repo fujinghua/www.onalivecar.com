@@ -7,8 +7,14 @@ use app\common\controller\BaseController;
 class ApiController extends BaseController
 {
 
+    /**
+     * 默认返回JSON数据
+     * @var string
+     */
+    public $responseType = 'JSON';
+
     //模块身份标识
-    protected $identity = 'api';
+    public $identity = 'api';
 
     /**
      * 初始化方法
@@ -17,6 +23,10 @@ class ApiController extends BaseController
     protected function _initialize()
     {
         parent::_initialize();
+
+        //定义返回格式
+        defined('IS_TYPE') or define('IS_TYPE', $this->responseType);
+
         if ($this->getRequest()->ip() != '127.0.0.1') {
             config('app_debug', false);
         }
@@ -32,6 +42,16 @@ class ApiController extends BaseController
 
         // 获取当前用户属性
 
+    }
+
+    /**
+     * 设置返数据格式
+     * @param string $type
+     */
+    public function setResponseType($type = 'JSON')
+    {
+        $type  = !empty($type) ? : 'JSON';
+        $this->responseType = $type;
     }
 
     /**
@@ -78,8 +98,8 @@ class ApiController extends BaseController
      */
     protected function throwHttp($options = [])
     {
-        $ret = json_encode($options);
-        exit($ret);
+        $options = array_merge(['code' => '402', 'msg' => '没权限执行此操作'],$options);
+        throw new \think\exception\HttpException($options['code'], '没权限执行此操作', null, ['code' => '402', 'msg' => '没权限执行此操作'], $options['code']);
     }
 
     /**
@@ -102,9 +122,9 @@ class ApiController extends BaseController
      * @param String $type AJAX返回数据格式
      * @return void
      */
-    protected function ajaxReturn($data, $type = '')
+    protected function ajaxReturn($data, $type = 'JSON')
     {
-        if (empty($type)) $type = 'JSON';
+        $type  = !empty($type) ? : 'JSON';
         switch (strtoupper($type)) {
             case 'JSON' :
                 // 返回JSON数据格式到客户端 包含状态信息

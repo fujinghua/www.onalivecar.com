@@ -13,6 +13,19 @@ class AuthController extends BackController
 {
 
     /**
+     * 初始化方法
+     * @author Sir Fu
+     */
+    protected function _initialize()
+    {
+        parent::_initialize();
+
+        if ($this->getIdentity('id') != '100'){
+            static::ThrowHttpException(403,'没有权限执行此操作');
+        }
+    }
+
+    /**
      * @description 显示清单
      * @return \think\Response
      */

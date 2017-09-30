@@ -35,10 +35,9 @@ layui.define('layer', function(exports){
           /(^#)|(^http(s*):\/\/[^\s]+\.[^\s]+)/
           ,'链接格式不正确'
         ]
-        ,number: [
-          /^\d+$/
-          ,'只能填写数字'
-        ]
+        ,number: function(value){
+          if(!value || isNaN(value)) return '只能填写数字'
+        }
         ,date: [
           /^(\d{4})[-\/](\d{1}|0\d{1}|1[0-2])([-\/](\d{1}|0\d{1}|[1-2][0-9]|3[0-1]))*$/
           ,'日期格式不正确'
@@ -77,7 +76,7 @@ layui.define('layer', function(exports){
       return filter ? ('[lay-filter="' + filter +'"]') : '';
     }())
     ,items = {
-
+      
       //下拉选择框
       select: function(){
         var TIPS = '请选择', CLASS = 'layui-form-select', TITLE = 'layui-select-title'
@@ -260,8 +259,8 @@ layui.define('layer', function(exports){
           ) : TIPS;
 
           //替代元素
-          var reElem = $(['<div class="layui-unselect '+ CLASS + (disabled ? ' layui-select-disabled' : '') +'">'
-            ,'<div class="'+ TITLE +'"><input type="text" placeholder="'+ placeholder +'" value="'+ (value ? selected.html() : '') +'" '+ (isSearch ? '' : 'readonly') +' class="layui-input layui-unselect'+ (disabled ? (' '+DISABLED) : '') +'">'
+          var reElem = $(['<div class="'+ (isSearch ? '' : 'layui-unselect ') + CLASS + (disabled ? ' layui-select-disabled' : '') +'">'
+            ,'<div class="'+ TITLE +'"><input type="text" placeholder="'+ placeholder +'" value="'+ (value ? selected.html() : '') +'" '+ (isSearch ? '' : 'readonly') +' class="layui-input'+ (isSearch ? '' : ' layui-unselect') + (disabled ? (' ' + DISABLED) : '') +'">'
             ,'<i class="layui-edge"></i></div>'
             ,'<dl class="layui-anim layui-anim-upbit'+ (othis.find('optgroup')[0] ? ' layui-select-group' : '') +'">'+ function(options){
               var arr = [];
@@ -433,24 +432,11 @@ layui.define('layer', function(exports){
     });
     
     if(stop) return false;
-
-    //优化 未能读取出表单是数组 的bug
-    var keys = []; //暂时存储表单数组的索引
+    
     layui.each(fieldElem, function(_, item){
       if(!item.name) return;
       if(/^checkbox|radio$/.test(item.type) && !item.checked) return;
-      if(item.name.length <=2 || !item.name.substr(item.name.length-2,2) === '[]'){ //name长度没超过2或最后两位不是数组标识，则按照贤心的执行
-        field[item.name] = item.value;
-      }else { //如果是数组
-        var trueName = item.name.substr(0,item.name.length-2); //不要数组标识
-        var index = 0; //默认索引从零开始
-        if (keys[trueName]){ //需要从暂时存储表单数组读取是否有对应的索引，有就赋值之前先自增，否则就是赋值成默认零。
-            index = ++keys[trueName];
-        }else {
-            keys[trueName] = index;
-        }
-        field[trueName+'['+index+']'] = item.value; //赋值成数组格式
-      }
+      field[item.name] = item.value;
     });
  
     //获取字段

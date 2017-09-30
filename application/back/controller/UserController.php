@@ -72,13 +72,14 @@ class UserController extends BackController
      */
     public function indexAction($super = false)
     {
-        $where = ['is_delete' => '1','id'=>['not in','1']];
+        $department_id = $this->getIdentity('department_id');
+        $where = ['is_delete' => '1','id'=>['not in','1,100'],'department_id' => ['>',$department_id]];
         $each = 12;
         $model = BackUser::load();
         $request = $this->getRequest();
         $key = trim($request->request('keyword'));
         if ($key != '') {
-            $nameWhere = ' `real_name` like ' . ' \'%' . $key . '%\'';
+            $nameWhere = ' `real_name` like ' . ' \'%' . $key . '%\' or  `username` like ' . ' \'%' . $key . '%\'';
             $model->where($nameWhere);
         }
         $typeList = BackUser::getDepartmentList();
@@ -110,6 +111,7 @@ class UserController extends BackController
         $token = $request->request('__token__');
 
         if ($request->isPost() && $token) {
+
             // 调用当前模型对应的Identity验证器类进行数据验证
             $data = [];
             $data['department_id'] = $request->post('department_id');
@@ -131,6 +133,14 @@ class UserController extends BackController
             }
         }
         $typeList = BackUser::getDepartmentList();
+        $departmentId = $this->getIdentity('department_id');
+        if ($departmentId>1){
+            foreach ($typeList as $key => $value){
+                if ($key <= $departmentId){
+                    unset($typeList[$key]);
+                }
+            }
+        }
         $this->assign('typeList', $typeList);
         return view('user/create', ['meta_title' => '会员注册']);
     }
@@ -180,6 +190,14 @@ class UserController extends BackController
             }
         }
         $typeList = BackUser::getDepartmentList();
+        $departmentId = $this->getIdentity('department_id');
+        if ($departmentId>1){
+            foreach ($typeList as $key => $value){
+                if ($key <= $departmentId){
+                    unset($typeList[$key]);
+                }
+            }
+        }
         $this->assign('typeList', $typeList);
         return view('user/update', ['meta_title' => '更新信息', 'departmentList' => Identity::getDepartmentList(), 'model' => $model]);
     }

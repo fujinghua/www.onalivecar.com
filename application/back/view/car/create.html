@@ -23,75 +23,155 @@
             position: absolute;
             padding-left: 0;
         }
+        .group{
+        }
+        .group h3{
+            padding: 2px 0 0 160px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 20px;
+            border-bottom: 1px solid #00a0b7;
+            margin: 15px 0 30px;
+            background-color: #00a0b7;
+        }
+
+        .layui-layout-back-main {
+            padding: 0;
+        }
+
+        .ul-menu{
+            display: inline-block;
+            position: fixed;
+            width: 100px;
+            height: 410px;
+            right: 0;
+            top: 50%;
+            margin-top: -190px;
+            padding: 15px 10px;
+            border: 1px solid #ddd;
+            z-index: 9999999;
+            background-color: #f0f0f0;
+            border-radius: 2px;
+        }
+        .ul-menu li{
+            display: block;
+            padding: 2px;
+            color: #FFF;
+        }
+        .ul-menu li:hover,.ul-menu li.active{
+            background-color: #00a0b7;
+            color: #FFF;
+        }
+        .ul-menu li:hover a,.ul-menu li.active a{
+            color: #FFF;
+        }
+        .ul-menu li +li{
+           margin-top: 3px;
+        }
+
+        /* 适配多设备 */
+        @media screen and (max-width: 628px) {
+
+        }
+
+        /* 适配多设备 */
+        @media screen and (max-width: 520px) {
+        }
+
     </style>
 
 </head>
 <body>
 
-<section style="max-width:1200px;margin: 0 auto 30px;position: relative;">
+<section style="max-width:1200px;margin: 0 auto 30px;position: relative; background-color: #f4f4f4">
 
-    <h3 class="title layui-title" style="text-align: center;">添加类目</h3>
+    <h3 class="title layui-title" style="text-align: center;padding: 15px;margin: 0;">添加新车</h3>
 
-    <form class="layui-form forms" id="defaultForm" action="" method="post" style="padding: 15px 0">
+    <form class="layui-form forms" id="defaultForm" action="" method="post">
 
-        <div class="layui-form-item">
-            <label class="layui-form-label"><span class="layui-color-danger">*</span>类目类型:</label>
-            <div class="layui-input-block right-width">
-                {volist name="model->getLists('car')" id="item" }
-                <input type="radio" value="{$key}" name="level" title="{$item}" lay-verify="checked" lay-group="level" lay-filter="level" class="layui-input">
-                {/volist}
+        <ul class="ul-menu">
+            <li><a href="#car">基本信息</a></li>
+            {volist name="parent" id="item"}
+            <li><a href="#{$key}">{$item}</a></li>
+            {/volist}
+        </ul>
+
+        <div id="car" class="group">
+            <h3>【信息】基本信息</h3>
+            <div class="layui-form-item item">
+                <label class="layui-form-label"><span class="layui-color-danger">*</span>车款:</label>
+                <div class="layui-input-block right-width">
+                    <select name="cate_id" lay-verify="require" lay-search>
+                        <option value="">请选择车款</option>
+                        {volist name="cateList" id="vo" }
+                        <option value="{$vo.id}">{$vo.name}</option>
+                        {/volist}
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item item">
+                <label class="layui-form-label"><span class="layui-color-danger"></span>车别名:</label>
+                <div class="layui-input-block right-width">
+                    <input type="text" value="" name="total" lay-verify="" placeholder="请输入车别名" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item item">
+                <label class="layui-form-label"><span class="layui-color-danger">*</span>总数量:</label>
+                <div class="layui-input-block right-width">
+                    <input type="text" value="" name="total" lay-verify="require" placeholder="请输入总数量" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="layui-color-danger">*</span>品牌商标:</label>
+                <div class="layui-input-block" style="padding-right: 120px;">
+                    <input type="file" id="images_elem" name="file" placeholder="上传图片" multiple="multiple" class="layui-upload-file" lay-filter="logo" lay-error="品牌商标不能为空">
+                    <input type="hidden" value="" name="url" id="images_target" placeholder="上传图片" class="layui-input">
+                    <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="layui-color-danger"></span>附加说明:</label>
+                <div class="layui-input-block right-width">
+                    <textarea type="text" value="" name="title" lay-verify="" placeholder="简介" class="layui-textarea"></textarea>
+                </div>
             </div>
         </div>
 
-        <div class="layui-form-item" style="display: none;">
-            <label class="layui-form-label"><span class="layui-color-danger">*</span>品牌:</label>
-            <div class="layui-input-block right-width">
-                <select name="brand_id" lay-verify="" lay-filter="brand" lay-search>
-                    <option value="">选择品牌</option>
-                    {volist name="brand" id="item" }
-                    <option value="{$item.id}">{$item.name}</option>
-                    {/volist}
-                </select>
+        {volist name="prop" id="group"}
+        <div id="{$key}" class="group">
+            <h3>【配置】{$parent[$key]}</h3>
+            {volist name="group" id="item"}
+            {eq name="item['isEnum']" value="1"}
+            <div class="layui-form-item item">
+                <label class="layui-form-label"><span class="layui-color-danger">*</span>{$item.name}:</label>
+                <div class="layui-input-block right-width">
+                    <select name="CAR_PROP[{$item.id},{$item.isEnum}]" lay-verify="require" lay-search>
+                        <option value="">请选择{$item['name']}</option>
+                        {volist name="item['isEnumList']" id="vo" }
+                        <option value="{$vo.id}">{$vo.value}</option>
+                        {/volist}
+                    </select>
+                </div>
             </div>
-        </div>
-
-        <div class="layui-form-item" style="display: none;" lay-filter="seriesContainer">
-            <label class="layui-form-label"><span class="layui-color-danger">*</span>车型:</label>
-            <div class="layui-input-block right-width">
-                <select name="series_id" lay-verify="" lay-filter="series" lay-search>
-                    <option value="">选择车型</option>
-                </select>
+            {else /}
+            <div class="layui-form-item item">
+                <label class="layui-form-label"><span class="layui-color-danger">*</span>{$item.name}:</label>
+                <div class="layui-input-block right-width">
+                    <input type="text" value="" name="CAR_PROP[{$item.id},{$item.isEnum}]" lay-verify="require" placeholder="请输入{$item.name}" class="layui-input">
+                </div>
             </div>
+            {/eq}
+            {/volist}
         </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label"><span class="layui-color-danger">*</span>类目名称:</label>
-            <div class="layui-input-block right-width">
-                <input type="text" value="" name="name" lay-verify="require" placeholder="类目名称" class="layui-input">
-            </div>
-        </div>
-
-        <div class="layui-form-item" style="display: none;">
-            <label class="layui-form-label"><span class="layui-color-danger">*</span>品牌商标:</label>
-            <div class="layui-input-block" style="padding-right: 120px;">
-                <input type="file" id="logo_file" name="file" placeholder="上传图片" class="layui-upload-file" lay-filter="logo" lay-error="品牌商标不能为空">
-                <input type="hidden" value="" name="logo" id="logo" placeholder="上传图片" class="layui-input">
-                <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label"><span class="layui-color-danger"></span>附加说明:</label>
-            <div class="layui-input-block right-width">
-                <textarea type="text" value="" name="title" lay-verify="" placeholder="附加说明" class="layui-textarea"></textarea>
-            </div>
-        </div>
+        {/volist}
 
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label"></label>
                 <button class="layui-btn" lay-submit="" lay-filter="submit">添加</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <button type="submit" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
 
@@ -99,57 +179,20 @@
 
 </section>
 
-<script src="__JS__/site.js"></script>
-<script src="__JS__/back.js"></script>
 <script>
 
     layui.use(['form'], function () {
         var form = layui.form;
         var level = parseInt($('[lay-filter="level"]:selected').val());
-        var brand = $('[lay-filter="brand"]');
-        var series = $('[lay-filter="series"]');
-        var logo = $('[lay-filter="logo"]');
+        var parent = $('[lay-filter="parent"]');
         form.on('radio(level)', function(data){
             level = parseInt(data.value);
-            if (level===3){
-                brand.attr('lay-verify','require');
-                brand.closest('.layui-form-item').fadeIn();
-                series.attr('lay-verify','require');
-                series.closest('.layui-form-item').fadeIn();
-                logo.closest('.layui-form-item').hide();
-            }else if (level===2){
-                brand.attr('lay-verify','require');
-                brand.closest('.layui-form-item').fadeIn();
-                series.attr('lay-verify','');
-                series.closest('.layui-form-item').hide();
-                logo.closest('.layui-form-item').hide();
+            if (level===2){
+                parent.attr('lay-verify','require');
+                parent.closest('.layui-form-item').fadeIn();
             }else {
-                brand.attr('lay-verify','');
-                brand.closest('.layui-form-item').hide();
-                series.attr('lay-verify','');
-                series.closest('.layui-form-item').hide();
-                logo.closest('.layui-form-item').fadeIn();
-
-            }
-        });
-        form.on('select(brand)', function(data){
-            var pid = data.value;
-            if (level===3){
-                series.html('');
-                $.get("{:url('ajax/getCate')}",{pid:pid},function(data){
-                    if (data){
-                        var option = [];
-                        option.push('<option value="">请选择</option>');
-                        if (data.length>0){
-                            for (var k in data){
-                                option.push('<option value="'+data[k].id+'">'+data[k].name+'</option>');
-                            }
-                        }
-                        series.html(option.join('')).attr('lay-verify','require');
-                        form.render('select');
-                        series.closest('.layui-form-item').fadeIn();
-                    }
-                });
+                parent.attr('lay-verify','');
+                parent.closest('.layui-form-item').hide();
             }
         });
     });
@@ -160,20 +203,23 @@
             success: console.log
         };
         Back.submit(options);
-    });
 
-    var indexLogo = Site.uploader({
-        elem:'#logo_file',
-        targetElem:'#logo',
-        url: '/ajax/uploader?file=file',
-        title:'上传品牌商标',
-        isAjax:true,
-        success: function (res, input) {
-            console.log(res);
-            console.log($('#url').val());
-        }
-    });
+        $(document).on('click','.ul-menu li',function () {
+            $(this).addClass('active').siblings('li').removeClass('active');
+        });
 
+        var indexLogo = Site.uploader({
+            elem:'#images_elem',
+            targetElem:'#images_target',
+            url: '/ajax/uploader?file=file',
+            title:'上传车辆图片',
+            isAjax:true,
+            success: function (res, input) {
+                console.log(res);
+                console.log($('#url').val());
+            }
+        });
+    });
 
 </script>
 

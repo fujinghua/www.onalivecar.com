@@ -100,16 +100,18 @@ class AuthItem extends Model
     /**
      * 获取一个权限的所有下属权限
      * @param $name
+     * @param $childLevel //间接下级
      * @return array
      */
-    public static function getHasAssign($name){
+    public static function getHasAssign($name,$childLevel= 0){
         $ret = [];
         $helper = self::getHelper();
         $child = $helper::toArray(AuthItemChild::load()->where(['parent'=>$name])->field('child')->select());
         if ($child){
+            $tmpLevel = $childLevel;
             foreach ($child as $item){
-                $ret[] = ['name'=>$item['child']];
-                $res = self::getHasAssign($item['child']);
+                $ret[] = ['name'=>$item['child'],'childLevel'=>$tmpLevel];
+                $res = self::getHasAssign($item['child'],($tmpLevel+1));
                 $ret = $ret + $res;
             }
         }

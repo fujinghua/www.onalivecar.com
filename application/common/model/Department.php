@@ -79,7 +79,7 @@ class Department extends Model
             'parent' => '上级',
             'code' => '编号',
             'order' => '顺序',
-            'level' => '等级;0=无效;1董事会部门2总经理部门3业务员部门',
+            'level' => '等级;0=无效;1 =>超级权限, 2 => 主管权限, 3 => 普通权限C1, 4 => 普通权限C2',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];

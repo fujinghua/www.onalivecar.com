@@ -10,6 +10,7 @@ use app\common\controller\ApiController;
  */
 class IndexController extends ApiController
 {
+    
     /**
      * 默认方法
      * @author Sir Fu
@@ -26,7 +27,7 @@ class IndexController extends ApiController
      */
     public function missAction()
     {
-        return json(['status'=>'1','info'=>'无效请求']);
+        $this->throwHttp(['msg'=>'无效请求']);
     }
 
     /**

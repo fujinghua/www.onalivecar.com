@@ -11,6 +11,8 @@ use app\common\model\Model;
  * @property integer $is_delete
  * @property string $name
  * @property string $cate_id
+ * @property integer $is_passed
+ * @property integer $isBase
  * @property integer $isAlias
  * @property integer $isColor
  * @property integer $isEnum
@@ -41,7 +43,8 @@ class CateProp extends Model
         'is_delete',
         'name',
         'cate_id',
-        'isPublic',
+        'is_passed',
+        'isBase',
         'isAlias',
         'isColor',
         'isEnum',
@@ -78,7 +81,8 @@ class CateProp extends Model
             'is_delete' => '时效;0=失效,1=有效;默认1;',
             'name' => '属性名',
             'cate_id' => '所属类目ID',
-            'isPublic' => '是否公共属性;0=否，1=是，默认是0',
+            'is_passed' => '是否审核通过 1=通过，2=未通过',
+            'isBase' => '是否基础参数;0=否，1=是，默认是0',
             'isAlias' => '是否允许别名;0=否，1=是，默认是0',
             'isColor' => '是否颜色属性;0=否，1=是，默认是0',
             'isEnum' => '是否枚举属性;0=否，1=是，默认是0',
@@ -112,7 +116,7 @@ class CateProp extends Model
      */
     public function getCatePropValues()
     {
-        return $this->hasMany(ucfirst(CatePropValue::tableNameSuffix()), 'id','cate_prop_id');
+        return $this->hasMany(ucfirst(CatePropValue::tableNameSuffix()), 'cate_prop_id','id');
     }
 
 }

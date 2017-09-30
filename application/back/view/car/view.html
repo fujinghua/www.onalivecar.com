@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+    <style>
+        .layui-form-item {
+            margin-bottom: 30px;
+        }
+        .layui-form-item .layui-inline:nth-child(2) .layui-form-label{
+            width: 185px !important;
+        }
+
+        .layui-form-item .layui-input-block.right-width {
+            padding-right: 120px;
+        }
+        .layui-input-inline{
+            margin-bottom: 5px;
+        }
+        .layui-text{
+            position: absolute;
+            padding-left: 0;
+        }
+    </style>
+
+</head>
+<body>
+
+<section style="max-width:1200px;margin: 0 auto 30px;position: relative;">
+
+    <h3 class="title layui-title" style="text-align: center;">汽车配置</h3>
+
+    <table class="layui-table" lay-even="" lay-skin="row">
+        <thead>
+        <tr>
+            <th>配置名称</th>
+            <th>配置数值</th>
+            <th>附加说明</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name="list" id="model" key="key" empty="<tr class='empty'><td colspan='20' style='text-align: center;'> 没有数据 </td> </tr>"}
+        <tr data-key="{$model.id}">
+            <td>{$model.catePropName}</td>
+            <td>{$model.value}</td>
+            <td>{$model.extra}</td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+
+</section>
+
+</body>
+
+</html>

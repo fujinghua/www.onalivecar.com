@@ -2,10 +2,11 @@
 
 namespace app\common\components\rbac;
 
-use \think\Config;
+use think\Config;
 use think\Exception;
-use \think\Request;
-use \think\Log;
+use think\exception\HttpException;
+use think\Request;
+use think\Log;
 use app\back\model\Identity;
 use app\common\components\rbac\AuthManager;
 
@@ -48,7 +49,7 @@ class AccessControl
      * @var array List of action that not need to check access.
      */
     public $allowActions = [
-        '/back/*',
+        '/back/login/*',
     ];
 
     /**
@@ -64,14 +65,15 @@ class AccessControl
 
     /**
      * Get user
+     * @param $userId
      * @return \app\back\model\Identity
      */
-    public function getUser($userid = 0)
+    public function getUser($userId = 0)
     {
         if (!$this->_user instanceof Identity) {
             $this->_user = Identity::getIdentity();
             if (!$this->_user instanceof Identity) {
-                $this->_user = Identity::getIdentityById($userid);
+                $this->_user = Identity::getIdentityById($userId);
             }
         }
         return $this->_user;
@@ -100,21 +102,21 @@ class AccessControl
 
     /**
      * check user
-     * @param int $userid
+     * @param int $userId
      * @param null $route
      * @param bool $log
      * @return bool
      */
-    public function check($userid = 0, $route = null, $log = true)
+    public function check($userId = 0, $route = null, $log = true)
     {
         $ret = true;
         if (substr($route, 0, 1) != '/') {
             $route = '/' . $route;
         }
         if (!($result = $this->isActive($route))) {
-            $user = $this->getUser($userid);
+            $user = $this->getUser($userId);
 
-            $result = $this->beforeAction($userid, $route);
+            $result = $this->beforeAction($userId, $route);
 
             if (!$result) {
                 $ret = false;
@@ -129,15 +131,15 @@ class AccessControl
     }
 
     /**
-     * @param string $userid
+     * @param string $userId
      * @param string $route
      * @return bool
      */
-    protected function beforeAction($userid = '', $route = '')
+    protected function beforeAction($userId = '', $route = '')
     {
         $routeId = $route ? $route : $this->getActionUrl();
         $routeId = trim($routeId, '/');
-        if ($this->can($userid, '/' . $routeId)) {
+        if ($this->can($userId, '/' . $routeId)) {
             return true;
         }
         return false;
@@ -177,9 +179,11 @@ class AccessControl
     {
         if ($user->isGuest()) {
 //            $user->setLogout($user);
-            throw new \think\Exception\HttpException(402, '没权限执行此操作', null, ['code' => '402', 'msg' => '没权限执行此操作'], '402');
+//            throw new Exception( '没权限执行此操作',402);
+            throw new \think\exception\HttpException(402, '没权限执行此操作', null, ['code' => '402', 'msg' => '没权限执行此操作'], '402');
         } else {
-            throw new \think\Exception\HttpException(402, '没权限执行此操作', null, ['code' => '402', 'msg' => '没权限执行此操作'], '402');
+//            throw new Exception( '没权限执行此操作',402);
+            throw new \think\exception\HttpException(402, '没权限执行此操作', null, ['code' => '402', 'msg' => '没权限执行此操作'], '402');
         }
     }
 
@@ -242,15 +246,15 @@ class AccessControl
 
     /**
      * @description 当前请求路由
-     * @param $userid
+     * @param $userId
      * @param $route
      * @return bool
      */
-    protected function can($userid, $route)
+    protected function can($userId, $route)
     {
         $ret = false;
         $manager = $this->getManager();
-        $result = $manager->getPermissionsByUser($userid);
+        $result = $manager->getPermissionsByUser($userId);
         $permissions = array_keys($result);
 
         foreach ($permissions as $permission) {

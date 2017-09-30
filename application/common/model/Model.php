@@ -261,7 +261,7 @@ class Model extends \think\Model implements IModel
      */
     public static function getValidate()
     {
-        $className = pathinfo(get_class(self::load()), PATHINFO_FILENAME);
+        $className = pathinfo(str_replace('\\',DIRECTORY_SEPARATOR,get_class(self::load())), PATHINFO_FILENAME);
         $request = Request::instance();
         /**
          * @var $class \app\common\validate\Validate

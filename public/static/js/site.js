@@ -756,6 +756,7 @@ Site.gallery = function (options, loop, key) {
 
         pushData();
 
+
         if (data.length === 0) return;
 
         loop || parent.on('click', options.img, function(){
@@ -938,7 +939,7 @@ Site.initGallery = function (selector) {
             "start": 0, //初始显示的图片序号，默认0
             "data": [   //相册包含的图片，数组格式
                 {
-                    "alt": that.attr('title'),
+                    "alt": that.attr('title')||that.attr('alt'),
                     "pid": 666, //图片id
                     "src": that.attr('layer-src'), //原图地址
                     "thumb": that.attr('src') //缩略图地址
@@ -976,6 +977,46 @@ Site.getUrlParam = function (name, url) {
     }
     if (r != null) return unescape(r[2]);
     return null;
+};
+
+/**
+ * 设置url中的参数
+ * @param name
+ * @param value
+ * @param url
+ * @return {string}
+ */
+Site.setUrlParam = function (name, value, url) {
+    var search = window.location.search;
+    if (url) {
+        search = url.substr(url.indexOf('?'));
+    }
+    var params = search.replace(/^\?/, '').split('&'),item,has=false;
+    for (var key in params) {
+        if (!params[key]) { continue; }
+        item = params[key].split('=');
+        if (item[0] == name){
+            has = true;
+            params[key] = name + '='+ value;
+        }
+    }
+    if (!has){
+        params.push(name + '='+ value);
+    }
+    return '?'+params.join('&');
+};
+
+/**
+ *
+ * @param url
+ * @param state
+ * @param title
+ */
+Site.setWindowHistory = function(url, state, title){
+    if (!url){
+        return;
+    }
+    window.history.pushState(state||'200', title||$('head title').html(), url);
 };
 
 /*  */

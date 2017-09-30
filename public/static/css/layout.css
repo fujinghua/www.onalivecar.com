@@ -31,8 +31,25 @@
 /** 页面元素 **/
 
 /*=======================
+ 画廊
+========================*/
+[lay-filter="gallery"]:hover{
+    cursor: pointer;
+}
+[lay-filter="showImages"]:hover{
+    cursor: pointer;
+}
+
+/*=======================
  弹出层
 ========================*/
+.layui-layer-setwin .layui-layer-close2 {
+    transition: none;
+    -moz-transition: none; /* Firefox 4 */
+    -webkit-transition: none; /* Safari 和 Chrome */
+    -o-transition: none; /* Opera */
+}
+
 .layui-layer-setwin .layui-layer-close2:hover {
     background-position: -180px -31px;
 }
@@ -76,7 +93,7 @@
     background-color: #f8f8f8;
 }
 
-.layui-table-view .layui-table-tool{
+.layui-table-view .layui-table-tool {
     text-align: center;
 }
 
@@ -511,12 +528,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
     display: block;
 }
 
-details summary:hover{
+details summary:hover {
     cursor: pointer;
     color: #f63;
 }
 
-details summary:focus{
+details summary:focus {
     outline: none;
     cursor: pointer;
 }
@@ -530,7 +547,7 @@ audio:not([controls]) {
     height: 0;
 }
 
-[hidefocus],[hidefocus]:focus{
+[hidefocus], [hidefocus]:focus {
     outline: none;
 }
 
@@ -1952,6 +1969,7 @@ alive-bg-gray    用于设置元素经典灰色背景
     margin-bottom: 47px;
     overflow: hidden;
 }
+
 .alive-titleCenter.border:after {
     display: block;
     content: "";
@@ -1987,7 +2005,7 @@ alive-bg-gray    用于设置元素经典灰色背景
     position: relative;
 }
 
-.alive-titleCenter .item + .item{
+.alive-titleCenter .item + .item {
     margin-left: 5px;
 }
 
@@ -2026,11 +2044,11 @@ alive-bg-gray    用于设置元素经典灰色背景
     transform: scaleX(1);
 }
 
-.alive-titleCenter .item:hover{
-    color: rgba(255,102,51,0.9);
+.alive-titleCenter .item:hover {
+    color: rgba(255, 102, 51, 0.9);
 }
 
-.alive-titleCenter .item.active{
+.alive-titleCenter .item.active {
     color: #ff6633;
 }
 
@@ -2552,7 +2570,7 @@ hr.line.dashed, hr.upLine.dashed {
 活标识
 */
 
-.alive-Border{
+.alive-Border {
     position: relative;
 }
 
@@ -2587,7 +2605,7 @@ hr.line.dashed, hr.upLine.dashed {
     top: 1.372em;
 }
 
-.alive-Border.active:before,.alive-Border:hover:before {
+.alive-Border.active:before, .alive-Border:hover:before {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
@@ -2697,109 +2715,150 @@ hr.line.dashed, hr.upLine.dashed {
     border-radius: 5px;
 }
 
-
 /* loading 动画 */
 
 /* 中心放大，大到中心 */
 @-webkit-keyframes bouncedelay {
-    0%, 80%, 100% { -webkit-transform: scale(0.0) }
-    40% { -webkit-transform: scale(1.0) }
+    0%, 80%, 100% {
+        -webkit-transform: scale(0.0)
+    }
+    40% {
+        -webkit-transform: scale(1.0)
+    }
 }
 
 @keyframes bouncedelay {
     0%, 80%, 100% {
         transform: scale(0.0);
         -webkit-transform: scale(0.0);
-    } 40% {
-          transform: scale(1.0);
-          -webkit-transform: scale(1.0);
-      }
+    }
+    40% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
 }
 
 @-webkit-keyframes bounce {
-    0%, 100% { -webkit-transform: scale(0.0) }
-    50% { -webkit-transform: scale(1.0) }
+    0%, 100% {
+        -webkit-transform: scale(0.0)
+    }
+    50% {
+        -webkit-transform: scale(1.0)
+    }
 }
 
 @keyframes bounce {
     0%, 100% {
         transform: scale(0.0);
         -webkit-transform: scale(0.0);
-    } 50% {
-          transform: scale(1.0);
-          -webkit-transform: scale(1.0);
-      }
+    }
+    50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
 }
 
 /* 循环旋转 */
 
-@-webkit-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
-@keyframes rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+@-webkit-keyframes rotate {
+    100% {
+        -webkit-transform: rotate(360deg)
+    }
+}
 
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg)
+    }
+}
 
 @-webkit-keyframes rotateplane {
-    0% { -webkit-transform: perspective(120px) }
-    50% { -webkit-transform: perspective(120px) rotateY(180deg) }
-    100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+    0% {
+        -webkit-transform: perspective(120px)
+    }
+    50% {
+        -webkit-transform: perspective(120px) rotateY(180deg)
+    }
+    100% {
+        -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+    }
 }
 
 @keyframes rotateplane {
     0% {
         transform: perspective(120px) rotateX(0deg) rotateY(0deg);
         -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
-    } 50% {
-          transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-          -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
-      } 100% {
-            transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-            -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-        }
+    }
+    50% {
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+    }
+    100% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
 }
 
-
 @-webkit-keyframes cubemove {
-    25% { -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5) }
-    50% { -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg) }
-    75% { -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5) }
-    100% { -webkit-transform: rotate(-360deg) }
+    25% {
+        -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5)
+    }
+    50% {
+        -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg)
+    }
+    75% {
+        -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5)
+    }
+    100% {
+        -webkit-transform: rotate(-360deg)
+    }
 }
 
 @keyframes cubemove {
     25% {
         transform: translateX(42px) rotate(-90deg) scale(0.5);
         -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
-    } 50% {
-          transform: translateX(42px) translateY(42px) rotate(-179deg);
-          -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
-      } 50.1% {
-            transform: translateX(42px) translateY(42px) rotate(-180deg);
-            -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
-        } 75% {
-              transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
-              -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
-          } 100% {
-                transform: rotate(-360deg);
-                -webkit-transform: rotate(-360deg);
-            }
+    }
+    50% {
+        transform: translateX(42px) translateY(42px) rotate(-179deg);
+        -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
+    }
+    50.1% {
+        transform: translateX(42px) translateY(42px) rotate(-180deg);
+        -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+    }
+    75% {
+        transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+        -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+    }
+    100% {
+        transform: rotate(-360deg);
+        -webkit-transform: rotate(-360deg);
+    }
 }
 
-
 @-webkit-keyframes stretchdelay {
-    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
-    20% { -webkit-transform: scaleY(1.0) }
+    0%, 40%, 100% {
+        -webkit-transform: scaleY(0.4)
+    }
+    20% {
+        -webkit-transform: scaleY(1.0)
+    }
 }
 
 @keyframes stretchdelay {
     0%, 40%, 100% {
         transform: scaleY(0.4);
         -webkit-transform: scaleY(0.4);
-    }  20% {
-           transform: scaleY(1.0);
-           -webkit-transform: scaleY(1.0);
-       }
+    }
+    20% {
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+    }
 }
 
-.layout-loading{
+.layout-loading {
     -webkit-animation: rotate 1.2s infinite ease-in-out;
     animation: rotate 1.2s infinite ease-in-out;
 }

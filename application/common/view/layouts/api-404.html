@@ -1,0 +1,101 @@
+<?php
+if (isset($e)) {
+    if ($e instanceof \think\exception\HttpException) {
+        $exception = $e;
+    }
+}
+if (isset($exception)) {
+    /**
+     * @var $exception \think\exception\HttpException
+     */
+    try {
+        $code = $exception->getCode();
+} catch (Exception $ex) {
+$code = '404';
+}
+try {
+$message = $exception->getMessage();
+} catch (Exception $ex) {
+$message = '拒绝访问';
+}
+try {
+$headers = $exception->getHeaders();
+} catch (Exception $ex) {
+$headers = ['code' => $code, 'msg' => $message];
+}
+try {
+$statusCode = $exception->getStatusCode();
+} catch (Exception $ex) {
+$statusCode = $code;
+}
+if (empty($code)) {
+$code = '404';
+}
+if (empty($message)) {
+$message = '拒绝访问';
+$headers['msg'] = '拒绝访问';
+}
+if (empty($headers)) {
+$headers = ['code' => $code, 'msg' => $message];
+}
+if (empty($statusCode)) {
+$statusCode = '404';
+}
+$html = <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$message</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+        }
+        .container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            text-align: center;
+            color: #FF5722;
+            opacity: 0.628;
+        }
+
+        .container .body {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -400px;
+            margin-left: -187.5px;
+            width: 375px;
+            height: 400px;
+            vertical-align: middle;
+        }
+
+        .container .code {
+            font-size: 80px;
+            line-height: 80px;
+        }
+
+        .container .message {
+            font-size: 20px;
+            line-height: 24px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="body">
+        <h1 class="code">$code</h1>
+        <h2 class="message">$message</h2>
+    </div>
+</div>
+</div>
+</body>
+</html>
+HTML;
+// 返回JSON数据格式到客户端 包含状态信息
+header('Content-Type:application/json; charset=utf-8');
+exit(json_encode($headers));
+}
+?>

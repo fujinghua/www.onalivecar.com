@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+    <style>
+        .layui-form-item {
+            margin-bottom: 30px;
+        }
+        .layui-form-item .layui-inline:nth-child(2) .layui-form-label{
+            width: 185px !important;
+        }
+
+        .layui-form-item .layui-input-block.right-width {
+            padding-right: 120px;
+        }
+        .layui-input-inline{
+            margin-bottom: 5px;
+        }
+        .layui-text{
+            position: absolute;
+            padding-left: 0;
+        }
+    </style>
+
+</head>
+<body>
+
+<section style="max-width:1200px;margin: 0 auto 30px;position: relative;">
+
+    <h3 class="title layui-title" style="text-align: center;">添加配置</h3>
+
+    <form class="layui-form forms" id="defaultForm" action="" method="post" style="padding: 15px 0">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>配置类型:</label>
+            <div class="layui-input-block right-width">
+                {volist name="model->getLists($model->unique)" id="item" }
+                <input type="radio" value="{$key}" name="level" title="{$item}" lay-verify="checked" lay-group="level" lay-filter="level" class="layui-input">
+                {/volist}
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="display: none;">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>配置目录:</label>
+            <div class="layui-input-block right-width">
+                <select name="parent_id" lay-verify="" lay-filter="parent" lay-search>
+                    <option value="">选择上级配置</option>
+                    {volist name="parent" id="item" }
+                    <option value="{$item.id}">{$item.name}</option>
+                    {/volist}
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>类目名称:</label>
+            <div class="layui-input-block right-width">
+                <input type="text" value="" name="name" lay-verify="require" placeholder="类目名称" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger"></span>附加说明:</label>
+            <div class="layui-input-block right-width">
+                <textarea type="text" value="" name="title" lay-verify="" placeholder="附加说明" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"></label>
+                <button class="layui-btn" lay-submit="" lay-filter="submit">添加</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </form>
+
+</section>
+
+<script>
+
+    layui.use(['form'], function () {
+        var form = layui.form;
+        var level = parseInt($('[lay-filter="level"]:selected').val());
+        var parent = $('[lay-filter="parent"]');
+        form.on('radio(level)', function(data){
+            level = parseInt(data.value);
+            if (level===2){
+                parent.attr('lay-verify','require');
+                parent.closest('.layui-form-item').fadeIn();
+            }else {
+                parent.attr('lay-verify','');
+                parent.closest('.layui-form-item').hide();
+            }
+        });
+    });
+
+    $(function () {
+        var options = {
+            form: '#defaultForm',
+            success: console.log
+        };
+        Back.submit(options);
+    });
+
+</script>
+
+</body>
+
+</html>

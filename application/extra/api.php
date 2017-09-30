@@ -15,11 +15,11 @@ return [
     // 注册路由
     'resetUrl'                        => '/user/reset',
     // 当前用户对象SESSION　key
-    '_user'                       => '__USER__',
+    '_user'                       => '__API__',
     // 当前用户 自动登录 SESSION　key
-    '_auth_key'                       => '__AUTH_KEY_USER__',
+    '_auth_key'                       => '__API_AUTH_KEY__',
     // 当前用户 登录有效期 SESSION　key
-    '_duration'                       => '__DURATION_USER__',
+    '_duration'                       => '__DURATION_API__',
     // 当前用户 登录 默认有效期时间
     '_default_duration'               => '1440',
     // 记住我 当前用户 登录 默认有效期时间
@@ -27,7 +27,7 @@ return [
     // 重置密码 默认有效期时间
     '_passwordResetTokenExpire'       => 60*60*2,
     // 登录成功 返回URL
-    '_home_url'                     => '__USER_URL__',
+    '_home_url'                     => '__API_URL__',
     // 是否自动登录
     '_auto_login'                     => true,
 ];

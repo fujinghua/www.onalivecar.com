@@ -45,5 +45,6 @@ class BackController extends BaseController
                 $this->error('拒绝访问', url('back/Index/index'),[],'1');
             }
         }
+
     }
 }

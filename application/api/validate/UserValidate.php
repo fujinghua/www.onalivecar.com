@@ -31,7 +31,7 @@ class UserValidate extends Validate
      */
     protected $message = [
         '__token__.token' => ':attribute 无效',
-      // 'username.require' => ':attribute 不能为空',
+        'username.require' => ':attribute 不能为空',
         'username.regex' => ':attribute 只可含有数字、字母、下划线且不以下划线开头结尾，不以数字开头！',
         'username.exist' => ':attribute 不存在',
         'username.usernameExist' => ':attribute 不存在',
@@ -66,6 +66,7 @@ class UserValidate extends Validate
         'login' => ['username' => 'require|usernameExist:home_user,username', 'password'],
         'signUp' => ['username', 'phone', 'password'],
         'register' => ['username', 'phone', 'password', 'rePassword', '__token__'],
+        'registerByPhone' => ['phone', 'password'],
     ];
 
     /**

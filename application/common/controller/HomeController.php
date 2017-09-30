@@ -8,7 +8,7 @@ class HomeController extends BaseController
 {
 
     //模块身份标识
-    protected $identity = 'home';
+    public $identity = 'home';
 
     /**
      * 初始化方法

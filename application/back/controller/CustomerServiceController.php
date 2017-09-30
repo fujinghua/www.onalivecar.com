@@ -5,7 +5,7 @@ namespace app\back\controller;
 use app\common\controller\BackController;
 use app\common\model\Service;
 
-class CustomerServiceController extends BackController
+class CustomerserviceController extends BackController
 {
     /**
      * @description 显示资源列表

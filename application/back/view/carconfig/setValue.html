@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+    <style>
+        .layui-form-item {
+            margin-bottom: 30px;
+        }
+        .layui-form-item .layui-inline:nth-child(2) .layui-form-label{
+            width: 185px !important;
+        }
+
+        .layui-form-item .layui-input-block.right-width {
+            padding-right: 120px;
+        }
+        .layui-input-inline{
+            margin-bottom: 5px;
+        }
+        .layui-text{
+            position: absolute;
+            padding-left: 0;
+        }
+    </style>
+
+</head>
+<body>
+
+<section style="max-width:1200px;margin: 0 auto 30px;position: relative;">
+
+    <h3 class="title layui-title" style="text-align: center;">更新数值</h3>
+
+    <form class="layui-form forms" id="defaultForm" action="" method="post" style="padding: 15px 0">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger"></span>{$model.getCateProp.name}:</label>
+            <div class="layui-input-block right-width">
+                <input type="text" value="{$model.value}" name="value" lay-verify="" placeholder="配置数值" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger"></span>附加说明:</label>
+            <div class="layui-input-block right-width">
+                <input type="text" value="{$model.extra}" name="extra" lay-verify="" placeholder="附加说明" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"></label>
+                <button class="layui-btn" lay-submit="" lay-filter="submit">更新</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </form>
+
+</section>
+
+<script>
+
+    layui.use(['form'], function () {
+        var form = layui.form;
+
+    });
+
+    $(function () {
+        var options = {
+            form: '#defaultForm',
+            isReload: false,
+            isReloadLastWindow: true,
+            success: console.log
+        };
+        Back.submit(options);
+    });
+
+</script>
+
+</body>
+
+</html>

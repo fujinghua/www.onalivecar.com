@@ -359,6 +359,7 @@ Back.submit = function (_options){
             success:undefined, // 提交成功执行回调,参数是返回数据
             isClose:true, // 提交成功后关闭弹出层
             isReload:true, // 提交成功后刷新当前窗口
+            isReloadLastWindow:false, // 提交成功后刷新上次窗口
             verify:{} // 自定义验证规则
         },_options);
     layui.use(['layer','forms'],function () {
@@ -409,6 +410,10 @@ Back.submit = function (_options){
                             Site.reLoad();
                         }
 
+                        if(options.isReloadLastWindow){
+                            Back.reLoadLastWindow();
+                        }
+
                     }
                 },
                 error:function (data) {
@@ -426,6 +431,21 @@ Back.submit = function (_options){
     });
 };
 
+/**
+ * 设置 LastWindow
+ */
+Back.setLastWindow = function (window) {
+    top.window.lastWindow = window
+};
+
+/**
+ * 重新加载 LastWindow
+ */
+Back.reLoadLastWindow = function () {
+    if (top.window.lastWindow) {
+        top.window.lastWindow.location.reload();
+    }
+};
 
 /**
  *

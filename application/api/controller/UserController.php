@@ -55,7 +55,7 @@ class UserController extends ApiController
     public function loginAction()
     {
         //$this->getRequest()->isAjax() &&
-        if ($this->getRequest()->isPost()) {
+        if ( true || $this->getRequest()->isPost()) {
             $username = trim($this->getRequest()->request('username'));
             $password = $this->getRequest()->request('password');
 //        // 图片验证码校验
@@ -74,6 +74,7 @@ class UserController extends ApiController
             if ($validate->check($data)) {
                 //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
                 $identity = new User();
+                $identity->identity = $this->identity;
                 $identity->username = $username;
                 $identity->password = $password;
                 $res = $identity->login();
@@ -88,7 +89,6 @@ class UserController extends ApiController
                 }
             } else {
                 $this->ajaxReturn(['code' => 1004, 'code_str' => $validate->getError()]);
-
             }
         }
     }
@@ -175,28 +175,27 @@ class UserController extends ApiController
     {
         $identity = new User();
         $request = $this->getRequest();
-        // $token = $request->request('__token__');
         if ($request->isPost()) {
-            // 调用当前模型对应的Identity验证器类进行数据验证
+            // 调用当前模型对应的 User 验证器类进行数据验证
             $data = [];
             $data['username'] = $request->post('phone');
             $data['phone'] = $request->post('phone');
             $data['password'] = $request->post('password');
-            $data['rePassword'] = $request->post('rePassword');
             $validate = User::getValidate();
-            $validate->scene('register');
+            $scene = 'registerByPhone';
+            $validate->scene($scene);
             if ($validate->check($data)) { //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
-                $res = $identity->register($data);
+                $res = $identity->register($data,$scene);
                 if ($res instanceof User) {
                     $this->ajaxReturn(array("code" => "0000", 'code_str' => "注册成功"));
                 } else {
                     $this->ajaxReturn(array("code" => "0001", 'code_str' => "注册失败"));
                 }
             } else {
-                $this->ajaxReturn(array("code" => 1004, 'code_str' => "信息验证失败"));
+                $this->ajaxReturn(array("code" => 1004, 'code_str' => $validate->getError()));
             }
         } else {
-            exit(json_encode(['code' => 1008, 'msg' => '参数错误']));
+            $this->ajaxReturn(array("code" => 1008, 'code_str' => "参数错误"));
         }
     }
 

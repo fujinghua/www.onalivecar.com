@@ -30,7 +30,7 @@
             <div class="layui-input-block" style="padding-right: 120px;">
                 <select name="level" lay-verify="require" lay-search="">
                     <option value="">可选部门</option>
-                    {volist name="model->levelList" id="item"}
+                    {volist name="model->getLists('level')" id="item"}
                     <option value="{$key}" {if condition="$model->level eq $key"}selected{/if}>{$item}</option>
                     {/volist}
                 </select>

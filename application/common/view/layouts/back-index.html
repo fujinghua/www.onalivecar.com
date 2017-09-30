@@ -12,7 +12,7 @@
     <meta name="url" content="">
     <meta name="_csrf_param" content="{$_csrf_param ? $_csrf_param : ''}">
     <meta name="_csrf_token" content="{$_csrf_token ? $_csrf_token : ''}">
-    <meta name="cachedKey" content="{$_SESSION['_auth_token_'] ? $_SESSION['_auth_token_'] : ''}">
+    <meta name="cachedKey" content="{$_SESSION['_auth_token_'][$identity] ? $_SESSION['_auth_token_'][$identity] : ''}">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">

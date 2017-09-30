@@ -20,10 +20,10 @@ class BaseController extends Controller
     private static $_cookie;
 
     //模块身份标识 (默认identity)
-    protected $identity = 'identity';
+    public $identity = 'identity';
 
     //SESSION_ID
-    protected $sessionId = null;
+    public $sessionId = null;
 
     /**
      * @description before action function
@@ -71,14 +71,16 @@ class BaseController extends Controller
     {
         $identity = $identity ? : $this->identity;
         $_SESSION[$identity] = session(config($identity . '.unique'));
-        $_SESSION['logined_at'] = session('logined_at');
+        $_SESSION['logined_at'][$identity] = session('logined_at.'.config($identity . '.unique'));
 //        $this->assign('_csrf_param','_csrf_'.request()->module());
 //        $this->assign('_csrf_token',md5(time()));
-        if ($_SESSION['logined_at'] != strtotime($_SESSION[$identity]['logined_at'])) {
-            $_SESSION['logined_at'] = strtotime($_SESSION[$identity]['logined_at']);
-            session('logined_at', $_SESSION['logined_at']);
-            $_SESSION['_auth_token_'] = md5($_SESSION[$identity]['id'] . $_SESSION[$identity]['logined_at']);
+        if ($_SESSION['logined_at'][$identity] != strtotime($_SESSION[$identity]['logined_at'])) {
+            $_SESSION['logined_at'][$identity] = strtotime($_SESSION[$identity]['logined_at']);
+            session('logined_at.'.config($identity . '.unique'), $_SESSION['logined_at']);
+            $_SESSION['_auth_token_'][$identity] = md5($_SESSION[$identity]['id'] . $_SESSION[$identity]['logined_at']);
         }
+
+        $this->assign('identity',$identity);
     }
 
     /**
@@ -115,9 +117,9 @@ class BaseController extends Controller
     /**
      * @param null $key
      * @param string|null $identity //留有此参数是为了控制对应模块的登陆信息
-     * @return null
+     * @return null | string
      */
-    protected function getIdentity($key = null, $identity = null)
+    public function getIdentity($key = null, $identity = null)
     {
         if (empty($identity)){
             $identity = $this->identity;
@@ -131,7 +133,7 @@ class BaseController extends Controller
      * @param null $identity //留有此参数是为了控制对应模块的用户退出
      * @return bool
      */
-    protected function logout($userId = 0,$identity = null){
+    public function logout($userId = 0,$identity = null){
         if (!empty($userId)){
 
         }
@@ -689,7 +691,7 @@ class BaseController extends Controller
         return null;
     }
 
-    public function HttpException($statusCode = null, $message = null, array $headers = [], $code = null)
+    public static function ThrowHttpException($statusCode = null, $message = null, array $headers = [], $code = null)
     {
         if (empty($statusCode)) {
             $statusCode = '404';
@@ -705,7 +707,6 @@ class BaseController extends Controller
         }
         throw new \think\Exception\HttpException($statusCode, $message, null, $headers, $code);
     }
-
 
     /**
      * @return \app\common\components\Helper

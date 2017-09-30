@@ -12,7 +12,7 @@
     <meta name="url" content="">
     <meta name="_csrf_param" content="{$_csrf_param ? $_csrf_param : ''}">
     <meta name="_csrf_token" content="{$_csrf_token ? $_csrf_token : ''}">
-    <meta name="cachedKey" content="{$_SESSION['_auth_token_'] ? $_SESSION['_auth_token_'] : ''}">
+    <meta name="cachedKey" content="{$_SESSION['_auth_token_'][$identity] ? $_SESSION['_auth_token_'][$identity] : ''}">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
@@ -35,6 +35,10 @@
     <script src="__JS__/respond.min.js"></script>
     <![endif]-->
 
+    <!--  全局 -->
+    <script type="text/javascript" src="__JS__/site.js"></script>
+    <script type="text/javascript" src="__JS__/back.js"></script>
+
 </head>
 <body>
 
@@ -42,7 +46,7 @@
 
     <div class="container"  id="container">
 
-        <div class="layui-layout layui-layout-back-main" id="layui_layout" style="padding:0 15px 15px 15px;">
+        <div class="layui-layout layui-layout-back-main" id="layui_layout">
 
             <!-- 右侧主体内容开启 -->
             {__CONTENT__}
@@ -54,9 +58,6 @@
 </div>
 
 <!-- 加载js文件-->
-<!--  全局 -->
-<script type="text/javascript" src="__JS__/site.js"></script>
-<script type="text/javascript" src="__JS__/back.js"></script>
 <script>
     layui.use(['layer', 'util'], function() {
         var $ = layui.jquery,

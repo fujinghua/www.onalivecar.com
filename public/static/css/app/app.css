@@ -314,7 +314,6 @@ h1, h2, h3, h4, h5, h6, a, p, span {
     background-color: transparent
 }
 
-
 .webContainerBox {
     z-index: 0;
     display: block;
@@ -344,7 +343,7 @@ h1, h2, h3, h4, h5, h6, a, p, span {
     -webkit-backface-visibility: hidden;
     width: 100%;
     max-width: 768px;
-    height: 0;
+    height: 50px;
     -webkit-transition: all .4s;
     -ms-transition: all .4s;
     -moz-transition: all .4s;
@@ -359,11 +358,20 @@ h1, h2, h3, h4, h5, h6, a, p, span {
     -webkit-backface-visibility: hidden;
     width: 100%;
     max-width: 768px;
-    height: 0;
+    height: 50px;
     -webkit-transition: all .4s;
     -ms-transition: all .4s;
     -moz-transition: all .4s;
     transition: all .4s
+}
+
+/* 滚动状态 */
+body.layui-top-hide .webTopBox {
+    height: 0;
+}
+
+body.layui-bottom-hide .webBottomBox {
+    height: 50px;
 }
 
 .webHeader {
@@ -1188,11 +1196,16 @@ h1, h2, h3, h4, h5, h6, a, p, span {
 
 
 @media only screen and (min-width: 1280px) {
+
     .webBody {
         max-width: 512px
     }
 
     .webBackgroundFix {
+        max-width: 512px
+    }
+
+    .webTopBox {
         max-width: 512px
     }
 
@@ -1205,6 +1218,10 @@ h1, h2, h3, h4, h5, h6, a, p, span {
     }
 
     .webHeaderBox {
+        max-width: 512px
+    }
+
+    .webBottomBox {
         max-width: 512px
     }
 

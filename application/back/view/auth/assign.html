@@ -19,6 +19,10 @@
             width: 408px !important;
             font-size: 16px;
         }
+        .container .not-child .layui-form-checkbox span{
+            background-color: #f4f4f4;
+            color: #666666;
+        }
     </style>
 
 </head>
@@ -51,9 +55,15 @@
         </div>
         <div class="container container-right checkbox-left" style="position:absolute;right:0;width: 510px;height: 450px;border: 1px solid #E2E2E2;overflow-y: auto;">
             {volist name="hasAssign" id="item"}
+            {if condition="$item['childLevel'] eq 0"}
             <div class="item">
                 <input type="checkbox" value="{$item.name}" title="{$item.name}" class="layui-input" lay-group="right" />
             </div>
+            {else /}
+            <div class="item not-child">
+                <input type="checkbox" value="{$item.name}" title="{$item.name}" class="layui-input" lay-group="right" />
+            </div>
+            {/if}
             {/volist}
         </div>
         <div style="position:absolute;width: 100px;left: 50%;margin-left: -50px;top: 150px;">

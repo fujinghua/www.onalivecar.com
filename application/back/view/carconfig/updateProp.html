@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+    <style>
+        .layui-form-item {
+            margin-bottom: 30px;
+        }
+        .layui-form-item .layui-inline:nth-child(2) .layui-form-label{
+            width: 185px !important;
+        }
+
+        .layui-form-item .layui-input-block.right-width {
+            padding-right: 120px;
+        }
+        .layui-input-inline{
+            margin-bottom: 5px;
+        }
+        .layui-text{
+            position: absolute;
+            padding-left: 0;
+        }
+    </style>
+
+</head>
+<body>
+
+<section style="max-width:1200px;margin: 0 auto 30px;position: relative;">
+
+    <h3 class="title layui-title" style="text-align: center;">更新汽车配置特征量</h3>
+
+    <form class="layui-form forms" id="defaultForm" action="" method="post" style="padding: 15px 0">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>选择配置目录:</label>
+            <div class="layui-input-block right-width">
+                <div class="layui-input-inline" style="width: 91%;">
+                    <select name="cate_id" lay-verify="require" lay-filter="brand" lay-search>
+                        <option value="">选择配置目录</option>
+                        {volist name="cateList" id="item" }
+                        <option value="{$key}" {eq name="model.cate_id" value="$key"}selected{/eq}>{$item}</option>
+                        {/volist}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>配置特征量:</label>
+            <div class="layui-input-block right-width">
+                <div class="layui-input-inline" style="width: 91%;">
+                    <input type="text" value="{$model.name}" name="name" lay-verify="require" placeholder="配置特征量" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="container-value">
+            {empty name="model->getCatePropValues"}
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="layui-color-danger"></span>配置特征值:</label>
+                <div class="layui-input-block right-width">
+                    <div class="layui-input-inline" style="width: 91%;position: relative;">
+                        <input type="text" value="" name="value[]" lay-verify="" placeholder="配置特征值(附加参数)" class="layui-input" style="padding-right: 64px;">
+                        <label class="layui-btn" lay-filter="addValue" style="position: absolute;right: 0;top: 0;">添加</label>
+                    </div>
+                </div>
+            </div>
+            {/empty}
+            {notempty name="model->getCatePropValues"}
+            {volist name="model->getCatePropValues" id="item"}
+            {if condition="$key eq '0'"}
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="layui-color-danger"></span>配置特征值:</label>
+                <div class="layui-input-block right-width">
+                    <div class="layui-input-inline" style="width: 91%;position: relative;">
+                        <input type="hidden" value="{$item.id}" name="valueId[]">
+                        <input type="text" value="{$item.value}" name="value[]" lay-verify="" placeholder="配置特征值(附加参数)" class="layui-input" style="padding-right: 64px;">
+                        <label class="layui-btn" lay-filter="addValue" style="position: absolute;right: 0;top: 0;">添加</label>
+                    </div>
+                </div>
+            </div>
+            {else /}
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="layui-color-danger"></span></label>
+                <div class="layui-input-block right-width">
+                    <div class="layui-input-inline" style="width: 91%;position: relative;">
+                        <input type="hidden" value="{$item.id}" name="valueId[]">
+                        <input type="text" value="{$item.value}" name="value[]" lay-verify="" placeholder="配置特征值(附加参数)" class="layui-input" style="padding-right: 64px;">
+                        <label class="layui-btn layui-btn-danger" lay-filter="deleteValue" style="position: absolute;right: 0;top: 0;">删除</label>
+                    </div>
+                </div>
+            </div>
+            {/if}
+            {/volist}
+            {/notempty}
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>是否颜色属性:</label>
+            <div class="layui-input-inline right-width">
+                <input type="radio" value="0" name="isColor" title="否" lay-verify="checked" lay-group="isColor" class="layui-input" {eq name="model.isColor" value="0"}checked{/eq}>
+                <input type="radio" value="1" name="isColor" title="是" lay-verify="checked" lay-group="isColor" class="layui-input" {eq name="model.isColor" value="1"}checked{/eq}>
+            </div>
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>是否枚举属性:</label>
+            <div class="layui-input-inline right-width">
+                <input type="radio" value="0" name="isEnum" title="否" lay-verify="checked" lay-group="isEnum" class="layui-input" {eq name="model.isEnum" value="0"}checked{/eq}>
+                <input type="radio" value="1" name="isEnum" title="是" lay-verify="checked" lay-group="isEnum" class="layui-input" {eq name="model.isEnum" value="1"}checked{/eq}>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>是否输入属性:</label>
+            <div class="layui-input-inline right-width">
+                <input type="radio" value="0" name="isAlive" title="否" lay-verify="checked" lay-group="isAlive" class="layui-input" {eq name="model.isAlive" value="0"}checked{/eq}>
+                <input type="radio" value="1" name="isAlive" title="是" lay-verify="checked" lay-group="isAlive" class="layui-input" {eq name="model.isAlive" value="1"}checked{/eq}>
+            </div>
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>是否关键属性:</label>
+            <div class="layui-input-inline right-width">
+                <input type="radio" value="0" name="isUnique" title="否" lay-verify="checked" lay-group="isUnique" class="layui-input" {eq name="model.isUnique" value="0"}checked{/eq}>
+                <input type="radio" value="1" name="isUnique" title="是" lay-verify="checked" lay-group="isUnique" class="layui-input" {eq name="model.isUnique" value="1"}checked{/eq}>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>是否销售属性:</label>
+            <div class="layui-input-inline right-width">
+                <input type="radio" value="0" name="isSeller" title="否" lay-verify="checked" lay-group="isSeller" class="layui-input" {eq name="model.isSeller" value="0"}checked{/eq}>
+                <input type="radio" value="1" name="isSeller" title="是" lay-verify="checked" lay-group="isSeller" class="layui-input" {eq name="model.isSeller" value="1"}checked{/eq}>
+            </div>
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>是否公共属性:</label>
+            <div class="layui-input-inline right-width">
+                <input type="radio" value="0" name="isBase" title="否" lay-verify="checked" lay-group="isBase" class="layui-input" {eq name="model.isBase" value="0"}checked{/eq}>
+                <input type="radio" value="1" name="isBase" title="是" lay-verify="checked" lay-group="isBase" class="layui-input" {eq name="model.isBase" value="1"}checked{/eq}>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"></label>
+                <input type="hidden" value="{$model.id}" name="id">
+                <button class="layui-btn" lay-submit="" lay-filter="submit">更新</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </form>
+
+</section>
+
+<script>
+
+    layui.use(['form'], function () {
+        var form = layui.form;
+        var level = parseInt($('[lay-filter="level"]:selected').val());
+        var brand = $('[lay-filter="brand"]');
+        var series = $('[lay-filter="series"]');
+        var cate = $('[lay-filter="cate"]');
+        var pid = $('[lay-filter="pid"]');
+        form.on('radio(isParent)', function(data){
+            level = parseInt(data.value);
+            if (level===1){
+                pid.attr('lay-verify','require');
+                $('[lay-filter="level"][lay-level]').closest('.layui-form-item').fadeIn();
+                $('[lay-filter="level"]').each(function () {
+                    $(this).attr('lay-verify','exist');
+                });
+            }else{
+                pid.attr('lay-verify','');
+                $('[lay-filter="level"][lay-level]').closest('.layui-form-item').hide();
+                $('[lay-filter="level"]').each(function () {
+                    $(this).attr('lay-verify','');
+                });
+            }
+        });
+        form.on('select(brand)', function(data){
+            var pid = data.value;
+            $.get("{:url('ajax/getCate')}",{pid:pid},function(data){
+                series.html('');
+                cate.html('');
+                if (data){
+                    var option = [];
+                    option.push('<option value="">请选择</option>');
+                    if (data.length>0){
+                        for (var k in data){
+                            option.push('<option value="'+data[k].id+'">'+data[k].name+'</option>');
+                        }
+                    }
+                    series.html(option.join('')).attr('lay-verify','require');
+                }
+                form.render('select');
+            });
+        });
+        form.on('select(series)', function(data){
+            var pid = data.value;
+            $.get("{:url('ajax/getCate')}",{pid:pid},function(data){
+                cate.html('');
+                if (data){
+                    var option = [];
+                    option.push('<option value="">请选择</option>');
+                    if (data.length>0){
+                        for (var k in data){
+                            option.push('<option value="'+data[k].id+'">'+data[k].name+'</option>');
+                        }
+                    }
+                    cate.html(option.join('')).attr('lay-verify','require');
+                }
+                form.render('select');
+            });
+        });
+        form.on('select(level)', function(data){
+            var pid = data.value;
+            var level = parseInt($(data.elem).attr('lay-level'));
+            $('[name="pid"]').val(pid);
+            $('[name="level"]').val(level);
+            $('[name="pName"]').val($(data.elem).find('option:selected').html());
+            if (level>1){
+                $('[name="name"]').val($(data.elem).find('option:selected').html());
+            }
+            if (level>=3){
+                return;
+            }
+            var select = $('[lay-filter="level"][lay-level="'+(level+1)+'"]');
+            $.get("{:url('ajax/getCateProp')}",{pid:pid},function(data){
+                select.html('');
+                if (data){
+                    var option = [];
+                    option.push('<option value="">请选择</option>');
+                    if (data.length>0){
+                        for (var k in data){
+                            option.push('<option value="'+data[k].id+'">'+data[k].name+'</option>');
+                        }
+                    }
+                    select.html(option.join(''));
+                }
+                form.render('select');
+            });
+        });
+    });
+
+    //添加配置特征值
+    $(document).on('click','[lay-filter="addValue"]',function () {
+       var html = ' <div class="layui-form-item"> ' +
+           '<label class="layui-form-label"><span class="layui-color-danger"></span></label> ' +
+           '<div class="layui-input-block right-width">' +
+           '<div class="layui-input-inline" style="width: 91%;position: relative;">' +
+           '<input type="text" value="" name="value[]" lay-verify="" placeholder="配置特征值(附加参数)" class="layui-input" style="padding-right: 64px;">' +
+           '<label class="layui-btn layui-btn-danger" lay-filter="deleteValue" style="position: absolute;right: 0;top: 0;">删除</label>' +
+           '</div></div></div>';
+       $('.container-value').append(html);
+    });
+
+    //删除配置特征值
+    $(document).on('click','[lay-filter="deleteValue"]',function () {
+       $(this).closest('.layui-form-item').remove();
+    });
+
+    $(function () {
+        var options = {
+            form: '#defaultForm',
+            success: console.log
+        };
+        Back.submit(options);
+    });
+
+    var indexLogo = Site.uploader({
+        elem:'#logo_file',
+        targetElem:'#logo',
+        url: '/ajax/uploader?file=file',
+        title:'上传品牌商标',
+        isAjax:true,
+        success: function (res, input) {
+            console.log(res);
+            console.log($('#url').val());
+        }
+    });
+
+
+</script>
+
+</body>
+
+</html>

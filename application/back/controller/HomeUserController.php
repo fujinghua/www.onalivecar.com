@@ -22,7 +22,7 @@ use app\common\model\HomeUserLog;
  * 用户控制器
  * @author Sir Fu
  */
-class HomeUserController extends BackController
+class HomeuserController extends BackController
 {
 
 

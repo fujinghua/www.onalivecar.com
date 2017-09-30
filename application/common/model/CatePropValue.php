@@ -93,7 +93,7 @@ class CatePropValue extends Model
      */
     public function getCateProp()
     {
-        return $this->hasOne(ucfirst(CateProp::tableNameSuffix()), 'cate_prop_id','id');
+        return $this->hasOne(ucfirst(CateProp::tableNameSuffix()), 'id','cate_prop_id');
     }
 
 }

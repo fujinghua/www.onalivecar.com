@@ -28,16 +28,15 @@
         <form class="layui-form layui-form-pane" action="">
             <div class="layui-form-item">
 
-                <label class="layui-form-label">真实姓名:</label>
+                <label class="layui-form-label">管理账号:</label>
                 <div class="layui-input-inline">
-                    <input type="text" value="{$Think.get.keyword}" name="keyword" placeholder="真实姓名" class="layui-input">
+                    <input type="text" value="{$Think.get.keyword}" name="keyword" placeholder="管理账号 | 真实名称" class="layui-input">
                 </div>
 
                 {if condition="$super !== 'true'"}
                 <label class="layui-form-label">管理员类型</label>
                 <div class="layui-input-inline">
                     <select name="department_id" lay-search >
-                        <option value="">全部</option>
                         <option value="">全部</option>
                         {volist name="typeList" id="item"}
                         <option value="{$key}" {if condition="$key eq $Think.get.department_id"}selected{/if}>{$item}</option>
@@ -78,11 +77,12 @@
     <thead>
     <tr>
         <th>序号</th>
-        <th>登录名称</th>
+        <th>登录账号</th>
         <th>真实名称</th>
         <th>账号类型</th>
-        <!--<th>部门</th>-->
+        {eq name="_SESSION['identity']['department_id']" value="1"}
         <th style="width:50px; text-align: center">操作</th>
+        {/eq}
     </tr>
     </thead>
     <tbody>
@@ -94,11 +94,13 @@
         <td style="width: 100px;">{$model.username}</td>
         <td>{$model.phone}</td>
         <td>{$model->getDepartment->name}</td>
+        {eq name="_SESSION['identity']['department_id']" value="1"}
         <td style="width: 180px;text-align: center;" class="action">
             <label class="layui-btn layui-btn-mini" lay-filter="update">编辑</label>
             <label class="layui-btn layui-btn-mini layui-btn-danger" lay-filter="delete">删除</label>
             <label class="layui-btn layui-btn-mini" lay-filter="assign">管理权限</label>
         </td>
+        {/eq}
     </tr>
     {/volist}
     </tbody>

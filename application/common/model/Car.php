@@ -99,7 +99,7 @@ class Car extends Model
      */
     public function getCarProps()
     {
-        return $this->hasMany(ucfirst(CarProp::tableNameSuffix()), 'id','car_id');
+        return $this->hasMany(ucfirst(CarProp::tableNameSuffix()), 'car_id','id');
     }
 
     /**
